@@ -62,6 +62,8 @@
 \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
                             % normalem makes italics be italics, not underlines
 \usepackage{braket}
+\usepackage{tcolorbox}
+\tcbuselibrary{listings,breakable}
 ((* endblock packages *))
 
 %===============================================================================
