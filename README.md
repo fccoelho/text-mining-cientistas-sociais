@@ -1,4 +1,4 @@
-# Mineraçao de Textos para Cientistas S ociais
+# Mineraçao de Textos para Cientistas Sociais
 Material do curso de text mining para cientistas sociais do CPDOC.
 Durante este curso basearemos o estudo da mineraçao de textos sobre o acervo do [DHBB](https://github.com/cpdoc/dhbb). A partir da coleçao de verbetes, iremos tentar alcançar os seguintes objetivos de pesquisa:
 
