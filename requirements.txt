@@ -1,3 +1,7 @@
 nltk
 spacy
 gensim
+scikit-learn
+pandas
+sqlitedict
+
