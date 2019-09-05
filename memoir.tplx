@@ -8,7 +8,7 @@
 %===============================================================================
 
 ((* block docclass *))
-\documentclass[10pt,notitlepage,onecolumn,aps,pra]{revtex4-1}
+\documentclass[10pt,notitlepage,onecolumn,aps,pra, secnumarabic]{revtex4-1}
 ((* endblock docclass *))
 
 %===============================================================================
@@ -31,6 +31,7 @@
 % Ensure that by default, figures have no caption (until we provide a
 % proper Figure object with a Caption API and a way to capture that
 % in the conversion process - todo).
+%\usepackage{longtable}
 \usepackage{caption}
 \DeclareCaptionLabelFormat{nolabel}{}
 \captionsetup{labelformat=nolabel}
@@ -64,6 +65,7 @@
 \usepackage{braket}
 \usepackage{tcolorbox}
 \tcbuselibrary{listings,breakable}
+
 ((* endblock packages *))
 
 %===============================================================================
@@ -73,6 +75,10 @@
 ((* block title -*))
 \title{Mineraçao de Textos para Cientistas Sociais}
 ((*- endblock title *))
+((* block predoc *))
+    ((( super() )))
+    ((* block tableofcontents *))\tableofcontents((* endblock tableofcontents *))
+((* endblock predoc *))
 ((* block author -*))
 ((* endblock author *))
 
