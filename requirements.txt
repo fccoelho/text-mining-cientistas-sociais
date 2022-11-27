@@ -4,4 +4,7 @@ gensim
 scikit-learn
 pandas
 sqlitedict
+pygraphviz
+pyemd
+tqdm
 
