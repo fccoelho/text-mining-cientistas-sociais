@@ -1,0 +1,994 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Aplicando modelagem de assuntos ao DHBB &#8212; Mineração de textos para Cientistas Sociais</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Construindo um Classificador de Textos" href="Capitulo_5.html" />
+    <link rel="prev" title="Identificando Entidades Nomeadas e Similaridade Semântica" href="Capitulo_3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mineração de textos para Cientistas Sociais</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Mineração de Textos para Cientistas Sociais
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_1.html">
+   Abrindo Arquivos de Texto
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_2.html">
+   Contando Palavras
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_3.html">
+   Identificando Entidades Nomeadas e Similaridade Semântica
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Aplicando modelagem de assuntos ao DHBB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_5.html">
+   Construindo um Classificador de Textos
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/fccoelho/text-mining-cientistas-sociais/master?urlpath=tree/Capitulo_4.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/fccoelho/text-mining-cientistas-sociais"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/fccoelho/text-mining-cientistas-sociais/issues/new?title=Issue%20on%20page%20%2FCapitulo_4.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Capitulo_4.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#word2vec">
+   Word2vec
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#explorando-o-modelo">
+     Explorando o modelo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizando-os-vetores-de-palavras">
+     Visualizando os vetores de palavras
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#word-movers-distance">
+   Word Movers Distance
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Aplicando modelagem de assuntos ao DHBB</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#word2vec">
+   Word2vec
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#explorando-o-modelo">
+     Explorando o modelo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizando-os-vetores-de-palavras">
+     Visualizando os vetores de palavras
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#word-movers-distance">
+   Word Movers Distance
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="aplicando-modelagem-de-assuntos-ao-dhbb">
+<h1>Aplicando modelagem de assuntos ao DHBB<a class="headerlink" href="#aplicando-modelagem-de-assuntos-ao-dhbb" title="Permalink to this headline">#</a></h1>
+<p>Neste capítulo vamos explorar ferramentas de modelagem de assuntos e explorar aplicações ao DHBB. Como sempre, começamos com alguns imports familiares.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">dhbbmining</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 20:08:56.909003: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 20:08:57.489436: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2022-11-27 20:08:57.489490: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2022-11-27 20:08:57.489495: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 20:08:58.581784: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory
+2022-11-27 20:08:58.581810: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos também carregar o modelo de NLP para a língua portuguesa do Spacy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descomente a linha abaixo para instalar</span>
+<span class="c1">#!python3 -m spacy download pt_core_news_sm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;pt_core_news_sm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Agora faremos alguns imports novos, particularmente da biblioteca <a class="reference external" href="https://radimrehurek.com/gensim">Gensim</a>, que nos oferece as ferramentas que necessitamos para modelagem de assuntos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">punctuation</span>
+<span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">datapath</span>
+<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span><span class="p">,</span> <span class="n">word2vec</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para minimizar o uso de memória, vamos construir uma classe para representar o nosso corpus como um iterador, operando diretamente do banco de dados. Desta forma, ao fazer nossas análises, podemos carregar um documento por vez para alimentar os modelos, sem a necessidade de manter todo o corpus na memória, economizando memória RAM.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;sqlite:///minha_tabela.sqlite&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DHBBCorpus</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Iterador de documentos quebrados em frases</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndocs</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">7687</span><span class="p">,</span><span class="n">ndocs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">eng</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;select corpo from resultados limit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_process</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="o">%</span><span class="k">10</span> == 0:
+                    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Verbete </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="si">}</span><span class="s2"> de </span><span class="si">{</span><span class="mi">6</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span><span class="si">}</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">s</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tagger&#39;</span><span class="p">,</span> <span class="s1">&#39;ner&#39;</span><span class="p">,</span><span class="s1">&#39;entity-linker&#39;</span><span class="p">,</span> <span class="s1">&#39;textcat&#39;</span><span class="p">,</span><span class="s1">&#39;entity-ruler&#39;</span><span class="p">,</span><span class="s1">&#39;merge-noun-chunks&#39;</span><span class="p">,</span><span class="s1">&#39;merge-entities&#39;</span><span class="p">,</span><span class="s1">&#39;merge-subtokens&#39;</span><span class="p">])</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">sents</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">token</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">punctuation</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">s</span> <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">punctuation</span><span class="p">)])</span>
+        <span class="k">return</span> <span class="n">results</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<p>Abaixo um pequeno exemplo de como a classe <code class="docutils literal notranslate"><span class="pre">DHBBCorpus</span></code> funciona:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DC</span> <span class="o">=</span> <span class="n">DHBBCorpus</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">DC</span><span class="p">:</span>
+    <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">break</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«PARTIDO&#39;, &#39;POPULAR&#39;, &#39;DO&#39;, &#39;DISTRITO&#39;, &#39;FEDERAL»&#39;, &#39;Partido&#39;, &#39;político&#39;, &#39;do&#39;, &#39;Rio&#39;, &#39;de&#39;, &#39;Janeiro&#39;, &#39;então&#39;, &#39;Distrito&#39;, &#39;Federal&#39;, &#39;fundado&#39;, &#39;em&#39;, &#39;1933&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="word2vec">
+<h2>Word2vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">#</a></h2>
+<p>Vamos começar pelo treinamento de um modelo word2vec. Este modelo itera 6 vezes sobre o corpus logo, devemos ver o contador atingir 46122. Estas repetições são necessárias para permitir a melhor estimação da representação vetorial das palavras em um espaço semântico.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;dhbb.w2v&#39;</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;dhbb.w2v&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">DC</span> <span class="o">=</span> <span class="n">DHBBCorpus</span><span class="p">()</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">sentences</span><span class="o">=</span><span class="n">DC</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;dhbb.w2v&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="explorando-o-modelo">
+<h3>Explorando o modelo<a class="headerlink" href="#explorando-o-modelo" title="Permalink to this headline">#</a></h3>
+<p>Como dito anteriormente o modelo do Word2Vec representa cada palavra do vocabulário do corpus como um vetor. Vejamos as dez primeiras palavras:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">index_to_key</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>de
+a
+do
+e
+da
+o
+em
+que
+no
+na
+</pre></div>
+</div>
+</div>
+</div>
+<p>Enquanto vetores podemos realizar operações aritméticas entre eles. Por exemplo se subtrairmos os vetores de <em>Deputado</em> e  <em>deputado</em> encontraremos que a magnitude do vetor resultante é bem pequena, pois estão muito próximos no espaço vetorial:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vec</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s1">&#39;Deputado&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s1">&#39;deputado&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Todos os vetores tem dimensão </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Todos os vetores tem dimensão 100
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>24.32071
+</pre></div>
+</div>
+</div>
+</div>
+<p>O tamanho total do vocabulário (palavras distintas) é de:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">index_to_key</span><span class="p">)</span><span class="si">}</span><span class="s2"> palavras&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38762 palavras
+</pre></div>
+</div>
+</div>
+</div>
+<p>Usando a mesma lógica de operações sobre os vetores, podemos usar palavras como representantes de seu significado, efetivamente estabelecendo um cálculo conceitual. Por exemplo: Abaixo vamos buscar as palavras mais similares semanticamente com o conceito de <strong>direita</strong> e ao mesmos antagônicas ao conceito de “Comunista”. Como o corpus do DHBB tem um claro viés político, vemos o termo <em>direita</em> tomar a conotação política usual.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;direita&#39;</span><span class="p">],</span><span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Comunista&#39;</span><span class="p">],</span> <span class="n">topn</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;progressistas&#39;, 0.5529391169548035),
+ (&#39;segmentos&#39;, 0.5388556718826294),
+ (&#39;conservadores&#39;, 0.5193644165992737),
+ (&#39;antigetulistas&#39;, 0.515348494052887),
+ (&#39;setores&#39;, 0.5146178603172302),
+ (&#39;nacionalistas&#39;, 0.5058426856994629),
+ (&#39;esquerda&#39;, 0.5054914951324463),
+ (&#39;oposição&#39;, 0.4820389747619629),
+ (&#39;extrema&#39;, 0.47334492206573486),
+ (&#39;oposicionistas&#39;, 0.4595625698566437),
+ (&#39;adeptos&#39;, 0.44704267382621765),
+ (&#39;udenistas&#39;, 0.44662249088287354),
+ (&#39;centro-esquerda&#39;, 0.44410112500190735),
+ (&#39;radicais&#39;, 0.43817466497421265),
+ (&#39;pessedistas&#39;, 0.4352889060974121),
+ (&#39;moderados&#39;, 0.4338815212249756),
+ (&#39;liberais&#39;, 0.43283340334892273),
+ (&#39;jovens&#39;, 0.43128761649131775),
+ (&#39;grupos&#39;, 0.42958810925483704),
+ (&#39;ambientalistas&#39;, 0.42890769243240356)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>O número total de tokens no corpus é de:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">corpus_total_words</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8713256
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizando-os-vetores-de-palavras">
+<h3>Visualizando os vetores de palavras<a class="headerlink" href="#visualizando-os-vetores-de-palavras" title="Permalink to this headline">#</a></h3>
+<p>Como os palavras estão inseridas um espaço vetorial de dimensão 100, fica difícil visualizar o seu posicionamento relativo mas podemos nos utilizar de métodos de redução de dimensionalidade com o <a class="reference external" href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">TSNE</a>, para visualizarmos um pequeno numero (200) delas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">IncrementalPCA</span>    <span class="c1"># inital reduction</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>                   <span class="c1"># final reduction</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                  <span class="c1"># array handling</span>
+
+
+<span class="k">def</span> <span class="nf">reduce_dimensions</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">num_dimensions</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># final num dimensions (2D, 3D, etc)</span>
+
+    <span class="n">vectors</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># positions in vector space</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># keep track of words to label our data again later</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">index_to_key</span><span class="p">:</span>
+        <span class="n">vectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="n">word</span><span class="p">])</span>
+        <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">200</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="c1"># convert both lists into numpy vectors for reduction</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vectors</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+    <span class="c1"># reduce using t-SNE</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vectors</span><span class="p">)</span>
+    <span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">num_dimensions</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">vectors</span><span class="p">)</span>
+
+    <span class="n">x_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vectors</span><span class="p">]</span>
+    <span class="n">y_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vectors</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">labels</span>
+
+
+<span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">reduce_dimensions</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_with_plotly</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">plot_in_notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">iplot</span><span class="p">,</span> <span class="n">plot</span>
+    <span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span>
+        <span class="n">autosize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">600</span>
+    <span class="p">)</span>
+
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_vals</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">trace</span><span class="p">]</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span> <span class="n">data</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span> <span class="n">layout</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">plot_in_notebook</span><span class="p">:</span>
+        <span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">iplot</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;word-embedding-plot&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plot</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;word-embedding-plot.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_with_plotly</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.16.1.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+</div><div class="output text_html"><div>                            <div id="dbf6b1eb-163a-43c1-81c2-51dcf6d291f1" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("dbf6b1eb-163a-43c1-81c2-51dcf6d291f1")) {                    Plotly.newPlot(                        "dbf6b1eb-163a-43c1-81c2-51dcf6d291f1",                        [{"mode":"text","opacity":0.8,"text":["de","a","do","e","da","o","em","que","no","na","para","com","foi","dos","ao","Em","à","por","os","uma","um","pelo","como","das","governo","ano","as","presidente","sua","se","pela","seu","Partido","Rio","não","outubro","No","Câmara","dia","A","Paulo","deputado","seguinte","novembro","Nacional","São","Comissão","mandato","entre","O","federal","mais","até","Brasil","janeiro","Janeiro","estado","também","política","fevereiro","cargo","legenda","mesmo","março","sobre","partido","então","Federal","República","ainda","abril","eleições","presidência","país","José","contra","quando","João","anos","Social","dezembro","ser","teve","Estado","ministro","aos","Vargas","maio","pleito","Brasileiro","nas","eleito","Foi","qual","era","assumiu","membro","Com","setembro","nacional","depois","mas","agosto","nos","seus","candidato","passou","Democrático","tornou-se","às","movimento","julho","PMDB","sendo","Ainda","Deputados","Congresso","estadual","onde","Senado","filho","durante","apoio","votos","junho","general","Na","nasceu","Minas","novo","dois","governador","segundo","já","militar","desse","Assembléia","após","foram","mês","Carlos","Ministério","tendo","Justiça","primeiro","projeto","suas","campanha","período","Grande","Sul","candidatura","início","comissão","vez","fim","regime","ou","Escola","participou","Universidade","nova","oposição","1964","sido","partir","Luís","nomeado","Constituição","posse","políticos","Militar","criação","quem","legislatura","Fernando","favor","capital","processo","reforma","Silva","titular","nº","curso","três","cidade","Exército","Antônio","Durante","PSD","Faculdade","chefe","suplente","Distrito","PTB","jornal","direito","Conselho","deixou","elegeu-se","vice-presidente"],"x":[-0.48788100481033325,-4.492918968200684,-3.443469524383545,-0.6088327169418335,-4.402913570404053,-3.621492624282837,0.9902378916740417,-0.6472352743148804,-3.149651050567627,-6.6328206062316895,0.0526580810546875,0.892837643623352,2.2567408084869385,-1.156782627105713,-4.901883125305176,0.9515570998191833,-5.484562397003174,-6.193821430206299,-1.0337637662887573,-5.379860877990723,-3.4323174953460693,-6.1492600440979,1.018695592880249,-9.76774787902832,10.953452110290527,3.371142625808716,-9.910508155822754,8.832736015319824,-4.699443340301514,-2.6580581665039062,-6.844590187072754,-2.8890066146850586,-4.101414680480957,3.4071922302246094,-0.03747135400772095,3.0673158168792725,-0.1854507327079773,-6.901169300079346,3.620436429977417,-5.605677127838135,-6.625076770782471,11.692049026489258,-4.335836887359619,2.741177797317505,-9.365358352661133,2.954786777496338,-3.388005018234253,7.6865553855896,1.2143498659133911,-3.9052679538726807,-6.240962505340576,-1.891283392906189,2.168166160583496,-8.649301528930664,4.514930725097656,6.478621006011963,-7.760195732116699,-1.1917692422866821,-2.2442591190338135,4.163032054901123,8.442338943481445,5.166948318481445,-4.330724716186523,4.388132095336914,1.4581342935562134,-3.2256267070770264,-1.75352144241333,4.046968460083008,-4.635475158691406,-1.0751490592956543,3.9722161293029785,9.825020790100098,9.177985191345215,-8.435735702514648,-5.889143943786621,3.006218671798706,0.46420183777809143,-6.5290069580078125,5.726284027099609,-9.685297012329102,3.6112027168273926,1.2040557861328125,2.92895245552063,-8.802125930786133,9.835960388183594,-1.9656821489334106,-4.058839321136475,3.3262598514556885,9.798932075500488,-9.376669883728027,-9.557584762573242,10.304476737976074,2.4232144355773926,-0.47727203369140625,2.1680219173431396,5.337806701660156,7.615828514099121,1.1540223360061646,3.5429582595825195,-3.1829092502593994,2.609092950820923,-0.7459679245948792,4.144111633300781,-0.9518645405769348,-0.9275745153427124,-1.675179123878479,5.7143330574035645,-5.158921241760254,3.3683581352233887,-8.7459077835083,0.36279380321502686,3.357637643814087,-3.576646327972412,1.454228162765503,1.1348847150802612,-3.2994773387908936,-5.424808502197266,-6.227236270904541,0.13053756952285767,-4.971823692321777,6.62240743637085,0.07534193247556686,-1.96819269657135,-3.0376601219177246,3.9087579250335693,5.990528106689453,-6.900439262390137,5.0571208000183105,-2.222641706466675,-2.319371461868286,-0.8579601645469666,10.925183296203613,-2.9794631004333496,-0.4485931694507599,-1.6650044918060303,-4.24478006362915,-6.831833362579346,2.5737574100494385,1.2969026565551758,3.390268564224243,-4.58924674987793,9.776069641113281,-0.844743013381958,-3.0657060146331787,-2.955324172973633,1.8966050148010254,-10.136415481567383,-0.9875422120094299,3.151355504989624,6.516030311584473,2.570842742919922,-1.3354687690734863,1.7735393047332764,0.3080202043056488,-1.1785269975662231,1.6896414756774902,1.4087333679199219,-0.5939944982528687,5.855320930480957,3.8500590324401855,6.2793192863464355,-2.5903708934783936,-1.8552395105361938,-1.2241764068603516,1.8737843036651611,1.589490294456482,-5.813586711883545,10.048431396484375,3.688093900680542,2.796360969543457,-0.6995454430580139,4.646122455596924,1.1396774053573608,-1.0908783674240112,6.800161361694336,-3.9633052349090576,3.0705864429473877,4.267817497253418,2.0400450229644775,1.4677369594573975,-4.505402565002441,7.384809970855713,3.751981496810913,4.687736988067627,-0.8499191999435425,4.4089226722717285,5.4549407958984375,-5.167164325714111,0.08188684284687042,-3.6002445220947266,6.136667728424072,7.059114456176758,7.621613502502441,4.938130855560303,-3.5499253273010254,-0.03911830484867096,2.7781455516815186,8.40542984008789,5.443370819091797,10.779281616210938,8.233335494995117],"y":[-1.4873480796813965,-2.6122305393218994,-4.246473789215088,-1.2259862422943115,-3.1253461837768555,-4.8778791427612305,-1.2933820486068726,1.6955372095108032,-3.969799757003784,-3.6013729572296143,-2.145864963531494,-3.5604496002197266,-10.18765926361084,-6.588990211486816,-5.070929527282715,10.64554500579834,-4.4043755531311035,-6.494228363037109,-6.097646236419678,-2.2622454166412354,-5.83878755569458,-6.315766334533691,-6.396963119506836,-7.254213333129883,-0.5395328402519226,7.526360988616943,-7.055764198303223,0.3637804090976715,-2.0770339965820312,2.5172417163848877,-4.916460990905762,-4.945028305053711,6.278022289276123,0.2155514359474182,0.3923717439174652,14.543048858642578,11.102241516113281,6.4197893142700195,8.775628089904785,-2.901165008544922,0.7651020288467407,-0.12324661761522293,-8.999085426330566,14.023981094360352,-0.4774489402770996,-0.5903136730194092,10.368558883666992,4.009593486785889,-2.4747872352600098,-5.422844409942627,3.0806124210357666,1.3093234300613403,-1.6844780445098877,3.8287465572357178,14.162588119506836,-4.656739711761475,3.1282236576080322,-0.6028159260749817,0.3155319392681122,14.451725959777832,4.096813201904297,2.81022047996521,-9.0839262008667,13.571038246154785,-4.965027332305908,5.231844425201416,-0.6656244397163391,-1.783357858657837,1.7333003282546997,-0.5124253630638123,13.555377006530762,7.694085597991943,0.8389777541160583,3.8166065216064453,-0.02828720584511757,-5.402284145355225,1.9506113529205322,-0.5695573687553406,11.647701263427734,-1.5576246976852417,13.806400299072266,-10.764019966125488,-7.989070892333984,2.401841640472412,-3.2808847427368164,-7.175869464874268,3.0193827152252197,13.47156810760498,7.6840643882751465,-0.7337656617164612,-7.387304782867432,3.752150774002075,-10.333300590515137,2.19948148727417,-9.332969665527344,-7.622907638549805,0.07656874507665634,-3.767847776412964,12.957221031188965,0.02159019187092781,-3.3587372303009033,1.1002815961837769,12.956774711608887,-6.914297580718994,-5.65183687210083,6.3562211990356445,-7.882593631744385,7.881804466247559,-9.45080852508545,-7.215783596038818,5.331974029541016,12.955303192138672,5.375324726104736,-10.533353805541992,10.64900016784668,7.958794116973877,5.575739860534668,3.0429883003234863,2.1229302883148193,5.3305535316467285,8.858734130859375,8.292765617370605,4.314441204071045,6.80357027053833,12.815526962280273,-1.635365605354309,-3.387530565261841,0.6674785614013672,-3.0640640258789062,-1.4831149578094482,-4.021331310272217,-0.4665798246860504,-1.7136728763580322,-0.15343783795833588,-2.0744943618774414,-8.158950805664062,6.329605579376221,-3.465643882751465,-7.919681549072266,7.6338582038879395,0.20326465368270874,-3.2917470932006836,-9.68034553527832,1.3887865543365479,-1.729984164237976,4.840350151062012,-6.780170917510986,5.742982387542725,6.424551010131836,-4.709108829498291,0.10610926151275635,6.138941287994385,1.7470190525054932,-0.6220406889915466,0.44804054498672485,1.3394702672958374,5.9097208976745605,-2.9074246883392334,5.741384029388428,-8.269062042236328,5.909524917602539,-0.5616269111633301,4.281409740447998,-2.065587043762207,-11.141569137573242,-1.2181442975997925,0.35492098331451416,3.788914442062378,4.021533966064453,1.346292495727539,-4.907363414764404,-1.721128225326538,0.32354626059532166,2.571953773498535,2.8629872798919678,-0.7354872226715088,-5.403263568878174,2.0093770027160645,5.407950401306152,3.013066530227661,0.9807132482528687,1.2353293895721436,10.789706230163574,5.384097576141357,-3.9106225967407227,2.0649962425231934,-1.680802822113037,0.22202995419502258,8.417531967163086,5.139288425445557,5.85487699508667,-0.7695715427398682,1.0631208419799805,-3.666093111038208,5.428257942199707,4.1782145500183105,3.433467149734497,-2.6451144218444824,-7.589117527008057,3.6750741004943848,0.5007091164588928],"type":"scatter"}],                        {"autosize":false,"height":600,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"width":800},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('dbf6b1eb-163a-43c1-81c2-51dcf6d291f1');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div></div>
+</div>
+<p>Outros exemplos de combinação de conceitos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;deputado&#39;</span><span class="p">,</span> <span class="s1">&#39;mulher&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;homem&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;deputada&#39;, 0.707239031791687),
+ (&#39;senadora&#39;, 0.6504750847816467),
+ (&#39;governadora&#39;, 0.5311956405639648),
+ (&#39;vaga&#39;, 0.5001533031463623),
+ (&#39;senador&#39;, 0.49622222781181335),
+ (&#39;bancada&#39;, 0.49382296204566956),
+ (&#39;prefeita&#39;, 0.4898069202899933),
+ (&#39;esposa&#39;, 0.4874173700809479),
+ (&#39;vereadora&#39;, 0.477497398853302),
+ (&#39;ex-deputado&#39;, 0.4704161286354065)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sergipe&#39;</span><span class="p">,</span> <span class="s1">&#39;Salvador&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Bahia&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Aracaju&#39;, 0.7568933963775635),
+ (&#39;Fortaleza&#39;, 0.7413235306739807),
+ (&#39;Maceió&#39;, 0.7330026030540466),
+ (&#39;Manaus&#39;, 0.729759693145752),
+ (&#39;Curitiba&#39;, 0.722693920135498),
+ (&#39;Teresina&#39;, 0.7146587371826172),
+ (&#39;Cuiabá&#39;, 0.7008069753646851),
+ (&#39;Dourados&#39;, 0.6986944675445557),
+ (&#39;Belém&#39;, 0.6970897912979126),
+ (&#39;Goiânia&#39;, 0.6968613862991333)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;congressista&#39;</span><span class="p">,</span> <span class="s1">&#39;política&#39;</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;homem&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;independente”&#39;, 0.5179454684257507),
+ (&#39;Iniciando-se&#39;, 0.47886374592781067),
+ (&#39;turística&#39;, 0.477364718914032),
+ (&#39;duradouras&#39;, 0.4718947410583496),
+ (&#39;“política&#39;, 0.4573584198951721),
+ (&#39;induzida&#39;, 0.45302215218544006),
+ (&#39;marxista”&#39;, 0.4503825306892395),
+ (&#39;conflituosas&#39;, 0.45008936524391174),
+ (&#39;pragmática&#39;, 0.4451919496059418),
+ (&#39;stalinista&#39;, 0.4449922740459442)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s1">&#39;congressista&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s1">&#39;política&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="p">[</span><span class="s1">&#39;homem&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.1804812 ,  0.17904007,  2.7701726 ,  2.2788234 , -2.3939579 ,
+       -1.6261489 ,  3.037264  , -1.5370936 ,  0.1686287 ,  1.7679174 ,
+       -0.6206008 , -1.4379971 ,  0.9625195 ,  5.3786445 , -1.5540149 ,
+       -0.00777411, -1.401691  , -4.2874527 , -0.82898766,  1.8527349 ,
+        1.1073897 ,  0.4124229 , -1.7202759 , -1.9285159 ,  0.22249055,
+       -0.1637733 ,  0.3505941 , -1.6477919 ,  3.5996528 , -1.884695  ,
+        0.70941716,  2.4855223 ,  0.19784053,  1.0554858 , -2.0812526 ,
+        0.25975254,  1.0439771 ,  0.40970242,  0.78404856, -2.2612848 ,
+        1.7169695 ,  0.73526394,  1.4105549 ,  4.066178  , -0.40555423,
+        1.8521545 ,  3.7054353 ,  1.3822607 , -4.056506  ,  1.9932911 ,
+        0.89136565, -2.6281335 ,  3.6849546 ,  3.6759586 , -0.3893448 ,
+       -0.93963474,  3.059989  ,  0.07065499, -0.69516784, -1.2888556 ,
+        0.92977023, -1.6649121 ,  2.6862006 , -2.4784298 ,  1.8600826 ,
+        0.779212  ,  2.1920981 , -1.9809456 , -2.688896  ,  0.60114765,
+       -2.3174565 ,  0.08518887,  0.43477178,  1.2217847 ,  0.9667772 ,
+        1.8949485 ,  1.2996533 ,  2.6153111 , -0.04217112,  0.72740364,
+       -0.7117096 , -0.73151827,  0.16029513,  0.06895769, -0.17937306,
+        0.48638743, -0.52041715, -2.0970736 , -1.1521842 , -3.9579785 ,
+        0.51819354,  0.12455559,  2.2292786 ,  0.33785737, -0.4980077 ,
+       -2.9939485 , -2.5539153 , -1.4805562 ,  3.1075735 ,  0.99266756],
+      dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="word-movers-distance">
+<h2>Word Movers Distance<a class="headerlink" href="#word-movers-distance" title="Permalink to this headline">#</a></h2>
+<p>Este método permite que calculemos a distância entre dois documentos mesmo que estes não contenham palavras em comum. Este método foi proposto no artigo <a class="reference external" href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">“From Word Embeddings To Document Distances”</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install pyemd
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyemd in /home/fccoelho/.local/lib/python3.10/site-packages (0.5.1)
+Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.9.0 in /usr/local/lib/python3.10/dist-packages (from pyemd) (1.23.5)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DC</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">DHBBCorpus</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">wmdistance</span><span class="p">(</span><span class="n">document1</span><span class="o">=</span><span class="n">DC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">document2</span><span class="o">=</span><span class="n">DC</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1409154016167715
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">DC</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DC</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Era&#39;, &#39;presidido&#39;, &#39;por&#39;, &#39;João&#39;, &#39;Câncio&#39;, &#39;da&#39;, &#39;Silva&#39;]
+[&#39;Nas&#39;, &#39;eleições&#39;, &#39;para&#39;, &#39;a&#39;, &#39;Assembléia&#39;, &#39;Nacional&#39;, &#39;Constituinte&#39;, &#39;de&#39;, &#39;1933&#39;, &#39;apresentou&#39;, &#39;uma&#39;, &#39;chapa&#39;, &#39;composta&#39;, &#39;por&#39;, &#39;Américo&#39;, &#39;Basílio&#39;, &#39;Silvado&#39;, &#39;Henrique&#39;, &#39;de&#39;, &#39;Toledo&#39;, &#39;Dodsworth&#39;, &#39;Amélio&#39;, &#39;Dias&#39;, &#39;de&#39;, &#39;Morais&#39;, &#39;Adolfo&#39;, &#39;Bergamini&#39;, &#39;Jones&#39;, &#39;Gonçalves&#39;, &#39;Rocha&#39;, &#39;José&#39;, &#39;Matoso&#39;, &#39;de&#39;, &#39;Sampaio&#39;, &#39;Correia&#39;, &#39;Antenor&#39;, &#39;Esposel&#39;, &#39;Coutinho&#39;, &#39;Inácio&#39;, &#39;Bittencourt&#39;, &#39;Berta&#39;, &#39;Lutz&#39;, &#39;e&#39;, &#39;Georgina&#39;, &#39;de&#39;, &#39;Araújo&#39;, &#39;Lima&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos comparar o documento 1 acima (<em>Era presidido por João Câncio da Silva</em>) com outro sem nenhuma palavra em comum, e veremos que é possível calcular uma distância.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">wmdistance</span><span class="p">(</span><span class="n">document1</span><span class="o">=</span><span class="n">DC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">document2</span><span class="o">=</span><span class="s1">&#39;frequentou a escola religiosa em Niteroi e formou-se em 1935 pela UFF&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2811055265149547
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Capitulo_3.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Identificando Entidades Nomeadas e Similaridade Semântica</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Capitulo_5.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Construindo um Classificador de Textos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Flávio Codeço Coelho<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

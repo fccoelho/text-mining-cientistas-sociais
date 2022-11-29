@@ -1,0 +1,2112 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Abrindo Arquivos de Texto &#8212; Mineração de textos para Cientistas Sociais</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contando Palavras" href="Capitulo_2.html" />
+    <link rel="prev" title="Mineração de Textos para Cientistas Sociais" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Mineração de textos para Cientistas Sociais</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Mineração de Textos para Cientistas Sociais
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Abrindo Arquivos de Texto
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_2.html">
+   Contando Palavras
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_3.html">
+   Identificando Entidades Nomeadas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_4.html">
+   Aplicando modelagem de assuntos ao DHBB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_5.html">
+   Construindo um Classificador de Textos
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/fccoelho/text-mining-cientistas-sociais/master?urlpath=tree/Capitulo_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/fccoelho/text-mining-cientistas-sociais"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/fccoelho/text-mining-cientistas-sociais/issues/new?title=Issue%20on%20page%20%2FCapitulo_1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Capitulo_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Abrindo Arquivos de Texto
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercicios">
+     Exercícios
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abrindo-um-grande-numero-de-documentos-texto">
+     Abrindo um grande número de documentos texto
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outros-recursos-do-dhbb">
+     Outros recursos do DHBB
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extraindo-informacao-estruturada">
+   Extraindo Informação Estruturada
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Exercícios
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exportando-para-bancos-de-dados">
+   Exportando para Bancos de Dados
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exportando-para-um-banco-de-dados-relacional">
+     Exportando para um banco de dados relacional
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Abrindo Arquivos de Texto</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Abrindo Arquivos de Texto
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercicios">
+     Exercícios
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abrindo-um-grande-numero-de-documentos-texto">
+     Abrindo um grande número de documentos texto
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outros-recursos-do-dhbb">
+     Outros recursos do DHBB
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extraindo-informacao-estruturada">
+   Extraindo Informação Estruturada
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Exercícios
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exportando-para-bancos-de-dados">
+   Exportando para Bancos de Dados
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exportando-para-um-banco-de-dados-relacional">
+     Exportando para um banco de dados relacional
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="abrindo-arquivos-de-texto">
+<h1>Abrindo Arquivos de Texto<a class="headerlink" href="#abrindo-arquivos-de-texto" title="Permalink to this headline">#</a></h1>
+<p>Neste curso de mineração de textos usaremos como material principal de trabalho, os verbetes do Dicionário Histórico e Biográfico do Brasil – DHBB. Estes verbetes stão disponíveis para Download público.</p>
+<p>Neste capítulo vamos aprender a interagir com os verbetes no disco e extrair informações simples a partir dos mesmos.</p>
+<p>Vamos começar importando alguma bibliotecas que nos serão úteis nesta tarefa:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;alô turma!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alô turma!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Assumindo que os dados do DHBB já foram baixados para um diretório local, podemos começar inspecionando o diretório e listando o seu conteúdo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># caminho = &quot;F:/dhbb-master/text/*.text&quot;</span>
+<span class="n">caminho</span> <span class="o">=</span> <span class="s2">&quot;dhbb/text/*.text&quot;</span>
+<span class="n">arquivos</span>  <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">caminho</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">arquivos</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7687
+</pre></div>
+</div>
+</div>
+</div>
+<p>Temos 7687 verbetes neste diretório. Vamos agora ver como abrir um destes verbetes e inspecionar o seu conteúdo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arquivos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;dhbb/text/6172.text&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para abrir um arquivo utilizamos um bloco <code class="docutils literal notranslate"><span class="pre">with</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">arquivos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">arquivo_aberto</span><span class="p">:</span>
+    <span class="n">verbete</span> <span class="o">=</span> <span class="n">arquivo_aberto</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">verbete</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---
+title: PARTIDO POPULAR DO DISTRITO FEDERAL
+natureza: temático
+tipo:
+ - Organização
+subtipo: 
+ - Político-administrativa
+---
+
+«PARTIDO POPULAR DO DISTRITO FEDERAL»
+
+Partido político do Rio de Janeiro (então Distrito Federal) fundado em
+1933. Era presidido por João Câncio da Silva.
+
+Nas eleições para a Assembléia Nacional Constituinte de 1933, apresentou
+uma chapa composta por Américo Basílio Silvado, Henrique de Toledo
+Dodsworth, Amélio Dias de Morais, Adolfo Bergamini, Jones Gonçalves
+Rocha, José Matoso de Sampaio Correia, Antenor Esposel Coutinho, Inácio
+Bittencourt, Berta Lutz e Georgina de Araújo Lima.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uma outra maneira de abrir um arquivo, seria como se segue, mas teríamos que usar uma linha de código a mais, para fechar o arquivo, que podemos economizar, lendo o arquivo dentro de um bloco <code class="docutils literal notranslate"><span class="pre">with</span></code> como fizemos anteriormente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arquivo_aberto</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">arquivos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="n">verbete</span> <span class="o">=</span> <span class="n">arquivo_aberto</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">arquivo_aberto</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A variável <strong>verbete</strong> que criamos na célula anterior é uma variável do tipo <code class="docutils literal notranslate"><span class="pre">string</span></code>, que é a otipo usado pelo Python para representar um bloco de texto. Podemos manipular o texto dentro de uma <code class="docutils literal notranslate"><span class="pre">string</span></code> de diversas maneiras:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">verbete</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">verbete</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>title: PARTIDO POPULAR DO DISTRITO FEDERAL
+natureza: temático
+tipo:
+ - Organização
+subtipo: 
+ - Político-administrativa
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tipos de dados em Python, também conhecidos como  objetos, possuem métodos. O método <code class="docutils literal notranslate"><span class="pre">split</span></code> do tipo <code class="docutils literal notranslate"><span class="pre">string</span></code> segmenta uma string nas posicões em que ocorram uma sequência específica de caracteres, retornando um outro tipo de dado, denominado <code class="docutils literal notranslate"><span class="pre">lista</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">verbete</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<p>Listas são sequências de objetos de quaisquer tipos que também apresentam seu conjunto de métodos. Para descobrir os métodos de qualquer objeto, basta colocar um ponto após o nome da variável e pressionar a tecla <code class="docutils literal notranslate"><span class="pre">&lt;tab&gt;</span></code>. Listas são delimitadas por colchetes: <code class="docutils literal notranslate"><span class="pre">[]</span></code> (lista vazia). Abaixo vamos dividir o verbete em uma lista de <code class="docutils literal notranslate"><span class="pre">strings</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">verbete</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)</span>
+<span class="n">l</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&#39;,
+ &#39;\ntitle: PARTIDO POPULAR DO DISTRITO FEDERAL\nnatureza: temático\ntipo:\n - Organização\nsubtipo: \n - Político-administrativa\n&#39;,
+ &#39;\n\n«PARTIDO POPULAR DO DISTRITO FEDERAL»\n\nPartido político do Rio de Janeiro (então Distrito Federal) fundado em\n1933. Era presidido por João Câncio da Silva.\n\nNas eleições para a Assembléia Nacional Constituinte de 1933, apresentou\numa chapa composta por Américo Basílio Silvado, Henrique de Toledo\nDodsworth, Amélio Dias de Morais, Adolfo Bergamini, Jones Gonçalves\nRocha, José Matoso de Sampaio Correia, Antenor Esposel Coutinho, Inácio\nBittencourt, Berta Lutz e Georgina de Araújo Lima.\n\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note que nas strings acima existem várias ocorrências da sequencia de caracteres <code class="docutils literal notranslate"><span class="pre">'\n'</span></code>. Esta sequência identifica quebra de linhas. Podemos então utilizá-la para dividir o cabeçalho do verbete em uma lista de linhas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cabeçalho</span> <span class="o">=</span> <span class="n">verbete</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cabeçalho</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&#39;,
+ &#39;title: PARTIDO POPULAR DO DISTRITO FEDERAL&#39;,
+ &#39;natureza: temático&#39;,
+ &#39;tipo:&#39;,
+ &#39; - Organização&#39;,
+ &#39;subtipo: &#39;,
+ &#39; - Político-administrativa&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Elementos de uma lista podem ser acessado por sua posição na sequência, por exemplo para acessar a 3ª string da lista:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>«PARTIDO POPULAR DO DISTRITO FEDERAL»
+
+Partido político do Rio de Janeiro (então Distrito Federal) fundado em
+1933. Era presidido por João Câncio da Silva.
+
+Nas eleições para a Assembléia Nacional Constituinte de 1933, apresentou
+uma chapa composta por Américo Basílio Silvado, Henrique de Toledo
+Dodsworth, Amélio Dias de Morais, Adolfo Bergamini, Jones Gonçalves
+Rocha, José Matoso de Sampaio Correia, Antenor Esposel Coutinho, Inácio
+Bittencourt, Berta Lutz e Georgina de Araújo Lima.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Muitas vezes, as atrings podem vir acompanhadas de um ou mais espaços no ínicio ou no fim. Para removê-los podemos usar o método <code class="docutils literal notranslate"><span class="pre">strip</span></code> como exemplificado abaixo. Caso queiramos remover apenas os espaços no início ou no fim, podemos usar <code class="docutils literal notranslate"><span class="pre">lstrip</span></code> ou <code class="docutils literal notranslate"><span class="pre">rstrip</span></code>, respectivamente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;   gjsldfkgj    &quot;</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;gjsldfkgj&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um outro tipo de estrutura de dados fundamental no Python, é chamado um dicionário, e é denotado por um conjunto de pares de (chave: valor). Abaixo vamos construir um dicionário com os campos de um verbete.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">campos</span> <span class="o">=</span> <span class="p">{</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="p">:</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">l</span> <span class="ow">and</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="n">l</span><span class="p">}</span>
+<span class="n">campos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;PARTIDO POPULAR DO DISTRITO FEDERAL&#39;,
+ &#39;natureza&#39;: &#39;temático&#39;,
+ &#39;tipo&#39;: &#39;&#39;,
+ &#39;subtipo&#39;: &#39;&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>No exemplo acima usamos um laço <code class="docutils literal notranslate"><span class="pre">for</span></code> para percorrer repetidamente o campos do cabeçalho e inseri-los um-a-um no dicionário, em apenas uma linha de código. esta maneira de prencher o dicionário é chamada de <em>“dict comprehension”</em>. Para entendermos melhor como funciona um laço for, e exatament a sequencia de operações realizada acima, vamos escrever “por extenso” o código acima.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">campos</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">linha</span> <span class="ow">and</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="n">linha</span><span class="p">:</span>
+        <span class="n">chave</span><span class="p">,</span> <span class="n">valor</span> <span class="o">=</span> <span class="n">linha</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        <span class="n">campos</span><span class="p">[</span><span class="n">chave</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="o">=</span> <span class="n">valor</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="n">campos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;PARTIDO POPULAR DO DISTRITO FEDERAL&#39;,
+ &#39;natureza&#39;: &#39;temático&#39;,
+ &#39;tipo&#39;: &#39;&#39;,
+ &#39;subtipo&#39;: &#39;&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercicios">
+<h2>Exercícios<a class="headerlink" href="#exercicios" title="Permalink to this headline">#</a></h2>
+<p>Construa para 5 verbetes, um dicionário com o seguinte conteúdo: <code class="docutils literal notranslate"><span class="pre">{&quot;nome-do-cargo&quot;:&quot;período&quot;}</span></code> para todos os cargos de cada verbetado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pega_cabeçalho</span><span class="p">(</span><span class="n">caminho</span><span class="p">,</span> <span class="n">natureza</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">caminho</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">verb</span><span class="p">:</span>
+        <span class="n">cabeçalho</span> <span class="o">=</span> <span class="n">verb</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">natureza</span> <span class="ow">in</span> <span class="n">cabeçalho</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cabeçalho</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span>
+
+<span class="n">respostas</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">verbete</span> <span class="ow">in</span> <span class="n">arquivos</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">18</span><span class="p">]:</span>
+    <span class="n">resposta</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">cabeçalho</span> <span class="o">=</span> <span class="n">pega_cabeçalho</span><span class="p">(</span><span class="n">verbete</span><span class="p">,</span> <span class="s1">&#39;biográfico&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cabeçalho</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">continue</span>
+
+    <span class="n">cargos</span> <span class="o">=</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;cargos:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">lista_de_cargos</span> <span class="o">=</span> <span class="p">[</span><span class="n">cargo</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;- &#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">cargo</span> <span class="ow">in</span> <span class="n">cargos</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">cargo</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;- &#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">cargo</span> <span class="ow">in</span> <span class="n">lista_de_cargos</span><span class="p">:</span>
+        <span class="n">partes</span> <span class="o">=</span> <span class="n">cargo</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">partes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">per</span> <span class="o">=</span> <span class="n">partes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">nome</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">partes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nome</span> <span class="o">=</span> <span class="n">partes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">per</span> <span class="o">=</span> <span class="s2">&quot;NA&quot;</span>
+        <span class="n">resposta</span><span class="p">[</span><span class="n">nome</span><span class="p">]</span> <span class="o">=</span> <span class="n">per</span>
+    <span class="n">respostas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resposta</span><span class="p">)</span>
+<span class="c1">#     print(cargos)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">resposta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">respostas</span> <span class="k">if</span> <span class="s1">&#39;autor:&#39;</span> <span class="ow">in</span> <span class="n">r</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;gov. GO&#39;: &#39;1950-1951&#39;}
+{&#39;mov.&#39;: &#39;comunista&#39;, &#39;rev.&#39;: &#39;1932&#39;, &#39;dep. fed. SP&#39;: &#39;1947-1951&#39;}
+{&#39;gov. PE&#39;: &#39;1982-1983&#39;}
+{&#39;militar&#39;: &#39;NA&#39;, &#39;rev.&#39;: &#39;1935&#39;}
+{&#39;dep. fed. MG&#39;: &#39;1935-1937&#39;, &#39;min. Faz.&#39;: &#39;1917-1918&#39;, &#39;sen. MG&#39;: &#39;1925-1926&#39;, &#39;pres. MG&#39;: &#39;1926-1930&#39;, &#39;rev.&#39;: &#39;1930&#39;, &#39;const.&#39;: &#39;1934&#39;, &#39;autor:&#39;: &#39;NA&#39;, &#39;Mauro&#39;: &#39;Malin&#39;}
+1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na célula acima contruímos uma variável de tipo <em>Dicionário</em>, que é basicamente um conjunto de pares, delimitado por <code class="docutils literal notranslate"><span class="pre">{}</span></code>. Estes pares são chamados pares <code class="docutils literal notranslate"><span class="pre">chave:</span> <span class="pre">valor</span></code>, como dissemos anteriormente.</p>
+<p>Modifique o código acima para criar outro dicionário com a seguinte estrutura:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;nome do verbetado&quot;</span><span class="p">,</span> <span class="s2">&quot;nome do verbetado&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;cargo&quot;</span><span class="p">:[</span><span class="n">cargo</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cargo2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;início&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1987</span><span class="p">,</span><span class="mi">1987</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;fim&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1988</span><span class="p">,</span> <span class="mi">1991</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;([0-9-]{4,5})&#39;</span><span class="p">)</span>
+<span class="n">cargo</span> <span class="o">=</span> <span class="s2">&quot; - emb. Itália no Brasil 1932-1937&quot;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span><span class="n">cargo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1932-&#39;, &#39;1937&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;([0-9-]{4,5})&#39;</span><span class="p">)</span>
+<span class="n">resposta</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;nome&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;cargo&quot;</span><span class="p">:[],</span> <span class="s2">&quot;sexo&quot;</span><span class="p">:[],</span> <span class="s2">&quot;inicio&quot;</span><span class="p">:[],</span> <span class="s2">&quot;fim&quot;</span><span class="p">:[]}</span>
+<span class="k">for</span> <span class="n">verbete</span> <span class="ow">in</span> <span class="n">arquivos</span><span class="p">:</span>
+    <span class="n">cabeçalho</span> <span class="o">=</span> <span class="n">pega_cabeçalho</span><span class="p">(</span><span class="n">verbete</span><span class="p">,</span> <span class="s1">&#39;biográfico&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cabeçalho</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">cabeçalho</span> <span class="o">=</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;autor:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">linhas</span> <span class="o">=</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    
+    <span class="n">cargos</span> <span class="o">=</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;cargos:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">lista_de_cargos</span> <span class="o">=</span> <span class="p">[</span><span class="n">cargo</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;- &#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">cargo</span> <span class="ow">in</span> <span class="n">cargos</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">cargo</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;- &#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">cargo</span> <span class="ow">in</span> <span class="n">lista_de_cargos</span><span class="p">:</span>
+        <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">linha</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">linhas</span> <span class="k">if</span> <span class="n">linha</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;title:&#39;</span><span class="p">)][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;sexo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">linha</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">linha</span> <span class="ow">in</span> <span class="n">linhas</span> <span class="k">if</span> <span class="n">linha</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;sexo:&#39;</span><span class="p">)][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;sexo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sexo: &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">cabeçalho</span><span class="p">)</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span><span class="n">cargo</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">corte</span> <span class="o">=</span> <span class="n">cargo</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">partes</span> <span class="o">=</span> <span class="p">(</span><span class="n">cargo</span><span class="p">[:</span><span class="n">corte</span><span class="p">],</span> <span class="n">cargo</span><span class="p">[</span><span class="n">corte</span><span class="p">:])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">partes</span> <span class="o">=</span> <span class="p">[</span><span class="n">cargo</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">partes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">per</span> <span class="o">=</span> <span class="n">m</span>
+            <span class="n">nome</span> <span class="o">=</span> <span class="n">partes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;inicio&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)))</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span> 
+                <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;inicio&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span>
+                <span class="c1">#print(&quot;inicio:&quot;, per, per.split(&#39;-&#39;)[0])</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">cabeçalho</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">per</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;fim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;fim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NA&quot;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fim:&quot;</span><span class="p">,</span> <span class="n">per</span><span class="p">,</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;fim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NA&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nome</span> <span class="o">=</span> <span class="n">partes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;inicio&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NA&quot;</span><span class="p">)</span>
+            <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;fim&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NA&quot;</span><span class="p">)</span>
+        <span class="n">resposta</span><span class="p">[</span><span class="s1">&#39;cargo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nome</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        
+
+<span class="c1">#     print(cargos)</span>
+   <span class="c1"># print(resposta)</span>
+<span class="c1">#print(sum([1 for r in resposta if &#39;autor:&#39; in r]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sexo: 
+
+title: SIQUEIRA, Darci
+natureza: biográfico
+cargos: 
+ - militar
+ - dir. DASP 1974-1979
+
+sexo: 
+
+title: SIQUEIRA, Darci
+natureza: biográfico
+cargos: 
+ - militar
+ - dir. DASP 1974-1979
+
+fim: [&#39;1952&#39;, &#39;1955-&#39;, &#39;1956&#39;] 1955-
+fim: [&#39;1981&#39;, &#39;1982-&#39;, &#39;1983&#39;] 1982-
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sexo: 
+
+title: DUTRA, Eurico Gaspar
+natureza: biográfico
+cargos: 
+ - militar
+ - comte. 1ª RM 1935-1936
+ - min. Guerra 1936-1945
+ - pres. Rep. 1946-1951
+
+sexo: 
+
+title: DUTRA, Eurico Gaspar
+natureza: biográfico
+cargos: 
+ - militar
+ - comte. 1ª RM 1935-1936
+ - min. Guerra 1936-1945
+ - pres. Rep. 1946-1951
+
+sexo: 
+
+title: DUTRA, Eurico Gaspar
+natureza: biográfico
+cargos: 
+ - militar
+ - comte. 1ª RM 1935-1936
+ - min. Guerra 1936-1945
+ - pres. Rep. 1946-1951
+
+sexo: 
+
+title: DUTRA, Eurico Gaspar
+natureza: biográfico
+cargos: 
+ - militar
+ - comte. 1ª RM 1935-1936
+ - min. Guerra 1936-1945
+ - pres. Rep. 1946-1951
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pega_cabeçalho</span><span class="p">(</span><span class="n">arquivos</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;biográfico&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>title: SILVA, Luís Gonzaga do Nascimento e
+natureza: biográfico
+sexo: m
+cargos: 
+ - pres. BNH 1965-1966
+ - min. Trab. 1966-1967
+ - min. Prev. Social 1974-1979
+ - emb. Bras. França 1979-1985 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="abrindo-um-grande-numero-de-documentos-texto">
+<h2>Abrindo um grande número de documentos texto<a class="headerlink" href="#abrindo-um-grande-numero-de-documentos-texto" title="Permalink to this headline">#</a></h2>
+<p>Como vimos acima existem 7687 verbetes à nossa disposição no disco, mas não podemos abrir todos ao mesmo tempo pois, em primeiro lugar podem não caber na memória, em segundo lugar raramente precisaremos inpecioná-los todos ao mesmo tempo. O mais comum é analisá-los em sequência. Vamos inspecionar os primeiros 10:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arquivos</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">verbete</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Verbete: &#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.text&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">verbete</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete:  6172
+title: PARTIDO POPULAR DO DISTRITO FEDERAL
+
+Verbete:  4361
+title: PRATES, Mílton
+
+Verbete:  5224
+title: SUREK, Alberto
+
+Verbete:  5039
+title: SILVA, Luís Gonzaga do Nascimento e
+
+Verbete:  6193
+title: PARTIDO REFORMADOR TRABALHISTA (PRT)
+
+Verbete:  756
+title: BORJA, Célio
+
+Verbete:  5352
+title: TORRES, Fontes
+
+Verbete:  1674
+title: DAUSTER, Jório
+
+Verbete:  4104
+title: PEIXOTO, Augusto Amaral
+
+Verbete:  3974
+title: OTERO, Leivas
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arquivos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;dhbb/text/4361.text&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Acima utilizamos uma estrutura de repetição, denominada “laço for” para abrir sequencialmente os arquivos. É importante notar que a cada volta do laço, o arquivo texo é atribuído à mesma variável, o que significa que nunca há mais do que apenas um verbete na memória. Desta forma poderíamos potencialmente analisar todos os milhares de verbetes ocupando apenas uma quantidade pequena e constante de memória. Outro detalhe do código acima é que, para facilitar a extração do título do verbete, Fizemos a leitura do arquivo com o método <code class="docutils literal notranslate"><span class="pre">readlines</span></code> que retorna o verbete já divido em uma lista de linhas ao invés de uma <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
+</section>
+<section id="outros-recursos-do-dhbb">
+<h2>Outros recursos do DHBB<a class="headerlink" href="#outros-recursos-do-dhbb" title="Permalink to this headline">#</a></h2>
+<p>O arquivo do DHBB disponível no Github oferece outros recursos textuais para nos auxiliar em nossa pesquisa, como por exemplos dicionários com identificadores de “Entidades” presentes nos verbetes, como pessoas, organizações, eventos, etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/pessoa-individuo.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pessoas</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">pessoas</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Aarão Rebelo\n&#39;,
+ &#39;Aarão Steinbruch\n&#39;,
+ &#39;Abalcazar Garcia\n&#39;,
+ &#39;Abdias Do Nascimento\n&#39;,
+ &#39;Abdon Goncalves Nanhay\n&#39;,
+ &#39;Abdon Gonçalves\n&#39;,
+ &#39;Abdon Sena\n&#39;,
+ &#39;Abdon de Mello\n&#39;,
+ &#39;Abdur R. Khan\n&#39;,
+ &#39;Abel Avila dos Santos\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/pessoa-papel.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">profissão</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">profissão</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Advogado\n&#39;,
+ &#39;Advogado Geral da União\n&#39;,
+ &#39;Agente de investimento\n&#39;,
+ &#39;Agente de segurança judiciária\n&#39;,
+ &#39;Alfaiate\n&#39;,
+ &#39;Analista administrativo\n&#39;,
+ &#39;Analista de comércio exterior\n&#39;,
+ &#39;Antiquário\n&#39;,
+ &#39;Arcebispo\n&#39;,
+ &#39;Armador\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/evento.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">evento</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">evento</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;A Rusga\n&#39;,
+ &#39;ATENTADO DA TONELEIROS\n&#39;,
+ &#39;ATENTADO DO RIOCENTRO\n&#39;,
+ &#39;Aclamação de Amador Bueno\n&#39;,
+ &#39;Balaiada\n&#39;,
+ &#39;Batalha da Maria Antônia\n&#39;,
+ &#39;Batalha da Venda Grande\n&#39;,
+ &#39;Batalha das Toninhas\n&#39;,
+ &#39;Batalha de Santa Luzia\n&#39;,
+ &#39;COMÍCIO DAS REFORMAS\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/organizacao.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">organização</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">organização</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Abrigo Lar dos Velhos Vicentini\n&#39;,
+ &#39;Academia Alagoana de Letras\n&#39;,
+ &#39;Academia Brasileira de Ciências\n&#39;,
+ &#39;Academia Brasileira de Ciências Econômicas e Administrativas\n&#39;,
+ &#39;Academia Brasileira de Ciências Sociais e Políticas\n&#39;,
+ &#39;Academia Brasileira de Direito Empresarial\n&#39;,
+ &#39;Academia Brasileira de Letras\n&#39;,
+ &#39;Academia Brasileira de Música\n&#39;,
+ &#39;Academia Brasiliense de Letras\n&#39;,
+ &#39;Academia Cultural de Curitiba\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/formulacao-politica.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">politica</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+<span class="n">politica</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;anteprojeto Constitucional\n&#39;,
+ &#39;anteprojeto da Carta Magna\n&#39;,
+ &#39;anteprojeto da Comissão Provisória\n&#39;,
+ &#39;anteprojeto da Comissão Provisória de Estudos Constitucionais\n&#39;,
+ &#39;anteprojeto da Comissão de Sistematização\n&#39;,
+ &#39;anteprojeto da Consolidação das Leis do Trabalho\n&#39;,
+ &#39;anteprojeto da Constituição\n&#39;,
+ &#39;anteprojeto da Lei Orgânica da Magistratura\n&#39;,
+ &#39;anteprojeto da Lei de Acidentes no Trabalho\n&#39;,
+ &#39;anteprojeto da Lei de Direitos Autorais\n&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="extraindo-informacao-estruturada">
+<h1>Extraindo Informação Estruturada<a class="headerlink" href="#extraindo-informacao-estruturada" title="Permalink to this headline">#</a></h1>
+<p>Agora que sabemos como abrir arquivos de texto e ler o seu conteúdo, podemos experimentar a extração de imformações específicas dos verbetes e organizá-la em uma tabela. Para isso vamos lançar mão de uma biblioteca chamada <strong>Pandas</strong> para organizar em uma estrutura tabular, chamada <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> os dados que vamos extrair.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.latex.repr&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="o">%</span><span class="k">pylab</span> inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>%pylab is deprecated, use %matplotlib inline and import the required libraries.
+Populating the interactive namespace from numpy and matplotlib
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nós vimos acima que os verbetes contém uma seção inicial delimitada pelos caracteres <code class="docutils literal notranslate"><span class="pre">---</span></code> vamos utilizar esta característica do texto para guiar nossa extração de informação. Como você pode perceber, já começamos a reutilizar código que escrevemos anteriormente. Para facilitar o reuso e reduzir a necessidade de escrever múltiplas vezes o mesmo código vamos aprender a organizá-lo melhor. Vamos começar definindo uma função.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tabula_verbete</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Carrega todos os verbetes disponíveis, ou os primeiros n.</span>
+<span class="sd">    n:  número de verbetes a tabular</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arquivos</span><span class="p">)</span>
+    <span class="n">linhas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arquivos</span><span class="p">[:</span><span class="n">n</span><span class="p">]:</span>
+        <span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">verbete</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">cabeçalho</span> <span class="o">=</span> <span class="n">verbete</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">campos</span> <span class="o">=</span> <span class="p">{</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="p">:</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span> <span class="k">if</span> <span class="n">l</span><span class="p">}</span>
+        <span class="n">campos</span><span class="p">[</span><span class="s1">&#39;arquivo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">campos</span><span class="p">[</span><span class="s1">&#39;cargos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;NA&#39;</span> <span class="k">if</span> <span class="s1">&#39;cargos:&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cabeçalho</span> <span class="k">else</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;cargos:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">campos</span><span class="p">[</span><span class="s1">&#39;corpo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">verbete</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">linhas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">campos</span><span class="p">)</span>
+    <span class="n">tabela</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;arquivo&#39;</span><span class="p">,</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;natureza&#39;</span><span class="p">,</span> <span class="s1">&#39;sexo&#39;</span><span class="p">,</span> <span class="s1">&#39;cargos&#39;</span><span class="p">,</span> <span class="s1">&#39;corpo&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">tabela</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A função acima inclui a maior parte do código que escrevemos anteriormente, só que encapsulado em uma função que nos permite executar a extração e tabulação do cabeçalho para o numero de verbetes que desejarmos. Podemos ver abaixo que na verdade é muito rápido processar todos os verbetes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">tabula_verbete</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function tabula_verbete in module __main__:
+
+tabula_verbete(n=None)
+    Carrega todos os verbetes disponíveis, ou os primeiros n.
+    n:  número de verbetes a tabular
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span> <span class="o">=</span> <span class="n">tabula_verbete</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>arquivo</th>
+      <th>title</th>
+      <th>natureza</th>
+      <th>sexo</th>
+      <th>cargos</th>
+      <th>corpo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6172.text</td>
+      <td>PARTIDO POPULAR DO DISTRITO FEDERAL</td>
+      <td>temático</td>
+      <td>NaN</td>
+      <td>NA</td>
+      <td>\n\n«PARTIDO POPULAR DO DISTRITO FEDERAL»\n\nP...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4361.text</td>
+      <td>PRATES, Mílton</td>
+      <td>biográfico</td>
+      <td>m</td>
+      <td>\n - const. 1946\n - dep. fed. MG 1946-1951 \n</td>
+      <td>\n\n«Luís Mílton Prates» nasceu em Montes Clar...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5224.text</td>
+      <td>SUREK, Alberto</td>
+      <td>biográfico</td>
+      <td>m</td>
+      <td>\n - const. 1934\n - dep. fed. prof. 1935-193...</td>
+      <td>\n\n«Alberto Surek» nasceu em Araucária (PR) n...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5039.text</td>
+      <td>SILVA, Luís Gonzaga do Nascimento e</td>
+      <td>biográfico</td>
+      <td>m</td>
+      <td>\n - pres. BNH 1965-1966\n - min. Trab. 1966-...</td>
+      <td>\n\n«Luís Gonzaga do Nascimento e Silva» nasce...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6193.text</td>
+      <td>PARTIDO REFORMADOR TRABALHISTA (PRT)</td>
+      <td>temático</td>
+      <td>NaN</td>
+      <td>NA</td>
+      <td>\n\n«PARTIDO REFORMADOR TRABALHISTA (PRT)»\n\n...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Podemos visualizar uma descrição básica da tabela resultante</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>arquivo</th>
+      <th>title</th>
+      <th>natureza</th>
+      <th>sexo</th>
+      <th>cargos</th>
+      <th>corpo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>7687</td>
+      <td>7687</td>
+      <td>7687</td>
+      <td>6722</td>
+      <td>7687</td>
+      <td>7687</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>7687</td>
+      <td>7596</td>
+      <td>2</td>
+      <td>2</td>
+      <td>6067</td>
+      <td>7685</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>6172.text</td>
+      <td>ARAGÃO, Muniz de</td>
+      <td>biográfico</td>
+      <td>m</td>
+      <td>NA</td>
+      <td>\n\n«Antônio de Freitas Cavalcanti» nasceu em ...</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>1</td>
+      <td>3</td>
+      <td>6724</td>
+      <td>6517</td>
+      <td>963</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Por exemplo fica fácil ver que no DHBB predominam biografias de personagens do sexo masculino.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">sexo</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m    6517
+f     205
+Name: sexo, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span><span class="o">.</span><span class="n">sexo</span><span class="o">.</span><span class="n">hist</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Capitulo_1_59_0.png" src="_images/Capitulo_1_59_0.png" />
+</div>
+</div>
+<p>Percebemos também que a natureza predominante dos verbetes é biográfica e que só existem duas naturezas, mas qua a outra?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">natureza</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>biográfico    6724
+temático       963
+Name: natureza, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resposta</span><span class="p">)</span>
+<span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span> <span class="o">=</span> <span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">tab2</span><span class="o">.</span><span class="n">fim</span> <span class="o">=</span> <span class="n">tab2</span><span class="o">.</span><span class="n">fim</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">tab2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nome</th>
+      <th>cargo</th>
+      <th>sexo</th>
+      <th>inicio</th>
+      <th>fim</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>PRATES, Mílton</td>
+      <td>const.</td>
+      <td>m</td>
+      <td>1946.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PRATES, Mílton</td>
+      <td>dep. fed. MG</td>
+      <td>m</td>
+      <td>1946.0</td>
+      <td>1951.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SUREK, Alberto</td>
+      <td>const.</td>
+      <td>m</td>
+      <td>1934.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SUREK, Alberto</td>
+      <td>dep. fed. prof.</td>
+      <td>m</td>
+      <td>1935.0</td>
+      <td>1937.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SILVA, Luís Gonzaga do Nascimento e</td>
+      <td>pres. BNH</td>
+      <td>m</td>
+      <td>1965.0</td>
+      <td>1966.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">resposta</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nome 14826
+cargo 14826
+sexo 14826
+inicio 14826
+fim 14826
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab2</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nome</th>
+      <th>cargo</th>
+      <th>sexo</th>
+      <th>inicio</th>
+      <th>fim</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>PRATES, Mílton</td>
+      <td>dep. fed. MG</td>
+      <td>m</td>
+      <td>1946.0</td>
+      <td>1951.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SUREK, Alberto</td>
+      <td>dep. fed. prof.</td>
+      <td>m</td>
+      <td>1935.0</td>
+      <td>1937.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SILVA, Luís Gonzaga do Nascimento e</td>
+      <td>pres. BNH</td>
+      <td>m</td>
+      <td>1965.0</td>
+      <td>1966.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>SILVA, Luís Gonzaga do Nascimento e</td>
+      <td>min. Trab.</td>
+      <td>m</td>
+      <td>1966.0</td>
+      <td>1967.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>SILVA, Luís Gonzaga do Nascimento e</td>
+      <td>min. Prev. Social</td>
+      <td>m</td>
+      <td>1974.0</td>
+      <td>1979.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14819</th>
+      <td>LIMA, Osmir</td>
+      <td>dep. fed. AC</td>
+      <td>m</td>
+      <td>1995.0</td>
+      <td>1999.0</td>
+    </tr>
+    <tr>
+      <th>14820</th>
+      <td>VASCONCELOS, Luís</td>
+      <td>dep. fed. MG</td>
+      <td>m</td>
+      <td>1979.0</td>
+      <td>1983.0</td>
+    </tr>
+    <tr>
+      <th>14823</th>
+      <td>FONSECA, Olinto</td>
+      <td>dep. fed. MG</td>
+      <td>m</td>
+      <td>1946.0</td>
+      <td>1955.0</td>
+    </tr>
+    <tr>
+      <th>14824</th>
+      <td>CAMARGO, Adalberto</td>
+      <td>dep. fed. SP</td>
+      <td>m</td>
+      <td>1967.0</td>
+      <td>1983.0</td>
+    </tr>
+    <tr>
+      <th>14825</th>
+      <td>NONÔ, Aluísio</td>
+      <td>dep. fed. AL</td>
+      <td>m</td>
+      <td>1959.0</td>
+      <td>1969.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>9754 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab2</span><span class="p">[([</span><span class="s1">&#39;dep.&#39;</span> <span class="ow">in</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">tab2</span><span class="o">.</span><span class="n">cargo</span><span class="p">])</span><span class="o">&amp;</span><span class="p">(</span><span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span> <span class="o">&gt;</span><span class="mi">1917</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span><span class="o">&lt;=</span><span class="mi">2015</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nome</th>
+      <th>cargo</th>
+      <th>sexo</th>
+      <th>inicio</th>
+      <th>fim</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>PRATES, Mílton</td>
+      <td>dep. fed. MG</td>
+      <td>m</td>
+      <td>1946.0</td>
+      <td>1951.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SUREK, Alberto</td>
+      <td>dep. fed. prof.</td>
+      <td>m</td>
+      <td>1935.0</td>
+      <td>1937.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>BORJA, Célio</td>
+      <td>dep. fed. GB</td>
+      <td>m</td>
+      <td>1971.0</td>
+      <td>1975.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>BORJA, Célio</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1975.0</td>
+      <td>1983.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>TORRES, Fontes</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1964.0</td>
+      <td>1967.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14819</th>
+      <td>LIMA, Osmir</td>
+      <td>dep. fed. AC</td>
+      <td>m</td>
+      <td>1995.0</td>
+      <td>1999.0</td>
+    </tr>
+    <tr>
+      <th>14820</th>
+      <td>VASCONCELOS, Luís</td>
+      <td>dep. fed. MG</td>
+      <td>m</td>
+      <td>1979.0</td>
+      <td>1983.0</td>
+    </tr>
+    <tr>
+      <th>14823</th>
+      <td>FONSECA, Olinto</td>
+      <td>dep. fed. MG</td>
+      <td>m</td>
+      <td>1946.0</td>
+      <td>1955.0</td>
+    </tr>
+    <tr>
+      <th>14824</th>
+      <td>CAMARGO, Adalberto</td>
+      <td>dep. fed. SP</td>
+      <td>m</td>
+      <td>1967.0</td>
+      <td>1983.0</td>
+    </tr>
+    <tr>
+      <th>14825</th>
+      <td>NONÔ, Aluísio</td>
+      <td>dep. fed. AL</td>
+      <td>m</td>
+      <td>1959.0</td>
+      <td>1969.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>6406 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab2</span><span class="p">[(</span><span class="n">tab2</span><span class="o">.</span><span class="n">cargo</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;dep. fed. RJ&#39;</span><span class="p">,</span> <span class="s1">&#39;dep. fed. SP&#39;</span><span class="p">]))</span><span class="o">&amp;</span><span class="p">(</span><span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span><span class="o">==</span><span class="mi">1991</span><span class="p">)]</span>
+<span class="c1">#tab2.iloc[14825].cargo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nome</th>
+      <th>cargo</th>
+      <th>sexo</th>
+      <th>inicio</th>
+      <th>fim</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>130</th>
+      <td>PORTUGAL, Paulo</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>1995.0</td>
+    </tr>
+    <tr>
+      <th>578</th>
+      <td>ABI-RAMIA, Junot</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>1995.0</td>
+    </tr>
+    <tr>
+      <th>680</th>
+      <td>SILVA, Edevaldo</td>
+      <td>dep. fed. SP</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>1993.0</td>
+    </tr>
+    <tr>
+      <th>961</th>
+      <td>HADDAD, Alberto</td>
+      <td>dep. fed. SP</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>1995.0</td>
+    </tr>
+    <tr>
+      <th>1549</th>
+      <td>REIS, Vanda</td>
+      <td>dep. fed. RJ</td>
+      <td>f</td>
+      <td>1991.0</td>
+      <td>1995.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>13853</th>
+      <td>MELÃO NETO, João</td>
+      <td>dep. fed. SP</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>1992.0</td>
+    </tr>
+    <tr>
+      <th>14163</th>
+      <td>MELO, Euclides de</td>
+      <td>dep. fed. SP</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>1995.0</td>
+    </tr>
+    <tr>
+      <th>14552</th>
+      <td>FRIAS, Edésio</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>1992.0</td>
+    </tr>
+    <tr>
+      <th>14596</th>
+      <td>BOLSONARO, Jair</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14652</th>
+      <td>RAMOS, Paulo (2)</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1991.0</td>
+      <td>1995.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>66 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dep. fed.&#39;</span> <span class="ow">in</span> <span class="s2">&quot;dep. fed. MT&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2>Exercícios<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Construa uma função para buscar apenas verbetes de personagens que tenham ocupado o cargo de deputado federal. Tabule os resultados incluindo o número de mandatos.</p></li>
+<li><p>Construa uma função para buscar o primeiro verbete temático e apresente o seu conteúdo.</p></li>
+<li><p>Encontre todos os verbetes que contenham “Academia Brasileira de Letras”. Que porcentagem destes correspondem a membros da dita academia?</p></li>
+<li><p>Construa uma linha do tempo que represente a cobertura histórica do DHBB.</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exportando-para-bancos-de-dados">
+<h1>Exportando para Bancos de Dados<a class="headerlink" href="#exportando-para-bancos-de-dados" title="Permalink to this headline">#</a></h1>
+<p>Depois de realizarmos a nossa análise e tabular os resultados, podemos exportar a tabela em vários formatos. Em primeiro lugar, caso queiramos abri nossa trabalho em uma planilha, devemos salvar no formato CSV, ou “comma-separated-values”. Este formato pode ser aberto imediatamente em uma planilha.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;minha_tabela.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Acima usamos o caracter “|” como separador para evitar confusões com as virgulas existentes no texto.</p>
+<section id="exportando-para-um-banco-de-dados-relacional">
+<h2>Exportando para um banco de dados relacional<a class="headerlink" href="#exportando-para-um-banco-de-dados-relacional" title="Permalink to this headline">#</a></h2>
+<p>Para exportar para um banco relacional, precisamos de uma biblioteca adicional, o <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a>. Estabiblioteca nos permite interagir com a maioria dos banco relacionais. Aqui vamos usar o banco <a class="reference external" href="https://www.sqlite.org/index.html">SQLite</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///minha_tabela.sqlite&#39;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s1">&#39;resultados&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7687
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab2</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s2">&quot;cargos&quot;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14826
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uma vez inserido no banco relacional, podemos fazer consultas aos dados usando a linguagem SQL. Abaixo obtemos o resultado da consulta em uma lista.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select title from resultados where natureza=&#39;temático&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;PARTIDO POPULAR DO DISTRITO FEDERAL&#39;,),
+ (&#39;PARTIDO REFORMADOR TRABALHISTA (PRT)&#39;,),
+ (&#39;DIÁRIO CARIOCA&#39;,),
+ (&#39;JUVENTUDE BRASILEIRA&#39;,),
+ (&#39;PLEBISCITO&#39;,),
+ (&#39;A MANHÃ&#39;,),
+ (&#39;PARTIDO SOCIALISTA UNIDO (PSU)&#39;,),
+ (&#39;RÁDIO MAYRINK VEIGA&#39;,),
+ (&#39;AÇÃO POPULAR (AP)&#39;,),
+ (&#39;GRUPOS DOS ONZE&#39;,)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se quisermos os resultado na forma de um <code class="docutils literal notranslate"><span class="pre">Dataframe</span></code>, podemos usar o <strong>Pandas</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s2">&quot;select * from resultados where natureza=&#39;temático&#39;&quot;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>arquivo</th>
+      <th>title</th>
+      <th>natureza</th>
+      <th>sexo</th>
+      <th>cargos</th>
+      <th>corpo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>6172.text</td>
+      <td>PARTIDO POPULAR DO DISTRITO FEDERAL</td>
+      <td>temático</td>
+      <td>None</td>
+      <td>NA</td>
+      <td>\n\n«PARTIDO POPULAR DO DISTRITO FEDERAL»\n\nP...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>6193.text</td>
+      <td>PARTIDO REFORMADOR TRABALHISTA (PRT)</td>
+      <td>temático</td>
+      <td>None</td>
+      <td>NA</td>
+      <td>\n\n«PARTIDO REFORMADOR TRABALHISTA (PRT)»\n\n...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11</td>
+      <td>5833.text</td>
+      <td>DIÁRIO CARIOCA</td>
+      <td>temático</td>
+      <td>None</td>
+      <td>NA</td>
+      <td>\n\n«DIÁRIO CARIOCA»\n\nJornal carioca diário ...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13</td>
+      <td>5939.text</td>
+      <td>JUVENTUDE BRASILEIRA</td>
+      <td>temático</td>
+      <td>None</td>
+      <td>NA</td>
+      <td>\n\n«JUVENTUDE BRASILEIRA»\n\nMovimento cívico...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15</td>
+      <td>6308.text</td>
+      <td>PLEBISCITO</td>
+      <td>temático</td>
+      <td>None</td>
+      <td>NA</td>
+      <td>\n\n«PLEBISCITO»\n\nPlebiscito é uma votação p...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Mineração de Textos para Cientistas Sociais</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Capitulo_2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contando Palavras</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Flávio Codeço Coelho<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
