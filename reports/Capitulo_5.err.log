@@ -17,51 +17,71 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-biog = data.iloc[Y]
-tem = data.iloc[~Y]
+from collections import defaultdict
+from sklearn.metrics import RocCurveDisplay
+
+acc_hist = defaultdict(lambda: [])
+X2 = data2.values
+
+Xtrain,Xtest,Ytrain,Ytest = train_test_split(X2,Y2, test_size=.25)
+
+skf = StratifiedKFold(5, shuffle=True)
+
+for train_index, test_index in skf.split(Xtrain, Ytrain):
+    Xtr = Xtrain[train_index]
+    Ytr = Ytrain[train_index]
+    Xval = Xtrain[test_index]
+    Yval = Ytrain[test_index]
+    print("==> Fitting:")
+    # print("Extra Trees")
+    etclf.fit(Xtr,Ytrain[train_index])
+    # print("Random Forest")
+    rfclf.fit(Xtr, Ytrain[train_index])
+    # print("SVC")
+    svcclf.fit(Xtr, Ytrain[train_index])
+    # print("Voting")
+    vcclf.fit(Xtr, Ytrain[train_index])
+    print("==> Scoring:")
+    acc_hist['ET'].append(cross_val_score(etclf, Xtrain, Ytrain, cv=2, n_jobs=-1).mean())
+    acc_hist['RF'].append(cross_val_score(rfclf, Xtrain, Ytrain, cv=2, n_jobs=-1).mean())
+    acc_hist['SVC'].append(cross_val_score(svcclf, Xtrain, Ytrain, cv=2, n_jobs=-1).mean())
+    acc_hist['Voting'].append(vcclf.score(Xtrain, Ytrain))
+print_class_report(Xtest, Ytest, etclf, 'ET')
+print_class_report(Xtest, Ytest, rfclf, 'RF')
+print_class_report(Xtest, Ytest, svcclf, 'SVC')
+print_class_report(Xtest, Ytest, vcclf, 'Voting')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mIndexError[0m                                Traceback (most recent call last)
-[0;32m/tmp/ipykernel_4082169/1386108588.py[0m in [0;36m<cell line: 1>[0;34m()[0m
-[0;32m----> 1[0;31m [0mbiog[0m [0;34m=[0m [0mdata[0m[0;34m.[0m[0miloc[0m[0;34m[[0m[0mY[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0mtem[0m [0;34m=[0m [0mdata[0m[0;34m.[0m[0miloc[0m[0;34m[[0m[0;34m~[0m[0mY[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m/tmp/ipykernel_4099487/551901994.py[0m in [0;36m<cell line: 7>[0;34m()[0m
+[1;32m      5[0m [0mX2[0m [0;34m=[0m [0mdata2[0m[0;34m.[0m[0mvalues[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;34m[0m[0m
+[0;32m----> 7[0;31m [0mXtrain[0m[0;34m,[0m[0mXtest[0m[0;34m,[0m[0mYtrain[0m[0;34m,[0m[0mYtest[0m [0;34m=[0m [0mtrain_test_split[0m[0;34m([0m[0mX2[0m[0;34m,[0m[0mY2[0m[0;34m,[0m [0mtest_size[0m[0;34m=[0m[0;36m.25[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m [0;34m[0m[0m
+[1;32m      9[0m [0mskf[0m [0;34m=[0m [0mStratifiedKFold[0m[0;34m([0m[0;36m5[0m[0;34m,[0m [0mshuffle[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexing.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
-[1;32m    965[0m [0;34m[0m[0m
-[1;32m    966[0m             [0mmaybe_callable[0m [0;34m=[0m [0mcom[0m[0;34m.[0m[0mapply_if_callable[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 967[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getitem_axis[0m[0;34m([0m[0mmaybe_callable[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    968[0m [0;34m[0m[0m
-[1;32m    969[0m     [0;32mdef[0m [0m_is_scalar_access[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mkey[0m[0;34m:[0m [0mtuple[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/.local/lib/python3.10/site-packages/sklearn/model_selection/_split.py[0m in [0;36mtrain_test_split[0;34m(test_size, train_size, random_state, shuffle, stratify, *arrays)[0m
+[1;32m   2428[0m         [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m"At least one array required as input"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2429[0m [0;34m[0m[0m
+[0;32m-> 2430[0;31m     [0marrays[0m [0;34m=[0m [0mindexable[0m[0;34m([0m[0;34m*[0m[0marrays[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2431[0m [0;34m[0m[0m
+[1;32m   2432[0m     [0mn_samples[0m [0;34m=[0m [0m_num_samples[0m[0;34m([0m[0marrays[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexing.py[0m in [0;36m_getitem_axis[0;34m(self, key, axis)[0m
-[1;32m   1505[0m         [0;32mif[0m [0mcom[0m[0;34m.[0m[0mis_bool_indexer[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1506[0m             [0mself[0m[0;34m.[0m[0m_validate_key[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1507[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getbool_axis[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1508[0m [0;34m[0m[0m
-[1;32m   1509[0m         [0;31m# a list of integers[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/.local/lib/python3.10/site-packages/sklearn/utils/validation.py[0m in [0;36mindexable[0;34m(*iterables)[0m
+[1;32m    431[0m [0;34m[0m[0m
+[1;32m    432[0m     [0mresult[0m [0;34m=[0m [0;34m[[0m[0m_make_indexable[0m[0;34m([0m[0mX[0m[0;34m)[0m [0;32mfor[0m [0mX[0m [0;32min[0m [0miterables[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 433[0;31m     [0mcheck_consistent_length[0m[0;34m([0m[0;34m*[0m[0mresult[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    434[0m     [0;32mreturn[0m [0mresult[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    435[0m [0;34m[0m[0m
 
-[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexing.py[0m in [0;36m_getbool_axis[0;34m(self, key, axis)[0m
-[1;32m    982[0m         [0;31m# caller is responsible for ensuring non-None axis[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    983[0m         [0mlabels[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_get_axis[0m[0;34m([0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 984[0;31m         [0mkey[0m [0;34m=[0m [0mcheck_bool_indexer[0m[0;34m([0m[0mlabels[0m[0;34m,[0m [0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    985[0m         [0minds[0m [0;34m=[0m [0mkey[0m[0;34m.[0m[0mnonzero[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[1;32m    986[0m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_take_with_is_copy[0m[0;34m([0m[0minds[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m~/.local/lib/python3.10/site-packages/sklearn/utils/validation.py[0m in [0;36mcheck_consistent_length[0;34m(*arrays)[0m
+[1;32m    385[0m     [0muniques[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0munique[0m[0;34m([0m[0mlengths[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    386[0m     [0;32mif[0m [0mlen[0m[0;34m([0m[0muniques[0m[0;34m)[0m [0;34m>[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 387[0;31m         raise ValueError(
+[0m[1;32m    388[0m             [0;34m"Found input variables with inconsistent numbers of samples: %r"[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    389[0m             [0;34m%[0m [0;34m[[0m[0mint[0m[0;34m([0m[0ml[0m[0;34m)[0m [0;32mfor[0m [0ml[0m [0;32min[0m [0mlengths[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexing.py[0m in [0;36mcheck_bool_indexer[0;34m(index, key)[0m
-[1;32m   2394[0m         [0;31m# key may contain nan elements, check_array_indexer needs bool array[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   2395[0m         [0mresult[0m [0;34m=[0m [0mpd_array[0m[0;34m([0m[0mresult[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mbool[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 2396[0;31m     [0;32mreturn[0m [0mcheck_array_indexer[0m[0;34m([0m[0mindex[0m[0;34m,[0m [0mresult[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   2397[0m [0;34m[0m[0m
-[1;32m   2398[0m [0;34m[0m[0m
-
-[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexers/utils.py[0m in [0;36mcheck_array_indexer[0;34m(array, indexer)[0m
-[1;32m    577[0m         [0;31m# GH26658[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    578[0m         [0;32mif[0m [0mlen[0m[0;34m([0m[0mindexer[0m[0;34m)[0m [0;34m!=[0m [0mlen[0m[0;34m([0m[0marray[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 579[0;31m             raise IndexError(
-[0m[1;32m    580[0m                 [0;34mf"Boolean index has wrong length: "[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    581[0m                 [0;34mf"{len(indexer)} instead of {len(array)}"[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mIndexError[0m: Boolean index has wrong length: 7838 instead of 7687
-IndexError: Boolean index has wrong length: 7838 instead of 7687
+[0;31mValueError[0m: Found input variables with inconsistent numbers of samples: [1936, 1926]
+ValueError: Found input variables with inconsistent numbers of samples: [1936, 1926]
 

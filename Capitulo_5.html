@@ -509,18 +509,18 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:20:50.060422: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:51:52.900054: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-11-30 14:20:50.241028: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2022-11-30 14:51:53.107787: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:20:50.990483: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
-2022-11-30 14:20:50.990605: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
-2022-11-30 14:20:50.990618: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:51:54.087517: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2022-11-30 14:51:54.087634: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2022-11-30 14:51:54.087645: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:20:52.540391: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
-2022-11-30 14:20:52.540417: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:51:55.912087: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
+2022-11-30 14:51:55.912115: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
 </pre></div>
 </div>
@@ -684,122 +684,122 @@ Skipping registering GPU devices...
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>0.329596</td>
-      <td>-0.396530</td>
-      <td>-0.234968</td>
-      <td>-0.008919</td>
-      <td>-0.392844</td>
-      <td>0.082079</td>
-      <td>0.643818</td>
-      <td>-0.036871</td>
-      <td>-0.374934</td>
+      <td>0.251411</td>
+      <td>-0.092618</td>
+      <td>-0.367610</td>
+      <td>0.156986</td>
+      <td>-0.339056</td>
+      <td>-0.080486</td>
+      <td>0.192228</td>
+      <td>-0.230927</td>
+      <td>-0.129720</td>
       <td>...</td>
-      <td>-0.081099</td>
-      <td>-0.177185</td>
-      <td>-0.233904</td>
-      <td>0.033541</td>
-      <td>0.796993</td>
-      <td>0.192985</td>
-      <td>0.214785</td>
-      <td>-0.679149</td>
-      <td>-0.522531</td>
-      <td>0.060596</td>
+      <td>-0.354930</td>
+      <td>0.257672</td>
+      <td>-0.182260</td>
+      <td>-0.072084</td>
+      <td>0.155995</td>
+      <td>0.025738</td>
+      <td>-0.186744</td>
+      <td>-0.309680</td>
+      <td>0.003222</td>
+      <td>0.116559</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>-0.035577</td>
-      <td>-0.055027</td>
-      <td>-0.201358</td>
-      <td>0.587101</td>
-      <td>0.143018</td>
-      <td>0.238591</td>
-      <td>0.210333</td>
-      <td>-0.110109</td>
-      <td>-0.065921</td>
+      <td>-0.444796</td>
+      <td>-0.107734</td>
+      <td>-0.371062</td>
+      <td>0.248178</td>
+      <td>-0.342896</td>
+      <td>0.180991</td>
+      <td>0.622804</td>
+      <td>0.390060</td>
+      <td>-0.197826</td>
       <td>...</td>
-      <td>0.346693</td>
-      <td>0.047858</td>
-      <td>-0.110081</td>
-      <td>0.132066</td>
-      <td>0.261467</td>
-      <td>0.295954</td>
-      <td>0.172945</td>
-      <td>-0.311859</td>
-      <td>-0.530189</td>
-      <td>0.316330</td>
+      <td>0.162281</td>
+      <td>-0.923582</td>
+      <td>-0.449693</td>
+      <td>-0.194215</td>
+      <td>0.884861</td>
+      <td>0.355686</td>
+      <td>0.418442</td>
+      <td>-0.504399</td>
+      <td>-1.110405</td>
+      <td>0.292351</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.197316</td>
-      <td>-0.189868</td>
-      <td>-0.271159</td>
-      <td>0.113843</td>
-      <td>-0.215909</td>
-      <td>0.009961</td>
-      <td>0.067409</td>
-      <td>-0.324156</td>
-      <td>-0.115856</td>
+      <td>-0.186797</td>
+      <td>-0.099321</td>
+      <td>-0.489939</td>
+      <td>0.603691</td>
+      <td>-0.220742</td>
+      <td>0.163514</td>
+      <td>0.201998</td>
+      <td>-0.068645</td>
+      <td>-0.170712</td>
       <td>...</td>
-      <td>-0.189233</td>
-      <td>0.419339</td>
-      <td>-0.113524</td>
-      <td>0.013359</td>
-      <td>0.213817</td>
-      <td>0.028746</td>
-      <td>-0.033972</td>
-      <td>-0.277325</td>
-      <td>0.123685</td>
-      <td>0.069090</td>
+      <td>0.309139</td>
+      <td>-0.249686</td>
+      <td>-0.252961</td>
+      <td>-0.000214</td>
+      <td>0.428697</td>
+      <td>0.477869</td>
+      <td>0.114001</td>
+      <td>-0.259199</td>
+      <td>-0.860501</td>
+      <td>0.281628</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.014647</td>
-      <td>-0.066778</td>
-      <td>-0.286216</td>
-      <td>0.386036</td>
-      <td>-0.009316</td>
-      <td>0.152754</td>
-      <td>0.165088</td>
-      <td>-0.023266</td>
-      <td>-0.212305</td>
+      <td>-0.015474</td>
+      <td>-0.331179</td>
+      <td>-0.188871</td>
+      <td>0.071852</td>
+      <td>-0.118083</td>
+      <td>0.273842</td>
+      <td>0.244981</td>
+      <td>-0.070634</td>
+      <td>-0.275265</td>
       <td>...</td>
-      <td>0.200119</td>
-      <td>0.120266</td>
-      <td>0.037666</td>
-      <td>0.046779</td>
-      <td>-0.003079</td>
-      <td>0.229816</td>
-      <td>0.004536</td>
-      <td>-0.170485</td>
-      <td>-0.298309</td>
-      <td>0.350582</td>
+      <td>0.048260</td>
+      <td>0.186905</td>
+      <td>-0.201033</td>
+      <td>-0.294315</td>
+      <td>-0.119009</td>
+      <td>0.070466</td>
+      <td>-0.013867</td>
+      <td>-0.257075</td>
+      <td>-0.069757</td>
+      <td>0.215312</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>0.090165</td>
-      <td>-0.315809</td>
-      <td>-0.481903</td>
-      <td>0.149809</td>
-      <td>-0.619123</td>
-      <td>-0.187226</td>
-      <td>0.241048</td>
-      <td>0.623205</td>
-      <td>-0.761205</td>
+      <td>-0.069459</td>
+      <td>0.000653</td>
+      <td>-0.267939</td>
+      <td>0.539355</td>
+      <td>-0.167328</td>
+      <td>-0.028850</td>
+      <td>0.572703</td>
+      <td>0.225255</td>
+      <td>-0.364476</td>
       <td>...</td>
-      <td>0.061845</td>
-      <td>-0.045994</td>
-      <td>-0.384362</td>
-      <td>-0.425419</td>
-      <td>1.413234</td>
-      <td>0.333866</td>
-      <td>0.776052</td>
-      <td>-0.494529</td>
-      <td>-1.045886</td>
-      <td>0.075690</td>
+      <td>0.073481</td>
+      <td>-0.567660</td>
+      <td>-0.298699</td>
+      <td>-0.237357</td>
+      <td>0.528733</td>
+      <td>0.298273</td>
+      <td>0.037333</td>
+      <td>-0.491313</td>
+      <td>-0.742250</td>
+      <td>0.370616</td>
     </tr>
     <tr>
       <th>...</th>
@@ -826,128 +826,128 @@ Skipping registering GPU devices...
       <td>...</td>
     </tr>
     <tr>
-      <th>7682</th>
-      <td>7682</td>
-      <td>-0.090562</td>
-      <td>-0.084047</td>
-      <td>-0.383710</td>
-      <td>0.592161</td>
-      <td>-0.068067</td>
-      <td>0.279899</td>
-      <td>0.319775</td>
-      <td>-0.228383</td>
-      <td>-0.037196</td>
+      <th>7833</th>
+      <td>7833</td>
+      <td>-0.069599</td>
+      <td>0.153431</td>
+      <td>-0.571671</td>
+      <td>0.378038</td>
+      <td>-0.248409</td>
+      <td>-0.060014</td>
+      <td>0.452256</td>
+      <td>0.176986</td>
+      <td>-0.235890</td>
       <td>...</td>
-      <td>0.274444</td>
-      <td>0.016063</td>
-      <td>-0.305153</td>
-      <td>0.150342</td>
-      <td>0.168861</td>
-      <td>0.206285</td>
-      <td>0.045919</td>
-      <td>-0.311792</td>
-      <td>-0.619057</td>
-      <td>0.102819</td>
+      <td>-0.191336</td>
+      <td>-0.586688</td>
+      <td>-0.180140</td>
+      <td>-0.130464</td>
+      <td>0.625573</td>
+      <td>0.382755</td>
+      <td>0.069184</td>
+      <td>-0.546153</td>
+      <td>-0.663578</td>
+      <td>0.326829</td>
     </tr>
     <tr>
-      <th>7683</th>
-      <td>7683</td>
-      <td>0.287989</td>
-      <td>-0.194534</td>
-      <td>-0.632097</td>
-      <td>0.139947</td>
-      <td>-1.013919</td>
-      <td>-0.531953</td>
-      <td>0.278965</td>
-      <td>0.712771</td>
-      <td>-0.324023</td>
+      <th>7834</th>
+      <td>7834</td>
+      <td>-0.170249</td>
+      <td>-0.081334</td>
+      <td>-0.492545</td>
+      <td>0.443016</td>
+      <td>-0.041892</td>
+      <td>0.183765</td>
+      <td>0.371429</td>
+      <td>0.106385</td>
+      <td>-0.080806</td>
       <td>...</td>
-      <td>-0.502793</td>
-      <td>-0.146258</td>
-      <td>-0.535257</td>
-      <td>-0.699357</td>
-      <td>1.315595</td>
-      <td>0.183300</td>
-      <td>0.142800</td>
-      <td>-0.346391</td>
-      <td>-0.613722</td>
-      <td>-0.205855</td>
+      <td>0.225322</td>
+      <td>-0.254757</td>
+      <td>-0.258577</td>
+      <td>0.014742</td>
+      <td>0.309729</td>
+      <td>0.376458</td>
+      <td>0.032279</td>
+      <td>-0.256777</td>
+      <td>-0.743823</td>
+      <td>0.226570</td>
     </tr>
     <tr>
-      <th>7684</th>
-      <td>7684</td>
-      <td>-0.294879</td>
-      <td>-0.429416</td>
-      <td>-0.505813</td>
-      <td>0.075155</td>
-      <td>-0.216774</td>
-      <td>0.174914</td>
-      <td>0.491742</td>
-      <td>0.038708</td>
-      <td>-0.140709</td>
+      <th>7835</th>
+      <td>7835</td>
+      <td>-0.382044</td>
+      <td>-0.422822</td>
+      <td>-0.587220</td>
+      <td>0.320492</td>
+      <td>-0.226514</td>
+      <td>0.172044</td>
+      <td>0.616719</td>
+      <td>-0.043985</td>
+      <td>-0.258257</td>
       <td>...</td>
-      <td>-0.011171</td>
-      <td>-0.008312</td>
-      <td>-0.336977</td>
-      <td>-0.009365</td>
-      <td>0.171825</td>
-      <td>0.423463</td>
-      <td>0.004228</td>
-      <td>-0.400308</td>
-      <td>-0.435773</td>
-      <td>0.207956</td>
+      <td>-0.005524</td>
+      <td>-0.341694</td>
+      <td>-0.393351</td>
+      <td>-0.104909</td>
+      <td>0.011569</td>
+      <td>0.355231</td>
+      <td>0.376438</td>
+      <td>-0.383147</td>
+      <td>-0.443361</td>
+      <td>0.176735</td>
     </tr>
     <tr>
-      <th>7685</th>
-      <td>7685</td>
-      <td>0.133161</td>
-      <td>-0.206598</td>
-      <td>-0.060065</td>
-      <td>0.013977</td>
-      <td>-0.309454</td>
-      <td>0.137658</td>
-      <td>0.484802</td>
-      <td>-0.104421</td>
-      <td>-0.151667</td>
+      <th>7836</th>
+      <td>7836</td>
+      <td>0.226604</td>
+      <td>-0.230992</td>
+      <td>-0.294525</td>
+      <td>-0.005927</td>
+      <td>-0.293173</td>
+      <td>0.076686</td>
+      <td>0.057251</td>
+      <td>-0.154211</td>
+      <td>-0.186203</td>
       <td>...</td>
-      <td>-0.025340</td>
-      <td>-0.111797</td>
-      <td>-0.485028</td>
-      <td>-0.052700</td>
-      <td>0.432771</td>
-      <td>0.114540</td>
-      <td>0.181120</td>
-      <td>-0.433214</td>
-      <td>-0.202734</td>
-      <td>0.052010</td>
+      <td>-0.148946</td>
+      <td>0.358122</td>
+      <td>-0.054703</td>
+      <td>-0.052285</td>
+      <td>0.038732</td>
+      <td>0.011719</td>
+      <td>-0.135485</td>
+      <td>-0.256960</td>
+      <td>0.012294</td>
+      <td>0.020287</td>
     </tr>
     <tr>
-      <th>7686</th>
-      <td>7686</td>
-      <td>0.132097</td>
-      <td>-0.073985</td>
-      <td>-0.214157</td>
-      <td>0.329413</td>
-      <td>0.025007</td>
-      <td>0.258794</td>
-      <td>0.047333</td>
-      <td>-0.096266</td>
-      <td>-0.139045</td>
+      <th>7837</th>
+      <td>7837</td>
+      <td>-0.403669</td>
+      <td>-0.057501</td>
+      <td>-0.323550</td>
+      <td>0.505035</td>
+      <td>0.161119</td>
+      <td>0.269930</td>
+      <td>0.552717</td>
+      <td>0.165518</td>
+      <td>-0.195108</td>
       <td>...</td>
-      <td>0.139786</td>
-      <td>0.383356</td>
-      <td>0.051125</td>
-      <td>0.028334</td>
-      <td>0.088136</td>
-      <td>0.132211</td>
-      <td>-0.033077</td>
-      <td>-0.147892</td>
-      <td>-0.116214</td>
-      <td>0.253421</td>
+      <td>0.346420</td>
+      <td>-0.500232</td>
+      <td>-0.054664</td>
+      <td>0.061566</td>
+      <td>0.117811</td>
+      <td>0.438892</td>
+      <td>0.224275</td>
+      <td>-0.340123</td>
+      <td>-0.692458</td>
+      <td>0.498602</td>
     </tr>
   </tbody>
 </table>
-<p>7687 rows × 101 columns</p>
+<p>7838 rows × 101 columns</p>
 </div></div></div>
 </div>
 <section id="definindo-a-categoria-de-cada-documento-para-o-treinamento">
@@ -996,52 +996,6 @@ Name: natureza, dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biog</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">Y</span><span class="p">]</span>
 <span class="n">tem</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">~</span><span class="n">Y</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_4082169/1386108588.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">biog</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">Y</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">tem</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">~</span><span class="n">Y</span><span class="p">]</span>
-
-<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">    </span><span class="mi">965</span> 
-<span class="g g-Whitespace">    </span><span class="mi">966</span>             <span class="n">maybe_callable</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">apply_if_callable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">967</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">968</span> 
-<span class="g g-Whitespace">    </span><span class="mi">969</span>     <span class="k">def</span> <span class="nf">_is_scalar_access</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
-
-<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexing.py</span> in <span class="ni">_getitem_axis</span><span class="nt">(self, key, axis)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1505</span>         <span class="k">if</span> <span class="n">com</span><span class="o">.</span><span class="n">is_bool_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1506</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_validate_key</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1507</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getbool_axis</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1508</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1509</span>         <span class="c1"># a list of integers</span>
-
-<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexing.py</span> in <span class="ni">_getbool_axis</span><span class="nt">(self, key, axis)</span>
-<span class="g g-Whitespace">    </span><span class="mi">982</span>         <span class="c1"># caller is responsible for ensuring non-None axis</span>
-<span class="g g-Whitespace">    </span><span class="mi">983</span>         <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">984</span>         <span class="n">key</span> <span class="o">=</span> <span class="n">check_bool_indexer</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">985</span>         <span class="n">inds</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">986</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_take_with_is_copy</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
-
-<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexing.py</span> in <span class="ni">check_bool_indexer</span><span class="nt">(index, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2394</span>         <span class="c1"># key may contain nan elements, check_array_indexer needs bool array</span>
-<span class="g g-Whitespace">   </span><span class="mi">2395</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">pd_array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2396</span>     <span class="k">return</span> <span class="n">check_array_indexer</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2397</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2398</span> 
-
-<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexers/utils.py</span> in <span class="ni">check_array_indexer</span><span class="nt">(array, indexer)</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span>         <span class="c1"># GH26658</span>
-<span class="g g-Whitespace">    </span><span class="mi">578</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">579</span>             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>                 <span class="sa">f</span><span class="s2">&quot;Boolean index has wrong length: &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">581</span>                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span><span class="si">}</span><span class="s2"> instead of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-
-<span class="ne">IndexError</span>: Boolean index has wrong length: 7838 instead of 7687
 </pre></div>
 </div>
 </div>
@@ -1103,124 +1057,124 @@ Name: natureza, dtype: int64
   </thead>
   <tbody>
     <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.251411</td>
+      <td>-0.092618</td>
+      <td>-0.367610</td>
+      <td>0.156986</td>
+      <td>-0.339056</td>
+      <td>-0.080486</td>
+      <td>0.192228</td>
+      <td>-0.230927</td>
+      <td>-0.129720</td>
+      <td>...</td>
+      <td>-0.354930</td>
+      <td>0.257672</td>
+      <td>-0.182260</td>
+      <td>-0.072084</td>
+      <td>0.155995</td>
+      <td>0.025738</td>
+      <td>-0.186744</td>
+      <td>-0.309680</td>
+      <td>0.003222</td>
+      <td>0.116559</td>
+    </tr>
+    <tr>
       <th>1</th>
       <td>1</td>
-      <td>-0.035577</td>
-      <td>-0.055027</td>
-      <td>-0.201358</td>
-      <td>0.587101</td>
-      <td>0.143018</td>
-      <td>0.238591</td>
-      <td>0.210333</td>
-      <td>-0.110109</td>
-      <td>-0.065921</td>
+      <td>-0.444796</td>
+      <td>-0.107734</td>
+      <td>-0.371062</td>
+      <td>0.248178</td>
+      <td>-0.342896</td>
+      <td>0.180991</td>
+      <td>0.622804</td>
+      <td>0.390060</td>
+      <td>-0.197826</td>
       <td>...</td>
-      <td>0.346693</td>
-      <td>0.047858</td>
-      <td>-0.110081</td>
-      <td>0.132066</td>
-      <td>0.261467</td>
-      <td>0.295954</td>
-      <td>0.172945</td>
-      <td>-0.311859</td>
-      <td>-0.530189</td>
-      <td>0.316330</td>
+      <td>0.162281</td>
+      <td>-0.923582</td>
+      <td>-0.449693</td>
+      <td>-0.194215</td>
+      <td>0.884861</td>
+      <td>0.355686</td>
+      <td>0.418442</td>
+      <td>-0.504399</td>
+      <td>-1.110405</td>
+      <td>0.292351</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>0.197316</td>
-      <td>-0.189868</td>
-      <td>-0.271159</td>
-      <td>0.113843</td>
-      <td>-0.215909</td>
-      <td>0.009961</td>
-      <td>0.067409</td>
-      <td>-0.324156</td>
-      <td>-0.115856</td>
+      <td>-0.186797</td>
+      <td>-0.099321</td>
+      <td>-0.489939</td>
+      <td>0.603691</td>
+      <td>-0.220742</td>
+      <td>0.163514</td>
+      <td>0.201998</td>
+      <td>-0.068645</td>
+      <td>-0.170712</td>
       <td>...</td>
-      <td>-0.189233</td>
-      <td>0.419339</td>
-      <td>-0.113524</td>
-      <td>0.013359</td>
-      <td>0.213817</td>
-      <td>0.028746</td>
-      <td>-0.033972</td>
-      <td>-0.277325</td>
-      <td>0.123685</td>
-      <td>0.069090</td>
+      <td>0.309139</td>
+      <td>-0.249686</td>
+      <td>-0.252961</td>
+      <td>-0.000214</td>
+      <td>0.428697</td>
+      <td>0.477869</td>
+      <td>0.114001</td>
+      <td>-0.259199</td>
+      <td>-0.860501</td>
+      <td>0.281628</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>0.014647</td>
-      <td>-0.066778</td>
-      <td>-0.286216</td>
-      <td>0.386036</td>
-      <td>-0.009316</td>
-      <td>0.152754</td>
-      <td>0.165088</td>
-      <td>-0.023266</td>
-      <td>-0.212305</td>
+      <td>-0.015474</td>
+      <td>-0.331179</td>
+      <td>-0.188871</td>
+      <td>0.071852</td>
+      <td>-0.118083</td>
+      <td>0.273842</td>
+      <td>0.244981</td>
+      <td>-0.070634</td>
+      <td>-0.275265</td>
       <td>...</td>
-      <td>0.200119</td>
-      <td>0.120266</td>
-      <td>0.037666</td>
-      <td>0.046779</td>
-      <td>-0.003079</td>
-      <td>0.229816</td>
-      <td>0.004536</td>
-      <td>-0.170485</td>
-      <td>-0.298309</td>
-      <td>0.350582</td>
+      <td>0.048260</td>
+      <td>0.186905</td>
+      <td>-0.201033</td>
+      <td>-0.294315</td>
+      <td>-0.119009</td>
+      <td>0.070466</td>
+      <td>-0.013867</td>
+      <td>-0.257075</td>
+      <td>-0.069757</td>
+      <td>0.215312</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>5</td>
-      <td>-0.178505</td>
-      <td>-0.133307</td>
-      <td>-0.364329</td>
-      <td>0.300845</td>
-      <td>-0.271906</td>
-      <td>0.031837</td>
-      <td>0.280504</td>
-      <td>0.015816</td>
-      <td>-0.249589</td>
+      <th>4</th>
+      <td>4</td>
+      <td>-0.069459</td>
+      <td>0.000653</td>
+      <td>-0.267939</td>
+      <td>0.539355</td>
+      <td>-0.167328</td>
+      <td>-0.028850</td>
+      <td>0.572703</td>
+      <td>0.225255</td>
+      <td>-0.364476</td>
       <td>...</td>
-      <td>0.078988</td>
-      <td>-0.058762</td>
-      <td>-0.260532</td>
-      <td>-0.052188</td>
-      <td>0.388985</td>
-      <td>0.249804</td>
-      <td>0.183886</td>
-      <td>-0.425724</td>
-      <td>-0.385240</td>
-      <td>0.168074</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>6</td>
-      <td>-0.186605</td>
-      <td>-0.104790</td>
-      <td>-0.164616</td>
-      <td>0.443936</td>
-      <td>-0.044171</td>
-      <td>0.140016</td>
-      <td>0.628580</td>
-      <td>0.057058</td>
-      <td>-0.068198</td>
-      <td>...</td>
-      <td>0.168464</td>
-      <td>-0.399224</td>
-      <td>-0.253420</td>
-      <td>0.182177</td>
-      <td>0.356192</td>
-      <td>0.380624</td>
-      <td>0.130648</td>
-      <td>-0.561957</td>
-      <td>-0.401013</td>
-      <td>0.301353</td>
+      <td>0.073481</td>
+      <td>-0.567660</td>
+      <td>-0.298699</td>
+      <td>-0.237357</td>
+      <td>0.528733</td>
+      <td>0.298273</td>
+      <td>0.037333</td>
+      <td>-0.491313</td>
+      <td>-0.742250</td>
+      <td>0.370616</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1247,128 +1201,128 @@ Name: natureza, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>7631</th>
-      <td>7631</td>
-      <td>-0.087792</td>
-      <td>-0.074713</td>
-      <td>-0.123323</td>
-      <td>0.473363</td>
-      <td>-0.457467</td>
-      <td>0.069381</td>
-      <td>0.275153</td>
-      <td>0.002421</td>
-      <td>-0.336302</td>
+      <th>7799</th>
+      <td>7799</td>
+      <td>-0.009590</td>
+      <td>-0.370285</td>
+      <td>-0.351947</td>
+      <td>0.375928</td>
+      <td>-0.312881</td>
+      <td>0.284171</td>
+      <td>0.218668</td>
+      <td>-0.185607</td>
+      <td>-0.080803</td>
       <td>...</td>
-      <td>0.303183</td>
-      <td>-0.211976</td>
-      <td>-0.485498</td>
-      <td>-0.169897</td>
-      <td>0.811276</td>
-      <td>0.307793</td>
-      <td>0.136199</td>
-      <td>-0.388782</td>
-      <td>-0.762703</td>
-      <td>0.160587</td>
+      <td>-0.177752</td>
+      <td>0.476271</td>
+      <td>0.062159</td>
+      <td>0.180202</td>
+      <td>-0.104882</td>
+      <td>-0.123912</td>
+      <td>-0.011329</td>
+      <td>-0.059178</td>
+      <td>0.072528</td>
+      <td>-0.095532</td>
     </tr>
     <tr>
-      <th>7644</th>
-      <td>7644</td>
-      <td>0.188094</td>
-      <td>-0.325147</td>
-      <td>-0.220735</td>
-      <td>0.123681</td>
-      <td>-0.145520</td>
-      <td>0.047282</td>
-      <td>0.159700</td>
-      <td>-0.240685</td>
-      <td>-0.139039</td>
+      <th>7815</th>
+      <td>7815</td>
+      <td>0.190164</td>
+      <td>-0.421917</td>
+      <td>0.041171</td>
+      <td>0.559976</td>
+      <td>-0.096135</td>
+      <td>0.262056</td>
+      <td>0.115327</td>
+      <td>-0.222292</td>
+      <td>0.159212</td>
       <td>...</td>
-      <td>-0.059625</td>
-      <td>0.318651</td>
-      <td>-0.065475</td>
-      <td>0.065110</td>
-      <td>-0.061320</td>
-      <td>0.045098</td>
-      <td>-0.073985</td>
-      <td>-0.215659</td>
-      <td>0.138790</td>
-      <td>0.106549</td>
+      <td>0.079692</td>
+      <td>0.391770</td>
+      <td>-0.041344</td>
+      <td>0.181603</td>
+      <td>-0.474300</td>
+      <td>-0.066437</td>
+      <td>-0.211216</td>
+      <td>-0.201937</td>
+      <td>0.157055</td>
+      <td>0.150917</td>
     </tr>
     <tr>
-      <th>7663</th>
-      <td>7663</td>
-      <td>0.226715</td>
-      <td>-0.069622</td>
-      <td>-0.230984</td>
-      <td>0.245541</td>
-      <td>-0.100577</td>
-      <td>0.143116</td>
-      <td>-0.176785</td>
-      <td>0.029059</td>
-      <td>-0.089412</td>
+      <th>7818</th>
+      <td>7818</td>
+      <td>0.113591</td>
+      <td>-0.304503</td>
+      <td>0.023514</td>
+      <td>0.285975</td>
+      <td>-0.131286</td>
+      <td>0.313704</td>
+      <td>-0.003414</td>
+      <td>-0.047683</td>
+      <td>0.036644</td>
       <td>...</td>
-      <td>0.049539</td>
-      <td>0.307865</td>
-      <td>-0.064290</td>
-      <td>0.005264</td>
-      <td>0.177949</td>
-      <td>0.232877</td>
-      <td>-0.140192</td>
-      <td>-0.174136</td>
-      <td>-0.323796</td>
-      <td>0.299126</td>
+      <td>0.135317</td>
+      <td>0.436429</td>
+      <td>-0.045782</td>
+      <td>0.063444</td>
+      <td>-0.378774</td>
+      <td>-0.120447</td>
+      <td>-0.178072</td>
+      <td>-0.160545</td>
+      <td>0.119899</td>
+      <td>-0.047110</td>
     </tr>
     <tr>
-      <th>7681</th>
-      <td>7681</td>
-      <td>-0.589154</td>
-      <td>0.148940</td>
-      <td>-0.451746</td>
-      <td>0.289620</td>
-      <td>-0.343539</td>
-      <td>-0.060328</td>
-      <td>0.658307</td>
-      <td>0.367049</td>
-      <td>-0.443923</td>
+      <th>7820</th>
+      <td>7820</td>
+      <td>-0.209527</td>
+      <td>-0.324761</td>
+      <td>-0.133246</td>
+      <td>0.322462</td>
+      <td>-0.087852</td>
+      <td>0.493621</td>
+      <td>0.207157</td>
+      <td>0.010970</td>
+      <td>0.073835</td>
       <td>...</td>
-      <td>0.024978</td>
-      <td>-0.523059</td>
-      <td>-0.458428</td>
-      <td>-0.180809</td>
-      <td>1.185490</td>
-      <td>0.645396</td>
-      <td>0.613871</td>
-      <td>-0.627901</td>
-      <td>-0.870686</td>
-      <td>0.487834</td>
+      <td>0.062675</td>
+      <td>0.328040</td>
+      <td>-0.080370</td>
+      <td>0.155594</td>
+      <td>-0.452543</td>
+      <td>0.000524</td>
+      <td>-0.078063</td>
+      <td>-0.163876</td>
+      <td>0.080908</td>
+      <td>0.207743</td>
     </tr>
     <tr>
-      <th>7685</th>
-      <td>7685</td>
-      <td>0.133161</td>
-      <td>-0.206598</td>
-      <td>-0.060065</td>
-      <td>0.013977</td>
-      <td>-0.309454</td>
-      <td>0.137658</td>
-      <td>0.484802</td>
-      <td>-0.104421</td>
-      <td>-0.151667</td>
+      <th>7832</th>
+      <td>7832</td>
+      <td>0.219356</td>
+      <td>-0.023952</td>
+      <td>-0.126478</td>
+      <td>-0.041252</td>
+      <td>-0.207852</td>
+      <td>-0.374994</td>
+      <td>0.230476</td>
+      <td>-0.430638</td>
+      <td>-0.519447</td>
       <td>...</td>
-      <td>-0.025340</td>
-      <td>-0.111797</td>
-      <td>-0.485028</td>
-      <td>-0.052700</td>
-      <td>0.432771</td>
-      <td>0.114540</td>
-      <td>0.181120</td>
-      <td>-0.433214</td>
-      <td>-0.202734</td>
-      <td>0.052010</td>
+      <td>-0.234624</td>
+      <td>0.342272</td>
+      <td>-0.037796</td>
+      <td>0.341001</td>
+      <td>0.306884</td>
+      <td>0.136352</td>
+      <td>0.090791</td>
+      <td>-0.088957</td>
+      <td>0.088237</td>
+      <td>0.242391</td>
     </tr>
   </tbody>
 </table>
-<p>1926 rows × 101 columns</p>
+<p>1936 rows × 101 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1479,63 +1433,37 @@ Name: natureza, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_4099487/551901994.py</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">X2</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">values</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">Xtrain</span><span class="p">,</span><span class="n">Xtest</span><span class="p">,</span><span class="n">Ytrain</span><span class="p">,</span><span class="n">Ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-Relatório de classificação para ET:
+<span class="nn">~/.local/lib/python3.10/site-packages/sklearn/model_selection/_split.py</span> in <span class="ni">train_test_split</span><span class="nt">(test_size, train_size, random_state, shuffle, stratify, *arrays)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2428</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;At least one array required as input&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2429</span> 
+<span class="ne">-&gt; </span><span class="mi">2430</span>     <span class="n">arrays</span> <span class="o">=</span> <span class="n">indexable</span><span class="p">(</span><span class="o">*</span><span class="n">arrays</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2431</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2432</span>     <span class="n">n_samples</span> <span class="o">=</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">arrays</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-              precision    recall  f1-score   support
+<span class="nn">~/.local/lib/python3.10/site-packages/sklearn/utils/validation.py</span> in <span class="ni">indexable</span><span class="nt">(*iterables)</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span> 
+<span class="g g-Whitespace">    </span><span class="mi">432</span>     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">_make_indexable</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">iterables</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">433</span>     <span class="n">check_consistent_length</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span>     <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">    </span><span class="mi">435</span> 
 
-    Temático       0.92      0.91      0.91       248
-  Biográfico       0.90      0.92      0.91       234
+<span class="nn">~/.local/lib/python3.10/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_consistent_length</span><span class="nt">(*arrays)</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">uniques</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniques</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">387</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">388</span>             <span class="s2">&quot;Found input variables with inconsistent numbers of samples: </span><span class="si">%r</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">389</span>             <span class="o">%</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lengths</span><span class="p">]</span>
 
-    accuracy                           0.91       482
-   macro avg       0.91      0.91      0.91       482
-weighted avg       0.91      0.91      0.91       482
-
-
-Relatório de classificação para RF:
-
-              precision    recall  f1-score   support
-
-    Temático       0.98      0.92      0.95       248
-  Biográfico       0.92      0.98      0.95       234
-
-    accuracy                           0.95       482
-   macro avg       0.95      0.95      0.95       482
-weighted avg       0.95      0.95      0.95       482
-
-
-Relatório de classificação para SVC:
-
-              precision    recall  f1-score   support
-
-    Temático       0.90      0.80      0.85       248
-  Biográfico       0.81      0.90      0.85       234
-
-    accuracy                           0.85       482
-   macro avg       0.85      0.85      0.85       482
-weighted avg       0.86      0.85      0.85       482
-
-
-Relatório de classificação para Voting:
-
-              precision    recall  f1-score   support
-
-    Temático       0.89      0.84      0.87       248
-  Biográfico       0.84      0.89      0.87       234
-
-    accuracy                           0.87       482
-   macro avg       0.87      0.87      0.87       482
-weighted avg       0.87      0.87      0.87       482
+<span class="ne">ValueError</span>: Found input variables with inconsistent numbers of samples: [1936, 1926]
 </pre></div>
 </div>
 </div>
