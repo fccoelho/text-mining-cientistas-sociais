@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -34,7 +34,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -42,7 +44,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -55,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Aplicando modelagem de assuntos ao DHBB" href="Capitulo_4.html" />
     <link rel="prev" title="Contando Palavras" href="Capitulo_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -404,15 +406,21 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="identificando-entidades-nomeadas-e-similaridade-semantica">
-<h1>Identificando Entidades Nomeadas e Similaridade Semântica<a class="headerlink" href="#identificando-entidades-nomeadas-e-similaridade-semantica" title="Permalink to this headline">#</a></h1>
-<p>Neste capítulo vamos treinar um <em>identificador de entidades  nomeadas</em> (NER - Named Entity Recognizer) usando a biblioteca <a class="reference external" href="https://spacy.io">Spacy</a>. A partir deste capítulo vamos importar também funções que já criamos anteriormente, e que encontram-se reproduzidas em  <span class="xref myst">dhbbmining.py</span>.</p>
+<h1>Identificando Entidades Nomeadas e Similaridade Semântica<a class="headerlink" href="#identificando-entidades-nomeadas-e-similaridade-semantica" title="Permalink to this heading">#</a></h1>
+<p>Neste capítulo vamos treinar um <em>identificador de entidades  nomeadas</em> (NER - Named Entity Recognizer) usando a biblioteca <a class="reference external" href="https://spacy.io">Spacy</a>. A partir deste capítulo vamos importar também funções que já criamos anteriormente, e que encontram-se reproduzidas em  <a class="reference download internal" download="" href="_downloads/125ca402857d8bc670fd9307ce9f47f2/dhbbmining.py"><span class="xref download myst">dhbbmining.py</span></a>.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -427,17 +435,18 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 20:07:08.197851: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:50.291021: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-11-30 13:57:50.483460: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 20:07:08.797083: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
-2022-11-27 20:07:08.797128: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
-2022-11-27 20:07:08.797132: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:51.102390: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2022-11-30 13:57:51.102480: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2022-11-30 13:57:51.102490: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 20:07:09.952497: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory
-2022-11-27 20:07:09.952523: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:53.164684: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
+2022-11-30 13:57:53.164741: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
 </pre></div>
 </div>
@@ -445,19 +454,27 @@ Skipping registering GPU devices...
 </div>
 <p>Para utilizar o spacy em um corpus na lingua portuguesa, vamos primeiro importar o modelo liguístico do português</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m spacy download pt_core_news_sm
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 20:07:12.460513: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib/python3.10/dist-packages/cv2/../../lib64:
-2022-11-27 20:07:12.460567: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib/python3.10/dist-packages/cv2/../../lib64:
-2022-11-27 20:07:12.460574: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:54.519580: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 20:07:13.697638: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/lib/python3.10/dist-packages/cv2/../../lib64:
-2022-11-27 20:07:13.697666: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:55.522058: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2022-11-30 13:57:55.522163: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2022-11-30 13:57:55.522177: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:57.730238: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
+2022-11-30 13:57:57.730274: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
 </pre></div>
 </div>
@@ -469,221 +486,70 @@ Skipping registering GPU devices...
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading https://github.com/explosion/spacy-models/releases/download/pt_core_news_sm-3.4.0/pt_core_news_sm-3.4.0-py3-none-any.whl (13.0 MB)
 ?25l     <span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.0/13.0 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     <span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.0/13.0 MB</span> <span class=" -Color -Color-Red">179.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     <span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.1/13.0 MB</span> <span class=" -Color -Color-Red">1.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:11</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.6/13.0 MB</span> <span class=" -Color -Color-Red">18.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.2/13.0 MB</span> <span class=" -Color -Color-Red">2.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:06</span>
-     ━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.4/13.0 MB</span> <span class=" -Color -Color-Red">3.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:04</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2.7/13.0 MB</span> <span class=" -Color -Color-Red">38.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">5.4/13.0 MB</span> <span class=" -Color -Color-Red">51.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.6/13.0 MB</span> <span class=" -Color -Color-Red">3.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:04</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">8.5/13.0 MB</span> <span class=" -Color -Color-Red">59.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.6/13.0 MB</span> <span class=" -Color -Color-Red">3.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:04</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━</span> <span class=" -Color -Color-Green">11.3/13.0 MB</span> <span class=" -Color -Color-Red">75.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.8/13.0 MB</span> <span class=" -Color -Color-Red">3.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:04</span>
-     ━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1.0/13.0 MB</span> <span class=" -Color -Color-Red">3.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:04</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">13.0/13.0 MB</span> <span class=" -Color -Color-Red">78.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">13.0/13.0 MB</span> <span class=" -Color -Color-Red">78.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1.1/13.0 MB</span> <span class=" -Color -Color-Red">3.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:04</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">13.0/13.0 MB</span> <span class=" -Color -Color-Red">47.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1.3/13.0 MB</span> <span class=" -Color -Color-Red">4.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-     ━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1.5/13.0 MB</span> <span class=" -Color -Color-Red">4.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: spacy&lt;3.5.0,&gt;=3.4.0 in /usr/local/lib/python3.10/dist-packages (from pt-core-news-sm==3.4.0) (3.4.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1.7/13.0 MB</span> <span class=" -Color -Color-Red">4.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">1.9/13.0 MB</span> <span class=" -Color -Color-Red">4.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-     ━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2.0/13.0 MB</span> <span class=" -Color -Color-Red">4.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2.2/13.0 MB</span> <span class=" -Color -Color-Red">4.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2.3/13.0 MB</span> <span class=" -Color -Color-Red">4.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-     ━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2.5/13.0 MB</span> <span class=" -Color -Color-Red">4.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2.6/13.0 MB</span> <span class=" -Color -Color-Red">4.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2.8/13.0 MB</span> <span class=" -Color -Color-Red">4.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-     ━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">3.0/13.0 MB</span> <span class=" -Color -Color-Red">4.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">3.1/13.0 MB</span> <span class=" -Color -Color-Red">4.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">3.3/13.0 MB</span> <span class=" -Color -Color-Red">4.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-     ━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">3.5/13.0 MB</span> <span class=" -Color -Color-Red">4.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">3.7/13.0 MB</span> <span class=" -Color -Color-Red">4.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:03</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">3.9/13.0 MB</span> <span class=" -Color -Color-Red">4.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4.1/13.0 MB</span> <span class=" -Color -Color-Red">4.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-     ━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4.3/13.0 MB</span> <span class=" -Color -Color-Red">4.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4.5/13.0 MB</span> <span class=" -Color -Color-Red">4.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4.6/13.0 MB</span> <span class=" -Color -Color-Red">4.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-     ━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">4.8/13.0 MB</span> <span class=" -Color -Color-Red">4.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">5.0/13.0 MB</span> <span class=" -Color -Color-Red">4.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">5.2/13.0 MB</span> <span class=" -Color -Color-Red">4.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-     ━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">5.4/13.0 MB</span> <span class=" -Color -Color-Red">4.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">5.6/13.0 MB</span> <span class=" -Color -Color-Red">4.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">5.8/13.0 MB</span> <span class=" -Color -Color-Red">4.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-     ━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">5.9/13.0 MB</span> <span class=" -Color -Color-Red">4.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">6.1/13.0 MB</span> <span class=" -Color -Color-Red">4.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">6.3/13.0 MB</span> <span class=" -Color -Color-Red">4.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-     ━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">6.5/13.0 MB</span> <span class=" -Color -Color-Red">4.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">6.7/13.0 MB</span> <span class=" -Color -Color-Red">4.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">6.9/13.0 MB</span> <span class=" -Color -Color-Red">4.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-     ━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">7.1/13.0 MB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">7.4/13.0 MB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">7.5/13.0 MB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">7.7/13.0 MB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">8.0/13.0 MB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">8.1/13.0 MB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">8.3/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">8.6/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">8.7/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">8.8/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">9.1/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━</span> <span class=" -Color -Color-Green">9.2/13.0 MB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━</span> <span class=" -Color -Color-Green">9.3/13.0 MB</span> <span class=" -Color -Color-Red">5.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━</span> <span class=" -Color -Color-Green">9.6/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━</span> <span class=" -Color -Color-Green">9.7/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━</span> <span class=" -Color -Color-Green">9.9/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━</span> <span class=" -Color -Color-Green">10.1/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━</span> <span class=" -Color -Color-Green">10.2/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━</span> <span class=" -Color -Color-Green">10.4/13.0 MB</span> <span class=" -Color -Color-Red">5.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━</span> <span class=" -Color -Color-Green">10.6/13.0 MB</span> <span class=" -Color -Color-Red">5.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━</span> <span class=" -Color -Color-Green">10.7/13.0 MB</span> <span class=" -Color -Color-Red">5.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━</span> <span class=" -Color -Color-Green">10.9/13.0 MB</span> <span class=" -Color -Color-Red">5.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━</span> <span class=" -Color -Color-Green">11.2/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━</span> <span class=" -Color -Color-Green">11.3/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━</span> <span class=" -Color -Color-Green">11.5/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━</span> <span class=" -Color -Color-Green">11.7/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━</span> <span class=" -Color -Color-Green">11.9/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━</span> <span class=" -Color -Color-Green">12.1/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━</span> <span class=" -Color -Color-Green">12.3/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━</span> <span class=" -Color -Color-Green">12.4/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━</span> <span class=" -Color -Color-Green">12.6/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺</span> <span class=" -Color -Color-Green">12.8/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">12.9/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">13.0/13.0 MB</span> <span class=" -Color -Color-Red">5.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">13.0/13.0 MB</span> <span class=" -Color -Color-Red">5.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: spacy&lt;3.5.0,&gt;=3.4.0 in /usr/local/lib/python3.10/dist-packages (from pt-core-news-sm==3.4.0) (3.4.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.0.7)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.4.3)
-Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (21.3)
-Requirement already satisfied: typer&lt;0.8.0,&gt;=0.3.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.4.1)
-Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.23.5)
-Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (4.64.0)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.7)
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.1.2)
-Requirement already satisfied: thinc&lt;8.2.0,&gt;=8.1.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (8.1.5)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.10 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.0.10)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: thinc&lt;8.2.0,&gt;=8.1.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (8.1.1)
 Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.3.0)
-Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.0.3)
-Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.9.1 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.9.1)
-Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.11.0,&gt;=1.7.4 in /home/fccoelho/.local/lib/python3.10/site-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.8.2)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.0.6)
-Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.10.0)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.28.1)
-Requirement already satisfied: setuptools in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (65.5.0)
+Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.23.5)
 Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.6)
+Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (4.64.1)
+Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.6.2)
+Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.0.3)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.10.0,&gt;=1.7.4 in /home/fccoelho/.local/lib/python3.10/site-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.9.2)
+Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.9.1 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.10.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (59.6.0)
+Requirement already satisfied: packaging&gt;=20.0 in /home/fccoelho/.local/lib/python3.10/site-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (21.3)
+Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.0.7)
+Requirement already satisfied: typer&lt;0.5.0,&gt;=0.3.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.4.2)
+Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.0.8)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.1.2)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.28.1)
+Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.4.4)
+Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.8)
+Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.9 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.0.10)
 Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/lib/python3/dist-packages (from packaging&gt;=20.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.4.7)
 Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.2.1 in /usr/local/lib/python3.10/dist-packages (from pathy&gt;=0.3.5-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (5.2.1)
-Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.10/dist-packages (from pydantic!=1.8,!=1.8.1,&lt;1.11.0,&gt;=1.7.4-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (4.4.0)
-Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.12)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/lib/python3/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.26.5)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/lib/python3/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/lib/python3/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2020.6.20)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /usr/local/lib/python3.10/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.0.3)
-Requirement already satisfied: blis&lt;0.8.0,&gt;=0.7.8 in /usr/local/lib/python3.10/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.7.9)
-Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /usr/local/lib/python3.10/dist-packages (from typer&lt;0.8.0,&gt;=0.3.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (8.1.3)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.1.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.10/dist-packages (from pydantic!=1.8,!=1.8.1,&lt;1.10.0,&gt;=1.7.4-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (4.3.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2022.9.24)
+Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /usr/local/lib/python3.10/dist-packages/charset_normalizer-2.0.12-py3.10.egg (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.12)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/lib/python3/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.26.5)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/lib/python3/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /usr/local/lib/python3.10/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.0.1)
+Requirement already satisfied: blis&lt;0.10.0,&gt;=0.7.8 in /usr/local/lib/python3.10/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.9.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /usr/lib/python3/dist-packages (from typer&lt;0.5.0,&gt;=0.3.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (8.0.3)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/lib/python3/dist-packages (from jinja2-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.1)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C2">✔ Download and installation successful</span>
@@ -691,6 +557,7 @@ You can now load the package via spacy.load(&#39;pt_core_news_sm&#39;)
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -740,52 +607,52 @@ You can now load the package via spacy.load(&#39;pt_core_news_sm&#39;)
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>6172.text</td>
-      <td>PARTIDO POPULAR DO DISTRITO FEDERAL</td>
-      <td>temático</td>
-      <td>None</td>
-      <td>NA</td>
-      <td>\n\n«PARTIDO POPULAR DO DISTRITO FEDERAL»\n\nP...</td>
+      <td>822.text</td>
+      <td>BRÁS, Wenceslau</td>
+      <td>biográfico</td>
+      <td>m</td>
+      <td>\n - dep. fed. MG 1903-1908\n - pres. MG 1909-...</td>
+      <td>\n\n«Wenceslau Brás Pereira Gomes» nasceu em S...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>4361.text</td>
-      <td>PRATES, Mílton</td>
+      <td>3098.text</td>
+      <td>MACHADO, João</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - const. 1946\n - dep. fed. MG 1946-1951 \n</td>
-      <td>\n\n«Luís Mílton Prates» nasceu em Montes Clar...</td>
+      <td>\n - dep. fed. DF 1955-1959 \n</td>
+      <td>\n\n«João dos Reis Ferreira Machado» nasceu no...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>5224.text</td>
-      <td>SUREK, Alberto</td>
+      <td>2337.text</td>
+      <td>GÓIS, Aroldo</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - const. 1934\n - dep. fed. prof. 1935-193...</td>
-      <td>\n\n«Alberto Surek» nasceu em Araucária (PR) n...</td>
+      <td>\n - dep. fed. AP 1991-1995\n</td>
+      <td>\n\n«Aroldo da Graça Sousa Góis» nasceu em Alm...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>5039.text</td>
-      <td>SILVA, Luís Gonzaga do Nascimento e</td>
+      <td>11699.text</td>
+      <td>BETING, Joelmir</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - pres. BNH 1965-1966\n - min. Trab. 1966-...</td>
-      <td>\n\n«Luís Gonzaga do Nascimento e Silva» nasce...</td>
+      <td>\n - jornalista  \nautor: \n - Alzira Alves d...</td>
+      <td>\n\n«Joelmir José Beting» nasceu em Tambaú (SP...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>6193.text</td>
-      <td>PARTIDO REFORMADOR TRABALHISTA (PRT)</td>
-      <td>temático</td>
-      <td>None</td>
-      <td>NA</td>
-      <td>\n\n«PARTIDO REFORMADOR TRABALHISTA (PRT)»\n\n...</td>
+      <td>1774.text</td>
+      <td>DUARTE, Ovídio</td>
+      <td>biográfico</td>
+      <td>m</td>
+      <td>\n - dep. fed. PB 1954-1955\n - dep. fed. PB ...</td>
+      <td>\n\n«Ovídio Borba Duarte» nasceu em Serraria, ...</td>
     </tr>
   </tbody>
 </table>
@@ -799,35 +666,9 @@ You can now load the package via spacy.load(&#39;pt_core_news_sm&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>«DIÁRIO CARIOCA»
-
-Jornal carioca diário fundado em 17 de julho de 1928 por José Eduardo de
-Macedo Soares e extinto em 31 de dezembro de 1965.
-
-## De 1928 a 1934
-
-O «Diário Carioca» nasceu com a finalidade precípua de fazer oposição ao
-governo de Washington Luís. Seu fundador, de tradicional família
-fluminense, havia saído da Marinha para a política e posteriormente para
-a imprensa, abandonando a carreira militar no posto de primeiro-tenente.
-Fundara em 1912 «O Imparcial». Embora suas atividades políticas durante a
-República Velha estivessem vinculadas ao poder institucionalizado, a
-partir de dado momento Macedo Soares passou a refletir uma das correntes
-de oposição à estrutura política vigente. Tanto isto é verdade que o
-primeiro número do «Diário Carioca» deveria ter saído a 5 de julho, para
-comemorar o sexto aniversário do levante dos 18 do Forte.
-
-Ao lado do fundador, que reservou para si a diretoria, o novo jornal
-contava em sua equipe inicial com Alberto Burle de Figueiredo na
-gerência, Leônidas de Resende na chefia da redação, Osório Borba como
-secretário, e Antenor Guimarães. Entre os primeiros colaboradores
-destacavam-se Evaristo de Morais, Virgílio de Melo Franco, Humberto de
-Campos e Adolfo Bergamini.
-
-O primeiro número do «Diário Carioca» caracterizava desde logo sua
-natureza essencialmente política. De acordo com José Eduardo de Macedo
-Soares, o objetivo do jornal era “servir ao país, traduzindo lealmente
-seus sentimentos, esclarecendo e interpretando as corrent
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Partido político nacional criado em 24 de janeiro de 1985 por
+dissidentes do Partido Democrático Social (PDS). Em 28 de março de 2007
+passou a se chamar Democratas (DEM).
 </pre></div>
 </div>
 </div>
@@ -867,35 +708,35 @@ Dep:punct,            Shape:«,
 Alpha? False, 
 Stopword:False
 
-Texto:PARTIDO,
- Lemma: PARTIDO,
+Texto:Wenceslau,
+ Lemma: Wenceslau,
 Part of speech: PROPN,
 Tag: PROPN, 
-Dep:ROOT,            Shape:XXXX, 
+Dep:nsubj,            Shape:Xxxxx, 
 Alpha? True, 
 Stopword:False
 
-Texto:POPULAR,
- Lemma: POPULAR,
+Texto:Brás,
+ Lemma: Brás,
 Part of speech: PROPN,
 Tag: PROPN, 
-Dep:flat:name,            Shape:XXXX, 
+Dep:flat:name,            Shape:Xxxx, 
 Alpha? True, 
 Stopword:False
 
-Texto:DO,
- Lemma: De O,
-Part of speech: ADP,
-Tag: ADP, 
-Dep:case,            Shape:XX, 
+Texto:Pereira,
+ Lemma: Pereira,
+Part of speech: PROPN,
+Tag: PROPN, 
+Dep:flat:name,            Shape:Xxxxx, 
 Alpha? True, 
-Stopword:True
+Stopword:False
 </pre></div>
 </div>
 </div>
 </div>
 <section id="testando-o-ner-do-spacy">
-<h2>Testando o NER do Spacy<a class="headerlink" href="#testando-o-ner-do-spacy" title="Permalink to this headline">#</a></h2>
+<h2>Testando o NER do Spacy<a class="headerlink" href="#testando-o-ner-do-spacy" title="Permalink to this heading">#</a></h2>
 <p>Como o Spacy já inclui algum suporte à lingua portuguesa, antes de pensar em treinar nosso próprio NER, podemos avaliar a performance do existente.</p>
 <p>Abaixo vamos construir uma visualização interativa da marcação de entidades nos verbetes do DHBB.</p>
 <div class="cell docutils container">
@@ -918,9 +759,7 @@ Stopword:True
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"version_major": 2, "version_minor": 0, "model_id": "a7732db9cacd4f3c8537132a1a07e55a"}
-</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "34bcd40671ab44b68640e570380462ab"}</script></div>
 </div>
 <p>Além da visualização, podemos extrair as entidades presentes em um verbete:</p>
 <div class="cell docutils container">
@@ -931,25 +770,216 @@ Stopword:True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PARTIDO POPULAR DO 1 19 ORG
-Partido 39 46 ORG
-Rio de Janeiro 59 73 LOC
-Distrito Federal 81 97 LOC
-João Câncio da Silva 134 154 PER
-Assembléia Nacional Constituinte 177 209 ORG
-Américo Basílio Silvado 253 276 PER
-Henrique de Toledo
-Dodsworth 278 306 PER
-Amélio Dias de Morais 308 329 PER
-Adolfo Bergamini 331 347 PER
-Jones Gonçalves
-Rocha 349 370 PER
-José Matoso de Sampaio 372 394 PER
-Antenor Esposel Coutinho 404 428 PER
-Inácio
-Bittencourt 430 448 PER
-Berta Lutz 450 460 PER
-Georgina de Araújo 463 481 PER
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wenceslau Brás Pereira 1 23 PER
+São Caetano da Vargem Grande 41 69 LOC
+Brasópolis 76 86 LOC
+Francisco Brás Pereira Gomes 142 170 PER
+Assembléia 184 194 LOC
+Minas Gerais 211 223 LOC
+Isabel Pereira dos Santos 251 276 PER
+Seminário Episcopal 347 366 MISC
+Faculdade de Direito de São Paulo 413 446 LOC
+Retornando 477 487 MISC
+Jacuí 529 534 LOC
+Monte Santo 563 574 LOC
+Secretaria do Interior do governo
+chefiado 785 827 LOC
+Silviano de Almeida 832 851 PER
+Congresso 1040 1049 LOC
+Câmara Federal 1075 1089 LOC
+João Pinheiro da Silva 1176 1198 PER
+República 1308 1317 LOC
+Hermes da Fonseca 1352 1369 PER
+Colocado 1423 1431 LOC
+Hermes da Fonseca 1458 1475 PER
+José Pinheiro Machado 1502 1523 PER
+Pinheiro Machado 1661 1677 LOC
+Congresso 1749 1758 LOC
+Minas Gerais 1857 1869 LOC
+São Paulo 1875 1884 LOC
+Pacto de Ouro 1944 1957 ORG
+Pinheiro Machado 2077 2093 LOC
+Bahia 2111 2116 ORG
+Rui Barbosa 2134 2145 PER
+Pinheiro Machado 2328 2344 LOC
+Rui
+Barbosa 2395 2406 PER
+Maranhão 2499 2507 LOC
+República
+
+Wenceslau 2531 2551 LOC
+Primeira Guerra Mundial 2637 2660 MISC
+Assembléia 2804 2814 ORG
+Feliciano 2843 2852 PER
+Supremo Tribunal Federal 3054 3078 LOC
+Nilo 3101 3105 LOC
+Wenceslau Brás 3193 3207 PER
+Pinheiro Machado 3284 3300 LOC
+Wenceslau 3411 3420 PER
+Mato Grosso 3537 3548 LOC
+Paraná 3606 3612 LOC
+Santa Catarina 3615 3629 LOC
+Exército 3706 3714 ORG
+Comissariado de Alimentação 4463 4490 ORG
+Wenceslau Brás 4677 4691 PER
+Exército 4774 4782 ORG
+Marinha 4805 4812 LOC
+Rio 4817 4820 LOC
+Código 4955 4961 MISC
+Congresso 4999 5008 ORG
+Alemanha 5049 5057 LOC
+Brasil 5158 5164 LOC
+Europa 5198 5204 LOC
+Pedro Max de Frontin 5230 5250 PER
+Atlântico 5287 5296 LOC
+Wenceslau Brás 5334 5348 PER
+Alves 5443 5448 PER
+Itajubá 5569 5576 LOC
+Isidoro Dias
+Lopes 5639 5657 PER
+Artur Bernardes 5868 5883 PER
+Washington Luís 6140 6155 PER
+Minas Gerais 6200 6212 LOC
+São Paulo 6217 6226 LOC
+presidente da República 6235 6258 MISC
+Júlio Prestes 6336 6349 PER
+Antônio Carlos Ribeiro de Andrada 6369 6402 PER
+Aliança Liberal 6536 6551 ORG
+Rio Grande do Sul 6639 6656 LOC
+Getúlio Vargas 6658 6672 PER
+Antônio Carlos 6751 6765 PER
+Partido Republicano
+Mineiro 6781 6808 ORG
+Wenceslau Brás 6892 6906 PER
+Belo Horizonte 6919 6933 LOC
+Antônio Carlos 7079 7093 PER
+Artur Bernardes 7095 7110 PER
+Fernando de Melo Viana 7113 7135 PER
+Minas
+Gerais 7209 7221 MISC
+Olegário 7252 7260 LOC
+Melo Viana 7303 7313 PER
+Júlio Prestes 7389 7402 PER
+Concentração Conservadora. 7435 7461 ORG
+República 7502 7511 LOC
+Câmara 7516 7522 LOC
+Júlio Prestes 7687 7700 PER
+Getúlio Vargas 7707 7721 PER
+Comissão de
+Verificação de Poderes 7859 7893 ORG
+Congresso Nacional 7905 7923 LOC
+Minas 8007 8012 LOC
+Aliança Liberal 8048 8063 ORG
+Concentração Conservadora. 8115 8141 ORG
+PRM 8205 8208 ORG
+Aliança Liberal 8238 8253 ORG
+Juiz de Fora 8327 8339 LOC
+Wenceslau Brás 8359 8373 PER
+Artur Bernardes 8375 8390 PER
+Afonso Pena 8392 8403 PER
+José
+Bonifácio de Andrada e Silva 8412 8445 PER
+Mário Brant 8447 8458 PER
+Alaor 8461 8466 PER
+Antônio Carlos 8565 8579 PER
+PRM 8591 8594 ORG
+Olegário Maciel 8684 8699 PER
+Rio
+Grande do Sul 8769 8786 LOC
+Minas 8788 8793 LOC
+Paraíba 8796 8803 LOC
+Washington
+Luís 8831 8846 PER
+Getúlio Vargas 8940 8954 PER
+Olegário Maciel 8956 8971 PER
+Executivo 8993 9002 LOC
+Legião 9072 9078 PER
+Revolução de 1930 9189 9206 MISC
+Wenceslau Brás 9278 9292 PER
+Francisco
+Campos 9365 9381 PER
+Gustavo Capanema 9383 9399 PER
+Amaro Lanari 9401 9413 PER
+Antônio Carlos 9415 9429 PER
+José Monteiro
+Ribeiro Junqueira 9431 9462 PER
+Teodomiro Santiago 9464 9482 PER
+José Bonifácio 9485 9499 PER
+Artur Bernardes 9720 9735 PER
+Belo Horizonte 9795 9809 LOC
+Olegário Maciel 9855 9870 PER
+Legião 10140 10146 PER
+PRM 10151 10154 ORG
+Maciel 10226 10232 PER
+Wenceslau
+ 10243 10253 PER
+Partido Social Nacionalista 10390 10417 ORG
+Minas 10476 10481 LOC
+Governo Provisório 10543 10561 MISC
+Revolução Constitucionalista de São
+Paulo 10772 10813 MISC
+Wenceslau Brás 10834 10848 PER
+Olegário Maciel 10859 10874 PER
+Minas 10889 10894 LOC
+Olegário Maciel 11176 11191 PER
+Minas 11230 11235 LOC
+Gustavo Capanema 11346 11362 PER
+Melo Franco 11377 11388 PER
+Vargas 11404 11410 PER
+Antônio Carlos 11427 11441 PER
+Partido Progressista 11533 11553 ORG
+Wenceslau Brás 11585 11599 PER
+Governo Provisório 11657 11675 MISC
+Benedito Valadares 11705 11723 PER
+Valadares 11784 11793 LOC
+Wenceslau Brás 11973 11987 PER
+República 12043 12052 LOC
+Assembléia Nacional 12089 12108 ORG
+Governo Provisório 12134 12152 MISC
+Estado 12287 12293 LOC
+Vargas 12316 12322 PER
+Estado 12335 12341 LOC
+Wenceslau Brás 12358 12372 PER
+Wenceslau
+Brás 12614 12628 PER
+Eurico 12735 12741 PER
+Partido Republicano 12779 12798 ORG
+Partido Social
+Democrático 12819 12845 ORG
+Melo Viana 12866 12876 PER
+José Francisco Bias 12879 12898 PER
+PSD 12961 12964 ORG
+Wenceslau Brás 12982 12996 PER
+Melo Viana 12999 13009 PER
+Mílton 13046 13052 LOC
+União Democrática Nacional 13064 13090 ORG
+Wenceslau Brás 13164 13178 PER
+Companhia Industrial Sul 13296 13320 LOC
+Companhia Industrial
+Força 13348 13374 ORG
+Luz 13377 13380 LOC
+Fábrica de Tecidos Codorna 13395 13421 ORG
+Banco de
+Itajubá 13426 13442 ORG
+Wenceslau Brás 13464 13478 PER
+Itajubá 13490 13497 LOC
+Maria Carneiro Pereira 13540 13562 PER
+José Brás Pereira 13607 13624 PER
+Assembléia Nacional
+Constituinte 13654 13686 ORG
+Partido Progressista 13709 13729 ORG
+Wenceslau Brás?»
+ 13862 13879 PER
+República 13923 13932 LOC
+dr. Wenceslau
+Brás 13934 13952 PER
+Pedro Cavalcanti 13979 13995 PER
+Jornal do Comércio») e «Wenceslau 14041 14074 MISC
+Darci Bessone de Oliveira 14115 14140 PER
+Wenceslau Brás 14164 14178 PER
+Centro 14205 14211 LOC
+Documentação de História Contemporânea do Brasil 14226 14274 MISC
+Getulio Vargas 14295 14309 PER
 </pre></div>
 </div>
 </div>
@@ -963,7 +993,7 @@ Georgina de Araújo 463 481 PER
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;LOC&#39;, &#39;ORG&#39;, &#39;PER&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;LOC&#39;, &#39;MISC&#39;, &#39;ORG&#39;, &#39;PER&#39;}
 </pre></div>
 </div>
 </div>
@@ -971,7 +1001,7 @@ Georgina de Araújo 463 481 PER
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="similaridade-semantica">
-<h1>Similaridade Semântica<a class="headerlink" href="#similaridade-semantica" title="Permalink to this headline">#</a></h1>
+<h1>Similaridade Semântica<a class="headerlink" href="#similaridade-semantica" title="Permalink to this heading">#</a></h1>
 <p>Outra análise interessante que pode ser feita sobre os verbetes do DHBB é a de similaridade semântica. Este tipo de análise se baseia em modelos vetoriais tipo “word2vec”, que representam palavras de um corpus em um espaço semântico.
 Podemos aplicar o modelo pré-treinado do Spacy como exemplo, mas idealmente deve-se treinar estes modelos em corpora similares ao que se deseja analizar ou no próprio, como faremos no capítulo 5 deste livro.</p>
 <div class="cell docutils container">
@@ -1008,8 +1038,9 @@ Podemos aplicar o modelo pré-treinado do Spacy como exemplo, mas idealmente dev
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="nn">/tmp/ipykernel_4068461/3462566309.py</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">verb1</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">biograficos</span><span class="o">.</span><span class="n">itertuples</span><span class="p">())):</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">verb2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">biograficos</span><span class="o">.</span><span class="n">itertuples</span><span class="p">()):</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="k">if</span> <span class="n">j</span><span class="o">&gt;=</span><span class="n">i</span><span class="p">:</span>
@@ -1053,7 +1084,7 @@ Podemos aplicar o modelo pré-treinado do Spacy como exemplo, mas idealmente dev
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Capitulo_3_28_0.png" src="_images/Capitulo_3_28_0.png" />
+<img alt="_images/737f3aa0e56fe905bcfe3123fe8c15b5e26feb121a2a952197195226eefb8f17.png" src="_images/737f3aa0e56fe905bcfe3123fe8c15b5e26feb121a2a952197195226eefb8f17.png" />
 </div>
 </div>
 <div class="cell docutils container">

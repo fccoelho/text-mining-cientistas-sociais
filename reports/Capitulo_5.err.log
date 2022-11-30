@@ -1,0 +1,67 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+biog = data.iloc[Y]
+tem = data.iloc[~Y]
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mIndexError[0m                                Traceback (most recent call last)
+[0;32m/tmp/ipykernel_4069339/1386108588.py[0m in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0;31m [0mbiog[0m [0;34m=[0m [0mdata[0m[0;34m.[0m[0miloc[0m[0;34m[[0m[0mY[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0mtem[0m [0;34m=[0m [0mdata[0m[0;34m.[0m[0miloc[0m[0;34m[[0m[0;34m~[0m[0mY[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexing.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m    965[0m [0;34m[0m[0m
+[1;32m    966[0m             [0mmaybe_callable[0m [0;34m=[0m [0mcom[0m[0;34m.[0m[0mapply_if_callable[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 967[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getitem_axis[0m[0;34m([0m[0mmaybe_callable[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    968[0m [0;34m[0m[0m
+[1;32m    969[0m     [0;32mdef[0m [0m_is_scalar_access[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mkey[0m[0;34m:[0m [0mtuple[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexing.py[0m in [0;36m_getitem_axis[0;34m(self, key, axis)[0m
+[1;32m   1505[0m         [0;32mif[0m [0mcom[0m[0;34m.[0m[0mis_bool_indexer[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1506[0m             [0mself[0m[0;34m.[0m[0m_validate_key[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1507[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getbool_axis[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1508[0m [0;34m[0m[0m
+[1;32m   1509[0m         [0;31m# a list of integers[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexing.py[0m in [0;36m_getbool_axis[0;34m(self, key, axis)[0m
+[1;32m    982[0m         [0;31m# caller is responsible for ensuring non-None axis[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    983[0m         [0mlabels[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_get_axis[0m[0;34m([0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 984[0;31m         [0mkey[0m [0;34m=[0m [0mcheck_bool_indexer[0m[0;34m([0m[0mlabels[0m[0;34m,[0m [0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    985[0m         [0minds[0m [0;34m=[0m [0mkey[0m[0;34m.[0m[0mnonzero[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m    986[0m         [0;32mreturn[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m.[0m[0m_take_with_is_copy[0m[0;34m([0m[0minds[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexing.py[0m in [0;36mcheck_bool_indexer[0;34m(index, key)[0m
+[1;32m   2394[0m         [0;31m# key may contain nan elements, check_array_indexer needs bool array[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2395[0m         [0mresult[0m [0;34m=[0m [0mpd_array[0m[0;34m([0m[0mresult[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mbool[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2396[0;31m     [0;32mreturn[0m [0mcheck_array_indexer[0m[0;34m([0m[0mindex[0m[0;34m,[0m [0mresult[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2397[0m [0;34m[0m[0m
+[1;32m   2398[0m [0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.10/site-packages/pandas/core/indexers/utils.py[0m in [0;36mcheck_array_indexer[0;34m(array, indexer)[0m
+[1;32m    577[0m         [0;31m# GH26658[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    578[0m         [0;32mif[0m [0mlen[0m[0;34m([0m[0mindexer[0m[0;34m)[0m [0;34m!=[0m [0mlen[0m[0;34m([0m[0marray[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 579[0;31m             raise IndexError(
+[0m[1;32m    580[0m                 [0;34mf"Boolean index has wrong length: "[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    581[0m                 [0;34mf"{len(indexer)} instead of {len(array)}"[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mIndexError[0m: Boolean index has wrong length: 7838 instead of 7687
+IndexError: Boolean index has wrong length: 7838 instead of 7687
+

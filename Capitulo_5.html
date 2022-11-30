@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -34,7 +34,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -42,7 +44,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -54,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Aplicando modelagem de assuntos ao DHBB" href="Capitulo_4.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Capitulo_3.html">
-   Identificando Entidades Nomeadas E Similaridade Semântica
+   Identificando Entidades Nomeadas e Similaridade Semântica
   </a>
  </li>
  <li class="toctree-l1">
@@ -467,17 +469,23 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="construindo-um-classificador-de-textos">
-<h1>Construindo um Classificador de Textos<a class="headerlink" href="#construindo-um-classificador-de-textos" title="Permalink to this headline">#</a></h1>
+<h1>Construindo um Classificador de Textos<a class="headerlink" href="#construindo-um-classificador-de-textos" title="Permalink to this heading">#</a></h1>
 <p>Uma das aplicações mais comuns em mineração de textos é a classificações de documentos em categorias pré-definidas, sejam elas autorais, temáticas, temporais ou outras.</p>
 <p>Neste capítulo iremos explorar os passos necessários para o desenvolvimento de um classificador de documentos utilizando as análises feitas sobre o corpus do DHBB nos capítulos anteriores.</p>
 <p>Para esta tarefa utilizaremos modelos de machine learning clássicos disponibilizados na biblioteca <a class="reference external" href="https://scikit-learn.org/">Scikit-Learn</a>. Começaremos então importando algumas funcionalidades a partir do Scikit-Learn. Os demais imports já foram utilizados anteriormente.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -501,24 +509,25 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 19:51:13.673509: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:58:34.081462: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-11-30 13:58:34.284166: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 19:51:14.277589: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
-2022-11-27 19:51:14.277639: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
-2022-11-27 19:51:14.277651: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:58:35.141655: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2022-11-30 13:58:35.141849: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2022-11-30 13:58:35.141861: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-27 19:51:15.055908: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: cannot open shared object file: No such file or directory
-2022-11-27 19:51:15.055932: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:58:36.896619: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
+2022-11-30 13:58:36.896645: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
 Skipping registering GPU devices...
 </pre></div>
 </div>
 </div>
 </div>
 <section id="preparando-o-corpus">
-<h2>Preparando o corpus<a class="headerlink" href="#preparando-o-corpus" title="Permalink to this headline">#</a></h2>
+<h2>Preparando o corpus<a class="headerlink" href="#preparando-o-corpus" title="Permalink to this heading">#</a></h2>
 <p>Vamos utilizar o corpus do DHBB conforme armazenado na biblioteca SQLite anteriormente. Abaixo iremos desenvolver um iterador sobre o corpus que fará um preprocessamento básico dos documentos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,7 +561,7 @@ Skipping registering GPU devices...
 </div>
 </section>
 <section id="carregando-o-modelo-word2vec">
-<h2>Carregando o Modelo Word2vec<a class="headerlink" href="#carregando-o-modelo-word2vec" title="Permalink to this headline">#</a></h2>
+<h2>Carregando o Modelo Word2vec<a class="headerlink" href="#carregando-o-modelo-word2vec" title="Permalink to this heading">#</a></h2>
 <p>Vamos utilizar a representação vetorial do corpus construida anteriormente como base para o treinamento do classificador.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -615,7 +624,7 @@ Skipping registering GPU devices...
 </div>
 </section>
 <section id="preparando-os-dados-treinamento-do-classificador">
-<h2>Preparando os dados treinamento do Classificador<a class="headerlink" href="#preparando-os-dados-treinamento-do-classificador" title="Permalink to this headline">#</a></h2>
+<h2>Preparando os dados treinamento do Classificador<a class="headerlink" href="#preparando-os-dados-treinamento-do-classificador" title="Permalink to this heading">#</a></h2>
 <p>Abaixo vamos calcular os vetores dos documentos no espaço definido pelo W2V. Como este é um processo longo vamos salvar o resultado, para não ter que re-gerar os vetores de documento das próximas vezes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -942,7 +951,7 @@ Skipping registering GPU devices...
 </div></div></div>
 </div>
 <section id="definindo-a-categoria-de-cada-documento-para-o-treinamento">
-<h3>Definindo a categoria de cada documento para o treinamento<a class="headerlink" href="#definindo-a-categoria-de-cada-documento-para-o-treinamento" title="Permalink to this headline">#</a></h3>
+<h3>Definindo a categoria de cada documento para o treinamento<a class="headerlink" href="#definindo-a-categoria-de-cada-documento-para-o-treinamento" title="Permalink to this heading">#</a></h3>
 <p>Nosso objetvo será diferenciar entre verbetes <em>temáticos</em> e <em>biográficos</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -956,7 +965,7 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de verbetes temáticos: 963
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Número de verbetes temáticos: 973
 </pre></div>
 </div>
 </div>
@@ -975,8 +984,8 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>biográfico    6724
-temático       963
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>biográfico    6865
+temático       973
 Name: natureza, dtype: int64
 </pre></div>
 </div>
@@ -987,6 +996,52 @@ Name: natureza, dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biog</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">Y</span><span class="p">]</span>
 <span class="n">tem</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">~</span><span class="n">Y</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_4069339/1386108588.py</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">biog</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">Y</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">tem</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">~</span><span class="n">Y</span><span class="p">]</span>
+
+<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexing.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span> 
+<span class="g g-Whitespace">    </span><span class="mi">966</span>             <span class="n">maybe_callable</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">apply_if_callable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">967</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">968</span> 
+<span class="g g-Whitespace">    </span><span class="mi">969</span>     <span class="k">def</span> <span class="nf">_is_scalar_access</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+
+<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexing.py</span> in <span class="ni">_getitem_axis</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1505</span>         <span class="k">if</span> <span class="n">com</span><span class="o">.</span><span class="n">is_bool_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1506</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_validate_key</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1507</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getbool_axis</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1508</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1509</span>         <span class="c1"># a list of integers</span>
+
+<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexing.py</span> in <span class="ni">_getbool_axis</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">    </span><span class="mi">982</span>         <span class="c1"># caller is responsible for ensuring non-None axis</span>
+<span class="g g-Whitespace">    </span><span class="mi">983</span>         <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">984</span>         <span class="n">key</span> <span class="o">=</span> <span class="n">check_bool_indexer</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">985</span>         <span class="n">inds</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">986</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_take_with_is_copy</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+
+<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexing.py</span> in <span class="ni">check_bool_indexer</span><span class="nt">(index, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2394</span>         <span class="c1"># key may contain nan elements, check_array_indexer needs bool array</span>
+<span class="g g-Whitespace">   </span><span class="mi">2395</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">pd_array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2396</span>     <span class="k">return</span> <span class="n">check_array_indexer</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2397</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2398</span> 
+
+<span class="nn">~/.local/lib/python3.10/site-packages/pandas/core/indexers/utils.py</span> in <span class="ni">check_array_indexer</span><span class="nt">(array, indexer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span>         <span class="c1"># GH26658</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">579</span>             <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">580</span>                 <span class="sa">f</span><span class="s2">&quot;Boolean index has wrong length: &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">581</span>                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span><span class="si">}</span><span class="s2"> instead of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="ne">IndexError</span>: Boolean index has wrong length: 7838 instead of 7687
 </pre></div>
 </div>
 </div>
@@ -1361,7 +1416,7 @@ Name: natureza, dtype: int64
 </section>
 </section>
 <section id="definindo-os-modelos">
-<h2>Definindo os modelos<a class="headerlink" href="#definindo-os-modelos" title="Permalink to this headline">#</a></h2>
+<h2>Definindo os modelos<a class="headerlink" href="#definindo-os-modelos" title="Permalink to this heading">#</a></h2>
 <p>Vamos comparar a performance de 3 modelos. Dois tipos de modelos de “ensemble”, <em>Random forest</em> e <em>Extra Trees</em> e um terceiro baseado na segmentação do espaço vetorial, o SVC.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1383,7 +1438,7 @@ Name: natureza, dtype: int64
 </div>
 </section>
 <section id="treinando-e-validando-o-classificador">
-<h2>Treinando e validando o classificador<a class="headerlink" href="#treinando-e-validando-o-classificador" title="Permalink to this headline">#</a></h2>
+<h2>Treinando e validando o classificador<a class="headerlink" href="#treinando-e-validando-o-classificador" title="Permalink to this heading">#</a></h2>
 <p>Os modelos serão treinados usando um esquema de validação cruzada de três rodadas com randomização.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1425,87 +1480,68 @@ Name: natureza, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para ET:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+
+Relatório de classificação para ET:
 
               precision    recall  f1-score   support
 
-    Temático       0.88      0.81      0.84       249
-  Biográfico       0.81      0.88      0.84       233
+    Temático       0.92      0.91      0.91       248
+  Biográfico       0.90      0.92      0.91       234
 
-    accuracy                           0.84       482
-   macro avg       0.84      0.84      0.84       482
-weighted avg       0.85      0.84      0.84       482
+    accuracy                           0.91       482
+   macro avg       0.91      0.91      0.91       482
+weighted avg       0.91      0.91      0.91       482
 
 
 Relatório de classificação para RF:
 
               precision    recall  f1-score   support
 
-    Temático       0.94      0.83      0.88       249
-  Biográfico       0.84      0.94      0.89       233
+    Temático       0.98      0.92      0.95       248
+  Biográfico       0.92      0.98      0.95       234
 
-    accuracy                           0.89       482
-   macro avg       0.89      0.89      0.89       482
-weighted avg       0.89      0.89      0.89       482
+    accuracy                           0.95       482
+   macro avg       0.95      0.95      0.95       482
+weighted avg       0.95      0.95      0.95       482
 
 
 Relatório de classificação para SVC:
 
               precision    recall  f1-score   support
 
-    Temático       0.88      0.79      0.83       249
-  Biográfico       0.80      0.89      0.84       233
+    Temático       0.90      0.80      0.85       248
+  Biográfico       0.81      0.90      0.85       234
 
-    accuracy                           0.84       482
-   macro avg       0.84      0.84      0.84       482
-weighted avg       0.84      0.84      0.84       482
+    accuracy                           0.85       482
+   macro avg       0.85      0.85      0.85       482
+weighted avg       0.86      0.85      0.85       482
 
 
 Relatório de classificação para Voting:
 
               precision    recall  f1-score   support
 
-    Temático       0.89      0.82      0.85       249
-  Biográfico       0.82      0.89      0.85       233
+    Temático       0.89      0.84      0.87       248
+  Biográfico       0.84      0.89      0.87       234
 
-    accuracy                           0.85       482
-   macro avg       0.85      0.85      0.85       482
-weighted avg       0.86      0.85      0.85       482
+    accuracy                           0.87       482
+   macro avg       0.87      0.87      0.87       482
+weighted avg       0.87      0.87      0.87       482
 </pre></div>
 </div>
 </div>
 </div>
 <section id="curva-roc-para-os-classificadores">
-<h3>Curva ROC para os classificadores<a class="headerlink" href="#curva-roc-para-os-classificadores" title="Permalink to this headline">#</a></h3>
+<h3>Curva ROC para os classificadores<a class="headerlink" href="#curva-roc-para-os-classificadores" title="Permalink to this heading">#</a></h3>
 <p>A curva ROC nos informa o quanto podemos maximizar a taxa de verdadeiros positivos(classificações corretas), ao mesmo tempo em que minimizamos a taxa de falsos positivos (classificações erradas), apenas escolhendo a probabilidade de corte para pertinência à classe 1. O melhor modelo é o que mais se aproxima do canto superior esquerdo da figura (maximizando a área sob a curva), neste caso o modelo <em>Random Forest</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1523,12 +1559,12 @@ weighted avg       0.86      0.85      0.85       482
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Capitulo_5_30_0.png" src="_images/Capitulo_5_30_0.png" />
+<img alt="_images/534878b7fbda6cfa8cbc5f9e3e36ea8be2e796be164bd06c244c446c25c8ada2.png" src="_images/534878b7fbda6cfa8cbc5f9e3e36ea8be2e796be164bd06c244c446c25c8ada2.png" />
 </div>
 </div>
 </section>
 <section id="acuracia">
-<h3>Acurácia<a class="headerlink" href="#acuracia" title="Permalink to this headline">#</a></h3>
+<h3>Acurácia<a class="headerlink" href="#acuracia" title="Permalink to this heading">#</a></h3>
 <p>Se olharmos para a acurácia, vemos que esta não melhora com as 5 rodadas de validação cruzada, indicando que podemos reduzí-las ou mesmo eliminar completamente a validação cruzada.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1564,38 +1600,38 @@ weighted avg       0.86      0.85      0.85       482
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.865651</td>
-      <td>0.903047</td>
-      <td>0.854571</td>
-      <td>0.938366</td>
+      <td>0.844183</td>
+      <td>0.893352</td>
+      <td>0.84903</td>
+      <td>0.932825</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.861496</td>
-      <td>0.908587</td>
-      <td>0.854571</td>
-      <td>0.938366</td>
+      <td>0.846953</td>
+      <td>0.890582</td>
+      <td>0.84903</td>
+      <td>0.929363</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.863573</td>
-      <td>0.907202</td>
-      <td>0.854571</td>
-      <td>0.938366</td>
+      <td>0.843490</td>
+      <td>0.899584</td>
+      <td>0.84903</td>
+      <td>0.937673</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.866343</td>
-      <td>0.906510</td>
-      <td>0.854571</td>
-      <td>0.943906</td>
+      <td>0.842798</td>
+      <td>0.900277</td>
+      <td>0.84903</td>
+      <td>0.936288</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.859418</td>
-      <td>0.901662</td>
-      <td>0.854571</td>
-      <td>0.930055</td>
+      <td>0.849723</td>
+      <td>0.897507</td>
+      <td>0.84903</td>
+      <td>0.939058</td>
     </tr>
   </tbody>
 </table>
@@ -1603,7 +1639,7 @@ weighted avg       0.86      0.85      0.85       482
 </div>
 </section>
 <section id="precisao-e-revocacao">
-<h3>Precisão e Revocação<a class="headerlink" href="#precisao-e-revocacao" title="Permalink to this headline">#</a></h3>
+<h3>Precisão e Revocação<a class="headerlink" href="#precisao-e-revocacao" title="Permalink to this heading">#</a></h3>
 <p>Outra métrica para comparação dos modelos são suas curvas de Precisão-revocação, que apresentam os trade-offs possíveis entre estas duas medidas como função do limiar de decisão para cada classe. Nesta análise o modelo cuja curva mais se aproxima do canto superior direito da figura é o melhor, neste caso novamente o modelo <em>Random Forest</em> se destaca.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1632,7 +1668,7 @@ weighted avg       0.86      0.85      0.85       482
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Capitulo_5_35_0.png" src="_images/Capitulo_5_35_0.png" />
+<img alt="_images/e7e2cd603d566b76324dffd03c3896bb9a23a89f85c395fcdeb65e8516c4abbb.png" src="_images/e7e2cd603d566b76324dffd03c3896bb9a23a89f85c395fcdeb65e8516c4abbb.png" />
 </div>
 </div>
 </section>
