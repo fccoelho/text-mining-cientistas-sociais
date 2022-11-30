@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-jupyter nbconvert --to=pdf --template=./memoir.tplx $1
+jb build -W -n --keep-going .
+ghp-import -n -p -f _build/html
+
 
