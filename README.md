@@ -1,6 +1,6 @@
 # Mineraçao de Textos para Cientistas Sociais
-Material do curso de text mining para cientistas sociais do CPDOC.
-Durante este curso basearemos o estudo da mineraçao de textos sobre o acervo do [DHBB](https://github.com/cpdoc/dhbb). A partir da coleçao de verbetes, iremos tentar alcançar os seguintes objetivos de pesquisa:
+[Jupyter Book](https://fccoelho.github.io/text-mining-cientistas-sociais/intro.html) desenvolvido sobre o material do curso homônimo ministrado no  CPDOC (FGV).
+O livro aplica técnicas de mineraçao de textos sobre o acervo do [Dicionário Histórico e Biográfico Brasileiro DHBB](https://github.com/cpdoc/dhbb). A partir da coleçao de verbetes, iremos tentar alcançar os seguintes objetivos de pesquisa:
 
 1. Reconstruções de dinastias políticas, com base nas relações familiares mineradas;
 1. Construção de uma rede social dos verbetados, considerando período e local onde viveu, se formou e trabalhou.
@@ -10,3 +10,5 @@ Durante este curso basearemos o estudo da mineraçao de textos sobre o acervo do
 1. Experiência em associações religiosas prévia à eleição da constituinte.
 1. Experiência partidária prévia à eleição da constituinte.
 1. Experiência em movimentos políticos prévia à eleição constituinte (Clube Republicano, etc). 
+
+O Acesso ao [livro](https://fccoelho.github.io/text-mining-cientistas-sociais/intro.html) é gratuito!  Comentários e sugestões são bem vindas!
