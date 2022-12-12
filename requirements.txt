@@ -7,4 +7,6 @@ sqlitedict
 pygraphviz
 pyemd
 tqdm
+biopython
+ratelimiter
 
