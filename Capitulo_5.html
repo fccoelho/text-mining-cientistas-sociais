@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -34,9 +34,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -44,7 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -54,9 +52,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analizando Redes de Colaboração Científica" href="Capitulo_6.html" />
     <link rel="prev" title="Aplicando modelagem de assuntos ao DHBB" href="Capitulo_4.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -135,6 +134,11 @@ const thebe_selector_output = ".output, .cell_output"
    Construindo um Classificador de Textos
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_6.html">
+   Analizando Redes de Colaboração Científica
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -207,6 +211,24 @@ title="Launch on Binder"
     <img src="_static/images/logo_binder.svg">
   </span>
 <span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/fccoelho/text-mining-cientistas-sociais/blob/master/Capitulo_5.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
 </a>
 
       </li>
@@ -469,23 +491,17 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="construindo-um-classificador-de-textos">
-<h1>Construindo um Classificador de Textos<a class="headerlink" href="#construindo-um-classificador-de-textos" title="Permalink to this heading">#</a></h1>
+<h1>Construindo um Classificador de Textos<a class="headerlink" href="#construindo-um-classificador-de-textos" title="Permalink to this headline">#</a></h1>
 <p>Uma das aplicações mais comuns em mineração de textos é a classificações de documentos em categorias pré-definidas, sejam elas autorais, temáticas, temporais ou outras.</p>
 <p>Neste capítulo iremos explorar os passos necessários para o desenvolvimento de um classificador de documentos utilizando as análises feitas sobre o corpus do DHBB nos capítulos anteriores.</p>
 <p>Para esta tarefa utilizaremos modelos de machine learning clássicos disponibilizados na biblioteca <a class="reference external" href="https://scikit-learn.org/">Scikit-Learn</a>. Começaremos então importando algumas funcionalidades a partir do Scikit-Learn. Os demais imports já foram utilizados anteriormente.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -509,25 +525,179 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:51:52.900054: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-11-30 14:51:53.107787: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:51:54.087517: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
-2022-11-30 14:51:54.087634: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
-2022-11-30 14:51:54.087645: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 14:51:55.912087: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
-2022-11-30 14:51:55.912115: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-Skipping registering GPU devices...
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_195651/888076981.py</span> in <span class="ni">&lt;cell line: 10&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span><span class="p">,</span> <span class="n">word2vec</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">spacy</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">punctuation</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># set library-specific custom warning handling before doing anything else</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="n">setup_default_warnings</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">setup_default_warnings</span><span class="p">()</span>  <span class="c1"># noqa: E402</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">errors</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">Literal</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">class</span> <span class="nc">ErrorsWithCodes</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="sd">&quot;&quot;&quot;Helpers for Python and platform compatibility.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">thinc.util</span> <span class="kn">import</span> <span class="n">copy_array</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">try</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.about</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">registry</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">confection</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">confection</span> <span class="kn">import</span> <span class="n">Config</span><span class="p">,</span> <span class="n">ConfigValidationError</span><span class="p">,</span> <span class="n">Promise</span><span class="p">,</span> <span class="n">VARIABLE_RE</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.types</span> <span class="kn">import</span> <span class="n">Decorator</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">types</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">has_cupy</span><span class="p">,</span> <span class="n">cupy</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">if</span> <span class="n">has_cupy</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> 
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="kn">import</span> <span class="nn">tensorflow.experimental.dlpack</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">autograph</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">bitwise</span>
+<span class="ne">---&gt; </span><span class="mi">51</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> 
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">autograph</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">bitwise</span>
+<span class="ne">---&gt; </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> 
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">layers</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="ne">---&gt; </span><span class="mi">47</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lite</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lookup</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">experimental</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">Interpreter</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpHint</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">authoring</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.analyzer</span> <span class="kn">import</span> <span class="n">ModelAnalyzer</span> <span class="k">as</span> <span class="n">Analyzer</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpResolverType</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.authoring.authoring</span> <span class="kn">import</span> <span class="n">compatible</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="n">authoring</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> 
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="c1"># pylint: disable=g-import-not-at-top</span>
+<span class="ne">---&gt; </span><span class="mi">43</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">convert</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.metrics</span> <span class="kn">import</span> <span class="n">converter_error_data_pb2</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite_constants</span>
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">wrap_toco</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.convert_phase</span> <span class="kn">import</span> <span class="n">Component</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">util</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="c1"># pylint: disable=unused-import</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">53</span>   <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">xla_computation</span> <span class="k">as</span> <span class="n">_xla_computation</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>   <span class="n">_xla_computation</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="c1"># We want the exported object to be the class, so we first import the module</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="c1"># to make sure a later import doesn&#39;t overwrite the class.</span>
+<span class="ne">---&gt; </span><span class="mi">35</span> <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">_config_module</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">del</span> <span class="n">_config_module</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># TODO(phawkins): fix users of this alias and delete this file.</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">jax._src.config</span> <span class="kn">import</span> <span class="n">config</span>  <span class="c1"># noqa: F401</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">NamedTuple</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> 
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">jax._src</span> <span class="kn">import</span> <span class="n">lib</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">jax_jit</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">transfer_guard_lib</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> 
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">version_str</span> <span class="o">=</span> <span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span>
+<span class="ne">---&gt; </span><span class="mi">74</span> <span class="n">version</span> <span class="o">=</span> <span class="n">check_jaxlib_version</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>   <span class="n">jax_version</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>   <span class="n">jaxlib_version</span><span class="o">=</span><span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/jax/_src/lib/__init__.py</span> in <span class="ni">check_jaxlib_version</span><span class="nt">(jax_version, jaxlib_version, minimum_jaxlib_version)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;jaxlib is version </span><span class="si">{</span><span class="n">jaxlib_version</span><span class="si">}</span><span class="s1">, but this version &#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>            <span class="sa">f</span><span class="s1">&#39;of jax requires version &gt;= </span><span class="si">{</span><span class="n">minimum_jaxlib_version</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> 
+<span class="g g-Whitespace">     </span><span class="mi">65</span>   <span class="k">if</span> <span class="n">_jaxlib_version</span> <span class="o">&gt;</span> <span class="n">_jax_version</span><span class="p">:</span>
+
+<span class="ne">RuntimeError</span>: jaxlib is version 0.3.15, but this version of jax requires version &gt;= 0.3.22.
 </pre></div>
 </div>
 </div>
 </div>
 <section id="preparando-o-corpus">
-<h2>Preparando o corpus<a class="headerlink" href="#preparando-o-corpus" title="Permalink to this heading">#</a></h2>
+<h2>Preparando o corpus<a class="headerlink" href="#preparando-o-corpus" title="Permalink to this headline">#</a></h2>
 <p>Vamos utilizar o corpus do DHBB conforme armazenado na biblioteca SQLite anteriormente. Abaixo iremos desenvolver um iterador sobre o corpus que fará um preprocessamento básico dos documentos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,7 +731,7 @@ Skipping registering GPU devices...
 </div>
 </section>
 <section id="carregando-o-modelo-word2vec">
-<h2>Carregando o Modelo Word2vec<a class="headerlink" href="#carregando-o-modelo-word2vec" title="Permalink to this heading">#</a></h2>
+<h2>Carregando o Modelo Word2vec<a class="headerlink" href="#carregando-o-modelo-word2vec" title="Permalink to this headline">#</a></h2>
 <p>Vamos utilizar a representação vetorial do corpus construida anteriormente como base para o treinamento do classificador.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -624,7 +794,7 @@ Skipping registering GPU devices...
 </div>
 </section>
 <section id="preparando-os-dados-treinamento-do-classificador">
-<h2>Preparando os dados treinamento do Classificador<a class="headerlink" href="#preparando-os-dados-treinamento-do-classificador" title="Permalink to this heading">#</a></h2>
+<h2>Preparando os dados treinamento do Classificador<a class="headerlink" href="#preparando-os-dados-treinamento-do-classificador" title="Permalink to this headline">#</a></h2>
 <p>Abaixo vamos calcular os vetores dos documentos no espaço definido pelo W2V. Como este é um processo longo vamos salvar o resultado, para não ter que re-gerar os vetores de documento das próximas vezes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -639,6 +809,9 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 7830 de 7838
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -657,7 +830,6 @@ Skipping registering GPU devices...
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>0</th>
       <th>1</th>
       <th>2</th>
@@ -667,6 +839,7 @@ Skipping registering GPU devices...
       <th>6</th>
       <th>7</th>
       <th>8</th>
+      <th>9</th>
       <th>...</th>
       <th>90</th>
       <th>91</th>
@@ -683,7 +856,6 @@ Skipping registering GPU devices...
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
       <td>0.251411</td>
       <td>-0.092618</td>
       <td>-0.367610</td>
@@ -693,6 +865,7 @@ Skipping registering GPU devices...
       <td>0.192228</td>
       <td>-0.230927</td>
       <td>-0.129720</td>
+      <td>0.112671</td>
       <td>...</td>
       <td>-0.354930</td>
       <td>0.257672</td>
@@ -707,7 +880,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
       <td>-0.444796</td>
       <td>-0.107734</td>
       <td>-0.371062</td>
@@ -717,6 +889,7 @@ Skipping registering GPU devices...
       <td>0.622804</td>
       <td>0.390060</td>
       <td>-0.197826</td>
+      <td>0.005668</td>
       <td>...</td>
       <td>0.162281</td>
       <td>-0.923582</td>
@@ -731,7 +904,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
       <td>-0.186797</td>
       <td>-0.099321</td>
       <td>-0.489939</td>
@@ -741,6 +913,7 @@ Skipping registering GPU devices...
       <td>0.201998</td>
       <td>-0.068645</td>
       <td>-0.170712</td>
+      <td>0.071279</td>
       <td>...</td>
       <td>0.309139</td>
       <td>-0.249686</td>
@@ -755,7 +928,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
       <td>-0.015474</td>
       <td>-0.331179</td>
       <td>-0.188871</td>
@@ -765,6 +937,7 @@ Skipping registering GPU devices...
       <td>0.244981</td>
       <td>-0.070634</td>
       <td>-0.275265</td>
+      <td>0.211026</td>
       <td>...</td>
       <td>0.048260</td>
       <td>0.186905</td>
@@ -779,7 +952,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
       <td>-0.069459</td>
       <td>0.000653</td>
       <td>-0.267939</td>
@@ -789,6 +961,7 @@ Skipping registering GPU devices...
       <td>0.572703</td>
       <td>0.225255</td>
       <td>-0.364476</td>
+      <td>0.159628</td>
       <td>...</td>
       <td>0.073481</td>
       <td>-0.567660</td>
@@ -827,7 +1000,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>7833</th>
-      <td>7833</td>
       <td>-0.069599</td>
       <td>0.153431</td>
       <td>-0.571671</td>
@@ -837,6 +1009,7 @@ Skipping registering GPU devices...
       <td>0.452256</td>
       <td>0.176986</td>
       <td>-0.235890</td>
+      <td>0.001420</td>
       <td>...</td>
       <td>-0.191336</td>
       <td>-0.586688</td>
@@ -851,7 +1024,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>7834</th>
-      <td>7834</td>
       <td>-0.170249</td>
       <td>-0.081334</td>
       <td>-0.492545</td>
@@ -861,6 +1033,7 @@ Skipping registering GPU devices...
       <td>0.371429</td>
       <td>0.106385</td>
       <td>-0.080806</td>
+      <td>0.181276</td>
       <td>...</td>
       <td>0.225322</td>
       <td>-0.254757</td>
@@ -875,7 +1048,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>7835</th>
-      <td>7835</td>
       <td>-0.382044</td>
       <td>-0.422822</td>
       <td>-0.587220</td>
@@ -885,6 +1057,7 @@ Skipping registering GPU devices...
       <td>0.616719</td>
       <td>-0.043985</td>
       <td>-0.258257</td>
+      <td>0.217810</td>
       <td>...</td>
       <td>-0.005524</td>
       <td>-0.341694</td>
@@ -899,7 +1072,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>7836</th>
-      <td>7836</td>
       <td>0.226604</td>
       <td>-0.230992</td>
       <td>-0.294525</td>
@@ -909,6 +1081,7 @@ Skipping registering GPU devices...
       <td>0.057251</td>
       <td>-0.154211</td>
       <td>-0.186203</td>
+      <td>0.165438</td>
       <td>...</td>
       <td>-0.148946</td>
       <td>0.358122</td>
@@ -923,7 +1096,6 @@ Skipping registering GPU devices...
     </tr>
     <tr>
       <th>7837</th>
-      <td>7837</td>
       <td>-0.403669</td>
       <td>-0.057501</td>
       <td>-0.323550</td>
@@ -933,6 +1105,7 @@ Skipping registering GPU devices...
       <td>0.552717</td>
       <td>0.165518</td>
       <td>-0.195108</td>
+      <td>0.275592</td>
       <td>...</td>
       <td>0.346420</td>
       <td>-0.500232</td>
@@ -947,11 +1120,11 @@ Skipping registering GPU devices...
     </tr>
   </tbody>
 </table>
-<p>7838 rows × 101 columns</p>
+<p>7838 rows × 100 columns</p>
 </div></div></div>
 </div>
 <section id="definindo-a-categoria-de-cada-documento-para-o-treinamento">
-<h3>Definindo a categoria de cada documento para o treinamento<a class="headerlink" href="#definindo-a-categoria-de-cada-documento-para-o-treinamento" title="Permalink to this heading">#</a></h3>
+<h3>Definindo a categoria de cada documento para o treinamento<a class="headerlink" href="#definindo-a-categoria-de-cada-documento-para-o-treinamento" title="Permalink to this headline">#</a></h3>
 <p>Nosso objetvo será diferenciar entre verbetes <em>temáticos</em> e <em>biográficos</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1032,7 +1205,6 @@ Name: natureza, dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>0</th>
       <th>1</th>
       <th>2</th>
@@ -1042,6 +1214,7 @@ Name: natureza, dtype: int64
       <th>6</th>
       <th>7</th>
       <th>8</th>
+      <th>9</th>
       <th>...</th>
       <th>90</th>
       <th>91</th>
@@ -1058,7 +1231,6 @@ Name: natureza, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
       <td>0.251411</td>
       <td>-0.092618</td>
       <td>-0.367610</td>
@@ -1068,6 +1240,7 @@ Name: natureza, dtype: int64
       <td>0.192228</td>
       <td>-0.230927</td>
       <td>-0.129720</td>
+      <td>0.112671</td>
       <td>...</td>
       <td>-0.354930</td>
       <td>0.257672</td>
@@ -1082,7 +1255,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
       <td>-0.444796</td>
       <td>-0.107734</td>
       <td>-0.371062</td>
@@ -1092,6 +1264,7 @@ Name: natureza, dtype: int64
       <td>0.622804</td>
       <td>0.390060</td>
       <td>-0.197826</td>
+      <td>0.005668</td>
       <td>...</td>
       <td>0.162281</td>
       <td>-0.923582</td>
@@ -1106,7 +1279,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
       <td>-0.186797</td>
       <td>-0.099321</td>
       <td>-0.489939</td>
@@ -1116,6 +1288,7 @@ Name: natureza, dtype: int64
       <td>0.201998</td>
       <td>-0.068645</td>
       <td>-0.170712</td>
+      <td>0.071279</td>
       <td>...</td>
       <td>0.309139</td>
       <td>-0.249686</td>
@@ -1130,7 +1303,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
       <td>-0.015474</td>
       <td>-0.331179</td>
       <td>-0.188871</td>
@@ -1140,6 +1312,7 @@ Name: natureza, dtype: int64
       <td>0.244981</td>
       <td>-0.070634</td>
       <td>-0.275265</td>
+      <td>0.211026</td>
       <td>...</td>
       <td>0.048260</td>
       <td>0.186905</td>
@@ -1154,7 +1327,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
       <td>-0.069459</td>
       <td>0.000653</td>
       <td>-0.267939</td>
@@ -1164,6 +1336,7 @@ Name: natureza, dtype: int64
       <td>0.572703</td>
       <td>0.225255</td>
       <td>-0.364476</td>
+      <td>0.159628</td>
       <td>...</td>
       <td>0.073481</td>
       <td>-0.567660</td>
@@ -1202,7 +1375,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>7799</th>
-      <td>7799</td>
       <td>-0.009590</td>
       <td>-0.370285</td>
       <td>-0.351947</td>
@@ -1212,6 +1384,7 @@ Name: natureza, dtype: int64
       <td>0.218668</td>
       <td>-0.185607</td>
       <td>-0.080803</td>
+      <td>0.464115</td>
       <td>...</td>
       <td>-0.177752</td>
       <td>0.476271</td>
@@ -1226,7 +1399,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>7815</th>
-      <td>7815</td>
       <td>0.190164</td>
       <td>-0.421917</td>
       <td>0.041171</td>
@@ -1236,6 +1408,7 @@ Name: natureza, dtype: int64
       <td>0.115327</td>
       <td>-0.222292</td>
       <td>0.159212</td>
+      <td>0.254804</td>
       <td>...</td>
       <td>0.079692</td>
       <td>0.391770</td>
@@ -1250,7 +1423,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>7818</th>
-      <td>7818</td>
       <td>0.113591</td>
       <td>-0.304503</td>
       <td>0.023514</td>
@@ -1260,6 +1432,7 @@ Name: natureza, dtype: int64
       <td>-0.003414</td>
       <td>-0.047683</td>
       <td>0.036644</td>
+      <td>0.179127</td>
       <td>...</td>
       <td>0.135317</td>
       <td>0.436429</td>
@@ -1274,7 +1447,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>7820</th>
-      <td>7820</td>
       <td>-0.209527</td>
       <td>-0.324761</td>
       <td>-0.133246</td>
@@ -1284,6 +1456,7 @@ Name: natureza, dtype: int64
       <td>0.207157</td>
       <td>0.010970</td>
       <td>0.073835</td>
+      <td>0.143174</td>
       <td>...</td>
       <td>0.062675</td>
       <td>0.328040</td>
@@ -1298,7 +1471,6 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>7832</th>
-      <td>7832</td>
       <td>0.219356</td>
       <td>-0.023952</td>
       <td>-0.126478</td>
@@ -1308,6 +1480,7 @@ Name: natureza, dtype: int64
       <td>0.230476</td>
       <td>-0.430638</td>
       <td>-0.519447</td>
+      <td>-0.460002</td>
       <td>...</td>
       <td>-0.234624</td>
       <td>0.342272</td>
@@ -1322,7 +1495,7 @@ Name: natureza, dtype: int64
     </tr>
   </tbody>
 </table>
-<p>1936 rows × 101 columns</p>
+<p>1936 rows × 100 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1370,7 +1543,7 @@ Name: natureza, dtype: int64
 </section>
 </section>
 <section id="definindo-os-modelos">
-<h2>Definindo os modelos<a class="headerlink" href="#definindo-os-modelos" title="Permalink to this heading">#</a></h2>
+<h2>Definindo os modelos<a class="headerlink" href="#definindo-os-modelos" title="Permalink to this headline">#</a></h2>
 <p>Vamos comparar a performance de 3 modelos. Dois tipos de modelos de “ensemble”, <em>Random forest</em> e <em>Extra Trees</em> e um terceiro baseado na segmentação do espaço vetorial, o SVC.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1392,7 +1565,7 @@ Name: natureza, dtype: int64
 </div>
 </section>
 <section id="treinando-e-validando-o-classificador">
-<h2>Treinando e validando o classificador<a class="headerlink" href="#treinando-e-validando-o-classificador" title="Permalink to this heading">#</a></h2>
+<h2>Treinando e validando o classificador<a class="headerlink" href="#treinando-e-validando-o-classificador" title="Permalink to this headline">#</a></h2>
 <p>Os modelos serão treinados usando um esquema de validação cruzada de três rodadas com randomização.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1433,43 +1606,69 @@ Name: natureza, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_4099487/551901994.py</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">X2</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">values</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">Xtrain</span><span class="p">,</span><span class="n">Xtest</span><span class="p">,</span><span class="n">Ytrain</span><span class="p">,</span><span class="n">Ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
 
-<span class="nn">~/.local/lib/python3.10/site-packages/sklearn/model_selection/_split.py</span> in <span class="ni">train_test_split</span><span class="nt">(test_size, train_size, random_state, shuffle, stratify, *arrays)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2428</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;At least one array required as input&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2429</span> 
-<span class="ne">-&gt; </span><span class="mi">2430</span>     <span class="n">arrays</span> <span class="o">=</span> <span class="n">indexable</span><span class="p">(</span><span class="o">*</span><span class="n">arrays</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2431</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2432</span>     <span class="n">n_samples</span> <span class="o">=</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">arrays</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+Relatório de classificação para ET:
 
-<span class="nn">~/.local/lib/python3.10/site-packages/sklearn/utils/validation.py</span> in <span class="ni">indexable</span><span class="nt">(*iterables)</span>
-<span class="g g-Whitespace">    </span><span class="mi">431</span> 
-<span class="g g-Whitespace">    </span><span class="mi">432</span>     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">_make_indexable</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">iterables</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">433</span>     <span class="n">check_consistent_length</span><span class="p">(</span><span class="o">*</span><span class="n">result</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">434</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">    </span><span class="mi">435</span> 
+              precision    recall  f1-score   support
 
-<span class="nn">~/.local/lib/python3.10/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_consistent_length</span><span class="nt">(*arrays)</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">uniques</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">lengths</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniques</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">387</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">388</span>             <span class="s2">&quot;Found input variables with inconsistent numbers of samples: </span><span class="si">%r</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">389</span>             <span class="o">%</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lengths</span><span class="p">]</span>
+    Temático       0.92      0.91      0.91       248
+  Biográfico       0.90      0.92      0.91       234
 
-<span class="ne">ValueError</span>: Found input variables with inconsistent numbers of samples: [1936, 1926]
+    accuracy                           0.91       482
+   macro avg       0.91      0.91      0.91       482
+weighted avg       0.91      0.91      0.91       482
+
+
+Relatório de classificação para RF:
+
+              precision    recall  f1-score   support
+
+    Temático       0.98      0.92      0.95       248
+  Biográfico       0.92      0.98      0.95       234
+
+    accuracy                           0.95       482
+   macro avg       0.95      0.95      0.95       482
+weighted avg       0.95      0.95      0.95       482
+
+
+Relatório de classificação para SVC:
+
+              precision    recall  f1-score   support
+
+    Temático       0.90      0.80      0.85       248
+  Biográfico       0.81      0.90      0.85       234
+
+    accuracy                           0.85       482
+   macro avg       0.85      0.85      0.85       482
+weighted avg       0.86      0.85      0.85       482
+
+
+Relatório de classificação para Voting:
+
+              precision    recall  f1-score   support
+
+    Temático       0.89      0.84      0.87       248
+  Biográfico       0.84      0.89      0.87       234
+
+    accuracy                           0.87       482
+   macro avg       0.87      0.87      0.87       482
+weighted avg       0.87      0.87      0.87       482
 </pre></div>
 </div>
 </div>
 </div>
 <section id="curva-roc-para-os-classificadores">
-<h3>Curva ROC para os classificadores<a class="headerlink" href="#curva-roc-para-os-classificadores" title="Permalink to this heading">#</a></h3>
+<h3>Curva ROC para os classificadores<a class="headerlink" href="#curva-roc-para-os-classificadores" title="Permalink to this headline">#</a></h3>
 <p>A curva ROC nos informa o quanto podemos maximizar a taxa de verdadeiros positivos(classificações corretas), ao mesmo tempo em que minimizamos a taxa de falsos positivos (classificações erradas), apenas escolhendo a probabilidade de corte para pertinência à classe 1. O melhor modelo é o que mais se aproxima do canto superior esquerdo da figura (maximizando a área sob a curva), neste caso o modelo <em>Random Forest</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1487,12 +1686,12 @@ Name: natureza, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/534878b7fbda6cfa8cbc5f9e3e36ea8be2e796be164bd06c244c446c25c8ada2.png" src="_images/534878b7fbda6cfa8cbc5f9e3e36ea8be2e796be164bd06c244c446c25c8ada2.png" />
+<img alt="_images/Capitulo_5_30_0.png" src="_images/Capitulo_5_30_0.png" />
 </div>
 </div>
 </section>
 <section id="acuracia">
-<h3>Acurácia<a class="headerlink" href="#acuracia" title="Permalink to this heading">#</a></h3>
+<h3>Acurácia<a class="headerlink" href="#acuracia" title="Permalink to this headline">#</a></h3>
 <p>Se olharmos para a acurácia, vemos que esta não melhora com as 5 rodadas de validação cruzada, indicando que podemos reduzí-las ou mesmo eliminar completamente a validação cruzada.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1567,7 +1766,7 @@ Name: natureza, dtype: int64
 </div>
 </section>
 <section id="precisao-e-revocacao">
-<h3>Precisão e Revocação<a class="headerlink" href="#precisao-e-revocacao" title="Permalink to this heading">#</a></h3>
+<h3>Precisão e Revocação<a class="headerlink" href="#precisao-e-revocacao" title="Permalink to this headline">#</a></h3>
 <p>Outra métrica para comparação dos modelos são suas curvas de Precisão-revocação, que apresentam os trade-offs possíveis entre estas duas medidas como função do limiar de decisão para cada classe. Nesta análise o modelo cuja curva mais se aproxima do canto superior direito da figura é o melhor, neste caso novamente o modelo <em>Random Forest</em> se destaca.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1596,7 +1795,7 @@ Name: natureza, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e7e2cd603d566b76324dffd03c3896bb9a23a89f85c395fcdeb65e8516c4abbb.png" src="_images/e7e2cd603d566b76324dffd03c3896bb9a23a89f85c395fcdeb65e8516c4abbb.png" />
+<img alt="_images/Capitulo_5_35_0.png" src="_images/Capitulo_5_35_0.png" />
 </div>
 </div>
 </section>
@@ -1636,6 +1835,13 @@ Name: natureza, dtype: int64
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Aplicando modelagem de assuntos ao DHBB</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="Capitulo_6.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analizando Redes de Colaboração Científica</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

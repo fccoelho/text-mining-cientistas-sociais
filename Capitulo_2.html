@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -34,9 +34,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -44,7 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -57,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Identificando Entidades Nomeadas e Similaridade Semântica" href="Capitulo_3.html" />
     <link rel="prev" title="Abrindo Arquivos de Texto" href="Capitulo_1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -136,6 +134,11 @@ const thebe_selector_output = ".output, .cell_output"
    Construindo um Classificador de Textos
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_6.html">
+   Analizando Redes de Colaboração Científica
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -208,6 +211,24 @@ title="Launch on Binder"
     <img src="_static/images/logo_binder.svg">
   </span>
 <span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/fccoelho/text-mining-cientistas-sociais/blob/master/Capitulo_2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
 </a>
 
       </li>
@@ -464,22 +485,16 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="contando-palavras">
-<h1>Contando Palavras<a class="headerlink" href="#contando-palavras" title="Permalink to this heading">#</a></h1>
+<h1>Contando Palavras<a class="headerlink" href="#contando-palavras" title="Permalink to this headline">#</a></h1>
 <p>Neste capítulo iremos começar a interagir com os textos no nível da linguagem, por meio das ferramentas do Processamento de Linguagem Natural (PLN). Vamos progredir gradualmente nossa representação da linguagem a partir da morfologia, passando pela sintaxe e chegando à semântica.</p>
 <p>Nesta etapa, faremos uso de biliotecas especializadas em PLN como o <a class="reference external" href="https://www.nltk.org/">NLTK</a> e a <a class="reference external" href="https://spacy.io/">Spacy</a>.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -493,22 +508,173 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:54:58.903996: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-11-30 13:54:59.066405: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:54:59.872098: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
-2022-11-30 13:54:59.872208: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
-2022-11-30 13:54:59.872218: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:55:01.581156: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
-2022-11-30 13:55:01.581183: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-Skipping registering GPU devices...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_195404/1389995406.py</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">nltk</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">spacy</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># set library-specific custom warning handling before doing anything else</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="n">setup_default_warnings</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">setup_default_warnings</span><span class="p">()</span>  <span class="c1"># noqa: E402</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">errors</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">Literal</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">class</span> <span class="nc">ErrorsWithCodes</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="sd">&quot;&quot;&quot;Helpers for Python and platform compatibility.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">thinc.util</span> <span class="kn">import</span> <span class="n">copy_array</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">try</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.about</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">registry</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">confection</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">confection</span> <span class="kn">import</span> <span class="n">Config</span><span class="p">,</span> <span class="n">ConfigValidationError</span><span class="p">,</span> <span class="n">Promise</span><span class="p">,</span> <span class="n">VARIABLE_RE</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.types</span> <span class="kn">import</span> <span class="n">Decorator</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">types</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">has_cupy</span><span class="p">,</span> <span class="n">cupy</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">if</span> <span class="n">has_cupy</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> 
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="kn">import</span> <span class="nn">tensorflow.experimental.dlpack</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">autograph</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">bitwise</span>
+<span class="ne">---&gt; </span><span class="mi">51</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> 
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">autograph</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">bitwise</span>
+<span class="ne">---&gt; </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> 
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">layers</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="ne">---&gt; </span><span class="mi">47</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lite</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lookup</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">experimental</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">Interpreter</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpHint</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">authoring</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.analyzer</span> <span class="kn">import</span> <span class="n">ModelAnalyzer</span> <span class="k">as</span> <span class="n">Analyzer</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpResolverType</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.authoring.authoring</span> <span class="kn">import</span> <span class="n">compatible</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="n">authoring</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> 
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="c1"># pylint: disable=g-import-not-at-top</span>
+<span class="ne">---&gt; </span><span class="mi">43</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">convert</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.metrics</span> <span class="kn">import</span> <span class="n">converter_error_data_pb2</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite_constants</span>
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">wrap_toco</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.convert_phase</span> <span class="kn">import</span> <span class="n">Component</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">util</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="c1"># pylint: disable=unused-import</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">53</span>   <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">xla_computation</span> <span class="k">as</span> <span class="n">_xla_computation</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>   <span class="n">_xla_computation</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="c1"># We want the exported object to be the class, so we first import the module</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="c1"># to make sure a later import doesn&#39;t overwrite the class.</span>
+<span class="ne">---&gt; </span><span class="mi">35</span> <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">_config_module</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">del</span> <span class="n">_config_module</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># TODO(phawkins): fix users of this alias and delete this file.</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">jax._src.config</span> <span class="kn">import</span> <span class="n">config</span>  <span class="c1"># noqa: F401</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">NamedTuple</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> 
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">jax._src</span> <span class="kn">import</span> <span class="n">lib</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">jax_jit</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">transfer_guard_lib</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> 
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">version_str</span> <span class="o">=</span> <span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span>
+<span class="ne">---&gt; </span><span class="mi">74</span> <span class="n">version</span> <span class="o">=</span> <span class="n">check_jaxlib_version</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>   <span class="n">jax_version</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>   <span class="n">jaxlib_version</span><span class="o">=</span><span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/jax/_src/lib/__init__.py</span> in <span class="ni">check_jaxlib_version</span><span class="nt">(jax_version, jaxlib_version, minimum_jaxlib_version)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;jaxlib is version </span><span class="si">{</span><span class="n">jaxlib_version</span><span class="si">}</span><span class="s1">, but this version &#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>            <span class="sa">f</span><span class="s1">&#39;of jax requires version &gt;= </span><span class="si">{</span><span class="n">minimum_jaxlib_version</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> 
+<span class="g g-Whitespace">     </span><span class="mi">65</span>   <span class="k">if</span> <span class="n">_jaxlib_version</span> <span class="o">&gt;</span> <span class="n">_jax_version</span><span class="p">:</span>
+
+<span class="ne">RuntimeError</span>: jaxlib is version 0.3.15, but this version of jax requires version &gt;= 0.3.22.
 </pre></div>
 </div>
 </div>
@@ -554,7 +720,7 @@ Skipping registering GPU devices...
 </div>
 </div>
 <section id="lendo-os-verbetes-do-banco-de-dados">
-<h2>Lendo os verbetes do Banco de Dados<a class="headerlink" href="#lendo-os-verbetes-do-banco-de-dados" title="Permalink to this heading">#</a></h2>
+<h2>Lendo os verbetes do Banco de Dados<a class="headerlink" href="#lendo-os-verbetes-do-banco-de-dados" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabela</span> <span class="o">=</span> <span class="n">tabula_verbete</span><span class="p">()</span>
@@ -602,53 +768,53 @@ Skipping registering GPU devices...
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>822.text</td>
-      <td>BRÁS, Wenceslau</td>
+      <td>1</td>
+      <td>4361.text</td>
+      <td>PRATES, Mílton</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. MG 1903-1908\n - pres. MG 1909-...</td>
-      <td>\n\n«Wenceslau Brás Pereira Gomes» nasceu em S...</td>
+      <td>\n - const. 1946\n - dep. fed. MG 1946-1951 \n</td>
+      <td>\n\n«Luís Mílton Prates» nasceu em Montes Clar...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
-      <td>3098.text</td>
-      <td>MACHADO, João</td>
+      <td>2</td>
+      <td>5224.text</td>
+      <td>SUREK, Alberto</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. DF 1955-1959 \n</td>
-      <td>\n\n«João dos Reis Ferreira Machado» nasceu no...</td>
+      <td>\n - const. 1934\n - dep. fed. prof. 1935-193...</td>
+      <td>\n\n«Alberto Surek» nasceu em Araucária (PR) n...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
-      <td>2337.text</td>
-      <td>GÓIS, Aroldo</td>
+      <td>3</td>
+      <td>5039.text</td>
+      <td>SILVA, Luís Gonzaga do Nascimento e</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. AP 1991-1995\n</td>
-      <td>\n\n«Aroldo da Graça Sousa Góis» nasceu em Alm...</td>
+      <td>\n - pres. BNH 1965-1966\n - min. Trab. 1966-...</td>
+      <td>\n\n«Luís Gonzaga do Nascimento e Silva» nasce...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
-      <td>11699.text</td>
-      <td>BETING, Joelmir</td>
+      <td>5</td>
+      <td>756.text</td>
+      <td>BORJA, Célio</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - jornalista  \nautor: \n - Alzira Alves d...</td>
-      <td>\n\n«Joelmir José Beting» nasceu em Tambaú (SP...</td>
+      <td>\n - dep. fed. GB 1971-1975\n - dep. fed. RJ 1...</td>
+      <td>\n\n«Célio de Oliveira Borja» nasceu no Rio de...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
-      <td>1774.text</td>
-      <td>DUARTE, Ovídio</td>
+      <td>6</td>
+      <td>5352.text</td>
+      <td>TORRES, Fontes</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. PB 1954-1955\n - dep. fed. PB ...</td>
-      <td>\n\n«Ovídio Borba Duarte» nasceu em Serraria, ...</td>
+      <td>\n - dep. fed. RJ 1964-1967 \n</td>
+      <td>\n\n«José Fontes Torres» nasceu em Santo Antôn...</td>
     </tr>
   </tbody>
 </table>
@@ -656,7 +822,7 @@ Skipping registering GPU devices...
 </div>
 </section>
 <section id="tokenizacao-com-o-nltk">
-<h2>Tokenização com o NLTK<a class="headerlink" href="#tokenizacao-com-o-nltk" title="Permalink to this heading">#</a></h2>
+<h2>Tokenização com o NLTK<a class="headerlink" href="#tokenizacao-com-o-nltk" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
@@ -664,10 +830,6 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /home/fccoelho/nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
@@ -681,16 +843,7 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«&#39;,
- &#39;Wenceslau&#39;,
- &#39;Brás&#39;,
- &#39;Pereira&#39;,
- &#39;Gomes&#39;,
- &#39;»&#39;,
- &#39;nasceu&#39;,
- &#39;em&#39;,
- &#39;São&#39;,
- &#39;Caetano&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«&#39;, &#39;Luís&#39;, &#39;Mílton&#39;, &#39;Prates&#39;, &#39;»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;Montes&#39;, &#39;Claros&#39;, &#39;(&#39;]
 </pre></div>
 </div>
 </div>
@@ -704,16 +857,16 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;,&#39;, 176),
- (&#39;de&#39;, 152),
- (&#39;a&#39;, 78),
- (&#39;.&#39;, 74),
- (&#39;do&#39;, 59),
- (&#39;o&#39;, 54),
- (&#39;da&#39;, 48),
- (&#39;e&#39;, 47),
- (&#39;em&#39;, 43),
- (&#39;que&#39;, 26)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;de&#39;, 17),
+ (&#39;.&#39;, 14),
+ (&#39;,&#39;, 10),
+ (&#39;do&#39;, 9),
+ (&#39;a&#39;, 6),
+ (&#39;da&#39;, 5),
+ (&#39;em&#39;, 4),
+ (&#39;e&#39;, 4),
+ (&#39;(&#39;, 3),
+ (&#39;)&#39;, 3)]
 </pre></div>
 </div>
 </div>
@@ -728,7 +881,7 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c1eacab0a7111f7ecf8f953962381a2721c34567f093c9e837cce8912196e0d1.png" src="_images/c1eacab0a7111f7ecf8f953962381a2721c34567f093c9e837cce8912196e0d1.png" />
+<img alt="_images/Capitulo_2_16_0.png" src="_images/Capitulo_2_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -739,15 +892,15 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numero de tokens: 2527
-Tamanho do Vocabulário: 907
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numero de tokens: 252
+Tamanho do Vocabulário: 151
 </pre></div>
 </div>
 </div>
 </div>
 <p>Como vemos no exemplo acima, as palavras mais frequentes não muito informativas. Muitas vezes pode ser útil removê-las da análise. Linguistas costumams chamar este tipo de palavras de <strong>stop-words</strong>. Alem disso, vamos tambem remover as pontuaçoes.</p>
 <section id="removendo-as-stopwords">
-<h3>Removendo as Stopwords<a class="headerlink" href="#removendo-as-stopwords" title="Permalink to this heading">#</a></h3>
+<h3>Removendo as Stopwords<a class="headerlink" href="#removendo-as-stopwords" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
@@ -755,11 +908,6 @@ Tamanho do Vocabulário: 907
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to
-[nltk_data]     /home/fccoelho/nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
@@ -802,14 +950,14 @@ Tamanho do Vocabulário: 907
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c379f7502bdff510f51c57a01d9e8b492f474810168c88f90a1334e5b9e0c4dc.png" src="_images/c379f7502bdff510f51c57a01d9e8b492f474810168c88f90a1334e5b9e0c4dc.png" />
+<img alt="_images/Capitulo_2_23_0.png" src="_images/Capitulo_2_23_0.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="analizando-colecoes-de-textos">
-<h1>Analizando coleções de textos<a class="headerlink" href="#analizando-colecoes-de-textos" title="Permalink to this heading">#</a></h1>
+<h1>Analizando coleções de textos<a class="headerlink" href="#analizando-colecoes-de-textos" title="Permalink to this headline">#</a></h1>
 <p>Acima analizamos o conteúdo de apenas um verbete, mas seria bem mais relevante podermos fazer a análise em uma coleção de verbetes. Para isso aprenderemos a criar um objeto <code class="docutils literal notranslate"><span class="pre">TextCollection</span></code> que como o nome diz, representa uma coleção de texto, mas que nos permite a realização de análises a nível de coleção.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -825,7 +973,7 @@ Tamanho do Vocabulário: 907
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FreqDist({&#39;,&#39;: 597012, &#39;de&#39;: 525737, &#39;.&#39;: 264101, &#39;do&#39;: 230022, &#39;a&#39;: 218214, &#39;e&#39;: 196003, &#39;da&#39;: 185135, &#39;em&#39;: 155492, &#39;o&#39;: 150981, &#39;)&#39;: 89553, ...})
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FreqDist({&#39;,&#39;: 587463, &#39;de&#39;: 517135, &#39;.&#39;: 259247, &#39;do&#39;: 226381, &#39;a&#39;: 214979, &#39;e&#39;: 192479, &#39;da&#39;: 181854, &#39;em&#39;: 153158, &#39;o&#39;: 148578, &#39;)&#39;: 87927, ...})
 </pre></div>
 </div>
 </div>
@@ -837,32 +985,32 @@ Tamanho do Vocabulário: 907
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 25 of 10304 matches:
-rgem Grande , hoje Brasópolis ( MG ) , no dia 26 de fevereiro de 1868 , filho do coronel Francisco Brás Pereira Gomes - deputado à Assembléia da prov
-o de Janeiro , então Distrito Federal , no dia 6 de fevereiro de 1898 , filho de Cesário Pereira Machado , médico , intendente municipal e secretário
-raça Sousa Góis » nasceu em Almeirim ( PA ) no dia 17 de maio de 1948 , filho de Enéas de Siqueira Góis e de Íris de Sousa Góis . Seus irmãos foram d
-icipava ainda do programa esportivo « Beting &amp; Beting » , junto com seu filho Mauro e o sobrinho Erich , levados ao ar pelo canal de assinatura BandS
- nasceu em Serraria , então Pilões ( PB ) , no dia 4 de julho de 1915 , filho de Ovídio Duarte dos Santos Lima e de Laura Borba Duarte . Estudou no C
-ance ) . « Rui Araújo » nasceu em Recife no dia 4 de dezembro de 1900 , filho do jurista e professor Francisco Pedro de Araújo Filho e de Francelina 
-zembro de 1900 , filho do jurista e professor Francisco Pedro de Araújo Filho e de Francelina Barbosa de Araújo . Transferiu-se com a família em 1904
-o de Janeiro , então Distrito Federal , no dia 28 de setembro de 1903 , filho do jornalista Domingos Alves de Oliveira e de Sara Garcia de Oliveira .
-e novembro de 1998 . Era casado com Alda de Oliveira , com quem teve um filho . « Ubaldo Ramalhete Maia » nasceu em Santa Leopoldina ( ES ) no dia 8 
-e Maia » nasceu em Santa Leopoldina ( ES ) no dia 8 de agosto de 1882 , filho de Antônio Ramalhete Maia e de Ana Ramalhete Maia . Após concluir os es
-lio Vargas » nasceu em Piraí do Sul ( PR ) no dia 28 de junho de 1929 , filho de Rivadávia Barbosa Vargas e de Dalila Rolim Vargas . Bacharelou-se em
- Peixoto » nasceu em São Fidélis ( RJ ) no dia 11 de dezembro de 1884 , filho de Joaquim Peixoto Filho . Sentou praça em abril de 1901 , ingressando 
-Fidélis ( RJ ) no dia 11 de dezembro de 1884 , filho de Joaquim Peixoto Filho . Sentou praça em abril de 1901 , ingressando na Escola Militar da Prai
-o Rio de Janeiro , então Distrito Federal , no dia 19 de maio de 1925 , filho do comerciante Joaquim de Magalhães e de Rosa Londres de Magalhães , am
- , mais tarde , diretor de Obras . Durante a gestão de José Sete Câmara Filho como primeiro governador provisório do estado da Guanabara - criado em 
- , assumiu o governo do Distrito Federal , sucedendo a José Sete Câmara Filho ( 1961-1962 ) . Durante sua gestão , enfrentando uma difícil situação f
- Gaioso Castelo Branco » nasceu em Teresina no dia 5 de março de 1925 , filho de Oscar Gil Castelo Branco e de Alice Almendra Gaioso Castelo Branco .
-eira » nasceu em Carmo do Rio Claro ( MG ) no dia 17 de julho de 1934 , filho de Geraldo Ferreira e de Odete Maria de Castro Ferreira . Estudou no Gi
- Manhães » nasceu em Cariacica ( ES ) , no dia 25 de dezembro de 1934 , filho de Manuel Manhães e de Maria da Conceição dos Santos Manhães . Bacharel
- Moulim Manhães , com quem teve duas filhas . Uma delas casou-se com um filho de Pedro Ceolim , deputado federal pelo Espírito Santo em 1983 a 1991 .
-olatto » nasceu em Lagoa Vermelha ( RS ) no dia 15 de outubro de 1949 , filho de Ângelo Colatto e de Ocila Terra Colatto . Engenheiro agrônomo formad
-Rio de Janeiro , então Distrito Federal , no dia 6 de outubro de 1899 , filho de Alberto Mota e de Maria de Araújo Mota . Sentou praça em fevereiro d
-o dia 16 ( ou 17 ) de março de 1975 . « Artur Virgílio do Carmo Ribeiro Filho » nasceu em Manaus no dia 12 de fevereiro de 1921 , filho do magistrado
-Carmo Ribeiro Filho » nasceu em Manaus no dia 12 de fevereiro de 1921 , filho do magistrado Artur Virgílio do Carmo Ribeiro e de Luísa da Conceição d
-tir de 1995 e prefeito de Manaus de 1989 a 1992 . « José Múcio Monteiro Filho » nasceu em Recife no dia 25 de setembro de 1948 , filho de José Múcio 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 25 of 10181 matches:
+Alberto Surek » nasceu em Araucária ( PR ) no dia 21 de abril de 1899 , filho de Martim Surek e de Maria Surek . Fez os primeiros estudos em sua cida
+mento e Silva » nasceu em Itajubá ( MG ) no dia 24 de janeiro de 1915 , filho do advogado Francisco Eulálio do Nascimento e Silva Filho e de Maria do
+iro de 1915 , filho do advogado Francisco Eulálio do Nascimento e Silva Filho e de Maria do Rosário Bento do Nascimento e Silva . Em sua família , de
+dispendioso instrumento de corrupção e subversão ” , segundo Luís Viana Filho . Nascimento e Silva empenhou-se na reforma e , ainda em novembro de 19
+transformando-o em decreto-lei ainda em 1966 . De acordo com Luís Viana Filho , “ entre os trabalhadores a medida produziu bom efeito . Golberi [ do 
+nto e Silva , falecida em 1986 , com quem teve um casal de filhos . Seu filho Luís Roberto do Nascimento e Silva foi ministro da Cultura entre 1993 e
+ Rio de Janeiro , então Distrito Federal , no dia 15 de julho de 1928 , filho de Francisco Filinto de Oliveira Borja e de Maria Benjamin Borja . Fez 
+ , então distrito de Barra Mansa ( RJ ) , no dia 2 de janeiro de 1916 , filho de Francisco C. Torres Sobrinho e de Emiliana Fontes Torres . Fez os es
+Rio de Janeiro , então Distrito Federal , no dia 19 de novembro de 1937 filho do médico José Dauster Mota e Silva e de Josefa Magalhães e Silva , pro
+io de Janeiro , então Distrito Federal , no dia 7 de dezembro de 1901 , filho de Augusto Amaral Peixoto e de Alice Monteiro Amaral Peixoto . Seu pai 
+u a cadeira na Câmara Federal , preenchendo a vaga aberta por Luís Gama Filho , nomeado ministro do Tribunal de Contas do Distrito Federal . Diante d
+ inconstitucional , já que o sucessor legal do presidente era João Café Filho , vice-presidente da República . Na madrugada do dia 24 , Augusto Amara
+o tornou-se opositor do novo governo chefiado pelo vice-presidente Café Filho . Em novembro de 1955 , foi solidário com o movimento militar empreendi
+tou do poder o presidente interino Carlos Luz e a seguir o próprio Café Filho para garantir a posse de Juscelino Kubitschek , vencedor das eleições p
+do da Guanabara na vaga aberta pela aposentadoria do ministro João Café Filho . Aposentou-se em novembro de 1971 , por ter atingido o limite de idade
+ de 1984 . Era casado com Maria Luísa Amaral Peixoto , com quem teve um filho . Escreveu , ainda inéditas , « Recordações revolucionárias e políticas
+o Leivas Otero » nasceu em Rio Grande ( RS ) no dia 4 de maio de 1912 , filho de Carlos Alberto de Otero e de Maria José Leivas Otero . Seu irmão Aug
+naltina ( GO ) , hoje Distrito Federal , no dia 31 de outubro de 1905 , filho de Salviano Monteiro Guimarães e de Olívia de Campos Guimarães . Formou
+ Araújo Pomar » nasceu em Óbidos ( PA ) no dia 23 de setembro de 1913 , filho de Filipe Cossio Pomar e de Rosa de Araújo Pomar . Passou a infância em
+, enquanto Elza Monerat , José Morais , Aldo Arantes , Vladimir Pomar , filho de Pedro Pomar , Aroldo Lima e Jover Teles foram presos . Pedro Pomar f
+iz Ramos » nasceu em Araripina ( PE ) , no dia 22 de setembro de 1939 , filho de Manuel Ramos de Barros e de Maria de Lurdes Muniz Ramos . O pai , do
+ de Andrada » nasceu em Barbacena ( MG ) no dia 5 de setembro de 1870 , filho de Antônio Carlos Ribeiro de Andrada e de Adelaide Feliciano Duarte de 
+ Câmara dos Deputados , do deputado pernambucano Manuel Francisco Sousa Filho por seu colega gaúcho Ildefonso Simões Lopes . Cresceu , também , o apo
+relatórios oficiais e pareceres , e numerosos discursos . Em 1946 , seu filho Fábio Andrada organizou uma coletânea de artigos intitulada « Antônio C
+ia de município com o nome de Antônio Carlos . « Afrânio de Melo Franco Filho » nasceu em Belo Horizonte no dia 28 de junho de 1901 , filho de Afrâni
 </pre></div>
 </div>
 </div>
@@ -875,7 +1023,7 @@ tir de 1995 e prefeito de Manaus de 1989 a 1992 . « José Múcio Monteiro Filho
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ConcordanceLine(left=[&#39;«&#39;, &#39;Wenceslau&#39;, &#39;Brás&#39;, &#39;Pereira&#39;, &#39;Gomes&#39;, &#39;»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;São&#39;, &#39;Caetano&#39;, &#39;da&#39;, &#39;Vargem&#39;, &#39;Grande&#39;, &#39;,&#39;, &#39;hoje&#39;, &#39;Brasópolis&#39;, &#39;(&#39;, &#39;MG&#39;, &#39;)&#39;, &#39;,&#39;, &#39;no&#39;, &#39;dia&#39;, &#39;26&#39;, &#39;de&#39;, &#39;fevereiro&#39;, &#39;de&#39;, &#39;1868&#39;, &#39;,&#39;], query=&#39;filho&#39;, right=[&#39;do&#39;, &#39;coronel&#39;, &#39;Francisco&#39;, &#39;Brás&#39;, &#39;Pereira&#39;, &#39;Gomes&#39;, &#39;-&#39;, &#39;deputado&#39;, &#39;à&#39;, &#39;Assembléia&#39;, &#39;da&#39;, &#39;província&#39;, &#39;de&#39;, &#39;Minas&#39;, &#39;Gerais&#39;, &#39;durante&#39;, &#39;muitos&#39;, &#39;anos&#39;, &#39;-&#39;, &#39;e&#39;, &#39;de&#39;, &#39;Isabel&#39;, &#39;Pereira&#39;, &#39;dos&#39;, &#39;Santos&#39;, &#39;.&#39;, &#39;Fez&#39;, &#39;os&#39;, &#39;primeiros&#39;, &#39;estudos&#39;, &#39;em&#39;, &#39;sua&#39;, &#39;cidade&#39;, &#39;natal&#39;, &#39;,&#39;, &#39;cursou&#39;], offset=28, left_print=&#39;rgem Grande , hoje Brasópolis ( MG ) , no dia 26 de fevereiro de 1868 ,&#39;, right_print=&#39;do coronel Francisco Brás Pereira Gomes - deputado à Assembléia da prov&#39;, line=&#39;rgem Grande , hoje Brasópolis ( MG ) , no dia 26 de fevereiro de 1868 , filho do coronel Francisco Brás Pereira Gomes - deputado à Assembléia da prov&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ConcordanceLine(left=[&#39;casado&#39;, &#39;com&#39;, &#39;Noemi&#39;, &#39;de&#39;, &#39;Sá&#39;, &#39;Lessa&#39;, &#39;Prates&#39;, &#39;.&#39;, &#39;Publicou&#39;, &#39;«&#39;, &#39;Gente&#39;, &#39;boa&#39;, &#39;»&#39;, &#39;,&#39;, &#39;obra&#39;, &#39;de&#39;, &#39;literatura&#39;, &#39;regional&#39;, &#39;.&#39;, &#39;«&#39;, &#39;Alberto&#39;, &#39;Surek&#39;, &#39;»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;Araucária&#39;, &#39;(&#39;, &#39;PR&#39;, &#39;)&#39;, &#39;no&#39;, &#39;dia&#39;, &#39;21&#39;, &#39;de&#39;, &#39;abril&#39;, &#39;de&#39;, &#39;1899&#39;, &#39;,&#39;], query=&#39;filho&#39;, right=[&#39;de&#39;, &#39;Martim&#39;, &#39;Surek&#39;, &#39;e&#39;, &#39;de&#39;, &#39;Maria&#39;, &#39;Surek&#39;, &#39;.&#39;, &#39;Fez&#39;, &#39;os&#39;, &#39;primeiros&#39;, &#39;estudos&#39;, &#39;em&#39;, &#39;sua&#39;, &#39;cidade&#39;, &#39;natal&#39;, &#39;e&#39;, &#39;de&#39;, &#39;1912&#39;, &#39;a&#39;, &#39;1915&#39;, &#39;cursou&#39;, &#39;o&#39;, &#39;Ginásio&#39;, &#39;Diocesano&#39;, &#39;,&#39;, &#39;em&#39;, &#39;Curitiba&#39;, &#39;.&#39;, &#39;Guarda-livros&#39;, &#39;da&#39;, &#39;firma&#39;, &#39;Magalhães&#39;, &#39;e&#39;, &#39;Companhia&#39;, &#39;,&#39;], offset=270, left_print=&#39;Alberto Surek » nasceu em Araucária ( PR ) no dia 21 de abril de 1899 ,&#39;, right_print=&#39;de Martim Surek e de Maria Surek . Fez os primeiros estudos em sua cida&#39;, line=&#39;Alberto Surek » nasceu em Araucária ( PR ) no dia 21 de abril de 1899 , filho de Martim Surek e de Maria Surek . Fez os primeiros estudos em sua cida&#39;)
 </pre></div>
 </div>
 </div>
@@ -887,13 +1035,13 @@ tir de 1995 e prefeito de Manaus de 1989 a 1992 . « José Múcio Monteiro Filho
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>do coronel Francisco Brás Pereira Gomes - deputado à Assembléia da província de Minas Gerais durante muitos anos - e de Isabel Pereira dos Santos . Fez os primeiros estudos em sua cidade natal , cursou
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>de Martim Surek e de Maria Surek . Fez os primeiros estudos em sua cidade natal e de 1912 a 1915 cursou o Ginásio Diocesano , em Curitiba . Guarda-livros da firma Magalhães e Companhia ,
 </pre></div>
 </div>
 </div>
 </div>
 <section id="exercicio">
-<h2>Exercício<a class="headerlink" href="#exercicio" title="Permalink to this heading">#</a></h2>
+<h2>Exercício<a class="headerlink" href="#exercicio" title="Permalink to this headline">#</a></h2>
 <p>Utilizando a ferramenta de concordance, procure extrair a filiação dos verbetados, escrevendo uma função que percorra todas as ocorrências da palavra “filho”, separando aquelas com sentido de indicação de filiação.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -937,28 +1085,28 @@ tir de 1995 e prefeito de Manaus de 1989 a 1992 . « José Múcio Monteiro Filho
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processando 11202 linhas
-Pai: coronel Francisco Brás Pereira Gomes - deputado à Assembléia da província de Minas Gerais durante muitos anos - 
- Mãe: Isabel Pereira dos Santos
-Pai: Cesário Pereira Machado 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processando 11028 linhas
+Pai: Martim Surek 
+ Mãe: Maria Surek
+Pai: advogado Francisco Eulálio do Nascimento 
+ Mãe: Silva Filho Maria do Rosário Bento do Nascimento Silva
+Pai: Francisco Filinto de Oliveira Borja 
+ Mãe: Maria Benjamin Borja
+Pai: Francisco C. Torres Sobrinho 
+ Mãe: Emiliana Fontes Torres
+Pai: médico José Dauster Mota 
+ Mãe: Silva Josefa Magalhães Silva
+Pai: Augusto Amaral Peixoto 
+ Mãe: Alice Monteiro Amaral Peixoto
+Pai: Carlos Alberto de Otero 
+ Mãe: Maria José Leivas Otero
+Pai: Salviano Monteiro Guimarães 
+ Mãe: Olívia Campos Guimarães
+Pai: Filipe Cossio Pomar 
+ Mãe: Rosa Araújo Pomar
+Pai: Pedro Pomar 
  Mãe: desconhecida.
-Pai: Enéas de Siqueira Góis 
- Mãe: Íris Sousa Góis
-Pai: Ovídio Duarte dos Santos Lima 
- Mãe: Laura Borba Duarte
-Pai: jurista 
- Mãe: professor Francisco Pedro Araújo Filho Francelina Barbosa Araújo
-Pai: jornalista Domingos Alves de Oliveira 
- Mãe: Sara Garcia Oliveira
-Pai: Antônio Ramalhete Maia 
- Mãe: Ana Ramalhete Maia
-Pai: Rivadávia Barbosa Vargas 
- Mãe: Dalila Rolim Vargas
-Pai: Joaquim Peixoto Filho 
- Mãe: desconhecida.
-Pai: comerciante Joaquim de Magalhães 
- Mãe: Rosa Londres Magalhães
-Encontramos progenitores em 6572 linhas
+Encontramos progenitores em 6459 linhas
 </pre></div>
 </div>
 </div>
@@ -970,13 +1118,13 @@ Encontramos progenitores em 6572 linhas
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ec95d9dc245c749853eb4777bafc8d1bd4033243a45a1cd43d518975bb1cdacb.png" src="_images/ec95d9dc245c749853eb4777bafc8d1bd4033243a45a1cd43d518975bb1cdacb.png" />
+<img alt="_images/Capitulo_2_32_0.png" src="_images/Capitulo_2_32_0.png" />
 </div>
 </div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="separando-frases">
-<h1>Separando frases<a class="headerlink" href="#separando-frases" title="Permalink to this heading">#</a></h1>
+<h1>Separando frases<a class="headerlink" href="#separando-frases" title="Permalink to this headline">#</a></h1>
 <p>Além de quebrar os textos em seus tokens constituintes, podemos também dividi-los por frases, o que pode ser mais convenientes para certas análises. Para isso utilizamos a função <code class="docutils literal notranslate"><span class="pre">sent_tokenize</span></code> do nltk.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -985,87 +1133,27 @@ Encontramos progenitores em 6572 linhas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;\n\n«Wenceslau Brás Pereira Gomes» nasceu em São Caetano da Vargem Grande,\nhoje Brasópolis (MG), no dia 26 de fevereiro de 1868, filho do coronel\nFrancisco Brás Pereira Gomes - deputado à Assembléia da província de\nMinas Gerais durante muitos anos - e de Isabel Pereira dos Santos.&#39;,
- &#39;Fez os primeiros estudos em sua cidade natal, cursou humanidades no\nSeminário Episcopal da capital paulista e ingressou em seguida na\nFaculdade de Direito de São Paulo, pela qual se formou em 1890.&#39;,
- &#39;Retornando a Minas, foi nomeado promotor público em Jacuí e depois\ntransferiu-se para Monte Santo, onde atuou também como advogado e\nexerceu as funções de intendente municipal, correspondentes às dos\natuais prefeitos.&#39;,
- &#39;Eleito deputado estadual em 1892, permaneceu na Câmara\nmineira até 1898, quando assumiu a Secretaria do Interior do governo\nchefiado por Silviano de Almeida Brandão, que se estendeu até 1902.&#39;,
- &#39;Conquistou então um mandato de deputado federal para a legislatura\niniciada em 1903, tornando-se líder da bancada mineira e, pouco depois,\nda maioria no Congresso.&#39;,
- &#39;Reeleito, permaneceu na Câmara Federal até\n1908.&#39;,
- &#39;Em abril do ano seguinte, assumiu o governo de seu estado em\nsubstituição a João Pinheiro da Silva, recém-falecido.&#39;,
- &#39;Encontrava-se no\nexercício do cargo quando, em março de 1910, foi eleito vice-presidente\nda República na chapa encabeçada pelo marechal Hermes da Fonseca.&#39;,
- &#39;Em\nsetembro do mesmo ano deixou o governo mineiro.&#39;,
- &#39;Colocado o problema da sucessão de Hermes da Fonseca em 1913, o senador\ngaúcho José Pinheiro Machado iniciou articulações em torno da sua\nprópria candidatura.&#39;,
- &#39;Político dotado de grande prestígio e influência,\namigo pessoal do presidente, Pinheiro Machado era considerado por boa\nparte dos governos estaduais e pela maioria do Congresso como o nome\nmais indicado para assumir a chefia do governo federal.&#39;,
- &#39;Entretanto, os\npresidentes de Minas Gerais e de São Paulo, ciosos do poder de\ninfluência de seus estados, firmaram o Pacto de Ouro Fino, prevendo a\nconsulta mútua para a escolha de um candidato comum à presidência.&#39;,
- &#39;Ao\nmesmo tempo em que a oposição a Pinheiro Machado se fortalecia, a Bahia\nlançou o nome de Rui Barbosa.&#39;,
- &#39;A tentativa de composição desses dois\npostulantes não deu certo, provocando um impasse que criou as condições\npara o lançamento de Wenceslau Brás pelos governos mineiro e paulista.&#39;,
- &#39;Pinheiro Machado acabou apoiando o candidato mineiro, que derrotou Rui\nBarbosa nas eleições de março de 1914, tendo como companheiro de chapa\nUrbano Santos, presidente do Maranhão.&#39;,
- &#39;## Na presidência da República\n\nWenceslau Brás assumiu o governo federal em 15 de novembro de 1914,\npouco depois da eclosão da Primeira Guerra Mundial.&#39;,
- &#39;Logo no início do\nseu mandato, se defrontou com um grave impasse político no estado do\nRio, onde dois candidatos se consideravam eleitos pela Assembléia para a\nchefia do Executivo.&#39;,
- &#39;Feliciano Sodré, correligionário de Pinheiro\nMachado, contava com o apoio expresso da maioria dos deputados, mas a\nminoria, que detinha o controle da mesa, obteve através de «habeas-\ncorpus» o reconhecimento do Supremo Tribunal Federal (STF) para a posse\nde Nilo Peçanha.&#39;,
- &#39;Inconformada com essa decisão, a maioria solicitou a\nintervenção federal, mas Wenceslau Brás optou pelo cumprimento da\ndecisão judicial, contrariando assim a posição de Pinheiro Machado, que\npassou a fazer oposição ao governo federal até falecer em 1915.&#39;,
- &#39;Com o\ndesaparecimento do senador gaúcho, Wenceslau passou a exercer plenamente\na liderança política do país, resolvendo em seguida a disputa pela\nchefia do governo de Mato Grosso.&#39;,
- &#39;Em 1916, promoveu a solução da questão\nde limites entre Paraná e Santa Catarina na região do Contestado, onde,\ndepois de sucessivas expedições militares, o Exército conseguiu esmagar\numa revolta popular de cunho messiânico que se prolongava desde 1912.&#39;,
- &#39;Apesar da neutralidade adotada pelo governo de Wenceslau Brás nos\nprimeiros anos do conflito mundial, a economia brasileira sofreu os\nreflexos da crise financeira internacional e teve reduzida sua\ncapacidade para importar, o que provocou um aumento da produção da\nindústria nacional para substituir importações.&#39;,
- &#39;O governo adotou então\numa série de medidas, como a emissão de letras do Tesouro, a redução das\ndespesas públicas, o incentivo à implantação de siderurgias e à\nexploração de jazidas de carvão, e a construção de escolas profissionais\npara a formação de operários especializados.&#39;,
- &#39;Visando combater a carestia\ncausada pela especulação, criou também o Comissariado de Alimentação,\nencarregado de tabelar os preços dos gêneros de primeira necessidade,\nfiscalizar os depósitos de mercadorias, estabelecer postos de venda,\nfixar os preços dos fretes etc.&#39;,
- &#39;O governo de Wenceslau Brás multiplicou ainda os tiros-de-guerra,\ndestinados à formação de reservistas para o Exército, e dotou o Arsenal\nde Marinha, no Rio, de novas instalações.&#39;,
- &#39;Incentivou a adoção de\nconcursos públicos na administração civil e, em 1º de janeiro de 1917,\npromulgou o novo Código Civil.&#39;,
- &#39;Em outubro seguinte obteve do Congresso\naprovação para a declaração de guerra à Alemanha em virtude do\ntorpedeamento de alguns navios brasileiros por submarinos desse país.&#39;,
- &#39;Pouco depois, o Brasil enviou um corpo expedicionário à Europa comandado\npelo almirante Pedro Max de Frontin a fim de ajudar no patrulhamento do\nAtlântico Norte.&#39;,
- &#39;Em seu último ano de governo Wenceslau Brás promoveu o combate à\nepidemia de gripe espanhola.&#39;,
- &#39;Apoiou a candidatura vitoriosa de Rodrigues\nAlves à presidência e, com a posse deste em 15 de novembro de 1918,\nretirou-se provisoriamente da vida pública, fixando-se em Itajubá (MG).&#39;,
- &#39;Durante a revolta paulista de julho de 1924, o general Isidoro Dias\nLopes, comandante dos contingentes rebeldes, propôs seu nome para compor\numa junta provisória formada por “nomes nacionais de reconhecida\nprobidade e da confiança dos revolucionários”, que substituiriam o\npresidente Artur Bernardes.&#39;,
- &#39;Essa proposta não foi considerada pelo\ngoverno, que conseguiu expulsar os rebeldes da capital paulista depois\nde três semanas de combates, retomando o controle da situação.&#39;,
- &#39;## O retorno à cena política\n\nDurante o encaminhamento da sucessão do presidente Washington Luís\n(1926-1930) ocorreu uma cisão na aliança de Minas Gerais com São Paulo,\npois o presidente da República rompeu a alternância de candidatos destes\ndois estados, indicando o paulista Júlio Prestes para substituí-lo.&#39;,
- &#39;Antônio Carlos Ribeiro de Andrada, chefe do governo mineiro e candidato\nnatural à presidência, aproximou-se então dos líderes gaúchos, passando\na apoiar a formação da Aliança Liberal, coligação oposicionista que, em\nmeados de 1929, lançou a candidatura do presidente do Rio Grande do Sul,\nGetúlio Vargas.&#39;,
- &#39;O debate dessa questão coincidiu com o equacionamento da\nsucessão do próprio Antônio Carlos, que dividiu o Partido Republicano\nMineiro (PRM), dominante na política estadual.&#39;,
- &#39;Membro da comissão\nexecutiva desse partido, Wenceslau Brás viajou para Belo Horizonte em\noutubro de 1929 a fim de participar das reuniões para a definição do\nquadro sucessório, que envolvia três correntes principais, lideradas por\nAntônio Carlos, Artur Bernardes e Fernando de Melo Viana.&#39;,
- &#39;Depois de\nsucessivos encontros, a maioria dos líderes situacionistas de Minas\nGerais concordou em apoiar o nome de Olegário Maciel, provocando uma\ncisão chefiada por Melo Viana, que manteve sua própria candidatura e, no\nplano nacional, passou a apoiar Júlio Prestes através do movimento\ndenominado Concentração Conservadora.&#39;,
- &#39;Após as eleições para a presidência da República e a Câmara Federal,\nrealizadas em 1º de março de 1930, as dissidências se agravaram.&#39;,
- &#39;Importantes setores aliancistas em diversos estados consideraram\nfraudulenta a vitória de Júlio Prestes sobre Getúlio Vargas, passando a\narticular junto com militares oriundos do movimento tenentista um\nlevante armado contra o governo federal.&#39;,
- &#39;Ao mesmo tempo, a Comissão de\nVerificação de Poderes, ligada ao Congresso Nacional e incumbida de dar\nparecer sobre os pleitos estaduais, não reconheceu a eleição em Minas de\n14 deputados federais ligados à Aliança Liberal, diplomando em seus\nlugares elementos vinculados à Concentração Conservadora.&#39;,
- &#39;Em 27 de maio de 1930, com o objetivo de ratificar o apoio do PRM aos\ncandidatos derrotados da Aliança Liberal, a comissão executiva do\npartido reuniu-se na casa de Antônio Carlos, em Juiz de Fora, com a\npresença de Wenceslau Brás, Artur Bernardes, Afonso Pena Júnior, José\nBonifácio de Andrada e Silva, Mário Brant e Alaor Prata, entre outros.&#39;,
- &#39;Todos os participantes desse encontro apoiaram os compromissos assumidos\npor Antônio Carlos em nome do PRM com a conspiração revolucionária em\ncurso, posição que foi ratificada depois da posse de Olegário Maciel em\nsetembro.&#39;,
- &#39;A revolução foi deflagrada em 3 de outubro desse ano no Rio\nGrande do Sul, Minas e Paraíba, conduzindo à deposição de Washington\nLuís depois de 21 dias de luta e à formação, em 3 de novembro, do\nGoverno Provisório chefiado por Getúlio Vargas.&#39;,
- &#39;Olegário Maciel foi o\núnico chefe de Executivo estadual a ser mantido no cargo.&#39;,
- &#39;Em fevereiro de 1931, foi criada a Legião Mineira, organização que\ncontava com o apoio oficial e se propunha a aprofundar as reformas\nintroduzidas pela Revolução de 1930 utilizando um estilo de mobilização\nsemelhante ao do fascismo europeu.&#39;,
- &#39;Wenceslau Brás foi eleito para\nintegrar o conselho supremo da nova entidade, junto com Francisco\nCampos.&#39;,
- &#39;Gustavo Capanema, Amaro Lanari, Antônio Carlos, José Monteiro\nRibeiro Junqueira, Teodomiro Santiago e José Bonifácio.&#39;,
- &#39;Durante o\ncongresso da Legião, realizado em julho, o ex-presidente da República\npronunciou discurso afirmando que ela incorporara 80% dos diretórios do\nPRM, que se enfraquecia nitidamente.&#39;,
- &#39;Os perremistas liderados por Artur Bernardes e que não haviam aderido à\nnova organização se reuniram em Belo Horizonte no dia 13 de agosto de\n1931 e tentaram depor Olegário Maciel, que estreitava cada vez mais suas\nrelações com a Legião.&#39;,
- &#39;Com o fracasso dessa tentativa, a situação\npolítica estadual e a relação entre os governos mineiro e federal se\ntornaram ainda mais tensas.&#39;,
- &#39;A necessidade de promover a pacificação\nconduziu a negociações entre a Legião e o PRM com o objetivo de formar\num só partido que serviria de base de apoio a Maciel e Vargas.&#39;,
- &#39;Wenceslau\nBrás teve importante participação na articulação do chamado “Acordo\nmineiro”, assinado em fevereiro de 1932, que resultou na fundação do\nPartido Social Nacionalista (PSN), de cuja comissão diretora fez parte.&#39;,
- &#39;A posição de Minas nesse período foi marcada pela indefinição entre a\ndefesa do Governo Provisório e o apoio às reivindicações de\nreconstitucionalização do país, sustentadas principalmente pelas forças\npaulistas.&#39;,
- &#39;O primeiro efeito dessas divergências foi a dissolução do PSN\nem maio de 1932.&#39;,
- &#39;Com a eclosão da Revolução Constitucionalista de São\nPaulo no início de julho, Wenceslau Brás sugeriu a Olegário Maciel que a\nação de Minas se limitasse à defesa do seu território.&#39;,
- &#39;Apesar das\npressões de alguns líderes a favor do engajamento na luta armada contra\nVargas, o governo mineiro não aderiu à revolta, contribuindo assim para\no isolamento dos paulistas, fator decisivo para a vitória legalista.&#39;,
- &#39;Com a morte de Olegário Maciel em setembro de 1933 desencadeou-se em\nMinas uma crise sucessória, pois a possibilidade de acordo entre os dois\npretendentes mais fortes à interventoria - Gustavo Capanema e Virgílio\nde Melo Franco - era pequena.&#39;,
- &#39;Vargas pediu então que Antônio Carlos e\noutros líderes do estado elaborassem uma lista de nomes alternativos\nentre os membros do Partido Progressista, fundado em janeiro desse ano.&#39;,
- &#39;Wenceslau Brás foi um dos quatros novos nomes sugeridos, mas o chefe do\nGoverno Provisório pediu a inclusão do deputado Benedito Valadares, cuja\natuação até então tivera pouco destaque.&#39;,
- &#39;Dias depois, Valadares foi\nnomeado interventor federal no estado e, desvinculado de qualquer grupo\nlocal, conduziu a política mineira de acordo com as diretrizes de\nVargas.&#39;,
- &#39;Em julho de 1934, o nome de Wenceslau Brás foi ventilado como possível\ncandidato à presidência da República, em oposição a Vargas, no âmbito da\nAssembléia Nacional Constituinte.&#39;,
- &#39;O chefe do Governo Provisório recebeu\ndessa assembléia seu primeiro mandato constitucional que deveria durar\naté 1938.&#39;,
- &#39;Em novembro de 1937, entretanto, um golpe de Estado liderado\npelo próprio Vargas implantou o Estado Novo.&#39;,
- &#39;Em 1943, Wenceslau Brás, alegando seu afastamento da vida pública,\nrecusou-se a assinar o «Manifesto dos mineiros», uma das primeiras\nmanifestações das elites políticas de oposição ao regime ditatorial,\nderrubado em outubro de 1945.&#39;,
- &#39;Com a redemocratização do país, Wenceslau\nBrás foi novamente cogitado para se candidatar ao governo mineiro com o\napoio do novo presidente da República, Eurico Dutra, numa tentativa de\nconciliar o Partido Republicano (PR) com as alas do Partido Social\nDemocrático (PSD) lideradas por Melo Viana e José Francisco Bias Fortes.&#39;,
- &#39;Entretanto, esse último foi vitorioso na convenção do PSD, fazendo com\nque Wenceslau Brás e Melo Viana passassem a apoiar a candidatura de\nMílton Campos, da União Democrática Nacional (UDN), afinal vitorioso no\npleito de janeiro de 1947.&#39;,
- &#39;A partir de então, Wenceslau Brás retirou-se\ndefinitivamente da vida pública.&#39;,
- &#39;Em suas atividades empresariais, foi fundador, em 1912, e presidente da\nCompanhia Industrial Sul Mineira.&#39;,
- &#39;Presidiu também a Companhia Industrial\nForça e Luz de Itajubá, a Fábrica de Tecidos Codorna e o Banco de\nItajubá S.A., entre outras.&#39;,
- &#39;Wenceslau Brás faleceu em Itajubá no dia 15 de maio de 1966.&#39;,
- &#39;Era casado\ncom Maria Carneiro Pereira Gomes, com quem teve sete filhos.&#39;,
- &#39;Um deles,\nJosé Brás Pereira Gomes, foi eleito deputado à Assembléia Nacional\nConstituinte de 1934 na legenda do Partido Progressista Mineiro.&#39;,
- &#39;Sobre o biografado foram publicados artigos, discursos e conferências,\nentre os quais «A presidência da República; quem é Wenceslau Brás?»\n(1913), «O perfil de um grande estadista da República, dr. Wenceslau\nBrás» (coletânea de artigos de Pedro Cavalcanti publicados entre janeiro\ne março de 1956 no «Jornal do Comércio») e «Wenceslau, um pescador na\npresidência» (1968), de Darci Bessone de Oliveira Andrade.&#39;,
- &#39;O arquivo de Wenceslau Brás encontra-se depositado no Centro de Pesquisa\ne Documentação de História Contemporânea do Brasil (Cpdoc) da Fundação\nGetulio Vargas.&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;\n\n«Luís Mílton Prates» nasceu em Montes Claros (MG) no dia 7 de janeiro de\n1888.&#39;,
+ &#39;Realizou os estudos secundários no Colégio São Norberto.&#39;,
+ &#39;De formação\ncatólica, estudou filosofia com o padre redentorista Henrique Brandão.&#39;,
+ &#39;No pleito de dezembro de 1945 foi eleito suplente de deputado por Minas\nGerais à Assembléia Nacional Constituinte na legenda do Partido Social\nDemocrático (PSD), assumindo o mandato em fevereiro do ano seguinte.&#39;,
+ &#39;Participou dos trabalhos constituintes e, com a promulgação da nova\nCarta (18/9/1946), passou a exercer mandato ordinário.&#39;,
+ &#39;Em 1947 presidiu\na comissão de inquérito da Câmara que apurou as causas do\ncongestionamento do porto de Santos, responsável por vultosos prejuízos\nà economia nacional.&#39;,
+ &#39;Nessa legislatura integrou ainda a Comissão\nEspecial de Pecuária e foi presidente da Comissão de Indústria e\nComércio da Câmara dos Deputados.&#39;,
+ &#39;Em outubro de 1950 obteve de novo uma\nsuplência de deputado federal por Minas Gerais, sempre na legenda do\nPSD.&#39;,
+ &#39;Deixando a Câmara em janeiro de 1951, não voltou a exercer mandato.&#39;,
+ &#39;Em 1954 tornou-se membro do conselho consultivo do Banco do Nordeste,\ncargo que ocupou até 1960.&#39;,
+ &#39;Também jornalista, foi oficial-de-gabinete do\nMinistério da Viação e Obras Públicas.&#39;,
+ &#39;Faleceu em sua cidade natal no dia 1º de setembro de 1974.&#39;,
+ &#39;Era casado com Noemi de Sá Lessa Prates.&#39;,
+ &#39;Publicou «Gente boa», obra de literatura regional.&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="busca-textual">
-<h1>Busca textual<a class="headerlink" href="#busca-textual" title="Permalink to this heading">#</a></h1>
+<h1>Busca textual<a class="headerlink" href="#busca-textual" title="Permalink to this headline">#</a></h1>
 <p>Realizar uma busca textual em uma coleção de textos é muito mais eficiente do que simplesmente realizar operações sobre coleções de strings. Neste capítulo iremos examinar como “indexar” o DHBB, usando um simples indexador/buscador chamado <a class="reference external" href="https://whoosh.readthedocs.io">whoosh</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1160,52 +1248,50 @@ Encontramos progenitores em 6572 linhas
 PASCOAL, Hildebrando
 </pre></div>
 </div>
-<div class="output text_html">prática de tortura e <b class="match term0">assassinatos</b> e de conexão...nacional, foi o <b class="match term1">assassinato</b> do mecânico...foi
-indiciado por <b class="match term1">assassinato</b>, envolvimento</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIPPOL, Valdemar
+<div class="output text_html">nacional, foi o <b class="match term0">assassinato</b> do mecânico...também foram <b class="match term1">assassinadas</b>, o que levou...anos de prisão pelo <b class="match term0">assassinato</b> de Sebastião</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PASCOAL, Hildebrando
 </pre></div>
 </div>
-<div class="output text_html">janeiro de 1934 foi <b class="match term2">assassinado</b> a machadadas...o acusado do <b class="match term1">assassinato</b>, Pedro Borges...Cunha; na segunda, o
+<div class="output text_html">nacional, foi o <b class="match term0">assassinato</b> do mecânico...também foram <b class="match term1">assassinadas</b>, o que levou...foi
+indiciado por <b class="match term0">assassinato</b>, envolvimento</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIPPOL, Valdemar
+</pre></div>
+</div>
+<div class="output text_html">janeiro de 1934 foi <b class="match term2">assassinado</b> a machadadas...o acusado do <b class="match term0">assassinato</b>, Pedro Borges...Cunha; na segunda, o
+<b class="match term3">assassino</b> seria um oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIPPOL, Valdemar
+</pre></div>
+</div>
+<div class="output text_html">janeiro de 1934 foi <b class="match term2">assassinado</b> a machadadas...o acusado do <b class="match term0">assassinato</b>, Pedro Borges...Cunha; na segunda, o
 <b class="match term3">assassino</b> seria um oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Francisco Flores da
 </pre></div>
 </div>
 <div class="output text_html">de cumplicidade no
-<b class="match term1">assassinato</b> do jornalista...delas, Rippoll fora
+<b class="match term0">assassinato</b> do jornalista...delas, Rippoll fora
+<b class="match term2">assassinado</b> pelo uruguaio...versão dizia que o <b class="match term3">assassino</b> seria um
+oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Francisco Flores da
+</pre></div>
+</div>
+<div class="output text_html">de cumplicidade no
+<b class="match term0">assassinato</b> do jornalista...delas, Rippoll fora
 <b class="match term2">assassinado</b> pelo uruguaio...versão dizia que o <b class="match term3">assassino</b> seria um
 oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MENDES, Chico
 </pre></div>
 </div>
-<div class="output text_html">Wilson Pinheiro, <b class="match term2">assassinado</b> com um tiro...os responsáveis pelo <b class="match term1">assassinato</b> de Wilson
-Pinheiro...já
-teriam ordenado o <b class="match term1">assassinato</b> de mais de 30</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA NETO, Augusto
+<div class="output text_html">os responsáveis pelo <b class="match term0">assassinato</b> de Wilson
+Pinheiro...Um mês depois do <b class="match term0">assassinato</b> foi realizado...tempo de
+morte: o <b class="match term0">assassinato</b> de Chico Mendes</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MENDES, Chico
+</pre></div>
+</div>
+<div class="output text_html">Chico Mendes foi <b class="match term2">assassinado</b> em sua residência...Um mês depois do <b class="match term0">assassinato</b> foi realizado...tempo de
+morte: o <b class="match term0">assassinato</b> de Chico Mendes</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA NETO, Augusto
 </pre></div>
 </div>
 <div class="output text_html">mês, Cunha Neto foi
 <b class="match term2">assassinado</b> com nove tiros...Na
-ocasião, o <b class="match term3">assassino</b> declarou à polícia</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VAZ, Rubens
+ocasião, o <b class="match term3">assassino</b> declarou à polícia</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA NETO, Augusto
 </pre></div>
 </div>
-<div class="output text_html">major Rubens Vaz foi
-<b class="match term2">assassinado</b> por tiros que...descoberta de que os <b class="match term4">assassinos</b> eram pessoas</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FURTADO, Heitor Alencar
-</pre></div>
-</div>
-<div class="output text_html">Alencar Furtado foi <b class="match term2">assassinado</b> por um
-policial...norte do
-Paraná. Seu <b class="match term1">assassinato</b> representou</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VANNUCHI, Paulo
-</pre></div>
-</div>
-<div class="output text_html">uma lista geral dos
-<b class="match term0">assassinados</b> desde 1964...das torturas e <b class="match term0">assassinatos</b> praticados</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Ceci
-</pre></div>
-</div>
-<div class="output text_html">da Previdência.
-
-Foi <b class="match term1">assassinada</b> em Maceió no...a apurar
-o <b class="match term1">assassinato</b>, o próprio Talvane</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BARROS, Manuel Gomes de
-</pre></div>
-</div>
-<div class="output text_html">carros roubados e <b class="match term2">assassinavam</b> por
-encomenda...sido o
-mandante do <b class="match term1">assassinato</b> do bancário</div></div>
+<div class="output text_html">mês, Cunha Neto foi
+<b class="match term2">assassinado</b> com nove tiros...Na
+ocasião, o <b class="match term3">assassino</b> declarou à polícia</div></div>
 </div>
 </section>
 

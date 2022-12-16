@@ -18,21 +18,22 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 import os, glob, pickle
+import numpy as np
 import spacy
-from IPython.core.display import display, HTML, Markdown
 from spacy import displacy
 from sqlalchemy import create_engine
 from dhbbmining import *
 import ipywidgets as widgets
+from tqdm import tqdm
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mRuntimeError[0m                              Traceback (most recent call last)
-[0;32m/tmp/ipykernel_196890/528930617.py[0m in [0;36m<cell line: 2>[0;34m()[0m
+[0;32m/tmp/ipykernel_195571/1914352725.py[0m in [0;36m<cell line: 3>[0;34m()[0m
 [1;32m      1[0m [0;32mimport[0m [0mos[0m[0;34m,[0m [0mglob[0m[0;34m,[0m [0mpickle[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0;32mimport[0m [0mspacy[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0;32mfrom[0m [0mIPython[0m[0;34m.[0m[0mcore[0m[0;34m.[0m[0mdisplay[0m [0;32mimport[0m [0mdisplay[0m[0;34m,[0m [0mHTML[0m[0;34m,[0m [0mMarkdown[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0;32mfrom[0m [0mspacy[0m [0;32mimport[0m [0mdisplacy[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0;32mimport[0m [0mspacy[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0;32mfrom[0m [0mspacy[0m [0;32mimport[0m [0mdisplacy[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      5[0m [0;32mfrom[0m [0msqlalchemy[0m [0;32mimport[0m [0mcreate_engine[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m/usr/local/lib/python3.10/dist-packages/spacy/__init__.py[0m in [0;36m<module>[0;34m[0m

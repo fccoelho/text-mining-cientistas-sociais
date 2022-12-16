@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -34,9 +34,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -44,7 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -57,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Aplicando modelagem de assuntos ao DHBB" href="Capitulo_4.html" />
     <link rel="prev" title="Contando Palavras" href="Capitulo_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -136,6 +134,11 @@ const thebe_selector_output = ".output, .cell_output"
    Construindo um Classificador de Textos
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_6.html">
+   Analizando Redes de Colaboração Científica
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -208,6 +211,24 @@ title="Launch on Binder"
     <img src="_static/images/logo_binder.svg">
   </span>
 <span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/fccoelho/text-mining-cientistas-sociais/blob/master/Capitulo_3.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
 </a>
 
       </li>
@@ -406,21 +427,15 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="identificando-entidades-nomeadas-e-similaridade-semantica">
-<h1>Identificando Entidades Nomeadas e Similaridade Semântica<a class="headerlink" href="#identificando-entidades-nomeadas-e-similaridade-semantica" title="Permalink to this heading">#</a></h1>
-<p>Neste capítulo vamos treinar um <em>identificador de entidades  nomeadas</em> (NER - Named Entity Recognizer) usando a biblioteca <a class="reference external" href="https://spacy.io">Spacy</a>. A partir deste capítulo vamos importar também funções que já criamos anteriormente, e que encontram-se reproduzidas em  <a class="reference download internal" download="" href="_downloads/125ca402857d8bc670fd9307ce9f47f2/dhbbmining.py"><span class="xref download myst">dhbbmining.py</span></a>.</p>
+<h1>Identificando Entidades Nomeadas e Similaridade Semântica<a class="headerlink" href="#identificando-entidades-nomeadas-e-similaridade-semantica" title="Permalink to this headline">#</a></h1>
+<p>Neste capítulo vamos treinar um <em>identificador de entidades  nomeadas</em> (NER - Named Entity Recognizer) usando a biblioteca <a class="reference external" href="https://spacy.io">Spacy</a>. A partir deste capítulo vamos importar também funções que já criamos anteriormente, e que encontram-se reproduzidas em  <span class="xref myst">dhbbmining.py</span>.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -435,129 +450,184 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:50.291021: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-11-30 13:57:50.483460: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:51.102390: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
-2022-11-30 13:57:51.102480: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
-2022-11-30 13:57:51.102490: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:53.164684: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
-2022-11-30 13:57:53.164741: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-Skipping registering GPU devices...
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_196890/528930617.py</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">pickle</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">spacy</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># set library-specific custom warning handling before doing anything else</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="n">setup_default_warnings</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">setup_default_warnings</span><span class="p">()</span>  <span class="c1"># noqa: E402</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">errors</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">Literal</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">class</span> <span class="nc">ErrorsWithCodes</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="sd">&quot;&quot;&quot;Helpers for Python and platform compatibility.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">thinc.util</span> <span class="kn">import</span> <span class="n">copy_array</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">try</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.about</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">registry</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">confection</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">confection</span> <span class="kn">import</span> <span class="n">Config</span><span class="p">,</span> <span class="n">ConfigValidationError</span><span class="p">,</span> <span class="n">Promise</span><span class="p">,</span> <span class="n">VARIABLE_RE</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.types</span> <span class="kn">import</span> <span class="n">Decorator</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">types</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">has_cupy</span><span class="p">,</span> <span class="n">cupy</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">if</span> <span class="n">has_cupy</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> 
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="kn">import</span> <span class="nn">tensorflow.experimental.dlpack</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">autograph</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">bitwise</span>
+<span class="ne">---&gt; </span><span class="mi">51</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> 
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">autograph</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">bitwise</span>
+<span class="ne">---&gt; </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> 
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">layers</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="ne">---&gt; </span><span class="mi">47</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lite</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lookup</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">experimental</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">Interpreter</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpHint</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">authoring</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.analyzer</span> <span class="kn">import</span> <span class="n">ModelAnalyzer</span> <span class="k">as</span> <span class="n">Analyzer</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpResolverType</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.authoring.authoring</span> <span class="kn">import</span> <span class="n">compatible</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="n">authoring</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> 
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="c1"># pylint: disable=g-import-not-at-top</span>
+<span class="ne">---&gt; </span><span class="mi">43</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">convert</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.metrics</span> <span class="kn">import</span> <span class="n">converter_error_data_pb2</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite_constants</span>
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">wrap_toco</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.convert_phase</span> <span class="kn">import</span> <span class="n">Component</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">util</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="c1"># pylint: disable=unused-import</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">53</span>   <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">xla_computation</span> <span class="k">as</span> <span class="n">_xla_computation</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>   <span class="n">_xla_computation</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="c1"># We want the exported object to be the class, so we first import the module</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="c1"># to make sure a later import doesn&#39;t overwrite the class.</span>
+<span class="ne">---&gt; </span><span class="mi">35</span> <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">_config_module</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">del</span> <span class="n">_config_module</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># TODO(phawkins): fix users of this alias and delete this file.</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">jax._src.config</span> <span class="kn">import</span> <span class="n">config</span>  <span class="c1"># noqa: F401</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">NamedTuple</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> 
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">jax._src</span> <span class="kn">import</span> <span class="n">lib</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">jax_jit</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">transfer_guard_lib</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> 
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">version_str</span> <span class="o">=</span> <span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span>
+<span class="ne">---&gt; </span><span class="mi">74</span> <span class="n">version</span> <span class="o">=</span> <span class="n">check_jaxlib_version</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>   <span class="n">jax_version</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>   <span class="n">jaxlib_version</span><span class="o">=</span><span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/jax/_src/lib/__init__.py</span> in <span class="ni">check_jaxlib_version</span><span class="nt">(jax_version, jaxlib_version, minimum_jaxlib_version)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;jaxlib is version </span><span class="si">{</span><span class="n">jaxlib_version</span><span class="si">}</span><span class="s1">, but this version &#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>            <span class="sa">f</span><span class="s1">&#39;of jax requires version &gt;= </span><span class="si">{</span><span class="n">minimum_jaxlib_version</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> 
+<span class="g g-Whitespace">     </span><span class="mi">65</span>   <span class="k">if</span> <span class="n">_jaxlib_version</span> <span class="o">&gt;</span> <span class="n">_jax_version</span><span class="p">:</span>
+
+<span class="ne">RuntimeError</span>: jaxlib is version 0.3.15, but this version of jax requires version &gt;= 0.3.22.
 </pre></div>
 </div>
 </div>
 </div>
 <p>Para utilizar o spacy em um corpus na lingua portuguesa, vamos primeiro importar o modelo liguístico do português</p>
 <div class="cell tag_hide-output docutils container">
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python3 -m spacy download pt_core_news_sm
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:54.519580: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:55.522058: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
-2022-11-30 13:57:55.522163: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
-2022-11-30 13:57:55.522177: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:57:57.730238: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
-2022-11-30 13:57:57.730274: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-Skipping registering GPU devices...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pt-core-news-sm==3.4.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading https://github.com/explosion/spacy-models/releases/download/pt_core_news_sm-3.4.0/pt_core_news_sm-3.4.0-py3-none-any.whl (13.0 MB)
-?25l     <span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.0/13.0 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">0.6/13.0 MB</span> <span class=" -Color -Color-Red">18.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">2.7/13.0 MB</span> <span class=" -Color -Color-Red">38.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">5.4/13.0 MB</span> <span class=" -Color -Color-Red">51.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━<span class=" -Color -Color-C237">╺━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">8.5/13.0 MB</span> <span class=" -Color -Color-Red">59.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸<span class=" -Color -Color-C237">━━━━━</span> <span class=" -Color -Color-Green">11.3/13.0 MB</span> <span class=" -Color -Color-Red">75.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">13.0/13.0 MB</span> <span class=" -Color -Color-Red">78.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">13.0/13.0 MB</span> <span class=" -Color -Color-Red">78.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     <span class=" -Color -Color-Red">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Green">13.0/13.0 MB</span> <span class=" -Color -Color-Red">47.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25h
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: spacy&lt;3.5.0,&gt;=3.4.0 in /usr/local/lib/python3.10/dist-packages (from pt-core-news-sm==3.4.0) (3.4.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: thinc&lt;8.2.0,&gt;=8.1.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (8.1.1)
-Requirement already satisfied: langcodes&lt;4.0.0,&gt;=3.2.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.3.0)
-Requirement already satisfied: numpy&gt;=1.15.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.23.5)
-Requirement already satisfied: cymem&lt;2.1.0,&gt;=2.0.2 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.6)
-Requirement already satisfied: tqdm&lt;5.0.0,&gt;=4.38.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (4.64.1)
-Requirement already satisfied: pathy&gt;=0.3.5 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.6.2)
-Requirement already satisfied: spacy-loggers&lt;2.0.0,&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.0.3)
-Requirement already satisfied: pydantic!=1.8,!=1.8.1,&lt;1.10.0,&gt;=1.7.4 in /home/fccoelho/.local/lib/python3.10/site-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.9.2)
-Requirement already satisfied: wasabi&lt;1.1.0,&gt;=0.9.1 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.10.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (59.6.0)
-Requirement already satisfied: packaging&gt;=20.0 in /home/fccoelho/.local/lib/python3.10/site-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (21.3)
-Requirement already satisfied: preshed&lt;3.1.0,&gt;=3.0.2 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.0.7)
-Requirement already satisfied: typer&lt;0.5.0,&gt;=0.3.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.4.2)
-Requirement already satisfied: murmurhash&lt;1.1.0,&gt;=0.28.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.0.8)
-Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.1.2)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.28.1)
-Requirement already satisfied: srsly&lt;3.0.0,&gt;=2.4.3 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.4.4)
-Requirement already satisfied: catalogue&lt;2.1.0,&gt;=2.0.6 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.8)
-Requirement already satisfied: spacy-legacy&lt;3.1.0,&gt;=3.0.9 in /usr/local/lib/python3.10/dist-packages (from spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.0.10)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/lib/python3/dist-packages (from packaging&gt;=20.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.4.7)
-Requirement already satisfied: smart-open&lt;6.0.0,&gt;=5.2.1 in /usr/local/lib/python3.10/dist-packages (from pathy&gt;=0.3.5-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (5.2.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: typing-extensions&gt;=3.7.4.3 in /usr/local/lib/python3.10/dist-packages (from pydantic!=1.8,!=1.8.1,&lt;1.10.0,&gt;=1.7.4-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (4.3.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2022.9.24)
-Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /usr/local/lib/python3.10/dist-packages/charset_normalizer-2.0.12-py3.10.egg (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.12)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/lib/python3/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (1.26.5)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/lib/python3/dist-packages (from requests&lt;3.0.0,&gt;=2.13.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (3.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: confection&lt;1.0.0,&gt;=0.0.1 in /usr/local/lib/python3.10/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.0.1)
-Requirement already satisfied: blis&lt;0.10.0,&gt;=0.7.8 in /usr/local/lib/python3.10/dist-packages (from thinc&lt;8.2.0,&gt;=8.1.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (0.9.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: click&lt;9.0.0,&gt;=7.1.1 in /usr/lib/python3/dist-packages (from typer&lt;0.5.0,&gt;=0.3.0-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (8.0.3)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/lib/python3/dist-packages (from jinja2-&gt;spacy&lt;3.5.0,&gt;=3.4.0-&gt;pt-core-news-sm==3.4.0) (2.0.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-C2">✔ Download and installation successful</span>
-You can now load the package via spacy.load(&#39;pt_core_news_sm&#39;)
-</pre></div>
-</div>
-</div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,52 +677,52 @@ You can now load the package via spacy.load(&#39;pt_core_news_sm&#39;)
     <tr>
       <th>0</th>
       <td>0</td>
-      <td>822.text</td>
-      <td>BRÁS, Wenceslau</td>
-      <td>biográfico</td>
-      <td>m</td>
-      <td>\n - dep. fed. MG 1903-1908\n - pres. MG 1909-...</td>
-      <td>\n\n«Wenceslau Brás Pereira Gomes» nasceu em S...</td>
+      <td>6172.text</td>
+      <td>PARTIDO POPULAR DO DISTRITO FEDERAL</td>
+      <td>temático</td>
+      <td>None</td>
+      <td>NA</td>
+      <td>\n\n«PARTIDO POPULAR DO DISTRITO FEDERAL»\n\nP...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1</td>
-      <td>3098.text</td>
-      <td>MACHADO, João</td>
+      <td>4361.text</td>
+      <td>PRATES, Mílton</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. DF 1955-1959 \n</td>
-      <td>\n\n«João dos Reis Ferreira Machado» nasceu no...</td>
+      <td>\n - const. 1946\n - dep. fed. MG 1946-1951 \n</td>
+      <td>\n\n«Luís Mílton Prates» nasceu em Montes Clar...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>2337.text</td>
-      <td>GÓIS, Aroldo</td>
+      <td>5224.text</td>
+      <td>SUREK, Alberto</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. AP 1991-1995\n</td>
-      <td>\n\n«Aroldo da Graça Sousa Góis» nasceu em Alm...</td>
+      <td>\n - const. 1934\n - dep. fed. prof. 1935-193...</td>
+      <td>\n\n«Alberto Surek» nasceu em Araucária (PR) n...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3</td>
-      <td>11699.text</td>
-      <td>BETING, Joelmir</td>
+      <td>5039.text</td>
+      <td>SILVA, Luís Gonzaga do Nascimento e</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - jornalista  \nautor: \n - Alzira Alves d...</td>
-      <td>\n\n«Joelmir José Beting» nasceu em Tambaú (SP...</td>
+      <td>\n - pres. BNH 1965-1966\n - min. Trab. 1966-...</td>
+      <td>\n\n«Luís Gonzaga do Nascimento e Silva» nasce...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>4</td>
-      <td>1774.text</td>
-      <td>DUARTE, Ovídio</td>
-      <td>biográfico</td>
-      <td>m</td>
-      <td>\n - dep. fed. PB 1954-1955\n - dep. fed. PB ...</td>
-      <td>\n\n«Ovídio Borba Duarte» nasceu em Serraria, ...</td>
+      <td>6193.text</td>
+      <td>PARTIDO REFORMADOR TRABALHISTA (PRT)</td>
+      <td>temático</td>
+      <td>None</td>
+      <td>NA</td>
+      <td>\n\n«PARTIDO REFORMADOR TRABALHISTA (PRT)»\n\n...</td>
     </tr>
   </tbody>
 </table>
@@ -666,9 +736,35 @@ You can now load the package via spacy.load(&#39;pt_core_news_sm&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Partido político nacional criado em 24 de janeiro de 1985 por
-dissidentes do Partido Democrático Social (PDS). Em 28 de março de 2007
-passou a se chamar Democratas (DEM).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>«DIÁRIO CARIOCA»
+
+Jornal carioca diário fundado em 17 de julho de 1928 por José Eduardo de
+Macedo Soares e extinto em 31 de dezembro de 1965.
+
+## De 1928 a 1934
+
+O «Diário Carioca» nasceu com a finalidade precípua de fazer oposição ao
+governo de Washington Luís. Seu fundador, de tradicional família
+fluminense, havia saído da Marinha para a política e posteriormente para
+a imprensa, abandonando a carreira militar no posto de primeiro-tenente.
+Fundara em 1912 «O Imparcial». Embora suas atividades políticas durante a
+República Velha estivessem vinculadas ao poder institucionalizado, a
+partir de dado momento Macedo Soares passou a refletir uma das correntes
+de oposição à estrutura política vigente. Tanto isto é verdade que o
+primeiro número do «Diário Carioca» deveria ter saído a 5 de julho, para
+comemorar o sexto aniversário do levante dos 18 do Forte.
+
+Ao lado do fundador, que reservou para si a diretoria, o novo jornal
+contava em sua equipe inicial com Alberto Burle de Figueiredo na
+gerência, Leônidas de Resende na chefia da redação, Osório Borba como
+secretário, e Antenor Guimarães. Entre os primeiros colaboradores
+destacavam-se Evaristo de Morais, Virgílio de Melo Franco, Humberto de
+Campos e Adolfo Bergamini.
+
+O primeiro número do «Diário Carioca» caracterizava desde logo sua
+natureza essencialmente política. De acordo com José Eduardo de Macedo
+Soares, o objetivo do jornal era “servir ao país, traduzindo lealmente
+seus sentimentos, esclarecendo e interpretando as corrent
 </pre></div>
 </div>
 </div>
@@ -708,35 +804,35 @@ Dep:punct,            Shape:«,
 Alpha? False, 
 Stopword:False
 
-Texto:Wenceslau,
- Lemma: Wenceslau,
+Texto:PARTIDO,
+ Lemma: PARTIDO,
 Part of speech: PROPN,
 Tag: PROPN, 
-Dep:nsubj,            Shape:Xxxxx, 
+Dep:ROOT,            Shape:XXXX, 
 Alpha? True, 
 Stopword:False
 
-Texto:Brás,
- Lemma: Brás,
+Texto:POPULAR,
+ Lemma: POPULAR,
 Part of speech: PROPN,
 Tag: PROPN, 
-Dep:flat:name,            Shape:Xxxx, 
+Dep:flat:name,            Shape:XXXX, 
 Alpha? True, 
 Stopword:False
 
-Texto:Pereira,
- Lemma: Pereira,
-Part of speech: PROPN,
-Tag: PROPN, 
-Dep:flat:name,            Shape:Xxxxx, 
+Texto:DO,
+ Lemma: De O,
+Part of speech: ADP,
+Tag: ADP, 
+Dep:case,            Shape:XX, 
 Alpha? True, 
-Stopword:False
+Stopword:True
 </pre></div>
 </div>
 </div>
 </div>
 <section id="testando-o-ner-do-spacy">
-<h2>Testando o NER do Spacy<a class="headerlink" href="#testando-o-ner-do-spacy" title="Permalink to this heading">#</a></h2>
+<h2>Testando o NER do Spacy<a class="headerlink" href="#testando-o-ner-do-spacy" title="Permalink to this headline">#</a></h2>
 <p>Como o Spacy já inclui algum suporte à lingua portuguesa, antes de pensar em treinar nosso próprio NER, podemos avaliar a performance do existente.</p>
 <p>Abaixo vamos construir uma visualização interativa da marcação de entidades nos verbetes do DHBB.</p>
 <div class="cell docutils container">
@@ -759,7 +855,9 @@ Stopword:False
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "34bcd40671ab44b68640e570380462ab"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "80bdc7f6cb29410d87af51dc094d32b9", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <p>Além da visualização, podemos extrair as entidades presentes em um verbete:</p>
 <div class="cell docutils container">
@@ -770,216 +868,25 @@ Stopword:False
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wenceslau Brás Pereira 1 23 PER
-São Caetano da Vargem Grande 41 69 LOC
-Brasópolis 76 86 LOC
-Francisco Brás Pereira Gomes 142 170 PER
-Assembléia 184 194 LOC
-Minas Gerais 211 223 LOC
-Isabel Pereira dos Santos 251 276 PER
-Seminário Episcopal 347 366 MISC
-Faculdade de Direito de São Paulo 413 446 LOC
-Retornando 477 487 MISC
-Jacuí 529 534 LOC
-Monte Santo 563 574 LOC
-Secretaria do Interior do governo
-chefiado 785 827 LOC
-Silviano de Almeida 832 851 PER
-Congresso 1040 1049 LOC
-Câmara Federal 1075 1089 LOC
-João Pinheiro da Silva 1176 1198 PER
-República 1308 1317 LOC
-Hermes da Fonseca 1352 1369 PER
-Colocado 1423 1431 LOC
-Hermes da Fonseca 1458 1475 PER
-José Pinheiro Machado 1502 1523 PER
-Pinheiro Machado 1661 1677 LOC
-Congresso 1749 1758 LOC
-Minas Gerais 1857 1869 LOC
-São Paulo 1875 1884 LOC
-Pacto de Ouro 1944 1957 ORG
-Pinheiro Machado 2077 2093 LOC
-Bahia 2111 2116 ORG
-Rui Barbosa 2134 2145 PER
-Pinheiro Machado 2328 2344 LOC
-Rui
-Barbosa 2395 2406 PER
-Maranhão 2499 2507 LOC
-República
-
-Wenceslau 2531 2551 LOC
-Primeira Guerra Mundial 2637 2660 MISC
-Assembléia 2804 2814 ORG
-Feliciano 2843 2852 PER
-Supremo Tribunal Federal 3054 3078 LOC
-Nilo 3101 3105 LOC
-Wenceslau Brás 3193 3207 PER
-Pinheiro Machado 3284 3300 LOC
-Wenceslau 3411 3420 PER
-Mato Grosso 3537 3548 LOC
-Paraná 3606 3612 LOC
-Santa Catarina 3615 3629 LOC
-Exército 3706 3714 ORG
-Comissariado de Alimentação 4463 4490 ORG
-Wenceslau Brás 4677 4691 PER
-Exército 4774 4782 ORG
-Marinha 4805 4812 LOC
-Rio 4817 4820 LOC
-Código 4955 4961 MISC
-Congresso 4999 5008 ORG
-Alemanha 5049 5057 LOC
-Brasil 5158 5164 LOC
-Europa 5198 5204 LOC
-Pedro Max de Frontin 5230 5250 PER
-Atlântico 5287 5296 LOC
-Wenceslau Brás 5334 5348 PER
-Alves 5443 5448 PER
-Itajubá 5569 5576 LOC
-Isidoro Dias
-Lopes 5639 5657 PER
-Artur Bernardes 5868 5883 PER
-Washington Luís 6140 6155 PER
-Minas Gerais 6200 6212 LOC
-São Paulo 6217 6226 LOC
-presidente da República 6235 6258 MISC
-Júlio Prestes 6336 6349 PER
-Antônio Carlos Ribeiro de Andrada 6369 6402 PER
-Aliança Liberal 6536 6551 ORG
-Rio Grande do Sul 6639 6656 LOC
-Getúlio Vargas 6658 6672 PER
-Antônio Carlos 6751 6765 PER
-Partido Republicano
-Mineiro 6781 6808 ORG
-Wenceslau Brás 6892 6906 PER
-Belo Horizonte 6919 6933 LOC
-Antônio Carlos 7079 7093 PER
-Artur Bernardes 7095 7110 PER
-Fernando de Melo Viana 7113 7135 PER
-Minas
-Gerais 7209 7221 MISC
-Olegário 7252 7260 LOC
-Melo Viana 7303 7313 PER
-Júlio Prestes 7389 7402 PER
-Concentração Conservadora. 7435 7461 ORG
-República 7502 7511 LOC
-Câmara 7516 7522 LOC
-Júlio Prestes 7687 7700 PER
-Getúlio Vargas 7707 7721 PER
-Comissão de
-Verificação de Poderes 7859 7893 ORG
-Congresso Nacional 7905 7923 LOC
-Minas 8007 8012 LOC
-Aliança Liberal 8048 8063 ORG
-Concentração Conservadora. 8115 8141 ORG
-PRM 8205 8208 ORG
-Aliança Liberal 8238 8253 ORG
-Juiz de Fora 8327 8339 LOC
-Wenceslau Brás 8359 8373 PER
-Artur Bernardes 8375 8390 PER
-Afonso Pena 8392 8403 PER
-José
-Bonifácio de Andrada e Silva 8412 8445 PER
-Mário Brant 8447 8458 PER
-Alaor 8461 8466 PER
-Antônio Carlos 8565 8579 PER
-PRM 8591 8594 ORG
-Olegário Maciel 8684 8699 PER
-Rio
-Grande do Sul 8769 8786 LOC
-Minas 8788 8793 LOC
-Paraíba 8796 8803 LOC
-Washington
-Luís 8831 8846 PER
-Getúlio Vargas 8940 8954 PER
-Olegário Maciel 8956 8971 PER
-Executivo 8993 9002 LOC
-Legião 9072 9078 PER
-Revolução de 1930 9189 9206 MISC
-Wenceslau Brás 9278 9292 PER
-Francisco
-Campos 9365 9381 PER
-Gustavo Capanema 9383 9399 PER
-Amaro Lanari 9401 9413 PER
-Antônio Carlos 9415 9429 PER
-José Monteiro
-Ribeiro Junqueira 9431 9462 PER
-Teodomiro Santiago 9464 9482 PER
-José Bonifácio 9485 9499 PER
-Artur Bernardes 9720 9735 PER
-Belo Horizonte 9795 9809 LOC
-Olegário Maciel 9855 9870 PER
-Legião 10140 10146 PER
-PRM 10151 10154 ORG
-Maciel 10226 10232 PER
-Wenceslau
- 10243 10253 PER
-Partido Social Nacionalista 10390 10417 ORG
-Minas 10476 10481 LOC
-Governo Provisório 10543 10561 MISC
-Revolução Constitucionalista de São
-Paulo 10772 10813 MISC
-Wenceslau Brás 10834 10848 PER
-Olegário Maciel 10859 10874 PER
-Minas 10889 10894 LOC
-Olegário Maciel 11176 11191 PER
-Minas 11230 11235 LOC
-Gustavo Capanema 11346 11362 PER
-Melo Franco 11377 11388 PER
-Vargas 11404 11410 PER
-Antônio Carlos 11427 11441 PER
-Partido Progressista 11533 11553 ORG
-Wenceslau Brás 11585 11599 PER
-Governo Provisório 11657 11675 MISC
-Benedito Valadares 11705 11723 PER
-Valadares 11784 11793 LOC
-Wenceslau Brás 11973 11987 PER
-República 12043 12052 LOC
-Assembléia Nacional 12089 12108 ORG
-Governo Provisório 12134 12152 MISC
-Estado 12287 12293 LOC
-Vargas 12316 12322 PER
-Estado 12335 12341 LOC
-Wenceslau Brás 12358 12372 PER
-Wenceslau
-Brás 12614 12628 PER
-Eurico 12735 12741 PER
-Partido Republicano 12779 12798 ORG
-Partido Social
-Democrático 12819 12845 ORG
-Melo Viana 12866 12876 PER
-José Francisco Bias 12879 12898 PER
-PSD 12961 12964 ORG
-Wenceslau Brás 12982 12996 PER
-Melo Viana 12999 13009 PER
-Mílton 13046 13052 LOC
-União Democrática Nacional 13064 13090 ORG
-Wenceslau Brás 13164 13178 PER
-Companhia Industrial Sul 13296 13320 LOC
-Companhia Industrial
-Força 13348 13374 ORG
-Luz 13377 13380 LOC
-Fábrica de Tecidos Codorna 13395 13421 ORG
-Banco de
-Itajubá 13426 13442 ORG
-Wenceslau Brás 13464 13478 PER
-Itajubá 13490 13497 LOC
-Maria Carneiro Pereira 13540 13562 PER
-José Brás Pereira 13607 13624 PER
-Assembléia Nacional
-Constituinte 13654 13686 ORG
-Partido Progressista 13709 13729 ORG
-Wenceslau Brás?»
- 13862 13879 PER
-República 13923 13932 LOC
-dr. Wenceslau
-Brás 13934 13952 PER
-Pedro Cavalcanti 13979 13995 PER
-Jornal do Comércio») e «Wenceslau 14041 14074 MISC
-Darci Bessone de Oliveira 14115 14140 PER
-Wenceslau Brás 14164 14178 PER
-Centro 14205 14211 LOC
-Documentação de História Contemporânea do Brasil 14226 14274 MISC
-Getulio Vargas 14295 14309 PER
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PARTIDO POPULAR DO 1 19 ORG
+Partido 39 46 ORG
+Rio de Janeiro 59 73 LOC
+Distrito Federal 81 97 LOC
+João Câncio da Silva 134 154 PER
+Assembléia Nacional Constituinte 177 209 ORG
+Américo Basílio Silvado 253 276 PER
+Henrique de Toledo
+Dodsworth 278 306 PER
+Amélio Dias de Morais 308 329 PER
+Adolfo Bergamini 331 347 PER
+Jones Gonçalves
+Rocha 349 370 PER
+José Matoso de Sampaio 372 394 PER
+Antenor Esposel Coutinho 404 428 PER
+Inácio
+Bittencourt 430 448 PER
+Berta Lutz 450 460 PER
+Georgina de Araújo 463 481 PER
 </pre></div>
 </div>
 </div>
@@ -993,7 +900,7 @@ Getulio Vargas 14295 14309 PER
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;LOC&#39;, &#39;MISC&#39;, &#39;ORG&#39;, &#39;PER&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;LOC&#39;, &#39;ORG&#39;, &#39;PER&#39;}
 </pre></div>
 </div>
 </div>
@@ -1001,7 +908,7 @@ Getulio Vargas 14295 14309 PER
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="similaridade-semantica">
-<h1>Similaridade Semântica<a class="headerlink" href="#similaridade-semantica" title="Permalink to this heading">#</a></h1>
+<h1>Similaridade Semântica<a class="headerlink" href="#similaridade-semantica" title="Permalink to this headline">#</a></h1>
 <p>Outra análise interessante que pode ser feita sobre os verbetes do DHBB é a de similaridade semântica. Este tipo de análise se baseia em modelos vetoriais tipo “word2vec”, que representam palavras de um corpus em um espaço semântico.
 Podemos aplicar o modelo pré-treinado do Spacy como exemplo, mas idealmente deve-se treinar estes modelos em corpora similares ao que se deseja analizar ou no próprio, como faremos no capítulo 5 deste livro.</p>
 <div class="cell docutils container">
@@ -1036,18 +943,6 @@ Podemos aplicar o modelo pré-treinado do Spacy como exemplo, mas idealmente dev
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_4068461/3462566309.py</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">verb1</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">biograficos</span><span class="o">.</span><span class="n">itertuples</span><span class="p">())):</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">verb2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">biograficos</span><span class="o">.</span><span class="n">itertuples</span><span class="p">()):</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="k">if</span> <span class="n">j</span><span class="o">&gt;=</span><span class="n">i</span><span class="p">:</span>
-
-<span class="ne">NameError</span>: name &#39;tqdm&#39; is not defined
-</pre></div>
-</div>
 </div>
 </div>
 <p>O grafo resultante, é formado por 21 nós representando cada verbete e arestas representando a similaridade entre cada par.</p>
@@ -1084,7 +979,7 @@ Podemos aplicar o modelo pré-treinado do Spacy como exemplo, mas idealmente dev
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/737f3aa0e56fe905bcfe3123fe8c15b5e26feb121a2a952197195226eefb8f17.png" src="_images/737f3aa0e56fe905bcfe3123fe8c15b5e26feb121a2a952197195226eefb8f17.png" />
+<img alt="_images/Capitulo_3_28_0.png" src="_images/Capitulo_3_28_0.png" />
 </div>
 </div>
 <div class="cell docutils container">

@@ -1,42 +1,196 @@
 Traceback (most recent call last):
-  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 626, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/usr/lib/python3/dist-packages/nbclient/util.py", line 96, in ensure_async
-    result = await obj
-  File "/usr/lib/python3/dist-packages/jupyter_client/channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
-  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 1093, in execute
+  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 1269, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/usr/lib/python3/dist-packages/nbclient/util.py", line 84, in wrapped
+  File "/usr/lib/python3/dist-packages/nbclient/util.py", line 85, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/usr/lib/python3/dist-packages/nbclient/util.py", line 62, in just_run
+  File "/usr/lib/python3/dist-packages/nbclient/util.py", line 60, in just_run
     return loop.run_until_complete(coro)
   File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
     return future.result()
-  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 559, in async_execute
+  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 707, in async_execute
     await self.async_execute_cell(
-  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 838, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 650, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 697, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-for v in biograficos.itertuples():
-    if pd.isnull(v.sexo):
-        writer.add_document(title=v.title,sexo='na', caminho=v.arquivo,corpo=v.corpo)
-    else:
-        writer.add_document(title=v.title,sexo=v.sexo, caminho=v.arquivo,corpo=v.corpo)
-writer.commit()
--------------------
+  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 1025, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/lib/python3/dist-packages/nbclient/client.py", line 919, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import nltk
+import spacy
+from collections import Counter
+import pandas as pd
+from sqlalchemy import create_engine
+%pylab inline
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mRuntimeError[0m                              Traceback (most recent call last)
+[0;32m/tmp/ipykernel_195404/1389995406.py[0m in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [0;32mimport[0m [0mnltk[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0;32mimport[0m [0mspacy[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0;32mfrom[0m [0mcollections[0m [0;32mimport[0m [0mCounter[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;32mfrom[0m [0msqlalchemy[0m [0;32mimport[0m [0mcreate_engine[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/spacy/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      4[0m [0;34m[0m[0m
+[1;32m      5[0m [0;31m# set library-specific custom warning handling before doing anything else[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 6[0;31m [0;32mfrom[0m [0;34m.[0m[0merrors[0m [0;32mimport[0m [0msetup_default_warnings[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      7[0m [0;34m[0m[0m
+[1;32m      8[0m [0msetup_default_warnings[0m[0;34m([0m[0;34m)[0m  [0;31m# noqa: E402[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/spacy/errors.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;32mimport[0m [0mwarnings[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0;32mfrom[0m [0;34m.[0m[0mcompat[0m [0;32mimport[0m [0mLiteral[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0;34m[0m[0m
+[1;32m      4[0m [0;34m[0m[0m
+[1;32m      5[0m [0;32mclass[0m [0mErrorsWithCodes[0m[0;34m([0m[0mtype[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/spacy/compat.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;34m"""Helpers for Python and platform compatibility."""[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;32mimport[0m [0msys[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0;32mfrom[0m [0mthinc[0m[0;34m.[0m[0mutil[0m [0;32mimport[0m [0mcopy_array[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0;34m[0m[0m
+[1;32m      5[0m [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/thinc/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      3[0m [0;34m[0m[0m
+[1;32m      4[0m [0;32mfrom[0m [0;34m.[0m[0mabout[0m [0;32mimport[0m [0m__version__[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 5[0;31m [0;32mfrom[0m [0;34m.[0m[0mconfig[0m [0;32mimport[0m [0mregistry[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      6[0m [0;34m[0m[0m
+[1;32m      7[0m [0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/thinc/config.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      2[0m [0;32mimport[0m [0mconfection[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mfrom[0m [0mconfection[0m [0;32mimport[0m [0mConfig[0m[0;34m,[0m [0mConfigValidationError[0m[0;34m,[0m [0mPromise[0m[0;34m,[0m [0mVARIABLE_RE[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0;32mfrom[0m [0;34m.[0m[0mtypes[0m [0;32mimport[0m [0mDecorator[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0;34m[0m[0m
+[1;32m      6[0m [0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/thinc/types.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      5[0m [0;32mimport[0m [0mnumpy[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;32mimport[0m [0msys[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0;32mfrom[0m [0;34m.[0m[0mcompat[0m [0;32mimport[0m [0mhas_cupy[0m[0;34m,[0m [0mcupy[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m [0;34m[0m[0m
+[1;32m      9[0m [0;32mif[0m [0mhas_cupy[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/thinc/compat.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     54[0m [0;34m[0m[0m
+[1;32m     55[0m [0;32mtry[0m[0;34m:[0m  [0;31m# pragma: no cover[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 56[0;31m     [0;32mimport[0m [0mtensorflow[0m[0;34m.[0m[0mexperimental[0m[0;34m.[0m[0mdlpack[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     57[0m     [0;32mimport[0m [0mtensorflow[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     58[0m [0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     49[0m [0;32mfrom[0m [0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m [0;32mimport[0m [0mautograph[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     50[0m [0;32mfrom[0m [0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m [0;32mimport[0m [0mbitwise[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 51[0;31m [0;32mfrom[0m [0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m [0;32mimport[0m [0mcompat[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     52[0m [0;32mfrom[0m [0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m [0;32mimport[0m [0mconfig[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     53[0m [0;32mfrom[0m [0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m [0;32mimport[0m [0mdata[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/_api/v2/compat/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     35[0m [0;32mimport[0m [0msys[0m [0;32mas[0m [0m_sys[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     36[0m [0;34m[0m[0m
+[0;32m---> 37[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mv1[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     38[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mv2[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     39[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0mcompat[0m[0;34m.[0m[0mcompat[0m [0;32mimport[0m [0mforward_compatibility_horizon[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/_api/v2/compat/v1/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     28[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mautograph[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     29[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mbitwise[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 30[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mcompat[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     31[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mconfig[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     32[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mdata[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/_api/v2/compat/v1/compat/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     35[0m [0;32mimport[0m [0msys[0m [0;32mas[0m [0m_sys[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     36[0m [0;34m[0m[0m
+[0;32m---> 37[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mv1[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     38[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mv2[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     39[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0mcompat[0m[0;34m.[0m[0mcompat[0m [0;32mimport[0m [0mforward_compatibility_horizon[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/_api/v2/compat/v1/compat/v1/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     45[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m[0;34m.[0m[0mcompat[0m[0;34m.[0m[0mv1[0m [0;32mimport[0m [0mlayers[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     46[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m[0;34m.[0m[0mcompat[0m[0;34m.[0m[0mv1[0m [0;32mimport[0m [0mlinalg[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 47[0;31m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m[0;34m.[0m[0mcompat[0m[0;34m.[0m[0mv1[0m [0;32mimport[0m [0mlite[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     48[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m[0;34m.[0m[0mcompat[0m[0;34m.[0m[0mv1[0m [0;32mimport[0m [0mlogging[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     49[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0m_api[0m[0;34m.[0m[0mv2[0m[0;34m.[0m[0mcompat[0m[0;34m.[0m[0mv1[0m [0;32mimport[0m [0mlookup[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/_api/v2/compat/v1/lite/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      7[0m [0;34m[0m[0m
+[1;32m      8[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mconstants[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 9[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mexperimental[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     10[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0mlite[0m [0;32mimport[0m [0mInterpreter[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     11[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0mlite[0m [0;32mimport[0m [0mOpHint[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/_api/v2/compat/v1/lite/experimental/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      6[0m [0;32mimport[0m [0msys[0m [0;32mas[0m [0m_sys[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0;34m[0m[0m
+[0;32m----> 8[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mauthoring[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      9[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0manalyzer[0m [0;32mimport[0m [0mModelAnalyzer[0m [0;32mas[0m [0mAnalyzer[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     10[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0mlite[0m [0;32mimport[0m [0mOpResolverType[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/_api/v2/compat/v1/lite/experimental/authoring/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      6[0m [0;32mimport[0m [0msys[0m [0;32mas[0m [0m_sys[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0;34m[0m[0m
+[0;32m----> 8[0;31m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0mauthoring[0m[0;34m.[0m[0mauthoring[0m [0;32mimport[0m [0mcompatible[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/lite/python/authoring/authoring.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     41[0m [0;34m[0m[0m
+[1;32m     42[0m [0;31m# pylint: disable=g-import-not-at-top[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 43[0;31m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m [0;32mimport[0m [0mconvert[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     44[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m [0;32mimport[0m [0mlite[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     45[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0mmetrics[0m [0;32mimport[0m [0mconverter_error_data_pb2[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/lite/python/convert.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     25[0m [0;34m[0m[0m
+[1;32m     26[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m [0;32mimport[0m [0mlite_constants[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 27[0;31m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m [0;32mimport[0m [0mutil[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     28[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m [0;32mimport[0m [0mwrap_toco[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     29[0m [0;32mfrom[0m [0mtensorflow[0m[0;34m.[0m[0mlite[0m[0;34m.[0m[0mpython[0m[0;34m.[0m[0mconvert_phase[0m [0;32mimport[0m [0mComponent[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/tensorflow/lite/python/util.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     51[0m [0;31m# pylint: disable=unused-import[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     52[0m [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 53[0;31m   [0;32mfrom[0m [0mjax[0m [0;32mimport[0m [0mxla_computation[0m [0;32mas[0m [0m_xla_computation[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     54[0m [0;32mexcept[0m [0mImportError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     55[0m   [0m_xla_computation[0m [0;34m=[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/jax/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     33[0m [0;31m# We want the exported object to be the class, so we first import the module[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     34[0m [0;31m# to make sure a later import doesn't overwrite the class.[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 35[0;31m [0;32mfrom[0m [0mjax[0m [0;32mimport[0m [0mconfig[0m [0;32mas[0m [0m_config_module[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     36[0m [0;32mdel[0m [0m_config_module[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     37[0m [0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/jax/config.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     15[0m [0;31m# TODO(phawkins): fix users of this alias and delete this file.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     16[0m [0;34m[0m[0m
+[0;32m---> 17[0;31m [0;32mfrom[0m [0mjax[0m[0;34m.[0m[0m_src[0m[0;34m.[0m[0mconfig[0m [0;32mimport[0m [0mconfig[0m  [0;31m# noqa: F401[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m/usr/local/lib/python3.10/dist-packages/jax/_src/config.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     25[0m [0;32mfrom[0m [0mtyping[0m [0;32mimport[0m [0mAny[0m[0;34m,[0m [0mList[0m[0;34m,[0m [0mCallable[0m[0;34m,[0m [0mHashable[0m[0;34m,[0m [0mNamedTuple[0m[0;34m,[0m [0mIterator[0m[0;34m,[0m [0mOptional[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     26[0m [0;34m[0m[0m
+[0;32m---> 27[0;31m [0;32mfrom[0m [0mjax[0m[0;34m.[0m[0m_src[0m [0;32mimport[0m [0mlib[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     28[0m [0;32mfrom[0m [0mjax[0m[0;34m.[0m[0m_src[0m[0;34m.[0m[0mlib[0m [0;32mimport[0m [0mjax_jit[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     29[0m [0;32mfrom[0m [0mjax[0m[0;34m.[0m[0m_src[0m[0;34m.[0m[0mlib[0m [0;32mimport[0m [0mtransfer_guard_lib[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/jax/_src/lib/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     72[0m [0;34m[0m[0m
+[1;32m     73[0m [0mversion_str[0m [0;34m=[0m [0mjaxlib[0m[0;34m.[0m[0mversion[0m[0;34m.[0m[0m__version__[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 74[0;31m version = check_jaxlib_version(
+[0m[1;32m     75[0m   [0mjax_version[0m[0;34m=[0m[0mjax[0m[0;34m.[0m[0mversion[0m[0;34m.[0m[0m__version__[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     76[0m   [0mjaxlib_version[0m[0;34m=[0m[0mjaxlib[0m[0;34m.[0m[0mversion[0m[0;34m.[0m[0m__version__[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/jax/_src/lib/__init__.py[0m in [0;36mcheck_jaxlib_version[0;34m(jax_version, jaxlib_version, minimum_jaxlib_version)[0m
+[1;32m     61[0m     msg = (f'jaxlib is version {jaxlib_version}, but this version '
+[1;32m     62[0m            f'of jax requires version >= {minimum_jaxlib_version}.')
+[0;32m---> 63[0;31m     [0;32mraise[0m [0mRuntimeError[0m[0;34m([0m[0mmsg[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     64[0m [0;34m[0m[0m
+[1;32m     65[0m   [0;32mif[0m [0m_jaxlib_version[0m [0;34m>[0m [0m_jax_version[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mRuntimeError[0m: jaxlib is version 0.3.15, but this version of jax requires version >= 0.3.22.
+RuntimeError: jaxlib is version 0.3.15, but this version of jax requires version >= 0.3.22.
 

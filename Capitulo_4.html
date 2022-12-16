@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -34,9 +34,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
@@ -44,7 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -57,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Construindo um Classificador de Textos" href="Capitulo_5.html" />
     <link rel="prev" title="Identificando Entidades Nomeadas e Similaridade Semântica" href="Capitulo_3.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -136,6 +134,11 @@ const thebe_selector_output = ".output, .cell_output"
    Construindo um Classificador de Textos
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Capitulo_6.html">
+   Analizando Redes de Colaboração Científica
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -208,6 +211,24 @@ title="Launch on Binder"
     <img src="_static/images/logo_binder.svg">
   </span>
 <span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/fccoelho/text-mining-cientistas-sociais/blob/master/Capitulo_4.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
 </a>
 
       </li>
@@ -426,21 +447,15 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="aplicando-modelagem-de-assuntos-ao-dhbb">
-<h1>Aplicando modelagem de assuntos ao DHBB<a class="headerlink" href="#aplicando-modelagem-de-assuntos-ao-dhbb" title="Permalink to this heading">#</a></h1>
+<h1>Aplicando modelagem de assuntos ao DHBB<a class="headerlink" href="#aplicando-modelagem-de-assuntos-ao-dhbb" title="Permalink to this headline">#</a></h1>
 <p>Neste capítulo vamos explorar ferramentas de modelagem de assuntos e explorar aplicações ao DHBB. Como sempre, começamos com alguns imports familiares.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -456,19 +471,173 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:58:13.160143: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2022-11-30 13:58:13.351568: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:58:13.972391: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
-2022-11-30 13:58:13.972470: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
-2022-11-30 13:58:13.972480: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-30 13:58:16.026417: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudnn.so.8&#39;; dlerror: libcudnn.so.8: não é possível abrir arquivo compartilhado: Arquivo ou diretório inexistente
-2022-11-30 13:58:16.026447: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1934] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
-Skipping registering GPU devices...
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_195571/1914352725.py</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">pickle</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">spacy</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># set library-specific custom warning handling before doing anything else</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="n">setup_default_warnings</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">setup_default_warnings</span><span class="p">()</span>  <span class="c1"># noqa: E402</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">errors</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">Literal</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">class</span> <span class="nc">ErrorsWithCodes</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="sd">&quot;&quot;&quot;Helpers for Python and platform compatibility.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">thinc.util</span> <span class="kn">import</span> <span class="n">copy_array</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">try</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.about</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">registry</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">confection</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">confection</span> <span class="kn">import</span> <span class="n">Config</span><span class="p">,</span> <span class="n">ConfigValidationError</span><span class="p">,</span> <span class="n">Promise</span><span class="p">,</span> <span class="n">VARIABLE_RE</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.types</span> <span class="kn">import</span> <span class="n">Decorator</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">types</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">has_cupy</span><span class="p">,</span> <span class="n">cupy</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">if</span> <span class="n">has_cupy</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> 
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="kn">import</span> <span class="nn">tensorflow.experimental.dlpack</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">autograph</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">bitwise</span>
+<span class="ne">---&gt; </span><span class="mi">51</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> 
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">autograph</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">bitwise</span>
+<span class="ne">---&gt; </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">compat</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">data</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> 
+<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">layers</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="ne">---&gt; </span><span class="mi">47</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lite</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lookup</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">experimental</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">Interpreter</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpHint</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">authoring</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.analyzer</span> <span class="kn">import</span> <span class="n">ModelAnalyzer</span> <span class="k">as</span> <span class="n">Analyzer</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpResolverType</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.authoring.authoring</span> <span class="kn">import</span> <span class="n">compatible</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="n">authoring</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> 
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="c1"># pylint: disable=g-import-not-at-top</span>
+<span class="ne">---&gt; </span><span class="mi">43</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">convert</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.metrics</span> <span class="kn">import</span> <span class="n">converter_error_data_pb2</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite_constants</span>
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">wrap_toco</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.convert_phase</span> <span class="kn">import</span> <span class="n">Component</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">util</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="c1"># pylint: disable=unused-import</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">53</span>   <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">xla_computation</span> <span class="k">as</span> <span class="n">_xla_computation</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>   <span class="n">_xla_computation</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="c1"># We want the exported object to be the class, so we first import the module</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="c1"># to make sure a later import doesn&#39;t overwrite the class.</span>
+<span class="ne">---&gt; </span><span class="mi">35</span> <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">_config_module</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">del</span> <span class="n">_config_module</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> 
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># TODO(phawkins): fix users of this alias and delete this file.</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">jax._src.config</span> <span class="kn">import</span> <span class="n">config</span>  <span class="c1"># noqa: F401</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">NamedTuple</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> 
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">jax._src</span> <span class="kn">import</span> <span class="n">lib</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">jax_jit</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">transfer_guard_lib</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span> 
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">version_str</span> <span class="o">=</span> <span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span>
+<span class="ne">---&gt; </span><span class="mi">74</span> <span class="n">version</span> <span class="o">=</span> <span class="n">check_jaxlib_version</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>   <span class="n">jax_version</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>   <span class="n">jaxlib_version</span><span class="o">=</span><span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/jax/_src/lib/__init__.py</span> in <span class="ni">check_jaxlib_version</span><span class="nt">(jax_version, jaxlib_version, minimum_jaxlib_version)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;jaxlib is version </span><span class="si">{</span><span class="n">jaxlib_version</span><span class="si">}</span><span class="s1">, but this version &#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>            <span class="sa">f</span><span class="s1">&#39;of jax requires version &gt;= </span><span class="si">{</span><span class="n">minimum_jaxlib_version</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> 
+<span class="g g-Whitespace">     </span><span class="mi">65</span>   <span class="k">if</span> <span class="n">_jaxlib_version</span> <span class="o">&gt;</span> <span class="n">_jax_version</span><span class="p">:</span>
+
+<span class="ne">RuntimeError</span>: jaxlib is version 0.3.15, but this version of jax requires version &gt;= 0.3.22.
 </pre></div>
 </div>
 </div>
@@ -549,13 +718,13 @@ Skipping registering GPU devices...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«Wenceslau&#39;, &#39;Brás&#39;, &#39;Pereira&#39;, &#39;Gomes»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;São&#39;, &#39;Caetano&#39;, &#39;da&#39;, &#39;Vargem&#39;, &#39;Grande&#39;, &#39;hoje&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«PARTIDO&#39;, &#39;POPULAR&#39;, &#39;DO&#39;, &#39;DISTRITO&#39;, &#39;FEDERAL»&#39;, &#39;Partido&#39;, &#39;político&#39;, &#39;do&#39;, &#39;Rio&#39;, &#39;de&#39;, &#39;Janeiro&#39;, &#39;então&#39;, &#39;Distrito&#39;, &#39;Federal&#39;, &#39;fundado&#39;, &#39;em&#39;, &#39;1933&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <section id="word2vec">
-<h2>Word2vec<a class="headerlink" href="#word2vec" title="Permalink to this heading">#</a></h2>
+<h2>Word2vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">#</a></h2>
 <p>Vamos começar pelo treinamento de um modelo word2vec. Este modelo itera 6 vezes sobre o corpus logo, devemos ver o contador atingir 46122. Estas repetições são necessárias para permitir a melhor estimação da representação vetorial das palavras em um espaço semântico.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -570,7 +739,7 @@ Skipping registering GPU devices...
 </div>
 </div>
 <section id="explorando-o-modelo">
-<h3>Explorando o modelo<a class="headerlink" href="#explorando-o-modelo" title="Permalink to this heading">#</a></h3>
+<h3>Explorando o modelo<a class="headerlink" href="#explorando-o-modelo" title="Permalink to this headline">#</a></h3>
 <p>Como dito anteriormente o modelo do Word2Vec representa cada palavra do vocabulário do corpus como um vetor. Vejamos as dez primeiras palavras:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -674,7 +843,7 @@ na
 </div>
 </section>
 <section id="visualizando-os-vetores-de-palavras">
-<h3>Visualizando os vetores de palavras<a class="headerlink" href="#visualizando-os-vetores-de-palavras" title="Permalink to this heading">#</a></h3>
+<h3>Visualizando os vetores de palavras<a class="headerlink" href="#visualizando-os-vetores-de-palavras" title="Permalink to this headline">#</a></h3>
 <p>Como os palavras estão inseridas um espaço vetorial de dimensão 100, fica difícil visualizar o seu posicionamento relativo mas podemos nos utilizar de métodos de redução de dimensionalidade com o <a class="reference external" href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">TSNE</a>, para visualizarmos um pequeno numero (200) delas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -743,24 +912,24 @@ na
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">        <script type="text/javascript">
-        window.PlotlyConfig = {MathJaxConfig: 'local'};
-        if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-        if (typeof require !== 'undefined') {
-        require.undef("plotly");
-        requirejs.config({
-            paths: {
-                'plotly': ['https://cdn.plot.ly/plotly-2.14.0.min']
-            }
-        });
-        require(['plotly'], function(Plotly) {
-            window._Plotly = Plotly;
-        });
-        }
-        </script>
-        </div><div class="output text_html"><div>                            <div id="b019b4ab-f43f-4cfa-803b-ca1851929642" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("b019b4ab-f43f-4cfa-803b-ca1851929642")) {                    Plotly.newPlot(                        "b019b4ab-f43f-4cfa-803b-ca1851929642",                        [{"mode":"text","opacity":0.8,"text":["de","a","do","e","da","o","em","que","no","na","para","com","foi","dos","ao","Em","\u00e0","por","os","uma","um","pelo","como","das","governo","ano","as","presidente","sua","se","pela","seu","Partido","Rio","n\u00e3o","outubro","No","C\u00e2mara","dia","A","Paulo","deputado","seguinte","novembro","Nacional","S\u00e3o","Comiss\u00e3o","mandato","entre","O","federal","mais","at\u00e9","Brasil","janeiro","Janeiro","estado","tamb\u00e9m","pol\u00edtica","fevereiro","cargo","legenda","mesmo","mar\u00e7o","sobre","partido","ent\u00e3o","Federal","Rep\u00fablica","ainda","abril","elei\u00e7\u00f5es","presid\u00eancia","pa\u00eds","Jos\u00e9","contra","quando","Jo\u00e3o","anos","Social","dezembro","ser","teve","Estado","ministro","aos","Vargas","maio","pleito","Brasileiro","nas","eleito","Foi","qual","era","assumiu","membro","Com","setembro","nacional","depois","mas","agosto","nos","seus","candidato","passou","Democr\u00e1tico","tornou-se","\u00e0s","movimento","julho","PMDB","sendo","Ainda","Deputados","Congresso","estadual","onde","Senado","filho","durante","apoio","votos","junho","general","Na","nasceu","Minas","novo","dois","governador","segundo","j\u00e1","militar","desse","Assembl\u00e9ia","ap\u00f3s","foram","m\u00eas","Carlos","Minist\u00e9rio","tendo","Justi\u00e7a","primeiro","projeto","suas","campanha","per\u00edodo","Grande","Sul","candidatura","in\u00edcio","comiss\u00e3o","vez","fim","regime","ou","Escola","participou","Universidade","nova","oposi\u00e7\u00e3o","1964","sido","partir","Lu\u00eds","nomeado","Constitui\u00e7\u00e3o","posse","pol\u00edticos","Militar","cria\u00e7\u00e3o","quem","legislatura","Fernando","favor","capital","processo","reforma","Silva","titular","n\u00ba","curso","tr\u00eas","cidade","Ex\u00e9rcito","Ant\u00f4nio","Durante","PSD","Faculdade","chefe","suplente","Distrito","PTB","jornal","direito","Conselho","deixou","elegeu-se","vice-presidente"],"x":[-0.48788100481033325,-4.492918968200684,-3.443469524383545,-0.6088327169418335,-4.402913570404053,-3.621492624282837,0.9902378916740417,-0.6472352743148804,-3.149651050567627,-6.6328206062316895,0.0526580810546875,0.892837643623352,2.2567408084869385,-1.156782627105713,-4.901883125305176,0.9515570998191833,-5.484562397003174,-6.193821430206299,-1.0337637662887573,-5.379860877990723,-3.4323174953460693,-6.1492600440979,1.018695592880249,-9.76774787902832,10.953452110290527,3.371142625808716,-9.910508155822754,8.832736015319824,-4.699443340301514,-2.6580581665039062,-6.844590187072754,-2.8890066146850586,-4.101414680480957,3.4071922302246094,-0.03747135400772095,3.0673158168792725,-0.1854507327079773,-6.901169300079346,3.620436429977417,-5.605677127838135,-6.625076770782471,11.692049026489258,-4.335836887359619,2.741177797317505,-9.365358352661133,2.954786777496338,-3.388005018234253,7.6865553855896,1.2143498659133911,-3.9052679538726807,-6.240962505340576,-1.891283392906189,2.168166160583496,-8.649301528930664,4.514930725097656,6.478621006011963,-7.760195732116699,-1.1917692422866821,-2.2442591190338135,4.163032054901123,8.442338943481445,5.166948318481445,-4.330724716186523,4.388132095336914,1.4581342935562134,-3.2256267070770264,-1.75352144241333,4.046968460083008,-4.635475158691406,-1.0751490592956543,3.9722161293029785,9.825020790100098,9.177985191345215,-8.435735702514648,-5.889143943786621,3.006218671798706,0.46420183777809143,-6.5290069580078125,5.726284027099609,-9.685297012329102,3.6112027168273926,1.2040557861328125,2.92895245552063,-8.802125930786133,9.835960388183594,-1.9656821489334106,-4.058839321136475,3.3262598514556885,9.798932075500488,-9.376669883728027,-9.557584762573242,10.304476737976074,2.4232144355773926,-0.47727203369140625,2.1680219173431396,5.337806701660156,7.615828514099121,1.1540223360061646,3.5429582595825195,-3.1829092502593994,2.609092950820923,-0.7459679245948792,4.144111633300781,-0.9518645405769348,-0.9275745153427124,-1.675179123878479,5.7143330574035645,-5.158921241760254,3.3683581352233887,-8.7459077835083,0.36279380321502686,3.357637643814087,-3.576646327972412,1.454228162765503,1.1348847150802612,-3.2994773387908936,-5.424808502197266,-6.227236270904541,0.13053756952285767,-4.971823692321777,6.62240743637085,0.07534193247556686,-1.96819269657135,-3.0376601219177246,3.9087579250335693,5.990528106689453,-6.900439262390137,5.0571208000183105,-2.222641706466675,-2.319371461868286,-0.8579601645469666,10.925183296203613,-2.9794631004333496,-0.4485931694507599,-1.6650044918060303,-4.24478006362915,-6.831833362579346,2.5737574100494385,1.2969026565551758,3.390268564224243,-4.58924674987793,9.776069641113281,-0.844743013381958,-3.0657060146331787,-2.955324172973633,1.8966050148010254,-10.136415481567383,-0.9875422120094299,3.151355504989624,6.516030311584473,2.570842742919922,-1.3354687690734863,1.7735393047332764,0.3080202043056488,-1.1785269975662231,1.6896414756774902,1.4087333679199219,-0.5939944982528687,5.855320930480957,3.8500590324401855,6.2793192863464355,-2.5903708934783936,-1.8552395105361938,-1.2241764068603516,1.8737843036651611,1.589490294456482,-5.813586711883545,10.048431396484375,3.688093900680542,2.796360969543457,-0.6995454430580139,4.646122455596924,1.1396774053573608,-1.0908783674240112,6.800161361694336,-3.9633052349090576,3.0705864429473877,4.267817497253418,2.0400450229644775,1.4677369594573975,-4.505402565002441,7.384809970855713,3.751981496810913,4.687736988067627,-0.8499191999435425,4.4089226722717285,5.4549407958984375,-5.167164325714111,0.08188684284687042,-3.6002445220947266,6.136667728424072,7.059114456176758,7.621613502502441,4.938130855560303,-3.5499253273010254,-0.03911830484867096,2.7781455516815186,8.40542984008789,5.443370819091797,10.779281616210938,8.233335494995117],"y":[-1.4873480796813965,-2.6122305393218994,-4.246473789215088,-1.2259862422943115,-3.1253461837768555,-4.8778791427612305,-1.2933820486068726,1.6955372095108032,-3.969799757003784,-3.6013729572296143,-2.145864963531494,-3.5604496002197266,-10.18765926361084,-6.588990211486816,-5.070929527282715,10.64554500579834,-4.4043755531311035,-6.494228363037109,-6.097646236419678,-2.2622454166412354,-5.83878755569458,-6.315766334533691,-6.396963119506836,-7.254213333129883,-0.5395328402519226,7.526360988616943,-7.055764198303223,0.3637804090976715,-2.0770339965820312,2.5172417163848877,-4.916460990905762,-4.945028305053711,6.278022289276123,0.2155514359474182,0.3923717439174652,14.543048858642578,11.102241516113281,6.4197893142700195,8.775628089904785,-2.901165008544922,0.7651020288467407,-0.12324661761522293,-8.999085426330566,14.023981094360352,-0.4774489402770996,-0.5903136730194092,10.368558883666992,4.009593486785889,-2.4747872352600098,-5.422844409942627,3.0806124210357666,1.3093234300613403,-1.6844780445098877,3.8287465572357178,14.162588119506836,-4.656739711761475,3.1282236576080322,-0.6028159260749817,0.3155319392681122,14.451725959777832,4.096813201904297,2.81022047996521,-9.0839262008667,13.571038246154785,-4.965027332305908,5.231844425201416,-0.6656244397163391,-1.783357858657837,1.7333003282546997,-0.5124253630638123,13.555377006530762,7.694085597991943,0.8389777541160583,3.8166065216064453,-0.02828720584511757,-5.402284145355225,1.9506113529205322,-0.5695573687553406,11.647701263427734,-1.5576246976852417,13.806400299072266,-10.764019966125488,-7.989070892333984,2.401841640472412,-3.2808847427368164,-7.175869464874268,3.0193827152252197,13.47156810760498,7.6840643882751465,-0.7337656617164612,-7.387304782867432,3.752150774002075,-10.333300590515137,2.19948148727417,-9.332969665527344,-7.622907638549805,0.07656874507665634,-3.767847776412964,12.957221031188965,0.02159019187092781,-3.3587372303009033,1.1002815961837769,12.956774711608887,-6.914297580718994,-5.65183687210083,6.3562211990356445,-7.882593631744385,7.881804466247559,-9.45080852508545,-7.215783596038818,5.331974029541016,12.955303192138672,5.375324726104736,-10.533353805541992,10.64900016784668,7.958794116973877,5.575739860534668,3.0429883003234863,2.1229302883148193,5.3305535316467285,8.858734130859375,8.292765617370605,4.314441204071045,6.80357027053833,12.815526962280273,-1.635365605354309,-3.387530565261841,0.6674785614013672,-3.0640640258789062,-1.4831149578094482,-4.021331310272217,-0.4665798246860504,-1.7136728763580322,-0.15343783795833588,-2.0744943618774414,-8.158950805664062,6.329605579376221,-3.465643882751465,-7.919681549072266,7.6338582038879395,0.20326465368270874,-3.2917470932006836,-9.68034553527832,1.3887865543365479,-1.729984164237976,4.840350151062012,-6.780170917510986,5.742982387542725,6.424551010131836,-4.709108829498291,0.10610926151275635,6.138941287994385,1.7470190525054932,-0.6220406889915466,0.44804054498672485,1.3394702672958374,5.9097208976745605,-2.9074246883392334,5.741384029388428,-8.269062042236328,5.909524917602539,-0.5616269111633301,4.281409740447998,-2.065587043762207,-11.141569137573242,-1.2181442975997925,0.35492098331451416,3.788914442062378,4.021533966064453,1.346292495727539,-4.907363414764404,-1.721128225326538,0.32354626059532166,2.571953773498535,2.8629872798919678,-0.7354872226715088,-5.403263568878174,2.0093770027160645,5.407950401306152,3.013066530227661,0.9807132482528687,1.2353293895721436,10.789706230163574,5.384097576141357,-3.9106225967407227,2.0649962425231934,-1.680802822113037,0.22202995419502258,8.417531967163086,5.139288425445557,5.85487699508667,-0.7695715427398682,1.0631208419799805,-3.666093111038208,5.428257942199707,4.1782145500183105,3.433467149734497,-2.6451144218444824,-7.589117527008057,3.6750741004943848,0.5007091164588928],"type":"scatter"}],                        {"autosize":false,"height":600,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"width":800},                        {"responsive": true}                    ).then(function(){
-                            
-var gd = document.getElementById('b019b4ab-f43f-4cfa-803b-ca1851929642');
+<div class="output text_html"><script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.16.1.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+</div><div class="output text_html"><div>                            <div id="cf8cede3-60b0-4533-8122-3fe1308eab88" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("cf8cede3-60b0-4533-8122-3fe1308eab88")) {                    Plotly.newPlot(                        "cf8cede3-60b0-4533-8122-3fe1308eab88",                        [{"mode":"text","opacity":0.8,"text":["de","a","do","e","da","o","em","que","no","na","para","com","foi","dos","ao","Em","à","por","os","uma","um","pelo","como","das","governo","ano","as","presidente","sua","se","pela","seu","Partido","Rio","não","outubro","No","Câmara","dia","A","Paulo","deputado","seguinte","novembro","Nacional","São","Comissão","mandato","entre","O","federal","mais","até","Brasil","janeiro","Janeiro","estado","também","política","fevereiro","cargo","legenda","mesmo","março","sobre","partido","então","Federal","República","ainda","abril","eleições","presidência","país","José","contra","quando","João","anos","Social","dezembro","ser","teve","Estado","ministro","aos","Vargas","maio","pleito","Brasileiro","nas","eleito","Foi","qual","era","assumiu","membro","Com","setembro","nacional","depois","mas","agosto","nos","seus","candidato","passou","Democrático","tornou-se","às","movimento","julho","PMDB","sendo","Ainda","Deputados","Congresso","estadual","onde","Senado","filho","durante","apoio","votos","junho","general","Na","nasceu","Minas","novo","dois","governador","segundo","já","militar","desse","Assembléia","após","foram","mês","Carlos","Ministério","tendo","Justiça","primeiro","projeto","suas","campanha","período","Grande","Sul","candidatura","início","comissão","vez","fim","regime","ou","Escola","participou","Universidade","nova","oposição","1964","sido","partir","Luís","nomeado","Constituição","posse","políticos","Militar","criação","quem","legislatura","Fernando","favor","capital","processo","reforma","Silva","titular","nº","curso","três","cidade","Exército","Antônio","Durante","PSD","Faculdade","chefe","suplente","Distrito","PTB","jornal","direito","Conselho","deixou","elegeu-se","vice-presidente"],"x":[-0.48788100481033325,-4.492918968200684,-3.443469524383545,-0.6088327169418335,-4.402913570404053,-3.621492624282837,0.9902378916740417,-0.6472352743148804,-3.149651050567627,-6.6328206062316895,0.0526580810546875,0.892837643623352,2.2567408084869385,-1.156782627105713,-4.901883125305176,0.9515570998191833,-5.484562397003174,-6.193821430206299,-1.0337637662887573,-5.379860877990723,-3.4323174953460693,-6.1492600440979,1.018695592880249,-9.76774787902832,10.953452110290527,3.371142625808716,-9.910508155822754,8.832736015319824,-4.699443340301514,-2.6580581665039062,-6.844590187072754,-2.8890066146850586,-4.101414680480957,3.4071922302246094,-0.03747135400772095,3.0673158168792725,-0.1854507327079773,-6.901169300079346,3.620436429977417,-5.605677127838135,-6.625076770782471,11.692049026489258,-4.335836887359619,2.741177797317505,-9.365358352661133,2.954786777496338,-3.388005018234253,7.6865553855896,1.2143498659133911,-3.9052679538726807,-6.240962505340576,-1.891283392906189,2.168166160583496,-8.649301528930664,4.514930725097656,6.478621006011963,-7.760195732116699,-1.1917692422866821,-2.2442591190338135,4.163032054901123,8.442338943481445,5.166948318481445,-4.330724716186523,4.388132095336914,1.4581342935562134,-3.2256267070770264,-1.75352144241333,4.046968460083008,-4.635475158691406,-1.0751490592956543,3.9722161293029785,9.825020790100098,9.177985191345215,-8.435735702514648,-5.889143943786621,3.006218671798706,0.46420183777809143,-6.5290069580078125,5.726284027099609,-9.685297012329102,3.6112027168273926,1.2040557861328125,2.92895245552063,-8.802125930786133,9.835960388183594,-1.9656821489334106,-4.058839321136475,3.3262598514556885,9.798932075500488,-9.376669883728027,-9.557584762573242,10.304476737976074,2.4232144355773926,-0.47727203369140625,2.1680219173431396,5.337806701660156,7.615828514099121,1.1540223360061646,3.5429582595825195,-3.1829092502593994,2.609092950820923,-0.7459679245948792,4.144111633300781,-0.9518645405769348,-0.9275745153427124,-1.675179123878479,5.7143330574035645,-5.158921241760254,3.3683581352233887,-8.7459077835083,0.36279380321502686,3.357637643814087,-3.576646327972412,1.454228162765503,1.1348847150802612,-3.2994773387908936,-5.424808502197266,-6.227236270904541,0.13053756952285767,-4.971823692321777,6.62240743637085,0.07534193247556686,-1.96819269657135,-3.0376601219177246,3.9087579250335693,5.990528106689453,-6.900439262390137,5.0571208000183105,-2.222641706466675,-2.319371461868286,-0.8579601645469666,10.925183296203613,-2.9794631004333496,-0.4485931694507599,-1.6650044918060303,-4.24478006362915,-6.831833362579346,2.5737574100494385,1.2969026565551758,3.390268564224243,-4.58924674987793,9.776069641113281,-0.844743013381958,-3.0657060146331787,-2.955324172973633,1.8966050148010254,-10.136415481567383,-0.9875422120094299,3.151355504989624,6.516030311584473,2.570842742919922,-1.3354687690734863,1.7735393047332764,0.3080202043056488,-1.1785269975662231,1.6896414756774902,1.4087333679199219,-0.5939944982528687,5.855320930480957,3.8500590324401855,6.2793192863464355,-2.5903708934783936,-1.8552395105361938,-1.2241764068603516,1.8737843036651611,1.589490294456482,-5.813586711883545,10.048431396484375,3.688093900680542,2.796360969543457,-0.6995454430580139,4.646122455596924,1.1396774053573608,-1.0908783674240112,6.800161361694336,-3.9633052349090576,3.0705864429473877,4.267817497253418,2.0400450229644775,1.4677369594573975,-4.505402565002441,7.384809970855713,3.751981496810913,4.687736988067627,-0.8499191999435425,4.4089226722717285,5.4549407958984375,-5.167164325714111,0.08188684284687042,-3.6002445220947266,6.136667728424072,7.059114456176758,7.621613502502441,4.938130855560303,-3.5499253273010254,-0.03911830484867096,2.7781455516815186,8.40542984008789,5.443370819091797,10.779281616210938,8.233335494995117],"y":[-1.4873480796813965,-2.6122305393218994,-4.246473789215088,-1.2259862422943115,-3.1253461837768555,-4.8778791427612305,-1.2933820486068726,1.6955372095108032,-3.969799757003784,-3.6013729572296143,-2.145864963531494,-3.5604496002197266,-10.18765926361084,-6.588990211486816,-5.070929527282715,10.64554500579834,-4.4043755531311035,-6.494228363037109,-6.097646236419678,-2.2622454166412354,-5.83878755569458,-6.315766334533691,-6.396963119506836,-7.254213333129883,-0.5395328402519226,7.526360988616943,-7.055764198303223,0.3637804090976715,-2.0770339965820312,2.5172417163848877,-4.916460990905762,-4.945028305053711,6.278022289276123,0.2155514359474182,0.3923717439174652,14.543048858642578,11.102241516113281,6.4197893142700195,8.775628089904785,-2.901165008544922,0.7651020288467407,-0.12324661761522293,-8.999085426330566,14.023981094360352,-0.4774489402770996,-0.5903136730194092,10.368558883666992,4.009593486785889,-2.4747872352600098,-5.422844409942627,3.0806124210357666,1.3093234300613403,-1.6844780445098877,3.8287465572357178,14.162588119506836,-4.656739711761475,3.1282236576080322,-0.6028159260749817,0.3155319392681122,14.451725959777832,4.096813201904297,2.81022047996521,-9.0839262008667,13.571038246154785,-4.965027332305908,5.231844425201416,-0.6656244397163391,-1.783357858657837,1.7333003282546997,-0.5124253630638123,13.555377006530762,7.694085597991943,0.8389777541160583,3.8166065216064453,-0.02828720584511757,-5.402284145355225,1.9506113529205322,-0.5695573687553406,11.647701263427734,-1.5576246976852417,13.806400299072266,-10.764019966125488,-7.989070892333984,2.401841640472412,-3.2808847427368164,-7.175869464874268,3.0193827152252197,13.47156810760498,7.6840643882751465,-0.7337656617164612,-7.387304782867432,3.752150774002075,-10.333300590515137,2.19948148727417,-9.332969665527344,-7.622907638549805,0.07656874507665634,-3.767847776412964,12.957221031188965,0.02159019187092781,-3.3587372303009033,1.1002815961837769,12.956774711608887,-6.914297580718994,-5.65183687210083,6.3562211990356445,-7.882593631744385,7.881804466247559,-9.45080852508545,-7.215783596038818,5.331974029541016,12.955303192138672,5.375324726104736,-10.533353805541992,10.64900016784668,7.958794116973877,5.575739860534668,3.0429883003234863,2.1229302883148193,5.3305535316467285,8.858734130859375,8.292765617370605,4.314441204071045,6.80357027053833,12.815526962280273,-1.635365605354309,-3.387530565261841,0.6674785614013672,-3.0640640258789062,-1.4831149578094482,-4.021331310272217,-0.4665798246860504,-1.7136728763580322,-0.15343783795833588,-2.0744943618774414,-8.158950805664062,6.329605579376221,-3.465643882751465,-7.919681549072266,7.6338582038879395,0.20326465368270874,-3.2917470932006836,-9.68034553527832,1.3887865543365479,-1.729984164237976,4.840350151062012,-6.780170917510986,5.742982387542725,6.424551010131836,-4.709108829498291,0.10610926151275635,6.138941287994385,1.7470190525054932,-0.6220406889915466,0.44804054498672485,1.3394702672958374,5.9097208976745605,-2.9074246883392334,5.741384029388428,-8.269062042236328,5.909524917602539,-0.5616269111633301,4.281409740447998,-2.065587043762207,-11.141569137573242,-1.2181442975997925,0.35492098331451416,3.788914442062378,4.021533966064453,1.346292495727539,-4.907363414764404,-1.721128225326538,0.32354626059532166,2.571953773498535,2.8629872798919678,-0.7354872226715088,-5.403263568878174,2.0093770027160645,5.407950401306152,3.013066530227661,0.9807132482528687,1.2353293895721436,10.789706230163574,5.384097576141357,-3.9106225967407227,2.0649962425231934,-1.680802822113037,0.22202995419502258,8.417531967163086,5.139288425445557,5.85487699508667,-0.7695715427398682,1.0631208419799805,-3.666093111038208,5.428257942199707,4.1782145500183105,3.433467149734497,-2.6451144218444824,-7.589117527008057,3.6750741004943848,0.5007091164588928],"type":"scatter"}],                        {"autosize":false,"height":600,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"width":800},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('cf8cede3-60b0-4533-8122-3fe1308eab88');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -883,20 +1052,11 @@ if (outputEl) {{
 </section>
 </section>
 <section id="word-movers-distance">
-<h2>Word Movers Distance<a class="headerlink" href="#word-movers-distance" title="Permalink to this heading">#</a></h2>
+<h2>Word Movers Distance<a class="headerlink" href="#word-movers-distance" title="Permalink to this headline">#</a></h2>
 <p>Este método permite que calculemos a distância entre dois documentos mesmo que estes não contenham palavras em comum. Este método foi proposto no artigo <a class="reference external" href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">“From Word Embeddings To Document Distances”</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install pyemd
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyemd in /usr/local/lib/python3.10/dist-packages (0.5.1)
-Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.9.0 in /usr/local/lib/python3.10/dist-packages (from pyemd) (1.23.5)
 </pre></div>
 </div>
 </div>
@@ -909,7 +1069,7 @@ Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.9.0 in /usr/local/lib/pytho
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9949190182336695
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1409154016167715
 </pre></div>
 </div>
 </div>
@@ -922,8 +1082,8 @@ Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.9.0 in /usr/local/lib/pytho
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Brasópolis&#39;, &#39;MG&#39;, &#39;no&#39;, &#39;dia&#39;, &#39;26&#39;, &#39;de&#39;, &#39;fevereiro&#39;, &#39;de&#39;, &#39;1868&#39;, &#39;filho&#39;, &#39;do&#39;, &#39;coronel&#39;, &#39;Francisco&#39;, &#39;Brás&#39;, &#39;Pereira&#39;, &#39;Gomes&#39;, &#39;deputado&#39;, &#39;à&#39;, &#39;Assembléia&#39;, &#39;da&#39;, &#39;província&#39;, &#39;de&#39;, &#39;Minas&#39;, &#39;Gerais&#39;, &#39;durante&#39;, &#39;muitos&#39;, &#39;anos&#39;, &#39;e&#39;, &#39;de&#39;, &#39;Isabel&#39;, &#39;Pereira&#39;, &#39;dos&#39;, &#39;Santos&#39;]
-[&#39;Fez&#39;, &#39;os&#39;, &#39;primeiros&#39;, &#39;estudos&#39;, &#39;em&#39;, &#39;sua&#39;, &#39;cidade&#39;, &#39;natal&#39;, &#39;cursou&#39;, &#39;humanidades&#39;, &#39;no&#39;, &#39;Seminário&#39;, &#39;Episcopal&#39;, &#39;da&#39;, &#39;capital&#39;, &#39;paulista&#39;, &#39;e&#39;, &#39;ingressou&#39;, &#39;em&#39;, &#39;seguida&#39;, &#39;na&#39;, &#39;Faculdade&#39;, &#39;de&#39;, &#39;Direito&#39;, &#39;de&#39;, &#39;São&#39;, &#39;Paulo&#39;, &#39;pela&#39;, &#39;qual&#39;, &#39;se&#39;, &#39;formou&#39;, &#39;em&#39;, &#39;1890&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Era&#39;, &#39;presidido&#39;, &#39;por&#39;, &#39;João&#39;, &#39;Câncio&#39;, &#39;da&#39;, &#39;Silva&#39;]
+[&#39;Nas&#39;, &#39;eleições&#39;, &#39;para&#39;, &#39;a&#39;, &#39;Assembléia&#39;, &#39;Nacional&#39;, &#39;Constituinte&#39;, &#39;de&#39;, &#39;1933&#39;, &#39;apresentou&#39;, &#39;uma&#39;, &#39;chapa&#39;, &#39;composta&#39;, &#39;por&#39;, &#39;Américo&#39;, &#39;Basílio&#39;, &#39;Silvado&#39;, &#39;Henrique&#39;, &#39;de&#39;, &#39;Toledo&#39;, &#39;Dodsworth&#39;, &#39;Amélio&#39;, &#39;Dias&#39;, &#39;de&#39;, &#39;Morais&#39;, &#39;Adolfo&#39;, &#39;Bergamini&#39;, &#39;Jones&#39;, &#39;Gonçalves&#39;, &#39;Rocha&#39;, &#39;José&#39;, &#39;Matoso&#39;, &#39;de&#39;, &#39;Sampaio&#39;, &#39;Correia&#39;, &#39;Antenor&#39;, &#39;Esposel&#39;, &#39;Coutinho&#39;, &#39;Inácio&#39;, &#39;Bittencourt&#39;, &#39;Berta&#39;, &#39;Lutz&#39;, &#39;e&#39;, &#39;Georgina&#39;, &#39;de&#39;, &#39;Araújo&#39;, &#39;Lima&#39;]
 </pre></div>
 </div>
 </div>
@@ -936,14 +1096,14 @@ Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.9.0 in /usr/local/lib/pytho
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.170549698638756
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2811055265149547
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="visualizando-a-vizinanca-semantica">
-<h2>Visualizando a Vizinança Semântica<a class="headerlink" href="#visualizando-a-vizinanca-semantica" title="Permalink to this heading">#</a></h2>
+<h2>Visualizando a Vizinança Semântica<a class="headerlink" href="#visualizando-a-vizinanca-semantica" title="Permalink to this headline">#</a></h2>
 <p>Por meio do programa <a class="reference external" href="https://github.com/fccoelho/SemanticTree">SemanticTree</a>, podemos construir uma visualização animada da vizinhança semântica em uma rede.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -952,10 +1112,24 @@ Requirement already satisfied: numpy&lt;2.0.0,&gt;=1.9.0 in /usr/local/lib/pytho
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fish: Unknown command: semanticTree
-fish: 
-semanticTree -h
-^
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: semanticTree [-h] [-w W] [-n N] [-s SIM] [-S SIZE]
+                    [-o {image,animation}]
+                    model
+
+Visualize the semantic neighborhood of a term. given a Gensim&#39;s Word2vec
+trained model
+
+positional arguments:
+  model                 file name of a Gensim&#39;s Word2vec model.
+
+options:
+  -h, --help            show this help message and exit
+  -w W                  the word or bi_gram to analyze
+  -n N                  Max number of neighbors to scan.
+  -s SIM, --sim SIM     minimum similarity to be a neighbor
+  -S SIZE, --size SIZE  Maximum size of the three
+  -o {image,animation}, --output {image,animation}
+                        Type of visualization
 </pre></div>
 </div>
 </div>
@@ -964,14 +1138,6 @@ semanticTree -h
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>semanticTree -w política 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fish: Unknown command: semanticTree
-fish: 
-semanticTree -w política
-^
 </pre></div>
 </div>
 </div>
