@@ -9,7 +9,9 @@ author: Flávio Codeço Coelho
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: auto
+  exclude_patterns: [Capitulo_6.ipynb]
   timeout: 180
+  stderr_output: 'remove'
 
 
 #######################################################################################
@@ -54,3 +56,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  
+launch_buttons:
+  notebook_interface: 'classic'
+  colab_url: "https://colab.research.google.com"

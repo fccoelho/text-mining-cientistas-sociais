@@ -9,4 +9,6 @@ pyemd
 tqdm
 biopython
 ratelimiter
-
+click
+scholarly
+pygraphviz
