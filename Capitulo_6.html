@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Analizando Redes de Colaboração Científica &#8212; Mineração de textos para Cientistas Sociais</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,55 +62,95 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Capitulo_6';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Construindo um Classificador de Textos" href="Capitulo_5.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Mineração de textos para Cientistas Sociais</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Mineração de textos para Cientistas Sociais</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -108,311 +160,695 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_1.html">
-   Abrindo Arquivos de Texto
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_2.html">
-   Contando Palavras
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_3.html">
-   Identificando Entidades Nomeadas e Similaridade Semântica
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_4.html">
-   Aplicando modelagem de assuntos ao DHBB
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_5.html">
-   Construindo um Classificador de Textos
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Analizando Redes de Colaboração Científica
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_1.html">Abrindo Arquivos de Texto</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_2.html">Contando Palavras</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_3.html">Identificando Entidades Nomeadas e Similaridade Semântica</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_4.html">Aplicando modelagem de assuntos ao DHBB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_5.html">Construindo um Classificador de Textos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analizando Redes de Colaboração Científica</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/fccoelho/text-mining-cientistas-sociais/master?urlpath=tree/Capitulo_6.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/fccoelho/text-mining-cientistas-sociais/blob/master/Capitulo_6.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fccoelho/text-mining-cientistas-sociais/blob/master/Capitulo_6.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fccoelho/text-mining-cientistas-sociais" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fccoelho/text-mining-cientistas-sociais/issues/new?title=Issue%20on%20page%20%2FCapitulo_6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Capitulo_6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/fccoelho/text-mining-cientistas-sociais"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/fccoelho/text-mining-cientistas-sociais/issues/new?title=Issue%20on%20page%20%2FCapitulo_6.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Capitulo_6.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#consultando-a-partir-do-google-academico-ga">
-   Consultando a partir do Google Acadêmico  (GA)
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Analizando Redes de Colaboração Científica</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#consultando-a-partir-do-google-academico-ga">
-   Consultando a partir do Google Acadêmico  (GA)
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analizando Redes de Colaboração Científica</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buscas-no-corpus">Buscas no Corpus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-citacoes">Redes de Citações</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estabelecendo-um-gerador-de-artigos">Estabelecendo um Gerador de Artigos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construindo-modelos-vetoriais">Construindo Modelos Vetoriais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-word2vec">Modelo Word2Vec</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-fast-text">Modelo “Fast Text”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-doc2vec">Modelo Doc2Vec</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consultando-a-partir-do-google-academico-ga">Consultando a partir do Google Acadêmico  (GA)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="analizando-redes-de-colaboracao-cientifica">
-<h1>Analizando Redes de Colaboração Científica<a class="headerlink" href="#analizando-redes-de-colaboracao-cientifica" title="Permalink to this headline">#</a></h1>
-<p>Para podermos analizar redes de colaboração em publicações científicas, precisamos antes construir um banco de referências. Para isso iremos utilizar <a class="reference external" href="https://github.com/fccoelho/pubmed_downloader/blob/master/fetch2pgsql.py">este código</a>.</p>
+<h1>Analizando Redes de Colaboração Científica<a class="headerlink" href="#analizando-redes-de-colaboracao-cientifica" title="Permalink to this heading">#</a></h1>
+<p>Para podermos analizar redes de colaboração em publicações científicas, precisamos antes construir um banco de referências. Para isso iremos utilizar <a class="reference external" href="https://github.com/fccoelho/pubmed_downloader/blob/master/fetch2pgsql.py">este código</a>. Este script foi construído como uma ferramenta para a construção de um banco de referências sobre <code class="docutils literal notranslate"><span class="pre">COVID19</span></code> para as análises deste capitulo. Caso o leitor deseje, pode também modificar o script para atender seus interesses pessoais de busca bibliográficas.</p>
+<p>Começamos abaixo com uma busca de no máximo 500 artigos por palavra-chave. Esta linha de comando irá gerar um banco de dados chamado <code class="docutils literal notranslate"><span class="pre">pubmed.sqlite</span></code>.</p>
 <div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>./fetch2sql.py<span class="w"> </span>--count<span class="w"> </span><span class="m">500</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fetching results for covid19
+Found 500 items
+ 26%|██████████▍                              | 128/500 [01:32&lt;03:51,  1.61it/s]Downloading of 36571519 failed. HTTP Error 400: Bad Request
+ 99%|████████████████████████████████████████▌| 494/500 [05:53&lt;00:04,  1.46it/s]Downloading of 36567860 failed. HTTP Error 400: Bad Request
+100%|█████████████████████████████████████████| 500/500 [05:58&lt;00:00,  1.40it/s]
+Fetching results for covid-19
+Found 500 items
+100%|█████████████████████████████████████████| 500/500 [00:31&lt;00:00, 15.84it/s]
+Fetching results for sars-cov-2
+Found 500 items
+ 45%|██████████████████▍                      | 225/500 [00:55&lt;03:13,  1.42it/s]Downloading of 36564060 failed. HTTP Error 400: Bad Request
+ 65%|██████████████████████████▋              | 326/500 [02:08&lt;02:25,  1.20it/s]Downloading of 36560681 failed. HTTP Error 400: Bad Request
+100%|█████████████████████████████████████████| 500/500 [04:26&lt;00:00,  1.88it/s]
+Fetching results for 2019-ncov
+Found 500 items
+100%|████████████████████████████████████████| 500/500 [00:01&lt;00:00, 372.41it/s]
+Fetching results for novel coronavirus
+Found 500 items
+100%|█████████████████████████████████████████| 500/500 [00:10&lt;00:00, 49.21it/s]
+Updating citations...
+100%|███████████████████████████████████████| 2054/2054 [18:36&lt;00:00,  1.84it/s]
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="buscas-no-corpus">
+<h2>Buscas no Corpus<a class="headerlink" href="#buscas-no-corpus" title="Permalink to this heading">#</a></h2>
+<p>Este banco de dados foi configurado com indexação automática do seu conteúdo. Logo podemos escrever uma simples função para realizar as buscas:</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>./fetch2sql.py --count <span class="m">500</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">busca</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sqlite:///pubmed.sqlite&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;select rowid, title,highlight(article_fts, 1, &#39;&lt;b&gt;&#39;, &#39;&lt;/b&gt;&#39;) from article_fts(&#39;</span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2">&#39;);&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">del</span> <span class="n">engine</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pmid</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">busca</span><span class="p">(</span><span class="s1">&#39;cov2&#39;</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">pmid</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">HTML</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36499351
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Pathological Roles of Pulmonary Cells in Acute Lung Injury: Lessons from Clinical Practice.&#39;
+</pre></div>
+</div>
+<div class="output text_html">Interstitial lung diseases (ILD) are relatively rare and sometimes become life threatening. In particular, rapidly progressive ILD, which frequently presents as acute lung injury (ALI) on lung histopathology, shows poor prognosis if proper and immediate treatments are not initiated. These devastating conditions include acute exacerbation of idiopathic pulmonary fibrosis (AE-IPF), clinically amyopathic dermatomyositis (CADM), epidermal growth factor receptor-tyrosine kinase inhibitor (EGFR-TKI)-induced lung injury, and severe acute respiratory syndrome coronavirus 2 (SARS-<b>CoV2</b>) infection named coronavirus disease 2019 (COVID-19). In this review, clinical information, physical findings, laboratory examinations, and findings on lung high-resolution computed tomography and lung histopathology are presented, focusing on majorly damaged cells in each disease. Furthermore, treatments that should be immediately initiated in clinical practice for each disease are illustrated to save patients with these diseases.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36501018
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Predictors of Sarcopenia in Outpatients with Post-Critical SARS-CoV2 Disease. Nutritional Ultrasound of Rectus Femoris Muscle, a Potential Tool.&#39;
+</pre></div>
+</div>
+<div class="output text_html">The loss of muscle mass in post-critical COVID-19 outpatients is difficult to assess due to the limitations of techniques and the high prevalence of obesity. Ultrasound is an emerging technique for evaluating body composition. The aim is to evaluate sarcopenia and its risk factors, determining ultrasound usefulness as a potential tool for this purpose according to established techniques, such as the bioimpedance vector analysis (BIVA), handgrip strength, and timed up-and-go test.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36503438
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Severe COVID-19-associated myocarditis with cardiogenic shock - management with assist devices - a case report &amp; review.&#39;
+</pre></div>
+</div>
+<div class="output text_html">Primary viral myocarditis associated with severe acute respiratory syndrome coronavirus 2 (SARS-<b>Cov2</b>) infection is a rare diagnosis.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36505528
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Seroprevalence of SARS-CoV 2 antibodies &amp; its determinants in children of 5-to-18-year age group in an urban setting, Kerala.&#39;
+</pre></div>
+</div>
+<div class="output text_html">There were limited data on the true burden of COVID 19 infection in children since the majority of the infections are asymptomatic or paucisymptomatic. This study aimed to measure the prevalence of SARS <b>CoV2</b> antibodies in children of the 5-to-18 years age group.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36506002
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Maternal fructose boosts the effects of a Western-type diet increasing SARS-COV-2 cell entry factors in male offspring.&#39;
+</pre></div>
+</div>
+<div class="output text_html">Fructose-rich beverages and foods consumption correlates with the epidemic rise in cardiovascular disease, diabetes and obesity. Severity of COVID-19 has been related to these metabolic diseases. Fructose-rich foods could place people at an increased risk for severe COVID-19. We investigated whether maternal fructose intake in offspring affects hepatic and ileal gene expression of proteins that permit SARS-<b>CoV2</b> entry to the cell. Carbohydrates were supplied to pregnant rats in drinking water. Adult and young male descendants subjected to water, liquid fructose alone or as a part of a Western diet, were studied. Maternal fructose reduced hepatic SARS-<b>CoV2</b> entry factors expression in older offspring. On the contrary, maternal fructose boosted the Western diet-induced increase in viral entry factors expression in ileum of young descendants. Maternal fructose intake produced a fetal programming that increases hepatic viral protection and, in contrast, exacerbates fructose plus cholesterol-induced diminution in SARS-<b>CoV2</b> protection in small intestine of progeny.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36507223
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Ad26.COV2.S priming provided a solid immunological base for mRNA-based COVID-19 booster vaccination.&#39;
+</pre></div>
+</div>
+<div class="output text_html">The emergence of novel SARS-CoV-2 variants led to the recommendation of booster vaccinations after Ad26.<b>COV2</b>.S priming. It was previously shown that heterologous booster vaccination induces high antibody levels, but how heterologous boosters affect other functional aspects of the immune response remained unknown. Here, we performed immunological profiling of Ad26.<b>COV2</b>.S-primed individuals before and after homologous or heterologous (mRNA-1273 or BNT162b2) booster. Booster vaccinations increased functional antibodies targeting ancestral SARS-CoV-2 and emerging variants. Especially heterologous booster vaccinations induced high levels of functional antibodies. In contrast, T cell responses were similar in magnitude following homologous or heterologous booster vaccination, and retained cross-reactivity towards variants. Booster vaccination led to a minimal expansion of SARS-CoV-2-specific T cell clones and no increase in breadth of the T cell repertoire. In conclusion, we show that Ad26.<b>COV2</b>.S priming vaccination provided a solid immunological base for heterologous boosting, increasing humoral and cellular responses targeting emerging variants of concern.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36510222
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Longitudinal transcriptional analysis of peripheral blood leukocytes in COVID-19 convalescent donors.&#39;
+</pre></div>
+</div>
+<div class="output text_html">SARS-<b>CoV2</b> can induce a strong host immune response. Many studies have evaluated antibody response following SARS-<b>CoV2</b> infections. This study investigated the immune response and T cell receptor diversity in people who had recovered from SARS-<b>CoV2</b> infection (COVID-19).</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36510647
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;Increased incidence of Graves&#39;&#39; disease during the SARS-CoV2 pandemic.&quot;
+</pre></div>
+</div>
+<div class="output text_html">COVID-19 has a wide spectrum of clinical severity and there is evidence that SARS-<b>Cov2</b> affects several organs and systems. Among the organs affected since the beginning of the pandemic, the relationship between SARS-CoV-2 infection and thyroid involvement has been demonstrated. Novel and highly effective mRNA and DNA-based vaccines have been rapidly developed to decrease SARS-CoV-2 morbidity and mortality. Early after mass vaccinations, cases of thyroid dysfunction mainly including episodes of subacute thyroiditis, began to be reported like adverse effects. The objective of this study is to determine the impact of the pandemic, both due to SARS-<b>CoV2</b> infections and vaccinations, on the incidence of Graves´ disease.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36511263
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Factors Associated with Vaccine Breakthrough Incidence among Health Care Workers Vaccinated with Inactivated SARS-CoV2 Vaccine (CoronaVac).&#39;
+</pre></div>
+</div>
+<div class="output text_html">Healthcare workers (HCWs) run a high risk of severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). The HCWs are prone to the SARS-CoV-2 infection in the hospital despite being fully vaccinated. The present study aimed to address the factors associated with the coronavirus disease 2019 (COVID-19) vaccine breakthrough among HCWs.</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36514704
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Remdesivir-Induced Liver Injury in a Patient With Coronavirus Disease 2019 and History of Congestive Hepatopathy.&#39;
+</pre></div>
+</div>
+<div class="output text_html">Remdesivir is an antiviral agent used as supportive care in adults with SARS-<b>COV2</b>-induced pneumonia. We report a case of an 81-year-old patient who developed hepatocellular acute liver injury 48 hours after initiating remdesivir. During the investigation, other causes of hepatotoxicity were excluded. A decrease in transaminases and international normalized ratio (INR) was observed 24 hours after cessation of remdesivir. An abdominal CT demonstrated hepatic congestion, retrograde hepatic venous opacification shortly after intravenous contrast injection, and dilatation of hepatic veins and inferior vena cava. We suggest congestive hepatopathy secondary to remdesivir as a possible component of liver injury.</div></div>
+</div>
+</section>
+<section id="redes-de-citacoes">
+<h2>Redes de Citações<a class="headerlink" href="#redes-de-citacoes" title="Permalink to this heading">#</a></h2>
+<p>Nosso código de coleta de artigos no PubMed também construiu uma tabela de citações de cada artigo baixado.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos começar com um id de artigo que possua citações. Mas antes precisamos escrever uma função para buscar os vizinhos futuros, ou seja, os artigos que os citam.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_neighbors</span><span class="p">(</span><span class="n">pmid</span><span class="p">):</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///pubmed.sqlite&#39;</span><span class="p">,</span>
+                                    <span class="n">echo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;select cited_by from citations_covid19 where pmid=</span><span class="si">{</span><span class="n">pmid</span><span class="si">}</span><span class="s2">;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na função acima, caso não existam citações registradas, a sua saída será <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_neighbors</span><span class="p">(</span><span class="mi">36502386</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;36502408&#39;, &#39;36496350&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para construir a rede de citações, vamos usar um objeto fila (queue em inglês) do tipo FIFO (first in, first out). O código abaixo começa por um artigo que será a raiz da rede e o adiciona à fila. Em seguida, usando a função <code class="docutils literal notranslate"><span class="pre">get_neighbors</span></code> acima encontramos os artigos que o citam, criamos arestas na rede e os adicionamos à fila. O loop while repete estas operações até que a fila esteja vazia.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">SimpleQueue</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">SimpleQueue</span><span class="p">()</span>
+<span class="n">raiz</span> <span class="o">=</span> <span class="mi">36508742</span>
+<span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">raiz</span><span class="p">)</span>
+<span class="n">árvore</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">q</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+        <span class="k">break</span>
+    <span class="n">nó</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">vizinhos</span> <span class="o">=</span> <span class="n">get_neighbors</span><span class="p">(</span><span class="n">nó</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vizinhos</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vizinhos</span><span class="p">:</span>
+            <span class="n">árvore</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">nó</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="c1"># pos = nx.nx_agraph.graphviz_layout(árvore, prog=&quot;twopi&quot;, args=&quot;&quot;)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">kamada_kawai_layout</span><span class="p">(</span><span class="n">árvore</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">árvore</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">árvore</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="n">raiz</span><span class="p">],</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/53f10985f8a4711e61817173bd3facd75852ac1da8d16eae754246a6c2973a01.png" src="_images/53f10985f8a4711e61817173bd3facd75852ac1da8d16eae754246a6c2973a01.png" />
+</div>
+</div>
+</section>
+<section id="estabelecendo-um-gerador-de-artigos">
+<h2>Estabelecendo um Gerador de Artigos<a class="headerlink" href="#estabelecendo-um-gerador-de-artigos" title="Permalink to this heading">#</a></h2>
+<p>Como de costume em análise de textos precisamos estabelecer uma metodologia de acesso gradual ao corpus para evitar problemas de consumo excessivo de memória. Neste espírito vamos começar construindo um um gerador que nos entregue um artigo por vez, a partir do nosso banco de dados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StreamCorpus</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Iterador sobre o corpus no banco SQLite</span>
+<span class="sd">        :param table: nome da tabela</span>
+<span class="sd">        :param limit: limite de artigos</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///pubmed.sqlite&#39;</span><span class="p">,</span>
+                                    <span class="n">echo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="n">limit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">text_gen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT abstract FROM </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="si">}</span><span class="s2"> limit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">limit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span> <span class="k">if</span>
+                <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_gen</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="nb">list</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">simple_tokenize</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>O código acima retorna os resumos tokenizados das referências armazenadas no banco de dados. Vamos examinar alguns destes resumos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SC</span> <span class="o">=</span> <span class="n">StreamCorpus</span><span class="p">(</span><span class="s1">&#39;covid19&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="nb">abs</span> <span class="ow">in</span> <span class="n">SC</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="nb">abs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;This&#39;, &#39;article&#39;, &#39;explores&#39;, &#39;the&#39;, &#39;question&#39;, &#39;of&#39;, &#39;why&#39;, &#39;the&#39;, &#39;nine&#39;, &#39;pandemics&#39;, &#39;prior&#39;, &#39;to&#39;, &#39;COVID&#39;, &#39;which&#39;, &#39;have&#39;, &#39;affected&#39;, &#39;millions&#39;, &#39;of&#39;, &#39;people&#39;, &#39;since&#39;, &#39;the&#39;, &#39;second&#39;, &#39;half&#39;, &#39;of&#39;, &#39;the&#39;, &#39;th&#39;, &#39;century&#39;, &#39;were&#39;, &#39;not&#39;, &#39;recorded&#39;, &#39;in&#39;, &#39;collective&#39;, &#39;memory&#39;, &#39;despite&#39;, &#39;their&#39;, &#39;magnitude&#39;, &#39;and&#39;, &#39;extent&#39;, &#39;Thus&#39;, &#39;it&#39;, &#39;proposes&#39;, &#39;a&#39;, &#39;reading&#39;, &#39;of&#39;, &#39;the&#39;, &#39;pandemic&#39;, &#39;as&#39;, &#39;one&#39;, &#39;component&#39;, &#39;of&#39;, &#39;a&#39;, &#39;wider&#39;, &#39;syndemic&#39;, &#39;made&#39;, &#39;up&#39;, &#39;of&#39;, &#39;contagious&#39;, &#39;diseases&#39;, &#39;climate&#39;, &#39;change&#39;, &#39;and&#39;, &#39;malnutrition&#39;, &#39;This&#39;, &#39;piece&#39;, &#39;offers&#39;, &#39;a&#39;, &#39;narrative&#39;, &#39;of&#39;, &#39;the&#39;, &#39;origins&#39;, &#39;development&#39;, &#39;and&#39;, &#39;prospects&#39;, &#39;of&#39;, &#39;the&#39;, &#39;pandemic&#39;, &#39;within&#39;, &#39;the&#39;, &#39;dynamics&#39;, &#39;of&#39;, &#39;the&#39;, &#39;global&#39;, &#39;food&#39;, &#39;system&#39;, &#39;and&#39;, &#39;national&#39;, &#39;economic&#39;, &#39;and&#39;, &#39;political&#39;, &#39;systems&#39;, &#39;highlighting&#39;, &#39;components&#39;, &#39;and&#39;, &#39;connections&#39;, &#39;It&#39;, &#39;includes&#39;, &#39;a&#39;, &#39;warning&#39;, &#39;that&#39;, &#39;along&#39;, &#39;with&#39;, &#39;climate&#39;, &#39;change&#39;, &#39;and&#39;, &#39;malnutrition&#39;, &#39;undernourishment&#39;, &#39;obesity&#39;, &#39;pandemics&#39;, &#39;are&#39;, &#39;known&#39;, &#39;and&#39;, &#39;expected&#39;, &#39;outcomes&#39;, &#39;of&#39;, &#39;the&#39;, &#39;workings&#39;, &#39;of&#39;, &#39;a&#39;, &#39;socio&#39;, &#39;political&#39;, &#39;system&#39;, &#39;that&#39;, &#39;as&#39;, &#39;in&#39;, &#39;the&#39;, &#39;case&#39;, &#39;of&#39;, &#39;other&#39;, &#39;components&#39;, &#39;of&#39;, &#39;the&#39;, &#39;syndemic&#39;, &#39;by&#39;, &#39;naturalizing&#39;, &#39;causes&#39;, &#39;and&#39;, &#39;individualizing&#39;, &#39;consequences&#39;, &#39;conspire&#39;, &#39;against&#39;, &#39;the&#39;, &#39;creation&#39;, &#39;of&#39;, &#39;narratives&#39;, &#39;that&#39;, &#39;go&#39;, &#39;beyond&#39;, &#39;cosmetic&#39;, &#39;changes&#39;]
+[&#39;The&#39;, &#39;decline&#39;, &#39;in&#39;, &#39;vaccination&#39;, &#39;coverage&#39;, &#39;associated&#39;, &#39;with&#39;, &#39;the&#39;, &#39;population&#39;, &#39;s&#39;, &#39;mistrust&#39;, &#39;of&#39;, &#39;vaccines&#39;, &#39;has&#39;, &#39;been&#39;, &#39;defined&#39;, &#39;as&#39;, &#39;a&#39;, &#39;global&#39;, &#39;health&#39;, &#39;threat&#39;, &#39;Adopting&#39;, &#39;a&#39;, &#39;qualitative&#39;, &#39;approach&#39;, &#39;centered&#39;, &#39;on&#39;, &#39;the&#39;, &#39;social&#39;, &#39;significance&#39;, &#39;of&#39;, &#39;vaccines&#39;, &#39;we&#39;, &#39;conducted&#39;, &#39;semi&#39;, &#39;structured&#39;, &#39;interviews&#39;, &#39;with&#39;, &#39;mothers&#39;, &#39;and&#39;, &#39;fathers&#39;, &#39;in&#39;, &#39;the&#39;, &#39;City&#39;, &#39;of&#39;, &#39;Buenos&#39;, &#39;Aires&#39;, &#39;between&#39;, &#39;July&#39;, &#39;and&#39;, &#39;December&#39;, &#39;We&#39;, &#39;describe&#39;, &#39;and&#39;, &#39;analyze&#39;, &#39;their&#39;, &#39;knowledge&#39;, &#39;and&#39;, &#39;the&#39;, &#39;arguments&#39;, &#39;used&#39;, &#39;to&#39;, &#39;justify&#39;, &#39;their&#39;, &#39;acceptance&#39;, &#39;or&#39;, &#39;reluctance&#39;, &#39;to&#39;, &#39;vaccinate&#39;, &#39;their&#39;, &#39;children&#39;, &#39;in&#39;, &#39;the&#39;, &#39;context&#39;, &#39;of&#39;, &#39;COVID&#39;, &#39;The&#39;, &#39;results&#39;, &#39;show&#39;, &#39;that&#39;, &#39;the&#39;, &#39;studied&#39;, &#39;population&#39;, &#39;possesses&#39;, &#39;knowledge&#39;, &#39;about&#39;, &#39;vaccines&#39;, &#39;and&#39;, &#39;accepts&#39;, &#39;them&#39;, &#39;as&#39;, &#39;a&#39;, &#39;preventive&#39;, &#39;practice&#39;, &#39;Nonetheless&#39;, &#39;it&#39;, &#39;was&#39;, &#39;possible&#39;, &#39;to&#39;, &#39;identify&#39;, &#39;a&#39;, &#39;broad&#39;, &#39;spectrum&#39;, &#39;of&#39;, &#39;attitudes&#39;, &#39;towards&#39;, &#39;vaccination&#39;, &#39;including&#39;, &#39;more&#39;, &#39;reticent&#39;, &#39;positions&#39;, &#39;based&#39;, &#39;on&#39;, &#39;concerns&#39;, &#39;regarding&#39;, &#39;their&#39;, &#39;safety&#39;, &#39;adverse&#39;, &#39;effects&#39;, &#39;and&#39;, &#39;the&#39;, &#39;need&#39;, &#39;to&#39;, &#39;apply&#39;, &#39;them&#39;, &#39;for&#39;, &#39;eradicated&#39;, &#39;diseases&#39;, &#39;proposing&#39;, &#39;vaccination&#39;, &#39;as&#39;, &#39;an&#39;, &#39;optional&#39;, &#39;and&#39;, &#39;complementary&#39;, &#39;practice&#39;, &#39;to&#39;, &#39;other&#39;, &#39;care&#39;, &#39;practices&#39;, &#39;Arguments&#39;, &#39;are&#39;, &#39;organized&#39;, &#39;under&#39;, &#39;the&#39;, &#39;assumption&#39;, &#39;of&#39;, &#39;individual&#39;, &#39;and&#39;, &#39;moral&#39;, &#39;responsibility&#39;, &#39;for&#39;, &#39;health&#39;, &#39;care&#39;, &#39;an&#39;, &#39;expression&#39;, &#39;of&#39;, &#39;the&#39;, &#39;current&#39;, &#39;sociocultural&#39;, &#39;and&#39;, &#39;health&#39;, &#39;backdrop&#39;]
+[&#39;This&#39;, &#39;article&#39;, &#39;summarizes&#39;, &#39;the&#39;, &#39;strategies&#39;, &#39;used&#39;, &#39;to&#39;, &#39;rapidly&#39;, &#39;develop&#39;, &#39;COVID&#39;, &#39;vaccines&#39;, &#39;and&#39;, &#39;distribute&#39;, &#39;them&#39;, &#39;globally&#39;, &#39;with&#39;, &#39;an&#39;, &#39;emphasis&#39;, &#39;on&#39;, &#39;vaccines&#39;, &#39;developed&#39;, &#39;in&#39;, &#39;western&#39;, &#39;nations&#39;, &#39;It&#39;, &#39;is&#39;, &#39;based&#39;, &#39;on&#39;, &#39;interviews&#39;, &#39;and&#39;, &#39;information&#39;, &#39;gathered&#39;, &#39;regarding&#39;, &#39;the&#39;, &#39;response&#39;, &#39;to&#39;, &#39;the&#39;, &#39;pandemic&#39;, &#39;both&#39;, &#39;from&#39;, &#39;international&#39;, &#39;organizations&#39;, &#39;and&#39;, &#39;official&#39;, &#39;documents&#39;, &#39;from&#39;, &#39;Brazil&#39;, &#39;Argentina&#39;, &#39;Colombia&#39;, &#39;Peru&#39;, &#39;and&#39;, &#39;Mexico&#39;, &#39;While&#39;, &#39;vaccine&#39;, &#39;development&#39;, &#39;has&#39;, &#39;been&#39;, &#39;hailed&#39;, &#39;as&#39;, &#39;successful&#39;, &#39;their&#39;, &#39;global&#39;, &#39;distribution&#39;, &#39;has&#39;, &#39;been&#39;, &#39;highly&#39;, &#39;unequal&#39;, &#39;We&#39;, &#39;look&#39;, &#39;at&#39;, &#39;how&#39;, &#39;the&#39;, &#39;pandemic&#39;, &#39;succeeded&#39;, &#39;in&#39;, &#39;mobilizing&#39;, &#39;large&#39;, &#39;quantities&#39;, &#39;of&#39;, &#39;government&#39;, &#39;resources&#39;, &#39;and&#39;, &#39;how&#39;, &#39;citizens&#39;, &#39;volunteered&#39;, &#39;their&#39;, &#39;bodies&#39;, &#39;so&#39;, &#39;that&#39;, &#39;clinical&#39;, &#39;trials&#39;, &#39;could&#39;, &#39;be&#39;, &#39;completed&#39;, &#39;quickly&#39;, &#39;However&#39;, &#39;patents&#39;, &#39;prevented&#39;, &#39;the&#39;, &#39;expansion&#39;, &#39;of&#39;, &#39;manufacturing&#39;, &#39;capacity&#39;, &#39;and&#39;, &#39;the&#39;, &#39;governments&#39;, &#39;of&#39;, &#39;a&#39;, &#39;few&#39;, &#39;wealthy&#39;, &#39;countries&#39;, &#39;prioritized&#39;, &#39;the&#39;, &#39;protection&#39;, &#39;and&#39;, &#39;in&#39;, &#39;some&#39;, &#39;cases&#39;, &#39;overprotection&#39;, &#39;of&#39;, &#39;their&#39;, &#39;citizens&#39;, &#39;at&#39;, &#39;the&#39;, &#39;expense&#39;, &#39;of&#39;, &#39;protecting&#39;, &#39;the&#39;, &#39;rest&#39;, &#39;of&#39;, &#39;world&#39;, &#39;s&#39;, &#39;population&#39;, &#39;Among&#39;, &#39;the&#39;, &#39;major&#39;, &#39;beneficiaries&#39;, &#39;of&#39;, &#39;the&#39;, &#39;global&#39;, &#39;response&#39;, &#39;to&#39;, &#39;the&#39;, &#39;pandemic&#39;, &#39;are&#39;, &#39;the&#39;, &#39;leading&#39;, &#39;vaccine&#39;, &#39;companies&#39;, &#39;their&#39;, &#39;executives&#39;, &#39;and&#39;, &#39;investors&#39;, &#39;The&#39;, &#39;article&#39;, &#39;concludes&#39;, &#39;with&#39;, &#39;some&#39;, &#39;of&#39;, &#39;the&#39;, &#39;lessons&#39;, &#39;learned&#39;, &#39;in&#39;, &#39;this&#39;, &#39;process&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="construindo-modelos-vetoriais">
+<h2>Construindo Modelos Vetoriais<a class="headerlink" href="#construindo-modelos-vetoriais" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Doc2Vec</span><span class="p">,</span> <span class="n">FastText</span><span class="p">,</span> <span class="n">KeyedVectors</span><span class="p">,</span> <span class="n">Word2Vec</span>
+<span class="kn">from</span> <span class="nn">gensim.models.doc2vec</span> <span class="kn">import</span> <span class="n">TaggedLineDocument</span>
+<span class="kn">from</span> <span class="nn">gensim.models.word2vec</span> <span class="kn">import</span> <span class="n">LineSentence</span>
+<span class="kn">from</span> <span class="nn">gensim.similarities.annoy</span> <span class="kn">import</span> <span class="n">AnnoyIndexer</span>
+<span class="kn">from</span> <span class="nn">gensim.utils</span> <span class="kn">import</span> <span class="n">save_as_line_sentence</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Embeddings</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">table_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">corpus_size</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create embeddings based on a corpus</span>
+<span class="sd">        :param filename: file name where the corpus with be temporarily dumped.</span>
+<span class="sd">        :param corpus_size: number of documents to be used to build the embeddings</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">table_name</span> <span class="o">=</span> <span class="n">table_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">corpus_size</span> <span class="o">=</span> <span class="n">corpus_size</span>
+
+    <span class="k">def</span> <span class="nf">dump_to_corpus_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
+        <span class="n">stream_corpus</span> <span class="o">=</span> <span class="n">StreamCorpus</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">corpus_size</span><span class="p">)</span>
+        <span class="n">save_as_line_sentence</span><span class="p">(</span><span class="n">stream_corpus</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">gen_wor2vec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build Word2Vec embedding</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">sentences</span><span class="o">=</span><span class="n">LineSentence</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">),</span> <span class="n">workers</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.w2v&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+    
+    <span class="k">def</span> <span class="nf">gen_WMD</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span>
+
+    <span class="k">def</span> <span class="nf">gen_fasttext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">FastText</span><span class="p">(</span><span class="n">sentences</span><span class="o">=</span><span class="n">LineSentence</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">),</span> <span class="n">workers</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.ft&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">gen_doc2vec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Doc2Vec</span><span class="p">(</span><span class="n">documents</span><span class="o">=</span><span class="n">TaggedLineDocument</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">),</span> <span class="n">workers</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.d2v&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="modelo-word2vec">
+<h3>Modelo Word2Vec<a class="headerlink" href="#modelo-word2vec" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># del SC</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">Embeddings</span><span class="p">(</span><span class="s1">&#39;covid19&#39;</span><span class="p">,</span><span class="s1">&#39;articles.txt&#39;</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">E</span><span class="o">.</span><span class="n">dump_to_corpus_file</span><span class="p">(</span><span class="s1">&#39;articles&#39;</span><span class="p">)</span>
+<span class="n">mwv</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">gen_wor2vec</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mwv</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;SARS&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;syndrome&#39;, 0.9543189406394958),
+ (&#39;respiratory&#39;, 0.9537762403488159),
+ (&#39;acute&#39;, 0.9496352076530457),
+ (&#39;infection&#39;, 0.9480603337287903),
+ (&#39;coronavirus&#39;, 0.9478137493133545),
+ (&#39;severe&#39;, 0.9424639344215393),
+ (&#39;disease&#39;, 0.918355405330658),
+ (&#39;CoV&#39;, 0.915025532245636),
+ (&#39;corona&#39;, 0.914029061794281),
+ (&#39;caused&#39;, 0.8789240717887878)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modelo-fast-text">
+<h3>Modelo “Fast Text”<a class="headerlink" href="#modelo-fast-text" title="Permalink to this heading">#</a></h3>
+<p>O modelo Fast text nos permite lidar com variações morfológicas das palavras</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="n">Embeddings</span><span class="p">(</span><span class="s1">&#39;covid19&#39;</span><span class="p">,</span><span class="s1">&#39;articles.txt&#39;</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">E</span><span class="o">.</span><span class="n">dump_to_corpus_file</span><span class="p">(</span><span class="s1">&#39;articles&#39;</span><span class="p">)</span>
+<span class="n">mft</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">gen_fasttext</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mft</span><span class="o">.</span><span class="n">wv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;SARS&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;CoV&#39;, 0.9942441582679749),
+ (&#39;coronaviruses&#39;, 0.9934917092323303),
+ (&#39;virus&#39;, 0.993304967880249),
+ (&#39;infect&#39;, 0.9931924343109131),
+ (&#39;corona&#39;, 0.9928044676780701),
+ (&#39;ARS&#39;, 0.9926421642303467),
+ (&#39;syndrome&#39;, 0.9925889372825623),
+ (&#39;pseudovirus&#39;, 0.9925788640975952),
+ (&#39;Syndrome&#39;, 0.9924823045730591),
+ (&#39;Coronaviridae&#39;, 0.9921442270278931)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modelo-doc2vec">
+<h3>Modelo Doc2Vec<a class="headerlink" href="#modelo-doc2vec" title="Permalink to this heading">#</a></h3>
+<p>Este modelo constroi uma representação vetorial dos documentos permitindo consultas de similaridade entre artigos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="n">Embeddings</span><span class="p">(</span><span class="s1">&#39;covid19&#39;</span><span class="p">,</span><span class="s1">&#39;articles.txt&#39;</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">E</span><span class="o">.</span><span class="n">dump_to_corpus_file</span><span class="p">(</span><span class="s1">&#39;articles&#39;</span><span class="p">)</span>
+<span class="n">mdv</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">gen_doc2vec</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podemos encontrar quais os documentos mais similar a um texto (já tokenizado):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">texto</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Spontaneous&#39;</span><span class="p">,</span> <span class="s1">&#39;adverse&#39;</span><span class="p">,</span> <span class="s1">&#39;reaction&#39;</span><span class="p">,</span> <span class="s1">&#39;reports&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;sudden&#39;</span><span class="p">,</span> <span class="s1">&#39;hearing&#39;</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="s1">&#39;have&#39;</span><span class="p">,</span> <span class="s1">&#39;been&#39;</span><span class="p">,</span> 
+         <span class="s1">&#39;observed&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;population&#39;</span><span class="p">,</span> <span class="s1">&#39;based&#39;</span><span class="p">,</span> <span class="s1">&#39;cohort&#39;</span><span class="p">,</span> <span class="s1">&#39;study&#39;</span><span class="p">,</span> <span class="s1">&#39;conducted&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;Israel&#39;</span><span class="p">,</span> <span class="s1">&#39;showed&#39;</span><span class="p">,</span> 
+         <span class="s1">&#39;an&#39;</span><span class="p">,</span> <span class="s1">&#39;increase&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;incidence&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;sudden&#39;</span><span class="p">,</span> <span class="s1">&#39;sensorineural&#39;</span><span class="p">,</span> <span class="s1">&#39;hearing&#39;</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="s1">&#39;SSNHL&#39;</span><span class="p">,</span> 
+         <span class="s1">&#39;following&#39;</span><span class="p">,</span> <span class="s1">&#39;vaccination&#39;</span><span class="p">,</span> <span class="s1">&#39;with&#39;</span><span class="p">,</span> <span class="s1">&#39;messenger&#39;</span><span class="p">,</span> <span class="s1">&#39;RNA&#39;</span><span class="p">,</span> <span class="s1">&#39;COVID&#39;</span><span class="p">,</span> <span class="s1">&#39;vaccine&#39;</span><span class="p">,</span> <span class="s1">&#39;BNT&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;Pfizer&#39;</span><span class="p">,</span> <span class="s1">&#39;BioNTech&#39;</span><span class="p">,</span> 
+         <span class="s1">&#39;However&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;setting&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;possibility&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;confounding&#39;</span><span class="p">,</span> <span class="s1">&#39;remained&#39;</span><span class="p">]</span>
+<span class="n">inferred_vector</span> <span class="o">=</span> <span class="n">mdv</span><span class="o">.</span><span class="n">infer_vector</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+<span class="n">sims</span> <span class="o">=</span> <span class="n">mdv</span><span class="o">.</span><span class="n">dv</span><span class="o">.</span><span class="n">most_similar</span><span class="p">([</span><span class="n">inferred_vector</span><span class="p">],</span> <span class="n">topn</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">sims</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(123, 0.9564133882522583),
+ (70, 0.9324836134910583),
+ (564, 0.9246233701705933),
+ (46, 0.9208188652992249),
+ (567, 0.9157204627990723),
+ (81, 0.9155042767524719),
+ (3, 0.9149802923202515),
+ (563, 0.9073331952095032),
+ (148, 0.9021652340888977),
+ (852, 0.9019087553024292)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="consultando-a-partir-do-google-academico-ga">
-<h2>Consultando a partir do Google Acadêmico  (GA)<a class="headerlink" href="#consultando-a-partir-do-google-academico-ga" title="Permalink to this headline">#</a></h2>
+<h2>Consultando a partir do Google Acadêmico  (GA)<a class="headerlink" href="#consultando-a-partir-do-google-academico-ga" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scholarly</span> <span class="kn">import</span> <span class="n">scholarly</span>
@@ -443,7 +879,7 @@ title="Print to PDF"
   &#39;Syntax&#39;,
   &#39;Semantics&#39;,
   &#39;Philosophy of Language&#39;],
- &#39;citedby&#39;: 468771}
+ &#39;citedby&#39;: 469642}
 </pre></div>
 </div>
 </div>
@@ -494,9 +930,6 @@ title="Print to PDF"
       <th>num_citations</th>
       <th>citedby_url</th>
       <th>cites_id</th>
-      <th>pub_url</th>
-      <th>url_related_articles</th>
-      <th>cites_per_year</th>
     </tr>
   </thead>
   <tbody>
@@ -505,76 +938,58 @@ title="Print to PDF"
       <td>Publication</td>
       <td>PublicationSource.AUTHOR_PUBLICATION_ENTRY</td>
       <td>{'title': 'Aspects of the Theory of Syntax', '...</td>
-      <td>True</td>
+      <td>False</td>
       <td>rbgNVw0AAAAJ:znQEAXyEQe8C</td>
-      <td>46088</td>
-      <td>/scholar?hl=en&amp;cites=1562037976341778186,12173...</td>
+      <td>46180</td>
+      <td>https://scholar.google.com/scholar?oi=bibs&amp;hl=...</td>
       <td>[1562037976341778186, 12173110054263842167]</td>
-      <td>https://books.google.com/books?hl=en&amp;lr=&amp;id=lj...</td>
-      <td>/scholar?oi=bibs&amp;hl=en&amp;q=related:Co-FcUN5rRUJ:...</td>
-      <td>{1983: 455, 1984: 435, 1985: 398, 1986: 395, 1...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Publication</td>
       <td>PublicationSource.AUTHOR_PUBLICATION_ENTRY</td>
       <td>{'title': 'The minimalist program', 'pub_year'...</td>
-      <td>True</td>
+      <td>False</td>
       <td>rbgNVw0AAAAJ:u-x6o8ySG0sC</td>
-      <td>31950</td>
-      <td>/scholar?hl=en&amp;cites=8207792600950810812,13969...</td>
+      <td>31996</td>
+      <td>https://scholar.google.com/scholar?oi=bibs&amp;hl=...</td>
       <td>[8207792600950810812, 13969899446789541878]</td>
-      <td>https://books.google.com/books?hl=en&amp;lr=&amp;id=_a...</td>
-      <td>/scholar?oi=bibs&amp;hl=en&amp;q=related:vKjAQeLv53EJ:...</td>
-      <td>{1993: 191, 1994: 343, 1995: 416, 1996: 554, 1...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Publication</td>
       <td>PublicationSource.AUTHOR_PUBLICATION_ENTRY</td>
       <td>{'title': 'Syntactic structures', 'pub_year': ...</td>
-      <td>True</td>
+      <td>False</td>
       <td>rbgNVw0AAAAJ:9yKSN-GCB0IC</td>
-      <td>29862</td>
-      <td>/scholar?hl=en&amp;cites=2377703172325862585,29835...</td>
+      <td>29918</td>
+      <td>https://scholar.google.com/scholar?oi=bibs&amp;hl=...</td>
       <td>[2377703172325862585, 2983526281934768995, 485...</td>
-      <td>https://www.degruyter.com/document/doi/10.1515...</td>
-      <td>/scholar?oi=bibs&amp;hl=en&amp;q=related:uWzNB3BM_yAJ:...</td>
-      <td>{1983: 246, 1984: 208, 1985: 206, 1986: 234, 1...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Publication</td>
       <td>PublicationSource.AUTHOR_PUBLICATION_ENTRY</td>
       <td>{'title': 'Lectures on government and binding:...</td>
-      <td>True</td>
+      <td>False</td>
       <td>rbgNVw0AAAAJ:uDl620nrkPcC</td>
-      <td>28434</td>
-      <td>/scholar?hl=en&amp;cites=14028218170953085261,4036...</td>
+      <td>28480</td>
+      <td>https://scholar.google.com/scholar?oi=bibs&amp;hl=...</td>
       <td>[14028218170953085261, 4036591927768088961, 56...</td>
-      <td>https://books.google.com/books?hl=en&amp;lr=&amp;id=l0...</td>
-      <td>/scholar?oi=bibs&amp;hl=en&amp;q=related:TbFWDxo-rsIJ:...</td>
-      <td>{1983: 232, 1984: 294, 1985: 331, 1986: 398, 1...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Publication</td>
       <td>PublicationSource.AUTHOR_PUBLICATION_ENTRY</td>
       <td>{'title': 'The sound pattern of English.', 'pu...</td>
-      <td>True</td>
+      <td>False</td>
       <td>rbgNVw0AAAAJ:2osOgNQ5qMEC</td>
-      <td>18905</td>
-      <td>/scholar?hl=en&amp;cites=1979786673247734672,80993...</td>
+      <td>18935</td>
+      <td>https://scholar.google.com/scholar?oi=bibs&amp;hl=...</td>
       <td>[1979786673247734672, 8099357462174375894]</td>
-      <td>https://eric.ed.gov/?id=ED020511</td>
-      <td>/scholar?oi=bibs&amp;hl=en&amp;q=related:kMv7bX2deRsJ:...</td>
-      <td>{1983: 186, 1984: 196, 1985: 244, 1986: 209, 1...</td>
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -594,9 +1009,6 @@ title="Print to PDF"
       <td>0</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
     </tr>
     <tr>
       <th>2527</th>
@@ -606,9 +1018,6 @@ title="Print to PDF"
       <td>False</td>
       <td>rbgNVw0AAAAJ:BUYA1_V_uYcC</td>
       <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -622,9 +1031,6 @@ title="Print to PDF"
       <td>0</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
     </tr>
     <tr>
       <th>2529</th>
@@ -634,9 +1040,6 @@ title="Print to PDF"
       <td>False</td>
       <td>rbgNVw0AAAAJ:yB1At4FlUx8C</td>
       <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
@@ -650,13 +1053,10 @@ title="Print to PDF"
       <td>0</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>2531 rows × 11 columns</p>
+<p>2531 rows × 8 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -674,7 +1074,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -682,43 +1082,101 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Capitulo_5.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Construindo um Classificador de Textos</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Capitulo_5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Construindo um Classificador de Textos</p>
+      </div>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#buscas-no-corpus">Buscas no Corpus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-citacoes">Redes de Citações</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estabelecendo-um-gerador-de-artigos">Estabelecendo um Gerador de Artigos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construindo-modelos-vetoriais">Construindo Modelos Vetoriais</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-word2vec">Modelo Word2Vec</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-fast-text">Modelo “Fast Text”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-doc2vec">Modelo Doc2Vec</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consultando-a-partir-do-google-academico-ga">Consultando a partir do Google Acadêmico  (GA)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Flávio Codeço Coelho<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Flávio Codeço Coelho
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

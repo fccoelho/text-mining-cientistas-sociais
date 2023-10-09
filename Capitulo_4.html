@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Aplicando modelagem de assuntos ao DHBB &#8212; Mineração de textos para Cientistas Sociais</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,56 +62,96 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Capitulo_4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Construindo um Classificador de Textos" href="Capitulo_5.html" />
     <link rel="prev" title="Identificando Entidades Nomeadas e Similaridade Semântica" href="Capitulo_3.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Mineração de textos para Cientistas Sociais</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Mineração de textos para Cientistas Sociais</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -109,353 +161,276 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_1.html">
-   Abrindo Arquivos de Texto
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_2.html">
-   Contando Palavras
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_3.html">
-   Identificando Entidades Nomeadas e Similaridade Semântica
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Aplicando modelagem de assuntos ao DHBB
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_5.html">
-   Construindo um Classificador de Textos
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Capitulo_6.html">
-   Analizando Redes de Colaboração Científica
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_1.html">Abrindo Arquivos de Texto</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_2.html">Contando Palavras</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_3.html">Identificando Entidades Nomeadas e Similaridade Semântica</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Aplicando modelagem de assuntos ao DHBB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_5.html">Construindo um Classificador de Textos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Capitulo_6.html">Analizando Redes de Colaboração Científica</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/fccoelho/text-mining-cientistas-sociais/master?urlpath=tree/Capitulo_4.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
   
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
+  <div id="rtd-footer-container"></div>
 
-      </li>
+
+      </div>
       
-      <li>
-        <a href="https://colab.research.google.com/github/fccoelho/text-mining-cientistas-sociais/blob/master/Capitulo_4.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/fccoelho/text-mining-cientistas-sociais/blob/master/Capitulo_4.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fccoelho/text-mining-cientistas-sociais" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fccoelho/text-mining-cientistas-sociais/issues/new?title=Issue%20on%20page%20%2FCapitulo_4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Capitulo_4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/fccoelho/text-mining-cientistas-sociais"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/fccoelho/text-mining-cientistas-sociais/issues/new?title=Issue%20on%20page%20%2FCapitulo_4.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Capitulo_4.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#word2vec">
-   Word2vec
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explorando-o-modelo">
-     Explorando o modelo
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualizando-os-vetores-de-palavras">
-     Visualizando os vetores de palavras
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#word-movers-distance">
-   Word Movers Distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizando-a-vizinanca-semantica">
-   Visualizando a Vizinança Semântica
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Aplicando modelagem de assuntos ao DHBB</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#word2vec">
-   Word2vec
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explorando-o-modelo">
-     Explorando o modelo
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualizando-os-vetores-de-palavras">
-     Visualizando os vetores de palavras
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#word-movers-distance">
-   Word Movers Distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizando-a-vizinanca-semantica">
-   Visualizando a Vizinança Semântica
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Aplicando modelagem de assuntos ao DHBB</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word2vec">Word2vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explorando-o-modelo">Explorando o modelo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizando-os-vetores-de-palavras">Visualizando os vetores de palavras</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-movers-distance">Word Movers Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizando-a-vizinanca-semantica">Visualizando a Vizinança Semântica</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="aplicando-modelagem-de-assuntos-ao-dhbb">
-<h1>Aplicando modelagem de assuntos ao DHBB<a class="headerlink" href="#aplicando-modelagem-de-assuntos-ao-dhbb" title="Permalink to this headline">#</a></h1>
+<h1>Aplicando modelagem de assuntos ao DHBB<a class="headerlink" href="#aplicando-modelagem-de-assuntos-ao-dhbb" title="Permalink to this heading">#</a></h1>
 <p>Neste capítulo vamos explorar ferramentas de modelagem de assuntos e explorar aplicações ao DHBB. Como sempre, começamos com alguns imports familiares.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -472,172 +447,14 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_195571/1914352725.py</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">pickle</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">spacy</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">dhbbmining</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># set library-specific custom warning handling before doing anything else</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.errors</span> <span class="kn">import</span> <span class="n">setup_default_warnings</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">setup_default_warnings</span><span class="p">()</span>  <span class="c1"># noqa: E402</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">errors</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">warnings</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">Literal</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">class</span> <span class="nc">ErrorsWithCodes</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">spacy</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="sd">&quot;&quot;&quot;Helpers for Python and platform compatibility.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">sys</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">thinc.util</span> <span class="kn">import</span> <span class="n">copy_array</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.about</span> <span class="kn">import</span> <span class="n">__version__</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">registry</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">confection</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">confection</span> <span class="kn">import</span> <span class="n">Config</span><span class="p">,</span> <span class="n">ConfigValidationError</span><span class="p">,</span> <span class="n">Promise</span><span class="p">,</span> <span class="n">VARIABLE_RE</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.types</span> <span class="kn">import</span> <span class="n">Decorator</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">types</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">.compat</span> <span class="kn">import</span> <span class="n">has_cupy</span><span class="p">,</span> <span class="n">cupy</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> 
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">if</span> <span class="n">has_cupy</span><span class="p">:</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">thinc</span><span class="o">/</span><span class="n">compat</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span> 
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<span class="ne">---&gt; </span><span class="mi">56</span>     <span class="kn">import</span> <span class="nn">tensorflow.experimental.dlpack</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="kn">import</span> <span class="nn">tensorflow</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> 
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">autograph</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">bitwise</span>
-<span class="ne">---&gt; </span><span class="mi">51</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">compat</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">config</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="kn">from</span> <span class="nn">._api.v2</span> <span class="kn">import</span> <span class="n">data</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> 
-<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">autograph</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">bitwise</span>
-<span class="ne">---&gt; </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">compat</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">config</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">data</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> 
-<span class="ne">---&gt; </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v1</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">v2</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">tensorflow.python.compat.compat</span> <span class="kn">import</span> <span class="n">forward_compatibility_horizon</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">layers</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">linalg</span>
-<span class="ne">---&gt; </span><span class="mi">47</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lite</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">logging</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="kn">from</span> <span class="nn">tensorflow._api.v2.compat.v1</span> <span class="kn">import</span> <span class="n">lookup</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">constants</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">experimental</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">Interpreter</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpHint</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">authoring</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.analyzer</span> <span class="kn">import</span> <span class="n">ModelAnalyzer</span> <span class="k">as</span> <span class="n">Analyzer</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.lite</span> <span class="kn">import</span> <span class="n">OpResolverType</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">_api</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">experimental</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.authoring.authoring</span> <span class="kn">import</span> <span class="n">compatible</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">authoring</span><span class="o">/</span><span class="n">authoring</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> 
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="c1"># pylint: disable=g-import-not-at-top</span>
-<span class="ne">---&gt; </span><span class="mi">43</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">convert</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.metrics</span> <span class="kn">import</span> <span class="n">converter_error_data_pb2</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">convert</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> 
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">lite_constants</span>
-<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">util</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python</span> <span class="kn">import</span> <span class="n">wrap_toco</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">tensorflow.lite.python.convert_phase</span> <span class="kn">import</span> <span class="n">Component</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">lite</span><span class="o">/</span><span class="n">python</span><span class="o">/</span><span class="n">util</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="c1"># pylint: disable=unused-import</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">53</span>   <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">xla_computation</span> <span class="k">as</span> <span class="n">_xla_computation</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>   <span class="n">_xla_computation</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="c1"># We want the exported object to be the class, so we first import the module</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="c1"># to make sure a later import doesn&#39;t overwrite the class.</span>
-<span class="ne">---&gt; </span><span class="mi">35</span> <span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">config</span> <span class="k">as</span> <span class="n">_config_module</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">del</span> <span class="n">_config_module</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> 
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># TODO(phawkins): fix users of this alias and delete this file.</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="ne">---&gt; </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">jax._src.config</span> <span class="kn">import</span> <span class="n">config</span>  <span class="c1"># noqa: F401</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">NamedTuple</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> 
-<span class="ne">---&gt; </span><span class="mi">27</span> <span class="kn">from</span> <span class="nn">jax._src</span> <span class="kn">import</span> <span class="n">lib</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">jax_jit</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="kn">from</span> <span class="nn">jax._src.lib</span> <span class="kn">import</span> <span class="n">transfer_guard_lib</span>
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">jax</span><span class="o">/</span><span class="n">_src</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span> 
-<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">version_str</span> <span class="o">=</span> <span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span>
-<span class="ne">---&gt; </span><span class="mi">74</span> <span class="n">version</span> <span class="o">=</span> <span class="n">check_jaxlib_version</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span>   <span class="n">jax_version</span><span class="o">=</span><span class="n">jax</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span>   <span class="n">jaxlib_version</span><span class="o">=</span><span class="n">jaxlib</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span><span class="p">,</span>
-
-<span class="nn">/usr/local/lib/python3.10/dist-packages/jax/_src/lib/__init__.py</span> in <span class="ni">check_jaxlib_version</span><span class="nt">(jax_version, jaxlib_version, minimum_jaxlib_version)</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;jaxlib is version </span><span class="si">{</span><span class="n">jaxlib_version</span><span class="si">}</span><span class="s1">, but this version &#39;</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>            <span class="sa">f</span><span class="s1">&#39;of jax requires version &gt;= </span><span class="si">{</span><span class="n">minimum_jaxlib_version</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">63</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span> 
-<span class="g g-Whitespace">     </span><span class="mi">65</span>   <span class="k">if</span> <span class="n">_jaxlib_version</span> <span class="o">&gt;</span> <span class="n">_jax_version</span><span class="p">:</span>
-
-<span class="ne">RuntimeError</span>: jaxlib is version 0.3.15, but this version of jax requires version &gt;= 0.3.22.
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;ipywidgets&#39;
 </pre></div>
 </div>
 </div>
@@ -675,7 +492,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;sqlite:///minha_tabela.sqlite&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">DHBBCorpus</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Iterador de documentos quebrados em frases</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndocs</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
@@ -724,7 +541,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="word2vec">
-<h2>Word2vec<a class="headerlink" href="#word2vec" title="Permalink to this headline">#</a></h2>
+<h2>Word2vec<a class="headerlink" href="#word2vec" title="Permalink to this heading">#</a></h2>
 <p>Vamos começar pelo treinamento de um modelo word2vec. Este modelo itera 6 vezes sobre o corpus logo, devemos ver o contador atingir 46122. Estas repetições são necessárias para permitir a melhor estimação da representação vetorial das palavras em um espaço semântico.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -739,7 +556,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="explorando-o-modelo">
-<h3>Explorando o modelo<a class="headerlink" href="#explorando-o-modelo" title="Permalink to this headline">#</a></h3>
+<h3>Explorando o modelo<a class="headerlink" href="#explorando-o-modelo" title="Permalink to this heading">#</a></h3>
 <p>Como dito anteriormente o modelo do Word2Vec representa cada palavra do vocabulário do corpus como um vetor. Vejamos as dez primeiras palavras:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -843,7 +660,7 @@ na
 </div>
 </section>
 <section id="visualizando-os-vetores-de-palavras">
-<h3>Visualizando os vetores de palavras<a class="headerlink" href="#visualizando-os-vetores-de-palavras" title="Permalink to this headline">#</a></h3>
+<h3>Visualizando os vetores de palavras<a class="headerlink" href="#visualizando-os-vetores-de-palavras" title="Permalink to this heading">#</a></h3>
 <p>Como os palavras estão inseridas um espaço vetorial de dimensão 100, fica difícil visualizar o seu posicionamento relativo mas podemos nos utilizar de métodos de redução de dimensionalidade com o <a class="reference external" href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">TSNE</a>, para visualizarmos um pequeno numero (200) delas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,23 +729,23 @@ na
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><script type="text/javascript">
-window.PlotlyConfig = {MathJaxConfig: 'local'};
-if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
-if (typeof require !== 'undefined') {
-require.undef("plotly");
-requirejs.config({
-    paths: {
-        'plotly': ['https://cdn.plot.ly/plotly-2.16.1.min']
-    }
-});
-require(['plotly'], function(Plotly) {
-    window._Plotly = Plotly;
-});
-}
-</script>
-</div><div class="output text_html"><div>                            <div id="cf8cede3-60b0-4533-8122-3fe1308eab88" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("cf8cede3-60b0-4533-8122-3fe1308eab88")) {                    Plotly.newPlot(                        "cf8cede3-60b0-4533-8122-3fe1308eab88",                        [{"mode":"text","opacity":0.8,"text":["de","a","do","e","da","o","em","que","no","na","para","com","foi","dos","ao","Em","à","por","os","uma","um","pelo","como","das","governo","ano","as","presidente","sua","se","pela","seu","Partido","Rio","não","outubro","No","Câmara","dia","A","Paulo","deputado","seguinte","novembro","Nacional","São","Comissão","mandato","entre","O","federal","mais","até","Brasil","janeiro","Janeiro","estado","também","política","fevereiro","cargo","legenda","mesmo","março","sobre","partido","então","Federal","República","ainda","abril","eleições","presidência","país","José","contra","quando","João","anos","Social","dezembro","ser","teve","Estado","ministro","aos","Vargas","maio","pleito","Brasileiro","nas","eleito","Foi","qual","era","assumiu","membro","Com","setembro","nacional","depois","mas","agosto","nos","seus","candidato","passou","Democrático","tornou-se","às","movimento","julho","PMDB","sendo","Ainda","Deputados","Congresso","estadual","onde","Senado","filho","durante","apoio","votos","junho","general","Na","nasceu","Minas","novo","dois","governador","segundo","já","militar","desse","Assembléia","após","foram","mês","Carlos","Ministério","tendo","Justiça","primeiro","projeto","suas","campanha","período","Grande","Sul","candidatura","início","comissão","vez","fim","regime","ou","Escola","participou","Universidade","nova","oposição","1964","sido","partir","Luís","nomeado","Constituição","posse","políticos","Militar","criação","quem","legislatura","Fernando","favor","capital","processo","reforma","Silva","titular","nº","curso","três","cidade","Exército","Antônio","Durante","PSD","Faculdade","chefe","suplente","Distrito","PTB","jornal","direito","Conselho","deixou","elegeu-se","vice-presidente"],"x":[-0.48788100481033325,-4.492918968200684,-3.443469524383545,-0.6088327169418335,-4.402913570404053,-3.621492624282837,0.9902378916740417,-0.6472352743148804,-3.149651050567627,-6.6328206062316895,0.0526580810546875,0.892837643623352,2.2567408084869385,-1.156782627105713,-4.901883125305176,0.9515570998191833,-5.484562397003174,-6.193821430206299,-1.0337637662887573,-5.379860877990723,-3.4323174953460693,-6.1492600440979,1.018695592880249,-9.76774787902832,10.953452110290527,3.371142625808716,-9.910508155822754,8.832736015319824,-4.699443340301514,-2.6580581665039062,-6.844590187072754,-2.8890066146850586,-4.101414680480957,3.4071922302246094,-0.03747135400772095,3.0673158168792725,-0.1854507327079773,-6.901169300079346,3.620436429977417,-5.605677127838135,-6.625076770782471,11.692049026489258,-4.335836887359619,2.741177797317505,-9.365358352661133,2.954786777496338,-3.388005018234253,7.6865553855896,1.2143498659133911,-3.9052679538726807,-6.240962505340576,-1.891283392906189,2.168166160583496,-8.649301528930664,4.514930725097656,6.478621006011963,-7.760195732116699,-1.1917692422866821,-2.2442591190338135,4.163032054901123,8.442338943481445,5.166948318481445,-4.330724716186523,4.388132095336914,1.4581342935562134,-3.2256267070770264,-1.75352144241333,4.046968460083008,-4.635475158691406,-1.0751490592956543,3.9722161293029785,9.825020790100098,9.177985191345215,-8.435735702514648,-5.889143943786621,3.006218671798706,0.46420183777809143,-6.5290069580078125,5.726284027099609,-9.685297012329102,3.6112027168273926,1.2040557861328125,2.92895245552063,-8.802125930786133,9.835960388183594,-1.9656821489334106,-4.058839321136475,3.3262598514556885,9.798932075500488,-9.376669883728027,-9.557584762573242,10.304476737976074,2.4232144355773926,-0.47727203369140625,2.1680219173431396,5.337806701660156,7.615828514099121,1.1540223360061646,3.5429582595825195,-3.1829092502593994,2.609092950820923,-0.7459679245948792,4.144111633300781,-0.9518645405769348,-0.9275745153427124,-1.675179123878479,5.7143330574035645,-5.158921241760254,3.3683581352233887,-8.7459077835083,0.36279380321502686,3.357637643814087,-3.576646327972412,1.454228162765503,1.1348847150802612,-3.2994773387908936,-5.424808502197266,-6.227236270904541,0.13053756952285767,-4.971823692321777,6.62240743637085,0.07534193247556686,-1.96819269657135,-3.0376601219177246,3.9087579250335693,5.990528106689453,-6.900439262390137,5.0571208000183105,-2.222641706466675,-2.319371461868286,-0.8579601645469666,10.925183296203613,-2.9794631004333496,-0.4485931694507599,-1.6650044918060303,-4.24478006362915,-6.831833362579346,2.5737574100494385,1.2969026565551758,3.390268564224243,-4.58924674987793,9.776069641113281,-0.844743013381958,-3.0657060146331787,-2.955324172973633,1.8966050148010254,-10.136415481567383,-0.9875422120094299,3.151355504989624,6.516030311584473,2.570842742919922,-1.3354687690734863,1.7735393047332764,0.3080202043056488,-1.1785269975662231,1.6896414756774902,1.4087333679199219,-0.5939944982528687,5.855320930480957,3.8500590324401855,6.2793192863464355,-2.5903708934783936,-1.8552395105361938,-1.2241764068603516,1.8737843036651611,1.589490294456482,-5.813586711883545,10.048431396484375,3.688093900680542,2.796360969543457,-0.6995454430580139,4.646122455596924,1.1396774053573608,-1.0908783674240112,6.800161361694336,-3.9633052349090576,3.0705864429473877,4.267817497253418,2.0400450229644775,1.4677369594573975,-4.505402565002441,7.384809970855713,3.751981496810913,4.687736988067627,-0.8499191999435425,4.4089226722717285,5.4549407958984375,-5.167164325714111,0.08188684284687042,-3.6002445220947266,6.136667728424072,7.059114456176758,7.621613502502441,4.938130855560303,-3.5499253273010254,-0.03911830484867096,2.7781455516815186,8.40542984008789,5.443370819091797,10.779281616210938,8.233335494995117],"y":[-1.4873480796813965,-2.6122305393218994,-4.246473789215088,-1.2259862422943115,-3.1253461837768555,-4.8778791427612305,-1.2933820486068726,1.6955372095108032,-3.969799757003784,-3.6013729572296143,-2.145864963531494,-3.5604496002197266,-10.18765926361084,-6.588990211486816,-5.070929527282715,10.64554500579834,-4.4043755531311035,-6.494228363037109,-6.097646236419678,-2.2622454166412354,-5.83878755569458,-6.315766334533691,-6.396963119506836,-7.254213333129883,-0.5395328402519226,7.526360988616943,-7.055764198303223,0.3637804090976715,-2.0770339965820312,2.5172417163848877,-4.916460990905762,-4.945028305053711,6.278022289276123,0.2155514359474182,0.3923717439174652,14.543048858642578,11.102241516113281,6.4197893142700195,8.775628089904785,-2.901165008544922,0.7651020288467407,-0.12324661761522293,-8.999085426330566,14.023981094360352,-0.4774489402770996,-0.5903136730194092,10.368558883666992,4.009593486785889,-2.4747872352600098,-5.422844409942627,3.0806124210357666,1.3093234300613403,-1.6844780445098877,3.8287465572357178,14.162588119506836,-4.656739711761475,3.1282236576080322,-0.6028159260749817,0.3155319392681122,14.451725959777832,4.096813201904297,2.81022047996521,-9.0839262008667,13.571038246154785,-4.965027332305908,5.231844425201416,-0.6656244397163391,-1.783357858657837,1.7333003282546997,-0.5124253630638123,13.555377006530762,7.694085597991943,0.8389777541160583,3.8166065216064453,-0.02828720584511757,-5.402284145355225,1.9506113529205322,-0.5695573687553406,11.647701263427734,-1.5576246976852417,13.806400299072266,-10.764019966125488,-7.989070892333984,2.401841640472412,-3.2808847427368164,-7.175869464874268,3.0193827152252197,13.47156810760498,7.6840643882751465,-0.7337656617164612,-7.387304782867432,3.752150774002075,-10.333300590515137,2.19948148727417,-9.332969665527344,-7.622907638549805,0.07656874507665634,-3.767847776412964,12.957221031188965,0.02159019187092781,-3.3587372303009033,1.1002815961837769,12.956774711608887,-6.914297580718994,-5.65183687210083,6.3562211990356445,-7.882593631744385,7.881804466247559,-9.45080852508545,-7.215783596038818,5.331974029541016,12.955303192138672,5.375324726104736,-10.533353805541992,10.64900016784668,7.958794116973877,5.575739860534668,3.0429883003234863,2.1229302883148193,5.3305535316467285,8.858734130859375,8.292765617370605,4.314441204071045,6.80357027053833,12.815526962280273,-1.635365605354309,-3.387530565261841,0.6674785614013672,-3.0640640258789062,-1.4831149578094482,-4.021331310272217,-0.4665798246860504,-1.7136728763580322,-0.15343783795833588,-2.0744943618774414,-8.158950805664062,6.329605579376221,-3.465643882751465,-7.919681549072266,7.6338582038879395,0.20326465368270874,-3.2917470932006836,-9.68034553527832,1.3887865543365479,-1.729984164237976,4.840350151062012,-6.780170917510986,5.742982387542725,6.424551010131836,-4.709108829498291,0.10610926151275635,6.138941287994385,1.7470190525054932,-0.6220406889915466,0.44804054498672485,1.3394702672958374,5.9097208976745605,-2.9074246883392334,5.741384029388428,-8.269062042236328,5.909524917602539,-0.5616269111633301,4.281409740447998,-2.065587043762207,-11.141569137573242,-1.2181442975997925,0.35492098331451416,3.788914442062378,4.021533966064453,1.346292495727539,-4.907363414764404,-1.721128225326538,0.32354626059532166,2.571953773498535,2.8629872798919678,-0.7354872226715088,-5.403263568878174,2.0093770027160645,5.407950401306152,3.013066530227661,0.9807132482528687,1.2353293895721436,10.789706230163574,5.384097576141357,-3.9106225967407227,2.0649962425231934,-1.680802822113037,0.22202995419502258,8.417531967163086,5.139288425445557,5.85487699508667,-0.7695715427398682,1.0631208419799805,-3.666093111038208,5.428257942199707,4.1782145500183105,3.433467149734497,-2.6451144218444824,-7.589117527008057,3.6750741004943848,0.5007091164588928],"type":"scatter"}],                        {"autosize":false,"height":600,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"width":800},                        {"responsive": true}                    ).then(function(){
-
+<div class="output text_html">        <script type="text/javascript">
+        window.PlotlyConfig = {MathJaxConfig: 'local'};
+        if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+        if (typeof require !== 'undefined') {
+        require.undef("plotly");
+        requirejs.config({
+            paths: {
+                'plotly': ['https://cdn.plot.ly/plotly-2.16.1.min']
+            }
+        });
+        require(['plotly'], function(Plotly) {
+            window._Plotly = Plotly;
+        });
+        }
+        </script>
+        </div><div class="output text_html"><div>                            <div id="cf8cede3-60b0-4533-8122-3fe1308eab88" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("cf8cede3-60b0-4533-8122-3fe1308eab88")) {                    Plotly.newPlot(                        "cf8cede3-60b0-4533-8122-3fe1308eab88",                        [{"mode":"text","opacity":0.8,"text":["de","a","do","e","da","o","em","que","no","na","para","com","foi","dos","ao","Em","à","por","os","uma","um","pelo","como","das","governo","ano","as","presidente","sua","se","pela","seu","Partido","Rio","não","outubro","No","Câmara","dia","A","Paulo","deputado","seguinte","novembro","Nacional","São","Comissão","mandato","entre","O","federal","mais","até","Brasil","janeiro","Janeiro","estado","também","política","fevereiro","cargo","legenda","mesmo","março","sobre","partido","então","Federal","República","ainda","abril","eleições","presidência","país","José","contra","quando","João","anos","Social","dezembro","ser","teve","Estado","ministro","aos","Vargas","maio","pleito","Brasileiro","nas","eleito","Foi","qual","era","assumiu","membro","Com","setembro","nacional","depois","mas","agosto","nos","seus","candidato","passou","Democrático","tornou-se","às","movimento","julho","PMDB","sendo","Ainda","Deputados","Congresso","estadual","onde","Senado","filho","durante","apoio","votos","junho","general","Na","nasceu","Minas","novo","dois","governador","segundo","já","militar","desse","Assembléia","após","foram","mês","Carlos","Ministério","tendo","Justiça","primeiro","projeto","suas","campanha","período","Grande","Sul","candidatura","início","comissão","vez","fim","regime","ou","Escola","participou","Universidade","nova","oposição","1964","sido","partir","Luís","nomeado","Constituição","posse","políticos","Militar","criação","quem","legislatura","Fernando","favor","capital","processo","reforma","Silva","titular","nº","curso","três","cidade","Exército","Antônio","Durante","PSD","Faculdade","chefe","suplente","Distrito","PTB","jornal","direito","Conselho","deixou","elegeu-se","vice-presidente"],"x":[-0.48788100481033325,-4.492918968200684,-3.443469524383545,-0.6088327169418335,-4.402913570404053,-3.621492624282837,0.9902378916740417,-0.6472352743148804,-3.149651050567627,-6.6328206062316895,0.0526580810546875,0.892837643623352,2.2567408084869385,-1.156782627105713,-4.901883125305176,0.9515570998191833,-5.484562397003174,-6.193821430206299,-1.0337637662887573,-5.379860877990723,-3.4323174953460693,-6.1492600440979,1.018695592880249,-9.76774787902832,10.953452110290527,3.371142625808716,-9.910508155822754,8.832736015319824,-4.699443340301514,-2.6580581665039062,-6.844590187072754,-2.8890066146850586,-4.101414680480957,3.4071922302246094,-0.03747135400772095,3.0673158168792725,-0.1854507327079773,-6.901169300079346,3.620436429977417,-5.605677127838135,-6.625076770782471,11.692049026489258,-4.335836887359619,2.741177797317505,-9.365358352661133,2.954786777496338,-3.388005018234253,7.6865553855896,1.2143498659133911,-3.9052679538726807,-6.240962505340576,-1.891283392906189,2.168166160583496,-8.649301528930664,4.514930725097656,6.478621006011963,-7.760195732116699,-1.1917692422866821,-2.2442591190338135,4.163032054901123,8.442338943481445,5.166948318481445,-4.330724716186523,4.388132095336914,1.4581342935562134,-3.2256267070770264,-1.75352144241333,4.046968460083008,-4.635475158691406,-1.0751490592956543,3.9722161293029785,9.825020790100098,9.177985191345215,-8.435735702514648,-5.889143943786621,3.006218671798706,0.46420183777809143,-6.5290069580078125,5.726284027099609,-9.685297012329102,3.6112027168273926,1.2040557861328125,2.92895245552063,-8.802125930786133,9.835960388183594,-1.9656821489334106,-4.058839321136475,3.3262598514556885,9.798932075500488,-9.376669883728027,-9.557584762573242,10.304476737976074,2.4232144355773926,-0.47727203369140625,2.1680219173431396,5.337806701660156,7.615828514099121,1.1540223360061646,3.5429582595825195,-3.1829092502593994,2.609092950820923,-0.7459679245948792,4.144111633300781,-0.9518645405769348,-0.9275745153427124,-1.675179123878479,5.7143330574035645,-5.158921241760254,3.3683581352233887,-8.7459077835083,0.36279380321502686,3.357637643814087,-3.576646327972412,1.454228162765503,1.1348847150802612,-3.2994773387908936,-5.424808502197266,-6.227236270904541,0.13053756952285767,-4.971823692321777,6.62240743637085,0.07534193247556686,-1.96819269657135,-3.0376601219177246,3.9087579250335693,5.990528106689453,-6.900439262390137,5.0571208000183105,-2.222641706466675,-2.319371461868286,-0.8579601645469666,10.925183296203613,-2.9794631004333496,-0.4485931694507599,-1.6650044918060303,-4.24478006362915,-6.831833362579346,2.5737574100494385,1.2969026565551758,3.390268564224243,-4.58924674987793,9.776069641113281,-0.844743013381958,-3.0657060146331787,-2.955324172973633,1.8966050148010254,-10.136415481567383,-0.9875422120094299,3.151355504989624,6.516030311584473,2.570842742919922,-1.3354687690734863,1.7735393047332764,0.3080202043056488,-1.1785269975662231,1.6896414756774902,1.4087333679199219,-0.5939944982528687,5.855320930480957,3.8500590324401855,6.2793192863464355,-2.5903708934783936,-1.8552395105361938,-1.2241764068603516,1.8737843036651611,1.589490294456482,-5.813586711883545,10.048431396484375,3.688093900680542,2.796360969543457,-0.6995454430580139,4.646122455596924,1.1396774053573608,-1.0908783674240112,6.800161361694336,-3.9633052349090576,3.0705864429473877,4.267817497253418,2.0400450229644775,1.4677369594573975,-4.505402565002441,7.384809970855713,3.751981496810913,4.687736988067627,-0.8499191999435425,4.4089226722717285,5.4549407958984375,-5.167164325714111,0.08188684284687042,-3.6002445220947266,6.136667728424072,7.059114456176758,7.621613502502441,4.938130855560303,-3.5499253273010254,-0.03911830484867096,2.7781455516815186,8.40542984008789,5.443370819091797,10.779281616210938,8.233335494995117],"y":[-1.4873480796813965,-2.6122305393218994,-4.246473789215088,-1.2259862422943115,-3.1253461837768555,-4.8778791427612305,-1.2933820486068726,1.6955372095108032,-3.969799757003784,-3.6013729572296143,-2.145864963531494,-3.5604496002197266,-10.18765926361084,-6.588990211486816,-5.070929527282715,10.64554500579834,-4.4043755531311035,-6.494228363037109,-6.097646236419678,-2.2622454166412354,-5.83878755569458,-6.315766334533691,-6.396963119506836,-7.254213333129883,-0.5395328402519226,7.526360988616943,-7.055764198303223,0.3637804090976715,-2.0770339965820312,2.5172417163848877,-4.916460990905762,-4.945028305053711,6.278022289276123,0.2155514359474182,0.3923717439174652,14.543048858642578,11.102241516113281,6.4197893142700195,8.775628089904785,-2.901165008544922,0.7651020288467407,-0.12324661761522293,-8.999085426330566,14.023981094360352,-0.4774489402770996,-0.5903136730194092,10.368558883666992,4.009593486785889,-2.4747872352600098,-5.422844409942627,3.0806124210357666,1.3093234300613403,-1.6844780445098877,3.8287465572357178,14.162588119506836,-4.656739711761475,3.1282236576080322,-0.6028159260749817,0.3155319392681122,14.451725959777832,4.096813201904297,2.81022047996521,-9.0839262008667,13.571038246154785,-4.965027332305908,5.231844425201416,-0.6656244397163391,-1.783357858657837,1.7333003282546997,-0.5124253630638123,13.555377006530762,7.694085597991943,0.8389777541160583,3.8166065216064453,-0.02828720584511757,-5.402284145355225,1.9506113529205322,-0.5695573687553406,11.647701263427734,-1.5576246976852417,13.806400299072266,-10.764019966125488,-7.989070892333984,2.401841640472412,-3.2808847427368164,-7.175869464874268,3.0193827152252197,13.47156810760498,7.6840643882751465,-0.7337656617164612,-7.387304782867432,3.752150774002075,-10.333300590515137,2.19948148727417,-9.332969665527344,-7.622907638549805,0.07656874507665634,-3.767847776412964,12.957221031188965,0.02159019187092781,-3.3587372303009033,1.1002815961837769,12.956774711608887,-6.914297580718994,-5.65183687210083,6.3562211990356445,-7.882593631744385,7.881804466247559,-9.45080852508545,-7.215783596038818,5.331974029541016,12.955303192138672,5.375324726104736,-10.533353805541992,10.64900016784668,7.958794116973877,5.575739860534668,3.0429883003234863,2.1229302883148193,5.3305535316467285,8.858734130859375,8.292765617370605,4.314441204071045,6.80357027053833,12.815526962280273,-1.635365605354309,-3.387530565261841,0.6674785614013672,-3.0640640258789062,-1.4831149578094482,-4.021331310272217,-0.4665798246860504,-1.7136728763580322,-0.15343783795833588,-2.0744943618774414,-8.158950805664062,6.329605579376221,-3.465643882751465,-7.919681549072266,7.6338582038879395,0.20326465368270874,-3.2917470932006836,-9.68034553527832,1.3887865543365479,-1.729984164237976,4.840350151062012,-6.780170917510986,5.742982387542725,6.424551010131836,-4.709108829498291,0.10610926151275635,6.138941287994385,1.7470190525054932,-0.6220406889915466,0.44804054498672485,1.3394702672958374,5.9097208976745605,-2.9074246883392334,5.741384029388428,-8.269062042236328,5.909524917602539,-0.5616269111633301,4.281409740447998,-2.065587043762207,-11.141569137573242,-1.2181442975997925,0.35492098331451416,3.788914442062378,4.021533966064453,1.346292495727539,-4.907363414764404,-1.721128225326538,0.32354626059532166,2.571953773498535,2.8629872798919678,-0.7354872226715088,-5.403263568878174,2.0093770027160645,5.407950401306152,3.013066530227661,0.9807132482528687,1.2353293895721436,10.789706230163574,5.384097576141357,-3.9106225967407227,2.0649962425231934,-1.680802822113037,0.22202995419502258,8.417531967163086,5.139288425445557,5.85487699508667,-0.7695715427398682,1.0631208419799805,-3.666093111038208,5.428257942199707,4.1782145500183105,3.433467149734497,-2.6451144218444824,-7.589117527008057,3.6750741004943848,0.5007091164588928],"type":"scatter"}],                        {"autosize":false,"height":600,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"width":800},                        {"responsive": true}                    ).then(function(){
+                            
 var gd = document.getElementById('cf8cede3-60b0-4533-8122-3fe1308eab88');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
@@ -1052,11 +869,11 @@ if (outputEl) {{
 </section>
 </section>
 <section id="word-movers-distance">
-<h2>Word Movers Distance<a class="headerlink" href="#word-movers-distance" title="Permalink to this headline">#</a></h2>
+<h2>Word Movers Distance<a class="headerlink" href="#word-movers-distance" title="Permalink to this heading">#</a></h2>
 <p>Este método permite que calculemos a distância entre dois documentos mesmo que estes não contenham palavras em comum. Este método foi proposto no artigo <a class="reference external" href="http://jmlr.org/proceedings/papers/v37/kusnerb15.pdf">“From Word Embeddings To Document Distances”</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install pyemd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pyemd
 </pre></div>
 </div>
 </div>
@@ -1103,11 +920,11 @@ if (outputEl) {{
 </div>
 </section>
 <section id="visualizando-a-vizinanca-semantica">
-<h2>Visualizando a Vizinança Semântica<a class="headerlink" href="#visualizando-a-vizinanca-semantica" title="Permalink to this headline">#</a></h2>
+<h2>Visualizando a Vizinança Semântica<a class="headerlink" href="#visualizando-a-vizinanca-semantica" title="Permalink to this heading">#</a></h2>
 <p>Por meio do programa <a class="reference external" href="https://github.com/fccoelho/SemanticTree">SemanticTree</a>, podemos construir uma visualização animada da vizinhança semântica em uma rede.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>semanticTree -h
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>semanticTree<span class="w"> </span>-h
 </pre></div>
 </div>
 </div>
@@ -1137,7 +954,7 @@ options:
 <p>Para aplicar ao nosso modelo, focando no conceito de política, o comando abaixo pode ser usado:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>semanticTree -w política 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>semanticTree<span class="w"> </span>-w<span class="w"> </span>política<span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -1158,7 +975,7 @@ options:
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1166,50 +983,107 @@ options:
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Capitulo_3.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Identificando Entidades Nomeadas e Similaridade Semântica</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Capitulo_3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Identificando Entidades Nomeadas e Similaridade Semântica</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Capitulo_5.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Capitulo_5.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Construindo um Classificador de Textos</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word2vec">Word2vec</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explorando-o-modelo">Explorando o modelo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizando-os-vetores-de-palavras">Visualizando os vetores de palavras</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#word-movers-distance">Word Movers Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizando-a-vizinanca-semantica">Visualizando a Vizinança Semântica</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Flávio Codeço Coelho<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Flávio Codeço Coelho
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,87 +1,84 @@
 Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1204, in execute
+  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/util.py", line 84, in wrapped
-    return just_run(coro(*args, **kwargs))
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/util.py", line 62, in just_run
-    return loop.run_until_complete(coro)
-  File "/usr/lib/python3.10/asyncio/base_events.py", line 646, in run_until_complete
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 168, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
     return future.result()
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 663, in async_execute
+           ^^^^^^^^^^^^^^^
+  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 965, in async_execute_cell
+  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 862, in _check_raise_for_error
+  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from collections import defaultdict
-from sklearn.metrics import RocCurveDisplay
-
-acc_hist = defaultdict(lambda: [])
-X2 = data2.values
-
-Xtrain,Xtest,Ytrain,Ytest = train_test_split(X2,Y2, test_size=.25)
-
-skf = StratifiedKFold(5, shuffle=True)
-
-for train_index, test_index in skf.split(Xtrain, Ytrain):
-    Xtr = Xtrain[train_index]
-    Ytr = Ytrain[train_index]
-    Xval = Xtrain[test_index]
-    Yval = Ytrain[test_index]
-    print("==> Fitting:")
-    # print("Extra Trees")
-    etclf.fit(Xtr,Ytrain[train_index])
-    # print("Random Forest")
-    rfclf.fit(Xtr, Ytrain[train_index])
-    # print("SVC")
-    svcclf.fit(Xtr, Ytrain[train_index])
-    # print("Voting")
-    vcclf.fit(Xtr, Ytrain[train_index])
-    print("==> Scoring:")
-    acc_hist['ET'].append(cross_val_score(etclf, Xtrain, Ytrain, cv=2, n_jobs=-1).mean())
-    acc_hist['RF'].append(cross_val_score(rfclf, Xtrain, Ytrain, cv=2, n_jobs=-1).mean())
-    acc_hist['SVC'].append(cross_val_score(svcclf, Xtrain, Ytrain, cv=2, n_jobs=-1).mean())
-    acc_hist['Voting'].append(vcclf.score(Xtrain, Ytrain))
-print_class_report(Xtest, Ytest, etclf, 'ET')
-print_class_report(Xtest, Ytest, rfclf, 'RF')
-print_class_report(Xtest, Ytest, svcclf, 'SVC')
-print_class_report(Xtest, Ytest, vcclf, 'Voting')
+eng = create_engine("sqlite:///minha_tabela.sqlite")
+nlp = spacy.load("pt_core_news_sm")
+class DHBBCorpus:
+    def __init__(self, ndocs=10000, process=True):
+        self.process = process
+        self.ndocs = min(7838,ndocs)
+        self.counter = 1
+    def __iter__(self):
+        with eng.connect() as con:
+            res = con.execute(f'select corpo from resultados limit {self.ndocs};')
+            for doc in res:
+                if self.process:
+                    d = self.pre_process(doc[0])
+                else: 
+                    d = doc[0]
+                if self.counter%10 == 0:
+                    print (f"Verbete {self.counter} de {self.ndocs}\r", end='')
+                
+                yield d
+                self.counter += 1
+    def pre_process(self, doc):
+        n = nlp(doc, disable=['tagger', 'ner','entity-linker', 'textcat','entity-ruler','merge-noun-chunks','merge-entities','merge-subtokens'])
+        results = [token.text.strip().strip(punctuation) for token in n if not token.is_stop]
+        return results
 ------------------
 
+
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mValueError[0m                                Traceback (most recent call last)
-[0;32m/tmp/ipykernel_4099487/551901994.py[0m in [0;36m<cell line: 7>[0;34m()[0m
-[1;32m      5[0m [0mX2[0m [0;34m=[0m [0mdata2[0m[0;34m.[0m[0mvalues[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0;34m[0m[0m
-[0;32m----> 7[0;31m [0mXtrain[0m[0;34m,[0m[0mXtest[0m[0;34m,[0m[0mYtrain[0m[0;34m,[0m[0mYtest[0m [0;34m=[0m [0mtrain_test_split[0m[0;34m([0m[0mX2[0m[0;34m,[0m[0mY2[0m[0;34m,[0m [0mtest_size[0m[0;34m=[0m[0;36m.25[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      8[0m [0;34m[0m[0m
-[1;32m      9[0m [0mskf[0m [0;34m=[0m [0mStratifiedKFold[0m[0;34m([0m[0;36m5[0m[0;34m,[0m [0mshuffle[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mOSError[0m                                   Traceback (most recent call last)
+Cell [0;32mIn[3], line 2[0m
+[1;32m      1[0m eng [38;5;241m=[39m create_engine([38;5;124m"[39m[38;5;124msqlite:///minha_tabela.sqlite[39m[38;5;124m"[39m)
+[0;32m----> 2[0m nlp [38;5;241m=[39m [43mspacy[49m[38;5;241;43m.[39;49m[43mload[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mpt_core_news_sm[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[1;32m      3[0m [38;5;28;01mclass[39;00m [38;5;21;01mDHBBCorpus[39;00m:
+[1;32m      4[0m     [38;5;28;01mdef[39;00m [38;5;21m__init__[39m([38;5;28mself[39m, ndocs[38;5;241m=[39m[38;5;241m10000[39m, process[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
 
-[0;32m~/.local/lib/python3.10/site-packages/sklearn/model_selection/_split.py[0m in [0;36mtrain_test_split[0;34m(test_size, train_size, random_state, shuffle, stratify, *arrays)[0m
-[1;32m   2428[0m         [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m"At least one array required as input"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   2429[0m [0;34m[0m[0m
-[0;32m-> 2430[0;31m     [0marrays[0m [0;34m=[0m [0mindexable[0m[0;34m([0m[0;34m*[0m[0marrays[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   2431[0m [0;34m[0m[0m
-[1;32m   2432[0m     [0mn_samples[0m [0;34m=[0m [0m_num_samples[0m[0;34m([0m[0marrays[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/__init__.py:51[0m, in [0;36mload[0;34m(name, vocab, disable, enable, exclude, config)[0m
+[1;32m     27[0m [38;5;28;01mdef[39;00m [38;5;21mload[39m(
+[1;32m     28[0m     name: Union[[38;5;28mstr[39m, Path],
+[1;32m     29[0m     [38;5;241m*[39m,
+[0;32m   (...)[0m
+[1;32m     34[0m     config: Union[Dict[[38;5;28mstr[39m, Any], Config] [38;5;241m=[39m util[38;5;241m.[39mSimpleFrozenDict(),
+[1;32m     35[0m ) [38;5;241m-[39m[38;5;241m>[39m Language:
+[1;32m     36[0m [38;5;250m    [39m[38;5;124;03m"""Load a spaCy model from an installed package or a local path.[39;00m
+[1;32m     37[0m 
+[1;32m     38[0m [38;5;124;03m    name (str): Package name or model path.[39;00m
+[0;32m   (...)[0m
+[1;32m     49[0m [38;5;124;03m    RETURNS (Language): The loaded nlp object.[39;00m
+[1;32m     50[0m [38;5;124;03m    """[39;00m
+[0;32m---> 51[0m     [38;5;28;01mreturn[39;00m [43mutil[49m[38;5;241;43m.[39;49m[43mload_model[49m[43m([49m
+[1;32m     52[0m [43m        [49m[43mname[49m[43m,[49m
+[1;32m     53[0m [43m        [49m[43mvocab[49m[38;5;241;43m=[39;49m[43mvocab[49m[43m,[49m
+[1;32m     54[0m [43m        [49m[43mdisable[49m[38;5;241;43m=[39;49m[43mdisable[49m[43m,[49m
+[1;32m     55[0m [43m        [49m[43menable[49m[38;5;241;43m=[39;49m[43menable[49m[43m,[49m
+[1;32m     56[0m [43m        [49m[43mexclude[49m[38;5;241;43m=[39;49m[43mexclude[49m[43m,[49m
+[1;32m     57[0m [43m        [49m[43mconfig[49m[38;5;241;43m=[39;49m[43mconfig[49m[43m,[49m
+[1;32m     58[0m [43m    [49m[43m)[49m
 
-[0;32m~/.local/lib/python3.10/site-packages/sklearn/utils/validation.py[0m in [0;36mindexable[0;34m(*iterables)[0m
-[1;32m    431[0m [0;34m[0m[0m
-[1;32m    432[0m     [0mresult[0m [0;34m=[0m [0;34m[[0m[0m_make_indexable[0m[0;34m([0m[0mX[0m[0;34m)[0m [0;32mfor[0m [0mX[0m [0;32min[0m [0miterables[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 433[0;31m     [0mcheck_consistent_length[0m[0;34m([0m[0;34m*[0m[0mresult[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    434[0m     [0;32mreturn[0m [0mresult[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    435[0m [0;34m[0m[0m
+File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/util.py:472[0m, in [0;36mload_model[0;34m(name, vocab, disable, enable, exclude, config)[0m
+[1;32m    470[0m [38;5;28;01mif[39;00m name [38;5;129;01min[39;00m OLD_MODEL_SHORTCUTS:
+[1;32m    471[0m     [38;5;28;01mraise[39;00m [38;5;167;01mIOError[39;00m(Errors[38;5;241m.[39mE941[38;5;241m.[39mformat(name[38;5;241m=[39mname, full[38;5;241m=[39mOLD_MODEL_SHORTCUTS[name]))  [38;5;66;03m# type: ignore[index][39;00m
+[0;32m--> 472[0m [38;5;28;01mraise[39;00m [38;5;167;01mIOError[39;00m(Errors[38;5;241m.[39mE050[38;5;241m.[39mformat(name[38;5;241m=[39mname))
 
-[0;32m~/.local/lib/python3.10/site-packages/sklearn/utils/validation.py[0m in [0;36mcheck_consistent_length[0;34m(*arrays)[0m
-[1;32m    385[0m     [0muniques[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0munique[0m[0;34m([0m[0mlengths[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    386[0m     [0;32mif[0m [0mlen[0m[0;34m([0m[0muniques[0m[0;34m)[0m [0;34m>[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 387[0;31m         raise ValueError(
-[0m[1;32m    388[0m             [0;34m"Found input variables with inconsistent numbers of samples: %r"[0m[0;34m[0m[0;34m[0m[0m
-[1;32m    389[0m             [0;34m%[0m [0;34m[[0m[0mint[0m[0;34m([0m[0ml[0m[0;34m)[0m [0;32mfor[0m [0ml[0m [0;32min[0m [0mlengths[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mValueError[0m: Found input variables with inconsistent numbers of samples: [1936, 1926]
-ValueError: Found input variables with inconsistent numbers of samples: [1936, 1926]
+[0;31mOSError[0m: [E050] Can't find model 'pt_core_news_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
 
