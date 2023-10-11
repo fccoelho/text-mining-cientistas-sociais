@@ -494,46 +494,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">eng</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;sqlite:///minha_tabela.sqlite&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;pt_core_news_sm&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">class</span> <span class="nc">DHBBCorpus</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndocs</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">process</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-
-<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/__init__.py:51,</span> in <span class="ni">load</span><span class="nt">(name, vocab, disable, enable, exclude, config)</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="k">def</span> <span class="nf">load</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="n">name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="o">*</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="n">config</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">SimpleFrozenDict</span><span class="p">(),</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Language</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Load a spaCy model from an installed package or a local path.</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="sd">     name (str): Package name or model path.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span><span class="sd">     RETURNS (Language): The loaded nlp object.</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">51</span>     <span class="k">return</span> <span class="n">util</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="n">name</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>         <span class="n">vocab</span><span class="o">=</span><span class="n">vocab</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>         <span class="n">disable</span><span class="o">=</span><span class="n">disable</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>         <span class="n">enable</span><span class="o">=</span><span class="n">enable</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="p">)</span>
-
-<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/util.py:472,</span> in <span class="ni">load_model</span><span class="nt">(name, vocab, disable, enable, exclude, config)</span>
-<span class="g g-Whitespace">    </span><span class="mi">470</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">OLD_MODEL_SHORTCUTS</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">471</span>     <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="n">Errors</span><span class="o">.</span><span class="n">E941</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="n">OLD_MODEL_SHORTCUTS</span><span class="p">[</span><span class="n">name</span><span class="p">]))</span>  <span class="c1"># type: ignore[index]</span>
-<span class="ne">--&gt; </span><span class="mi">472</span> <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="n">Errors</span><span class="o">.</span><span class="n">E050</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">))</span>
-
-<span class="ne">OSError</span>: [E050] Can&#39;t find model &#39;pt_core_news_sm&#39;. It doesn&#39;t seem to be a Python package or a valid path to a data directory.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="carregando-o-modelo-word2vec">
@@ -615,9 +575,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 7830 de 7838
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -636,6 +593,7 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Unnamed: 0</th>
       <th>0</th>
       <th>1</th>
       <th>2</th>
@@ -645,7 +603,6 @@ document.write(`
       <th>6</th>
       <th>7</th>
       <th>8</th>
-      <th>9</th>
       <th>...</th>
       <th>90</th>
       <th>91</th>
@@ -662,6 +619,7 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
+      <td>0</td>
       <td>0.251411</td>
       <td>-0.092618</td>
       <td>-0.367610</td>
@@ -671,7 +629,6 @@ document.write(`
       <td>0.192228</td>
       <td>-0.230927</td>
       <td>-0.129720</td>
-      <td>0.112671</td>
       <td>...</td>
       <td>-0.354930</td>
       <td>0.257672</td>
@@ -686,6 +643,7 @@ document.write(`
     </tr>
     <tr>
       <th>1</th>
+      <td>1</td>
       <td>-0.444796</td>
       <td>-0.107734</td>
       <td>-0.371062</td>
@@ -695,7 +653,6 @@ document.write(`
       <td>0.622804</td>
       <td>0.390060</td>
       <td>-0.197826</td>
-      <td>0.005668</td>
       <td>...</td>
       <td>0.162281</td>
       <td>-0.923582</td>
@@ -710,6 +667,7 @@ document.write(`
     </tr>
     <tr>
       <th>2</th>
+      <td>2</td>
       <td>-0.186797</td>
       <td>-0.099321</td>
       <td>-0.489939</td>
@@ -719,7 +677,6 @@ document.write(`
       <td>0.201998</td>
       <td>-0.068645</td>
       <td>-0.170712</td>
-      <td>0.071279</td>
       <td>...</td>
       <td>0.309139</td>
       <td>-0.249686</td>
@@ -734,6 +691,7 @@ document.write(`
     </tr>
     <tr>
       <th>3</th>
+      <td>3</td>
       <td>-0.015474</td>
       <td>-0.331179</td>
       <td>-0.188871</td>
@@ -743,7 +701,6 @@ document.write(`
       <td>0.244981</td>
       <td>-0.070634</td>
       <td>-0.275265</td>
-      <td>0.211026</td>
       <td>...</td>
       <td>0.048260</td>
       <td>0.186905</td>
@@ -758,6 +715,7 @@ document.write(`
     </tr>
     <tr>
       <th>4</th>
+      <td>4</td>
       <td>-0.069459</td>
       <td>0.000653</td>
       <td>-0.267939</td>
@@ -767,7 +725,6 @@ document.write(`
       <td>0.572703</td>
       <td>0.225255</td>
       <td>-0.364476</td>
-      <td>0.159628</td>
       <td>...</td>
       <td>0.073481</td>
       <td>-0.567660</td>
@@ -806,6 +763,7 @@ document.write(`
     </tr>
     <tr>
       <th>7833</th>
+      <td>7833</td>
       <td>-0.069599</td>
       <td>0.153431</td>
       <td>-0.571671</td>
@@ -815,7 +773,6 @@ document.write(`
       <td>0.452256</td>
       <td>0.176986</td>
       <td>-0.235890</td>
-      <td>0.001420</td>
       <td>...</td>
       <td>-0.191336</td>
       <td>-0.586688</td>
@@ -830,6 +787,7 @@ document.write(`
     </tr>
     <tr>
       <th>7834</th>
+      <td>7834</td>
       <td>-0.170249</td>
       <td>-0.081334</td>
       <td>-0.492545</td>
@@ -839,7 +797,6 @@ document.write(`
       <td>0.371429</td>
       <td>0.106385</td>
       <td>-0.080806</td>
-      <td>0.181276</td>
       <td>...</td>
       <td>0.225322</td>
       <td>-0.254757</td>
@@ -854,6 +811,7 @@ document.write(`
     </tr>
     <tr>
       <th>7835</th>
+      <td>7835</td>
       <td>-0.382044</td>
       <td>-0.422822</td>
       <td>-0.587220</td>
@@ -863,7 +821,6 @@ document.write(`
       <td>0.616719</td>
       <td>-0.043985</td>
       <td>-0.258257</td>
-      <td>0.217810</td>
       <td>...</td>
       <td>-0.005524</td>
       <td>-0.341694</td>
@@ -878,6 +835,7 @@ document.write(`
     </tr>
     <tr>
       <th>7836</th>
+      <td>7836</td>
       <td>0.226604</td>
       <td>-0.230992</td>
       <td>-0.294525</td>
@@ -887,7 +845,6 @@ document.write(`
       <td>0.057251</td>
       <td>-0.154211</td>
       <td>-0.186203</td>
-      <td>0.165438</td>
       <td>...</td>
       <td>-0.148946</td>
       <td>0.358122</td>
@@ -902,6 +859,7 @@ document.write(`
     </tr>
     <tr>
       <th>7837</th>
+      <td>7837</td>
       <td>-0.403669</td>
       <td>-0.057501</td>
       <td>-0.323550</td>
@@ -911,7 +869,6 @@ document.write(`
       <td>0.552717</td>
       <td>0.165518</td>
       <td>-0.195108</td>
-      <td>0.275592</td>
       <td>...</td>
       <td>0.346420</td>
       <td>-0.500232</td>
@@ -926,7 +883,7 @@ document.write(`
     </tr>
   </tbody>
 </table>
-<p>7838 rows × 100 columns</p>
+<p>7838 rows × 101 columns</p>
 </div></div></div>
 </div>
 <section id="definindo-a-categoria-de-cada-documento-para-o-treinamento">
@@ -963,9 +920,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>biográfico    6865
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>natureza
+biográfico    6865
 temático       973
-Name: natureza, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -983,11 +941,7 @@ Name: natureza, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">biog</span><span class="p">[:</span><span class="mi">963</span><span class="p">],</span><span class="n">tem</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">Y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="mi">963</span> <span class="o">+</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="mi">963</span><span class="p">)</span>
-<span class="c1"># data2[&#39;Y2&#39;] = Y2</span>
-<span class="c1"># data2 = data2.sample(frac=1).reset_index(drop=True) #shuffle the</span>
-<span class="c1"># Y2 = data2.pop(&#39;Y2&#39;)</span>
-<span class="c1"># print(len(Y2))</span>
+<span class="n">Y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="mi">963</span> <span class="o">+</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">tem</span><span class="p">))</span>
 <span class="n">data2</span>
 </pre></div>
 </div>
@@ -1011,6 +965,7 @@ Name: natureza, dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Unnamed: 0</th>
       <th>0</th>
       <th>1</th>
       <th>2</th>
@@ -1020,7 +975,6 @@ Name: natureza, dtype: int64
       <th>6</th>
       <th>7</th>
       <th>8</th>
-      <th>9</th>
       <th>...</th>
       <th>90</th>
       <th>91</th>
@@ -1037,6 +991,7 @@ Name: natureza, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
+      <td>0</td>
       <td>0.251411</td>
       <td>-0.092618</td>
       <td>-0.367610</td>
@@ -1046,7 +1001,6 @@ Name: natureza, dtype: int64
       <td>0.192228</td>
       <td>-0.230927</td>
       <td>-0.129720</td>
-      <td>0.112671</td>
       <td>...</td>
       <td>-0.354930</td>
       <td>0.257672</td>
@@ -1061,6 +1015,7 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>1</th>
+      <td>1</td>
       <td>-0.444796</td>
       <td>-0.107734</td>
       <td>-0.371062</td>
@@ -1070,7 +1025,6 @@ Name: natureza, dtype: int64
       <td>0.622804</td>
       <td>0.390060</td>
       <td>-0.197826</td>
-      <td>0.005668</td>
       <td>...</td>
       <td>0.162281</td>
       <td>-0.923582</td>
@@ -1085,6 +1039,7 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>2</th>
+      <td>2</td>
       <td>-0.186797</td>
       <td>-0.099321</td>
       <td>-0.489939</td>
@@ -1094,7 +1049,6 @@ Name: natureza, dtype: int64
       <td>0.201998</td>
       <td>-0.068645</td>
       <td>-0.170712</td>
-      <td>0.071279</td>
       <td>...</td>
       <td>0.309139</td>
       <td>-0.249686</td>
@@ -1109,6 +1063,7 @@ Name: natureza, dtype: int64
     </tr>
     <tr>
       <th>3</th>
+      <td>3</td>
       <td>-0.015474</td>
       <td>-0.331179</td>
       <td>-0.188871</td>
@@ -1118,7 +1073,6 @@ Name: natureza, dtype: int64
       <td>0.244981</td>
       <td>-0.070634</td>
       <td>-0.275265</td>
-      <td>0.211026</td>
       <td>...</td>
       <td>0.048260</td>
       <td>0.186905</td>
@@ -1132,28 +1086,28 @@ Name: natureza, dtype: int64
       <td>0.215312</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>-0.069459</td>
-      <td>0.000653</td>
-      <td>-0.267939</td>
-      <td>0.539355</td>
-      <td>-0.167328</td>
-      <td>-0.028850</td>
-      <td>0.572703</td>
-      <td>0.225255</td>
-      <td>-0.364476</td>
-      <td>0.159628</td>
+      <th>5</th>
+      <td>5</td>
+      <td>-0.006569</td>
+      <td>0.070158</td>
+      <td>-0.556755</td>
+      <td>0.210324</td>
+      <td>-0.502553</td>
+      <td>0.172335</td>
+      <td>0.327112</td>
+      <td>0.091819</td>
+      <td>-0.085008</td>
       <td>...</td>
-      <td>0.073481</td>
-      <td>-0.567660</td>
-      <td>-0.298699</td>
-      <td>-0.237357</td>
-      <td>0.528733</td>
-      <td>0.298273</td>
-      <td>0.037333</td>
-      <td>-0.491313</td>
-      <td>-0.742250</td>
-      <td>0.370616</td>
+      <td>-0.014528</td>
+      <td>-0.428668</td>
+      <td>-0.278508</td>
+      <td>-0.156567</td>
+      <td>0.553669</td>
+      <td>0.141698</td>
+      <td>-0.004496</td>
+      <td>-0.401562</td>
+      <td>-0.514297</td>
+      <td>0.100853</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1180,128 +1134,128 @@ Name: natureza, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>7799</th>
-      <td>-0.009590</td>
-      <td>-0.370285</td>
-      <td>-0.351947</td>
-      <td>0.375928</td>
-      <td>-0.312881</td>
-      <td>0.284171</td>
-      <td>0.218668</td>
-      <td>-0.185607</td>
-      <td>-0.080803</td>
-      <td>0.464115</td>
+      <th>7777</th>
+      <td>7777</td>
+      <td>-0.198130</td>
+      <td>0.248924</td>
+      <td>-0.391260</td>
+      <td>0.590541</td>
+      <td>0.014977</td>
+      <td>0.136703</td>
+      <td>0.092994</td>
+      <td>0.224973</td>
+      <td>-0.408088</td>
       <td>...</td>
-      <td>-0.177752</td>
-      <td>0.476271</td>
-      <td>0.062159</td>
-      <td>0.180202</td>
-      <td>-0.104882</td>
-      <td>-0.123912</td>
-      <td>-0.011329</td>
-      <td>-0.059178</td>
-      <td>0.072528</td>
-      <td>-0.095532</td>
+      <td>0.246091</td>
+      <td>-0.581098</td>
+      <td>-0.312761</td>
+      <td>-0.034015</td>
+      <td>0.733376</td>
+      <td>0.460601</td>
+      <td>0.386440</td>
+      <td>-0.451271</td>
+      <td>-1.092295</td>
+      <td>0.235936</td>
     </tr>
     <tr>
-      <th>7815</th>
-      <td>0.190164</td>
-      <td>-0.421917</td>
-      <td>0.041171</td>
-      <td>0.559976</td>
-      <td>-0.096135</td>
-      <td>0.262056</td>
-      <td>0.115327</td>
-      <td>-0.222292</td>
-      <td>0.159212</td>
-      <td>0.254804</td>
+      <th>7789</th>
+      <td>7789</td>
+      <td>-0.526813</td>
+      <td>-0.189568</td>
+      <td>-0.614463</td>
+      <td>0.543363</td>
+      <td>-0.153835</td>
+      <td>0.249338</td>
+      <td>0.536001</td>
+      <td>0.091591</td>
+      <td>-0.083802</td>
       <td>...</td>
-      <td>0.079692</td>
-      <td>0.391770</td>
-      <td>-0.041344</td>
-      <td>0.181603</td>
-      <td>-0.474300</td>
-      <td>-0.066437</td>
-      <td>-0.211216</td>
-      <td>-0.201937</td>
-      <td>0.157055</td>
-      <td>0.150917</td>
+      <td>0.000970</td>
+      <td>-0.115585</td>
+      <td>-0.267506</td>
+      <td>-0.000516</td>
+      <td>-0.292849</td>
+      <td>0.098837</td>
+      <td>-0.041638</td>
+      <td>-0.100240</td>
+      <td>-0.336108</td>
+      <td>0.313756</td>
     </tr>
     <tr>
-      <th>7818</th>
-      <td>0.113591</td>
-      <td>-0.304503</td>
-      <td>0.023514</td>
-      <td>0.285975</td>
-      <td>-0.131286</td>
-      <td>0.313704</td>
-      <td>-0.003414</td>
-      <td>-0.047683</td>
-      <td>0.036644</td>
-      <td>0.179127</td>
+      <th>7807</th>
+      <td>7807</td>
+      <td>-0.165131</td>
+      <td>0.094592</td>
+      <td>-0.568769</td>
+      <td>0.634284</td>
+      <td>-0.098892</td>
+      <td>0.067542</td>
+      <td>0.166902</td>
+      <td>0.170849</td>
+      <td>-0.234814</td>
       <td>...</td>
-      <td>0.135317</td>
-      <td>0.436429</td>
-      <td>-0.045782</td>
-      <td>0.063444</td>
-      <td>-0.378774</td>
-      <td>-0.120447</td>
-      <td>-0.178072</td>
-      <td>-0.160545</td>
-      <td>0.119899</td>
-      <td>-0.047110</td>
+      <td>0.101010</td>
+      <td>-0.432262</td>
+      <td>-0.166351</td>
+      <td>-0.099340</td>
+      <td>0.479865</td>
+      <td>0.669177</td>
+      <td>0.193949</td>
+      <td>-0.248294</td>
+      <td>-0.799425</td>
+      <td>0.576188</td>
     </tr>
     <tr>
-      <th>7820</th>
-      <td>-0.209527</td>
-      <td>-0.324761</td>
-      <td>-0.133246</td>
-      <td>0.322462</td>
-      <td>-0.087852</td>
-      <td>0.493621</td>
-      <td>0.207157</td>
-      <td>0.010970</td>
-      <td>0.073835</td>
-      <td>0.143174</td>
+      <th>7810</th>
+      <td>7810</td>
+      <td>-0.123791</td>
+      <td>-0.083936</td>
+      <td>-0.556963</td>
+      <td>0.379353</td>
+      <td>-0.414466</td>
+      <td>0.012076</td>
+      <td>0.205557</td>
+      <td>-0.324124</td>
+      <td>-0.108826</td>
       <td>...</td>
-      <td>0.062675</td>
-      <td>0.328040</td>
-      <td>-0.080370</td>
-      <td>0.155594</td>
-      <td>-0.452543</td>
-      <td>0.000524</td>
-      <td>-0.078063</td>
-      <td>-0.163876</td>
-      <td>0.080908</td>
-      <td>0.207743</td>
+      <td>-0.144140</td>
+      <td>0.202595</td>
+      <td>-0.318131</td>
+      <td>-0.016879</td>
+      <td>0.310178</td>
+      <td>0.209647</td>
+      <td>0.001082</td>
+      <td>-0.242404</td>
+      <td>-0.379883</td>
+      <td>0.214805</td>
     </tr>
     <tr>
-      <th>7832</th>
-      <td>0.219356</td>
-      <td>-0.023952</td>
-      <td>-0.126478</td>
-      <td>-0.041252</td>
-      <td>-0.207852</td>
-      <td>-0.374994</td>
-      <td>0.230476</td>
-      <td>-0.430638</td>
-      <td>-0.519447</td>
-      <td>-0.460002</td>
+      <th>7825</th>
+      <td>7825</td>
+      <td>-0.094048</td>
+      <td>-0.557241</td>
+      <td>-0.160725</td>
+      <td>0.179252</td>
+      <td>-0.370820</td>
+      <td>0.311982</td>
+      <td>0.407939</td>
+      <td>-0.041410</td>
+      <td>-0.283813</td>
       <td>...</td>
-      <td>-0.234624</td>
-      <td>0.342272</td>
-      <td>-0.037796</td>
-      <td>0.341001</td>
-      <td>0.306884</td>
-      <td>0.136352</td>
-      <td>0.090791</td>
-      <td>-0.088957</td>
-      <td>0.088237</td>
-      <td>0.242391</td>
+      <td>0.277637</td>
+      <td>-0.016072</td>
+      <td>-0.456867</td>
+      <td>-0.087659</td>
+      <td>0.154075</td>
+      <td>0.054906</td>
+      <td>0.358063</td>
+      <td>-0.294701</td>
+      <td>-0.336736</td>
+      <td>0.046304</td>
     </tr>
   </tbody>
 </table>
-<p>1936 rows × 100 columns</p>
+<p>1936 rows × 101 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1372,7 +1326,7 @@ Name: natureza, dtype: int64
 </section>
 <section id="treinando-e-validando-o-classificador">
 <h2>Treinando e validando o classificador<a class="headerlink" href="#treinando-e-validando-o-classificador" title="Permalink to this heading">#</a></h2>
-<p>Os modelos serão treinados usando um esquema de validação cruzada de três rodadas com randomização.</p>
+<p>Os modelos serão treinados usando um esquema de validação cruzada de cinco rodadas com randomização.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
@@ -1413,62 +1367,81 @@ Name: natureza, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-
-Relatório de classificação para ET:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para ET:
 
               precision    recall  f1-score   support
 
-    Temático       0.92      0.91      0.91       248
-  Biográfico       0.90      0.92      0.91       234
+    Temático       0.94      0.78      0.86       245
+  Biográfico       0.81      0.95      0.87       239
 
-    accuracy                           0.91       482
-   macro avg       0.91      0.91      0.91       482
-weighted avg       0.91      0.91      0.91       482
+    accuracy                           0.87       484
+   macro avg       0.88      0.87      0.86       484
+weighted avg       0.88      0.87      0.86       484
 
 
 Relatório de classificação para RF:
 
               precision    recall  f1-score   support
 
-    Temático       0.98      0.92      0.95       248
-  Biográfico       0.92      0.98      0.95       234
+    Temático       0.98      0.87      0.92       245
+  Biográfico       0.88      0.98      0.92       239
 
-    accuracy                           0.95       482
-   macro avg       0.95      0.95      0.95       482
-weighted avg       0.95      0.95      0.95       482
-
-
-Relatório de classificação para SVC:
-
-              precision    recall  f1-score   support
-
-    Temático       0.90      0.80      0.85       248
-  Biográfico       0.81      0.90      0.85       234
-
-    accuracy                           0.85       482
-   macro avg       0.85      0.85      0.85       482
-weighted avg       0.86      0.85      0.85       482
-
-
-Relatório de classificação para Voting:
+    accuracy                           0.92       484
+   macro avg       0.93      0.92      0.92       484
+weighted avg       0.93      0.92      0.92       484
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para SVC:
 
               precision    recall  f1-score   support
 
-    Temático       0.89      0.84      0.87       248
-  Biográfico       0.84      0.89      0.87       234
+    Temático       0.90      0.68      0.77       245
+  Biográfico       0.74      0.92      0.82       239
 
-    accuracy                           0.87       482
-   macro avg       0.87      0.87      0.87       482
-weighted avg       0.87      0.87      0.87       482
+    accuracy                           0.80       484
+   macro avg       0.82      0.80      0.80       484
+weighted avg       0.82      0.80      0.80       484
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para Voting:
+
+              precision    recall  f1-score   support
+
+    Temático       0.92      0.84      0.88       245
+  Biográfico       0.85      0.92      0.89       239
+
+    accuracy                           0.88       484
+   macro avg       0.88      0.88      0.88       484
+weighted avg       0.88      0.88      0.88       484
 </pre></div>
 </div>
 </div>
@@ -1492,7 +1465,7 @@ weighted avg       0.87      0.87      0.87       482
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/534878b7fbda6cfa8cbc5f9e3e36ea8be2e796be164bd06c244c446c25c8ada2.png" src="_images/534878b7fbda6cfa8cbc5f9e3e36ea8be2e796be164bd06c244c446c25c8ada2.png" />
+<img alt="_images/84234cb769c280fad8c7e8b73a12a1769625b0b848e3f04053703d515757aa89.png" src="_images/84234cb769c280fad8c7e8b73a12a1769625b0b848e3f04053703d515757aa89.png" />
 </div>
 </div>
 </section>
@@ -1533,38 +1506,38 @@ weighted avg       0.87      0.87      0.87       482
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.844183</td>
-      <td>0.893352</td>
-      <td>0.84903</td>
-      <td>0.932825</td>
+      <td>0.876033</td>
+      <td>0.919421</td>
+      <td>0.820248</td>
+      <td>0.960744</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.846953</td>
-      <td>0.890582</td>
-      <td>0.84903</td>
-      <td>0.929363</td>
+      <td>0.876033</td>
+      <td>0.922865</td>
+      <td>0.820248</td>
+      <td>0.955234</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.843490</td>
-      <td>0.899584</td>
-      <td>0.84903</td>
-      <td>0.937673</td>
+      <td>0.876033</td>
+      <td>0.920110</td>
+      <td>0.820248</td>
+      <td>0.968320</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.842798</td>
-      <td>0.900277</td>
-      <td>0.84903</td>
-      <td>0.936288</td>
+      <td>0.873967</td>
+      <td>0.920799</td>
+      <td>0.820248</td>
+      <td>0.956612</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.849723</td>
-      <td>0.897507</td>
-      <td>0.84903</td>
-      <td>0.939058</td>
+      <td>0.876033</td>
+      <td>0.920799</td>
+      <td>0.820248</td>
+      <td>0.953857</td>
     </tr>
   </tbody>
 </table>
@@ -1601,7 +1574,7 @@ weighted avg       0.87      0.87      0.87       482
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e7e2cd603d566b76324dffd03c3896bb9a23a89f85c395fcdeb65e8516c4abbb.png" src="_images/e7e2cd603d566b76324dffd03c3896bb9a23a89f85c395fcdeb65e8516c4abbb.png" />
+<img alt="_images/fc05fb441985827a172df4fb2faa08433e24fed420e39504f5779cc5eff8ae1f.png" src="_images/fc05fb441985827a172df4fb2faa08433e24fed420e39504f5779cc5eff8ae1f.png" />
 </div>
 </div>
 </section>
