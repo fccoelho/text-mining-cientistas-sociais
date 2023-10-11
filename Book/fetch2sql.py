@@ -14,7 +14,7 @@ from getpass import getpass
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import pandas as pd
 from datetime import date
-from ratelimiter import RateLimiter
+# from ratelimiter import RateLimiter
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -74,16 +74,16 @@ class SearchAndCapture:
         self.citation_table = 'citations' if collection == 'articles' else f"citations_{collection}"
         with engine.connect() as connection:
             connection.execute(
-                f"create table IF NOT EXISTS {self.articles_table}(pmid integer unique, title varchar(1024), abstract text, journal varchar(512), pubdate date);")
+                text(f"create table IF NOT EXISTS {self.articles_table}(pmid integer unique, title varchar(1024), abstract text, journal varchar(512), pubdate date);"))
             connection.execute(
-                f"create table IF NOT EXISTS {self.citation_table}(pmid integer unique, cited_by text);")
+                text(f"create table IF NOT EXISTS {self.citation_table}(pmid integer unique, cited_by text);"))
             connection.execute(
-                f"create unique index IF NOT EXISTS pmid_idx on {self.articles_table} (pmid)")
+                text(f"create unique index IF NOT EXISTS pmid_idx on {self.articles_table} (pmid)"))
             connection.execute(
-                f"create unique index IF NOT EXISTS pmid_idx on {self.citation_table} (pmid)")
+                text(f"create unique index IF NOT EXISTS pmid_idx on {self.citation_table} (pmid)"))
       
 
-    @RateLimiter(max_calls=4, period=1)
+    # @RateLimiter(max_calls=4, period=1)
     def _fetch(self, pmid):
         try:
             handle = Entrez.efetch(db="pubmed", id=pmid, retmode='xml')
@@ -99,7 +99,7 @@ class SearchAndCapture:
     def _get_old_ids(self):
         with engine.connect() as connection:
             res = connection.execute(
-                f"select pmid from {self.articles_table};")
+                text(f"select pmid from {self.articles_table};"))
             oldids = res.fetchall()
 
         return [i[0] for i in oldids]
@@ -121,9 +121,9 @@ class SearchAndCapture:
 
     def create_FT_index(self):
         with engine.connect() as connection:
-            query = f"""CREATE VIRTUAL TABLE IF NOT EXISTS article_fts USING fts5(title, abstract, content={self.articles_table},tokenize='porter ascii', content_rowid='pmid');
-            """
-            query2 = f"INSERT INTO article_fts (rowid, title, abstract) SELECT pmid, title, abstract FROM {self.articles_table};"
+            query = text(f"""CREATE VIRTUAL TABLE IF NOT EXISTS article_fts USING fts5(title, abstract, content={self.articles_table},tokenize='porter ascii', content_rowid='pmid');
+            """)
+            query2 = text(f"INSERT INTO article_fts (rowid, title, abstract) SELECT pmid, title, abstract FROM {self.articles_table};")
             connection.execute(query)
             connection.execute(query2)
 
@@ -143,8 +143,8 @@ class SearchAndCapture:
                     else:
                         with engine.connect() as connection:
                             cits = '|'.join(cits)
-                            connection.execute(f"insert into {self.citation_table} VALUES(%s, %s) \
-                            on conflict (pmid) do update set cited_by=%s;", (pmid, cits, cits))
+                            connection.execute(text(f"insert into {self.citation_table} VALUES(%s, %s) \
+                            on conflict (pmid) do update set cited_by=%s;", (pmid, cits, cits)))
                 except Exception as e:
                     print(f'{pmid} generated an exception: {e}')
 

@@ -7,7 +7,7 @@ A seleção de assuntos para inclusão neste livro é baseada na demanda dos lei
 Este livro está baseado em uma combinação de cursos sobre o assunto ministrados por [mim](https://github.com/fccoelho) ao longo dos anos. Procuro manter o conteúdo acessível a pessoas com menos experiência em programação em Python. Caso você, leitor, se depare com trechos técnicamente muito avançados, fique à vontade para abrir uma `issue` explicando como acha que podemos tornar o conteúdo mais acessível.
 
 Caso queira apoiar este projeto, faz um PIX de qualquer valor, usando o código QR abaixo:
+<img src="./PIX_QR_only.jpg" width=300px>
 
-![doação](./PIX_QR_only.jpg)
 
 
