@@ -445,80 +445,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
 <span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="o">%</span><span class="k">pylab</span> inline
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;pylab&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
-
-<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/IPython/core/interactiveshell.py:2432,</span> in <span class="ni">InteractiveShell.run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2430</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2431</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2432</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2434</span> <span class="c1"># The code below prevents the output from being displayed</span>
-<span class="g g-Whitespace">   </span><span class="mi">2435</span> <span class="c1"># when using magics with decorator @output_can_be_silenced</span>
-<span class="g g-Whitespace">   </span><span class="mi">2436</span> <span class="c1"># when the last Python token in the expression is a &#39;;&#39;.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2437</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">magic</span><span class="o">.</span><span class="n">MAGIC_OUTPUT_CAN_BE_SILENCED</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-
-<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/IPython/core/magics/pylab.py:155,</span> in <span class="ni">PylabMagics.pylab</span><span class="nt">(self, line)</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span>     <span class="c1"># invert no-import flag</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span>     <span class="n">import_all</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">no_import_all</span>
-<span class="ne">--&gt; </span><span class="mi">155</span> <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">clobbered</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">enable_pylab</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="n">import_all</span><span class="o">=</span><span class="n">import_all</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span> <span class="bp">self</span><span class="o">.</span><span class="n">_show_matplotlib_backend</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="nb">print</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="s2">&quot;%pylab is deprecated, use %matplotlib inline and import the required libraries.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="p">)</span>
-
-<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/IPython/core/interactiveshell.py:3660,</span> in <span class="ni">InteractiveShell.enable_pylab</span><span class="nt">(self, gui, import_all, welcome_message)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3633</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Activate pylab support at runtime.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3634</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3635</span><span class="sd"> This turns on support for matplotlib, preloads into the interactive</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3656</span><span class="sd">     This argument is ignored, no welcome message will be displayed.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3657</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">3658</span> <span class="kn">from</span> <span class="nn">IPython.core.pylabtools</span> <span class="kn">import</span> <span class="n">import_pylab</span>
-<span class="ne">-&gt; </span><span class="mi">3660</span> <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">gui</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3662</span> <span class="c1"># We want to prevent the loading of pylab to pollute the user&#39;s</span>
-<span class="g g-Whitespace">   </span><span class="mi">3663</span> <span class="c1"># namespace as shown by the %who* magics, so we execute the activation</span>
-<span class="g g-Whitespace">   </span><span class="mi">3664</span> <span class="c1"># code in an empty namespace, and we update *both* user_ns and</span>
-<span class="g g-Whitespace">   </span><span class="mi">3665</span> <span class="c1"># user_ns_hidden with this information.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3666</span> <span class="n">ns</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/IPython/core/interactiveshell.py:3606,</span> in <span class="ni">InteractiveShell.enable_matplotlib</span><span class="nt">(self, gui)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3585</span> <span class="k">def</span> <span class="nf">enable_matplotlib</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3586</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Enable interactive matplotlib and inline figure support.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3587</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3588</span><span class="sd">     This takes the following steps:</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3604</span><span class="sd">         display figures inline.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3605</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">3606</span>     <span class="kn">from</span> <span class="nn">matplotlib_inline.backend_inline</span> <span class="kn">import</span> <span class="n">configure_inline_support</span>
-<span class="g g-Whitespace">   </span><span class="mi">3608</span>     <span class="kn">from</span> <span class="nn">IPython.core</span> <span class="kn">import</span> <span class="n">pylabtools</span> <span class="k">as</span> <span class="n">pt</span>
-<span class="g g-Whitespace">   </span><span class="mi">3609</span>     <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">find_gui_and_backend</span><span class="p">(</span><span class="n">gui</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pylab_gui_select</span><span class="p">)</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">MEGAsync</span><span class="o">/</span><span class="n">Cursos</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.11</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib_inline</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">backend_inline</span><span class="p">,</span> <span class="n">config</span>  <span class="c1"># noqa</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.1.6&quot;</span>  <span class="c1"># noqa</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">MEGAsync</span><span class="o">/</span><span class="n">Cursos</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.11</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">matplotlib_inline</span><span class="o">/</span><span class="n">backend_inline</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;A matplotlib backend for publishing figures via display_data&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Copyright (c) IPython Development Team.</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Distributed under the terms of the BSD 3-Clause License.</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">matplotlib.backends</span> <span class="kn">import</span> <span class="n">backend_agg</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -526,7 +458,7 @@ document.write(`
 <p>Bibliotecas de PLN requerem o carregamento de modelos de liguagem para funcionar de maneira apropriada: para este capitulo iremos carregar os modelos específicos da lingua portuguesa. Para isso precisamos executar comandos no terminal do sistema operacional:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descomente a linha abaixo para instalar o modelo para a língua portuguesa.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descomente a linha abaixo para instalar o modelo para a língua portuguesa, caso ainda não o tenha feito.</span>
 <span class="c1"># !python3 -m spacy download pt_core_news_sm</span>
 </pre></div>
 </div>
@@ -554,7 +486,7 @@ document.write(`
         <span class="n">cabeçalho</span> <span class="o">=</span> <span class="n">verbete</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">campos</span> <span class="o">=</span> <span class="p">{</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="p">:</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span> <span class="k">if</span> <span class="n">l</span><span class="p">}</span>
         <span class="n">campos</span><span class="p">[</span><span class="s1">&#39;arquivo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">campos</span><span class="p">[</span><span class="s1">&#39;cargos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">if</span> <span class="s1">&#39;cargos:&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cabeçalho</span> <span class="k">else</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;cargos:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">campos</span><span class="p">[</span><span class="s1">&#39;cargos&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">if</span> <span class="s1">&#39;cargos:&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cabeçalho</span> <span class="k">else</span> <span class="n">cabeçalho</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;cargos:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">campos</span><span class="p">[</span><span class="s1">&#39;corpo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">verbete</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">linhas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">campos</span><span class="p">)</span>
     <span class="n">tabela</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">linhas</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;arquivo&#39;</span><span class="p">,</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;natureza&#39;</span><span class="p">,</span> <span class="s1">&#39;sexo&#39;</span><span class="p">,</span> <span class="s1">&#39;cargos&#39;</span><span class="p">,</span> <span class="s1">&#39;corpo&#39;</span><span class="p">])</span>
@@ -612,53 +544,53 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>4361.text</td>
-      <td>PRATES, Mílton</td>
+      <td>0</td>
+      <td>4736.text</td>
+      <td>RUBIM, Floriano</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - const. 1946\n - dep. fed. MG 1946-1951 \n</td>
-      <td>\n\n«Luís Mílton Prates» nasceu em Montes Clar...</td>
+      <td>\n - militar\n - dep. fed. ES 1955-1959\n - d...</td>
+      <td>\n\n«Floriano Lopes Rubim» nasceu em Alegre (E...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2</td>
-      <td>5224.text</td>
-      <td>SUREK, Alberto</td>
+      <td>1</td>
+      <td>1376.text</td>
+      <td>COELHO, Inocêncio Mártires</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - const. 1934\n - dep. fed. prof. 1935-193...</td>
-      <td>\n\n«Alberto Surek» nasceu em Araucária (PR) n...</td>
+      <td>\n - proc. ger. Rep. 1981-1985\nautor: \n - L...</td>
+      <td>\n\n«Inocêncio Mártires Coelho» nasceu em Belé...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>5039.text</td>
-      <td>SILVA, Luís Gonzaga do Nascimento e</td>
+      <td>2</td>
+      <td>732.text</td>
+      <td>BOPP, Raul</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - pres. BNH 1965-1966\n - min. Trab. 1966-...</td>
-      <td>\n\n«Luís Gonzaga do Nascimento e Silva» nasce...</td>
+      <td>\n - diplomata\n - emb. Bras. Peru 1962-1963\n</td>
+      <td>\n\n«Raul Bopp» nasceu em Santa Maria (RS) no ...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>5</td>
-      <td>756.text</td>
-      <td>BORJA, Célio</td>
+      <td>3</td>
+      <td>2669.text</td>
+      <td>KRÜGER, Nivaldo</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. GB 1971-1975\n - dep. fed. RJ 1...</td>
-      <td>\n\n«Célio de Oliveira Borja» nasceu no Rio de...</td>
+      <td>\n - dep. fed. PR 1979-1983\n - sen. PR 2002-...</td>
+      <td>\n\n«Nivaldo Passos Krüger» nasceu em Canoinha...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>6</td>
-      <td>5352.text</td>
-      <td>TORRES, Fontes</td>
+      <td>5</td>
+      <td>3752.text</td>
+      <td>NASCIMENTO, César</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. RJ 1964-1967 \n</td>
-      <td>\n\n«José Fontes Torres» nasceu em Santo Antôn...</td>
+      <td>\n - dep. fed. SC 1973-1975\n - dep. fed. SC ...</td>
+      <td>\n\n«César Correia do Nascimento» nasceu em La...</td>
     </tr>
   </tbody>
 </table>
@@ -687,7 +619,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«&#39;, &#39;Luís&#39;, &#39;Mílton&#39;, &#39;Prates&#39;, &#39;»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;Montes&#39;, &#39;Claros&#39;, &#39;(&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«&#39;, &#39;Floriano&#39;, &#39;Lopes&#39;, &#39;Rubim&#39;, &#39;»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;Alegre&#39;, &#39;(&#39;, &#39;ES&#39;]
 </pre></div>
 </div>
 </div>
@@ -701,16 +633,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;de&#39;, 17),
- (&#39;.&#39;, 14),
- (&#39;,&#39;, 10),
- (&#39;do&#39;, 9),
- (&#39;a&#39;, 6),
- (&#39;da&#39;, 5),
- (&#39;em&#39;, 4),
- (&#39;e&#39;, 4),
- (&#39;(&#39;, 3),
- (&#39;)&#39;, 3)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;,&#39;, 40),
+ (&#39;de&#39;, 39),
+ (&#39;.&#39;, 24),
+ (&#39;do&#39;, 18),
+ (&#39;a&#39;, 14),
+ (&#39;(&#39;, 13),
+ (&#39;)&#39;, 13),
+ (&#39;em&#39;, 12),
+ (&#39;da&#39;, 12),
+ (&#39;e&#39;, 11)]
 </pre></div>
 </div>
 </div>
@@ -718,14 +650,14 @@ document.write(`
 <p>Outra maneira de fazer isso seria usando o NLTK. Com a vantagem de ainda podermos visualizar graficamente.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">fd</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">FreqDist</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">palavras</span><span class="p">])</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7f335ec67d1e4eb4b6b4ac5177801314b8d7e620c6520812719a614a25ba168c.png" src="_images/7f335ec67d1e4eb4b6b4ac5177801314b8d7e620c6520812719a614a25ba168c.png" />
+<img alt="_images/ef075bdade09ef19f55026e4642debf25aa4f32e68450a670de604d055de494c.png" src="_images/ef075bdade09ef19f55026e4642debf25aa4f32e68450a670de604d055de494c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -736,8 +668,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numero de tokens: 252
-Tamanho do Vocabulário: 151
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numero de tokens: 595
+Tamanho do Vocabulário: 258
 </pre></div>
 </div>
 </div>
@@ -757,7 +689,7 @@ Tamanho do Vocabulário: 151
 </div>
 </div>
 </div>
-<p>Vamos juntas as stopwords e a pontuação em uma única lista:</p>
+<p>Vamos juntar as stopwords e a pontuação em uma única lista:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sw</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">corpus</span><span class="o">.</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;portuguese&#39;</span><span class="p">)</span>
@@ -787,14 +719,14 @@ Tamanho do Vocabulário: 151
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">fd</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">FreqDist</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">palavras</span> <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sw</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">punctuation</span><span class="p">)])</span>
 <span class="n">fd</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7d2ba9b35211e0e153c60768197519339e51a0082bd5c4950eba9ebc8f701b58.png" src="_images/7d2ba9b35211e0e153c60768197519339e51a0082bd5c4950eba9ebc8f701b58.png" />
+<img alt="_images/9706417483327f7a7e467035723dbb8b2969050a98e5d7fe5de675590915a5dd.png" src="_images/9706417483327f7a7e467035723dbb8b2969050a98e5d7fe5de675590915a5dd.png" />
 </div>
 </div>
 </section>
@@ -817,7 +749,7 @@ Tamanho do Vocabulário: 151
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FreqDist({&#39;,&#39;: 587463, &#39;de&#39;: 517135, &#39;.&#39;: 259247, &#39;do&#39;: 226381, &#39;a&#39;: 214979, &#39;e&#39;: 192479, &#39;da&#39;: 181854, &#39;em&#39;: 153158, &#39;o&#39;: 148578, &#39;)&#39;: 87927, ...})
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FreqDist({&#39;,&#39;: 597012, &#39;de&#39;: 525737, &#39;.&#39;: 264102, &#39;do&#39;: 230022, &#39;a&#39;: 218214, &#39;e&#39;: 196003, &#39;da&#39;: 185135, &#39;em&#39;: 155492, &#39;o&#39;: 150981, &#39;)&#39;: 89553, ...})
 </pre></div>
 </div>
 </div>
@@ -829,32 +761,32 @@ Tamanho do Vocabulário: 151
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 25 of 10181 matches:
-Alberto Surek » nasceu em Araucária ( PR ) no dia 21 de abril de 1899 , filho de Martim Surek e de Maria Surek . Fez os primeiros estudos em sua cida
-mento e Silva » nasceu em Itajubá ( MG ) no dia 24 de janeiro de 1915 , filho do advogado Francisco Eulálio do Nascimento e Silva Filho e de Maria do
-iro de 1915 , filho do advogado Francisco Eulálio do Nascimento e Silva Filho e de Maria do Rosário Bento do Nascimento e Silva . Em sua família , de
-dispendioso instrumento de corrupção e subversão ” , segundo Luís Viana Filho . Nascimento e Silva empenhou-se na reforma e , ainda em novembro de 19
-transformando-o em decreto-lei ainda em 1966 . De acordo com Luís Viana Filho , “ entre os trabalhadores a medida produziu bom efeito . Golberi [ do 
-nto e Silva , falecida em 1986 , com quem teve um casal de filhos . Seu filho Luís Roberto do Nascimento e Silva foi ministro da Cultura entre 1993 e
- Rio de Janeiro , então Distrito Federal , no dia 15 de julho de 1928 , filho de Francisco Filinto de Oliveira Borja e de Maria Benjamin Borja . Fez 
- , então distrito de Barra Mansa ( RJ ) , no dia 2 de janeiro de 1916 , filho de Francisco C. Torres Sobrinho e de Emiliana Fontes Torres . Fez os es
-Rio de Janeiro , então Distrito Federal , no dia 19 de novembro de 1937 filho do médico José Dauster Mota e Silva e de Josefa Magalhães e Silva , pro
-io de Janeiro , então Distrito Federal , no dia 7 de dezembro de 1901 , filho de Augusto Amaral Peixoto e de Alice Monteiro Amaral Peixoto . Seu pai 
-u a cadeira na Câmara Federal , preenchendo a vaga aberta por Luís Gama Filho , nomeado ministro do Tribunal de Contas do Distrito Federal . Diante d
- inconstitucional , já que o sucessor legal do presidente era João Café Filho , vice-presidente da República . Na madrugada do dia 24 , Augusto Amara
-o tornou-se opositor do novo governo chefiado pelo vice-presidente Café Filho . Em novembro de 1955 , foi solidário com o movimento militar empreendi
-tou do poder o presidente interino Carlos Luz e a seguir o próprio Café Filho para garantir a posse de Juscelino Kubitschek , vencedor das eleições p
-do da Guanabara na vaga aberta pela aposentadoria do ministro João Café Filho . Aposentou-se em novembro de 1971 , por ter atingido o limite de idade
- de 1984 . Era casado com Maria Luísa Amaral Peixoto , com quem teve um filho . Escreveu , ainda inéditas , « Recordações revolucionárias e políticas
-o Leivas Otero » nasceu em Rio Grande ( RS ) no dia 4 de maio de 1912 , filho de Carlos Alberto de Otero e de Maria José Leivas Otero . Seu irmão Aug
-naltina ( GO ) , hoje Distrito Federal , no dia 31 de outubro de 1905 , filho de Salviano Monteiro Guimarães e de Olívia de Campos Guimarães . Formou
- Araújo Pomar » nasceu em Óbidos ( PA ) no dia 23 de setembro de 1913 , filho de Filipe Cossio Pomar e de Rosa de Araújo Pomar . Passou a infância em
-, enquanto Elza Monerat , José Morais , Aldo Arantes , Vladimir Pomar , filho de Pedro Pomar , Aroldo Lima e Jover Teles foram presos . Pedro Pomar f
-iz Ramos » nasceu em Araripina ( PE ) , no dia 22 de setembro de 1939 , filho de Manuel Ramos de Barros e de Maria de Lurdes Muniz Ramos . O pai , do
- de Andrada » nasceu em Barbacena ( MG ) no dia 5 de setembro de 1870 , filho de Antônio Carlos Ribeiro de Andrada e de Adelaide Feliciano Duarte de 
- Câmara dos Deputados , do deputado pernambucano Manuel Francisco Sousa Filho por seu colega gaúcho Ildefonso Simões Lopes . Cresceu , também , o apo
-relatórios oficiais e pareceres , e numerosos discursos . Em 1946 , seu filho Fábio Andrada organizou uma coletânea de artigos intitulada « Antônio C
-ia de município com o nome de Antônio Carlos . « Afrânio de Melo Franco Filho » nasceu em Belo Horizonte no dia 28 de junho de 1901 , filho de Afrâni
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Displaying 25 of 10304 matches:
+no Lopes Rubim » nasceu em Alegre ( ES ) no dia 18 de janeiro de 1912 , filho de Francisco Lopes Rubim , funcionário público , e de Maria Sílvia Lous
+ncio Mártires Coelho » nasceu em Belém no dia 14 de fevereiro de 1941 , filho de Inocêncio Machado Coelho Neto e de Celina Mártires Coelho . Graduado
+« Raul Bopp » nasceu em Santa Maria ( RS ) no dia 4 de agosto de 1898 , filho de Alfredo Bopp e de Josefina Bopp . Seus avós maternos , chegados ao R
+ Passos Krüger » nasceu em Canoinhas ( SC ) no dia 27 de maio de 1929 , filho de Augusto Krüger e de Araci Passos . Industrial e fazendeiro , iniciou
+do Nascimento » nasceu em Laguna ( SC ) no dia 25 de dezembro de 1929 , filho de Elias Júlio Correia e de Maria Correia da Silva . Funcionário da Cai
+Cola » nasceu em Conceição do Castelo ( ES ) , em 26 de julho de 1923 , filho de Pedro Cola e de Hermínia Piovesan . Filho de imigrantes italianos de
+, em 26 de julho de 1923 , filho de Pedro Cola e de Hermínia Piovesan . Filho de imigrantes italianos de origem pobre , Camilo Cola cursou as quatro 
+Nascimento » nasceu em Teresópolis ( RJ ) no dia 27 de agosto de 1936 , filho de Eduardo Pereira do Nascimento e de Aclimea de Oliveira Nascimento . 
+ Mendes Adeodato » nasceu em Sobral ( CE ) no dia 19 de junho de 1927 , filho de João Nogueira Adeodato e de Luzia Mendes Adeodato . Seu pai foi depu
+ma » nasceu no município de Tiros ( MG ) no dia 9 de setembro de 1955 , filho de José Barbosa de Lima e de Helena Maria de Lima . Professor do Centro
+elho Martins » nasceu em Loreto ( MA ) no dia 11 de fevereiro de 1947 , filho de Joel Martins dos Reis e de Luzia Botelho Martins Reis . Concluiu os 
+é de Almeida » nasceu em Januária ( MG ) no dia 23 de outubro de 1912 , filho do militar José Antônio de Almeida e de Rita Dias de Almeida . Cursou o
+reitas Brito » nasceu em Propriá ( SE ) no dia 18 de novembro de 1942 , filho de João Fernandes de Brito e de Dalva Aires de Freitas Brito . Ingresso
+omiro Meger » nasceu em Rio Azul ( PR ) no dia 8 de fevereiro de 1945 , filho de Francisco Meger e de Maria Galemba . Empresário e agropecuarista , f
+erte Ramos Vieira » nasceu em Lajes ( SC ) no dia 29 de março de 1925 , filho de Álvaro Vieira e de Altina Ramos Vieira . Bacharelou-se em ciências c
+e Jaguaribemirim , hoje Jaguaribe ( CE ) , no dia 15 de julho de 1881 , filho de Joaquim Antônio do Nascimento e de Clara Fernandes Távora do Nascime
+nome . « Gileno De Carli » nasceu em Recife no dia 22 de maio de 1908 , filho de Carlos De Carli e de Eugênia Ribeiro De Carli . Fez os estudos primá
+casado com Teresa de Petribu De Carli , com quem teve oito filhos . Seu filho João Carlos de Petribu De Carli foi deputado federal por Pernambuco ent
+92 ) e « Sudene : uma memória histórica » ( 1996 ) . « Edvaldo Nogueira Filho » nasceu em Pão de Açúcar ( AL ) no dia 25 de janeiro de 1961 , filho d
+a Filho » nasceu em Pão de Açúcar ( AL ) no dia 25 de janeiro de 1961 , filho de Edvaldo Bezerra Nogueira e de Maria de Lourdes Santana Nogueira . Cu
+caju na legenda do PCdoB . Casou-se com Tânia Soares , com quem teve um filho . Tânia Soares foi deputada estadual pelo PCdoB . « João Wagner » elege
+arneiro Campelo Júnior » nasceu em Recife no dia 3 de janeiro de 1900 , filho de Manuel Neto Campelo , professor e diretor da Faculdade de Direito de
+lo Dias Novais » nasceu em Avaré ( SP ) no dia 11 de novembro de 1928 , filho de José de Araújo Novais e de Judite Dias Novais . Seu irmão , Israel D
+essor especial do governo de São Paulo na gestão de Luís Antônio Fleury Filho ( 1991-1995 ) . Paulo Novais assumiu mandato na Câmara em 4 de novembro
+Vilela Veloso » nasceu em Jataí ( GO ) , no dia 7 de setembro de 1975 , filho de João Bosco Veloso e Nelma Vilela Veloso . Seu tio , Maguito Vilela ,
 </pre></div>
 </div>
 </div>
@@ -867,7 +799,7 @@ ia de município com o nome de Antônio Carlos . « Afrânio de Melo Franco Filh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ConcordanceLine(left=[&#39;casado&#39;, &#39;com&#39;, &#39;Noemi&#39;, &#39;de&#39;, &#39;Sá&#39;, &#39;Lessa&#39;, &#39;Prates&#39;, &#39;.&#39;, &#39;Publicou&#39;, &#39;«&#39;, &#39;Gente&#39;, &#39;boa&#39;, &#39;»&#39;, &#39;,&#39;, &#39;obra&#39;, &#39;de&#39;, &#39;literatura&#39;, &#39;regional&#39;, &#39;.&#39;, &#39;«&#39;, &#39;Alberto&#39;, &#39;Surek&#39;, &#39;»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;Araucária&#39;, &#39;(&#39;, &#39;PR&#39;, &#39;)&#39;, &#39;no&#39;, &#39;dia&#39;, &#39;21&#39;, &#39;de&#39;, &#39;abril&#39;, &#39;de&#39;, &#39;1899&#39;, &#39;,&#39;], query=&#39;filho&#39;, right=[&#39;de&#39;, &#39;Martim&#39;, &#39;Surek&#39;, &#39;e&#39;, &#39;de&#39;, &#39;Maria&#39;, &#39;Surek&#39;, &#39;.&#39;, &#39;Fez&#39;, &#39;os&#39;, &#39;primeiros&#39;, &#39;estudos&#39;, &#39;em&#39;, &#39;sua&#39;, &#39;cidade&#39;, &#39;natal&#39;, &#39;e&#39;, &#39;de&#39;, &#39;1912&#39;, &#39;a&#39;, &#39;1915&#39;, &#39;cursou&#39;, &#39;o&#39;, &#39;Ginásio&#39;, &#39;Diocesano&#39;, &#39;,&#39;, &#39;em&#39;, &#39;Curitiba&#39;, &#39;.&#39;, &#39;Guarda-livros&#39;, &#39;da&#39;, &#39;firma&#39;, &#39;Magalhães&#39;, &#39;e&#39;, &#39;Companhia&#39;, &#39;,&#39;], offset=270, left_print=&#39;Alberto Surek » nasceu em Araucária ( PR ) no dia 21 de abril de 1899 ,&#39;, right_print=&#39;de Martim Surek e de Maria Surek . Fez os primeiros estudos em sua cida&#39;, line=&#39;Alberto Surek » nasceu em Araucária ( PR ) no dia 21 de abril de 1899 , filho de Martim Surek e de Maria Surek . Fez os primeiros estudos em sua cida&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ConcordanceLine(left=[&#39;«&#39;, &#39;Floriano&#39;, &#39;Lopes&#39;, &#39;Rubim&#39;, &#39;»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;Alegre&#39;, &#39;(&#39;, &#39;ES&#39;, &#39;)&#39;, &#39;no&#39;, &#39;dia&#39;, &#39;18&#39;, &#39;de&#39;, &#39;janeiro&#39;, &#39;de&#39;, &#39;1912&#39;, &#39;,&#39;], query=&#39;filho&#39;, right=[&#39;de&#39;, &#39;Francisco&#39;, &#39;Lopes&#39;, &#39;Rubim&#39;, &#39;,&#39;, &#39;funcionário&#39;, &#39;público&#39;, &#39;,&#39;, &#39;e&#39;, &#39;de&#39;, &#39;Maria&#39;, &#39;Sílvia&#39;, &#39;Lousada&#39;, &#39;Rubim&#39;, &#39;.&#39;, &#39;Bacharel&#39;, &#39;em&#39;, &#39;ciências&#39;, &#39;jurídicas&#39;, &#39;e&#39;, &#39;sociais&#39;, &#39;pela&#39;, &#39;Faculdade&#39;, &#39;de&#39;, &#39;Direito&#39;, &#39;da&#39;, &#39;Universidade&#39;, &#39;do&#39;, &#39;Espírito&#39;, &#39;Santo&#39;, &#39;,&#39;, &#39;formou-se&#39;, &#39;também&#39;, &#39;na&#39;, &#39;Escola&#39;, &#39;de&#39;], offset=19, left_print=&#39;no Lopes Rubim » nasceu em Alegre ( ES ) no dia 18 de janeiro de 1912 ,&#39;, right_print=&#39;de Francisco Lopes Rubim , funcionário público , e de Maria Sílvia Lous&#39;, line=&#39;no Lopes Rubim » nasceu em Alegre ( ES ) no dia 18 de janeiro de 1912 , filho de Francisco Lopes Rubim , funcionário público , e de Maria Sílvia Lous&#39;)
 </pre></div>
 </div>
 </div>
@@ -879,7 +811,7 @@ ia de município com o nome de Antônio Carlos . « Afrânio de Melo Franco Filh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>de Martim Surek e de Maria Surek . Fez os primeiros estudos em sua cidade natal e de 1912 a 1915 cursou o Ginásio Diocesano , em Curitiba . Guarda-livros da firma Magalhães e Companhia ,
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>de Francisco Lopes Rubim , funcionário público , e de Maria Sílvia Lousada Rubim . Bacharel em ciências jurídicas e sociais pela Faculdade de Direito da Universidade do Espírito Santo , formou-se também na Escola de
 </pre></div>
 </div>
 </div>
@@ -929,28 +861,28 @@ ia de município com o nome de Antônio Carlos . « Afrânio de Melo Franco Filh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processando 11028 linhas
-Pai: Martim Surek 
- Mãe: Maria Surek
-Pai: advogado Francisco Eulálio do Nascimento 
- Mãe: Silva Filho Maria do Rosário Bento do Nascimento Silva
-Pai: Francisco Filinto de Oliveira Borja 
- Mãe: Maria Benjamin Borja
-Pai: Francisco C. Torres Sobrinho 
- Mãe: Emiliana Fontes Torres
-Pai: médico José Dauster Mota 
- Mãe: Silva Josefa Magalhães Silva
-Pai: Augusto Amaral Peixoto 
- Mãe: Alice Monteiro Amaral Peixoto
-Pai: Carlos Alberto de Otero 
- Mãe: Maria José Leivas Otero
-Pai: Salviano Monteiro Guimarães 
- Mãe: Olívia Campos Guimarães
-Pai: Filipe Cossio Pomar 
- Mãe: Rosa Araújo Pomar
-Pai: Pedro Pomar 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processando 11202 linhas
+Pai: Francisco Lopes Rubim 
  Mãe: desconhecida.
-Encontramos progenitores em 6459 linhas
+Pai: Inocêncio Machado Coelho Neto 
+ Mãe: Celina Mártires Coelho
+Pai: Alfredo Bopp 
+ Mãe: Josefina Bopp
+Pai: Augusto Krüger 
+ Mãe: Araci Passos
+Pai: Elias Júlio Correia 
+ Mãe: Maria Correia da Silva
+Pai: Pedro Cola 
+ Mãe: Hermínia Piovesan
+Pai: imigrantes italianos de origem pobre 
+ Mãe: desconhecida.
+Pai: Eduardo Pereira do Nascimento 
+ Mãe: Aclimea Oliveira Nascimento
+Pai: João Nogueira Adeodato 
+ Mãe: Luzia Mendes Adeodato
+Pai: José Barbosa de Lima 
+ Mãe: Helena Maria Lima
+Encontramos progenitores em 6572 linhas
 </pre></div>
 </div>
 </div>
@@ -962,7 +894,7 @@ Encontramos progenitores em 6459 linhas
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7fe3640f60a14094f33a95092c79e3a35cbcf8703921f5cb62bc0f47c28941f1.png" src="_images/7fe3640f60a14094f33a95092c79e3a35cbcf8703921f5cb62bc0f47c28941f1.png" />
+<img alt="_images/6cdc6568d5eb69d7a69b38edf0b03426dfba39d7ff592d775c3b4d9366e5b30e.png" src="_images/6cdc6568d5eb69d7a69b38edf0b03426dfba39d7ff592d775c3b4d9366e5b30e.png" />
 </div>
 </div>
 </section>
@@ -977,20 +909,30 @@ Encontramos progenitores em 6459 linhas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;\n\n«Luís Mílton Prates» nasceu em Montes Claros (MG) no dia 7 de janeiro de\n1888.&#39;,
- &#39;Realizou os estudos secundários no Colégio São Norberto.&#39;,
- &#39;De formação\ncatólica, estudou filosofia com o padre redentorista Henrique Brandão.&#39;,
- &#39;No pleito de dezembro de 1945 foi eleito suplente de deputado por Minas\nGerais à Assembléia Nacional Constituinte na legenda do Partido Social\nDemocrático (PSD), assumindo o mandato em fevereiro do ano seguinte.&#39;,
- &#39;Participou dos trabalhos constituintes e, com a promulgação da nova\nCarta (18/9/1946), passou a exercer mandato ordinário.&#39;,
- &#39;Em 1947 presidiu\na comissão de inquérito da Câmara que apurou as causas do\ncongestionamento do porto de Santos, responsável por vultosos prejuízos\nà economia nacional.&#39;,
- &#39;Nessa legislatura integrou ainda a Comissão\nEspecial de Pecuária e foi presidente da Comissão de Indústria e\nComércio da Câmara dos Deputados.&#39;,
- &#39;Em outubro de 1950 obteve de novo uma\nsuplência de deputado federal por Minas Gerais, sempre na legenda do\nPSD.&#39;,
- &#39;Deixando a Câmara em janeiro de 1951, não voltou a exercer mandato.&#39;,
- &#39;Em 1954 tornou-se membro do conselho consultivo do Banco do Nordeste,\ncargo que ocupou até 1960.&#39;,
- &#39;Também jornalista, foi oficial-de-gabinete do\nMinistério da Viação e Obras Públicas.&#39;,
- &#39;Faleceu em sua cidade natal no dia 1º de setembro de 1974.&#39;,
- &#39;Era casado com Noemi de Sá Lessa Prates.&#39;,
- &#39;Publicou «Gente boa», obra de literatura regional.&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;\n\n«Floriano Lopes Rubim» nasceu em Alegre (ES) no dia 18 de janeiro de\n1912, filho de Francisco Lopes Rubim, funcionário público, e de Maria\nSílvia Lousada Rubim.&#39;,
+ &#39;Bacharel em ciências jurídicas e sociais pela Faculdade de Direito da\nUniversidade do Espírito Santo, formou-se também na Escola de Educação\nFísica do Rio de Janeiro, então Distrito Federal, em 1941.&#39;,
+ &#39;Nesse mesmo\nano ingressou na Força Policial do Espírito Santo, onde faria carreira.&#39;,
+ &#39;Participou da campanha militar brasileira na Itália durante a Segunda\nGuerra Mundial (1939-1945), retornando ao Brasil em 1945, ao término do\nconflito.&#39;,
+ &#39;Em 1946 assumiu a direção da Penitenciária do Estado do Espírito Santo,\nque ocupou até o ano seguinte.&#39;,
+ &#39;Em 1948 passou a ajudante-de-ordens na\nCasa Militar do governador do Espírito Santo, Carlos Lindenberg\n(1947-1951), função que exerceu até 1949.&#39;,
+ &#39;Em outubro de 1950 elegeu-se\ndeputado estadual pelo Espírito Santo, na legenda do Partido Trabalhista\nBrasileiro (PTB).&#39;,
+ &#39;Para assumir o mandato, foi reformado na Força\nPolicial do estado no posto de coronel, ocupando a sua cadeira no\nLegislativo em fevereiro de 1951.&#39;,
+ &#39;Nessa legislatura integrou as\ncomissões de Educação e Cultura e de Justiça da Assembléia capixaba.&#39;,
+ &#39;Em outubro de 1954 elegeu-se deputado federal por seu estado, agora com\no apoio da Coligação Democrática formada pelo PTB e pelos partidos\nRepublicano (PR), de Representação Popular (PRP) e Social Progressista\n(PSP).&#39;,
+ &#39;Encerrou o mandato estadual em janeiro de 1955, assumindo no mês\nseguinte sua cadeira na Câmara Federal.&#39;,
+ &#39;Ocupou-a, no entanto, apenas de\n2 a 9 de fevereiro, quando se licenciou para assumir a Secretaria de\nViação e Obras Públicas do Espírito Santo no governo de Francisco\nLacerda de Aguiar (1955-1959).&#39;,
+ &#39;Em abril reassumiu o mandato parlamentar\ne, até o fim da legislatura, foi vice-presidente da Comissão de\nSegurança Nacional da Câmara.&#39;,
+ &#39;Em maio de 1957, tornou-se vice-líder do\nPTB.&#39;,
+ &#39;Em outubro de 1958 tentou a reeleição, na mesma legenda, mas obteve\napenas uma suplência.&#39;,
+ &#39;Concluiu o mandato em janeiro de 1959.&#39;,
+ &#39;Em 1960, participou da campanha de Jânio Quadros para a presidência da\nRepública, filiando-se ao Partido Democrata Cristão (PDC).&#39;,
+ &#39;No entanto,\nno dia seguinte ao pleito realizado em outubro e vencido por Jânio,\ndesligou-se do PDC, filiando-se ao Partido Trabalhista Nacional (PTN).&#39;,
+ &#39;Em outubro de 1962 voltou a se eleger deputado federal com o apoio da\ncoligação formada pelo PTN e o Partido Social Democrático (PSD).&#39;,
+ &#39;Assumiu\no mandato em fevereiro de 1963, tornando-se vice-líder do partido na\nCâmara em junho do ano seguinte.&#39;,
+ &#39;Com a edição do Ato Institucional nº 2 (AI-2), em 27 de outubro de 1965,\nextinguindo os partidos políticos, e com a posterior implantação do\nbipartidarismo, filiou-se à Aliança Renovadora Nacional (Arena), partido\nde apoio ao regime militar instalado no país após a deposição do\npresidente João Goulart em 31 de março de 1964.&#39;,
+ &#39;Em novembro de 1966 reelegeu-se deputado federal pelo Espírito Santo, já\nna legenda da Arena, exercendo o mandato de fevereiro de 1967 a janeiro\nde 1971.&#39;,
+ &#39;Fundou a Imexferral Ltda., empresa de sua propriedade.&#39;,
+ &#39;Faleceu no dia 4 de maio de 1997.&#39;]
 </pre></div>
 </div>
 </div>
@@ -1092,50 +1034,51 @@ Encontramos progenitores em 6459 linhas
 PASCOAL, Hildebrando
 </pre></div>
 </div>
-<div class="output text_html">nacional, foi o <b class="match term0">assassinato</b> do mecânico...também foram <b class="match term1">assassinadas</b>, o que levou...anos de prisão pelo <b class="match term0">assassinato</b> de Sebastião</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PASCOAL, Hildebrando
+<div class="output text_html">também foram <b class="match term0">assassinadas</b>, o que levou...foi
+indiciado por <b class="match term1">assassinato</b>, envolvimento...anos de prisão pelo <b class="match term1">assassinato</b> de Sebastião</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIPPOL, Valdemar
 </pre></div>
 </div>
-<div class="output text_html">nacional, foi o <b class="match term0">assassinato</b> do mecânico...também foram <b class="match term1">assassinadas</b>, o que levou...foi
-indiciado por <b class="match term0">assassinato</b>, envolvimento</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIPPOL, Valdemar
-</pre></div>
-</div>
-<div class="output text_html">janeiro de 1934 foi <b class="match term2">assassinado</b> a machadadas...o acusado do <b class="match term0">assassinato</b>, Pedro Borges...Cunha; na segunda, o
-<b class="match term3">assassino</b> seria um oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIPPOL, Valdemar
-</pre></div>
-</div>
-<div class="output text_html">janeiro de 1934 foi <b class="match term2">assassinado</b> a machadadas...o acusado do <b class="match term0">assassinato</b>, Pedro Borges...Cunha; na segunda, o
+<div class="output text_html">janeiro de 1934 foi <b class="match term2">assassinado</b> a machadadas...o acusado do <b class="match term1">assassinato</b>, Pedro Borges...Cunha; na segunda, o
 <b class="match term3">assassino</b> seria um oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Francisco Flores da
 </pre></div>
 </div>
 <div class="output text_html">de cumplicidade no
-<b class="match term0">assassinato</b> do jornalista...delas, Rippoll fora
-<b class="match term2">assassinado</b> pelo uruguaio...versão dizia que o <b class="match term3">assassino</b> seria um
-oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Francisco Flores da
-</pre></div>
-</div>
-<div class="output text_html">de cumplicidade no
-<b class="match term0">assassinato</b> do jornalista...delas, Rippoll fora
+<b class="match term1">assassinato</b> do jornalista...delas, Rippoll fora
 <b class="match term2">assassinado</b> pelo uruguaio...versão dizia que o <b class="match term3">assassino</b> seria um
 oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MENDES, Chico
 </pre></div>
 </div>
-<div class="output text_html">os responsáveis pelo <b class="match term0">assassinato</b> de Wilson
-Pinheiro...Um mês depois do <b class="match term0">assassinato</b> foi realizado...tempo de
-morte: o <b class="match term0">assassinato</b> de Chico Mendes</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MENDES, Chico
-</pre></div>
-</div>
-<div class="output text_html">Chico Mendes foi <b class="match term2">assassinado</b> em sua residência...Um mês depois do <b class="match term0">assassinato</b> foi realizado...tempo de
-morte: o <b class="match term0">assassinato</b> de Chico Mendes</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA NETO, Augusto
+<div class="output text_html">Wilson Pinheiro, <b class="match term2">assassinado</b> com um tiro...já
+teriam ordenado o <b class="match term1">assassinato</b> de mais de 30...Chico Mendes foi <b class="match term2">assassinado</b> em sua residência</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA NETO, Augusto
 </pre></div>
 </div>
 <div class="output text_html">mês, Cunha Neto foi
 <b class="match term2">assassinado</b> com nove tiros...Na
-ocasião, o <b class="match term3">assassino</b> declarou à polícia</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA NETO, Augusto
+ocasião, o <b class="match term3">assassino</b> declarou à polícia</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VAZ, Rubens
 </pre></div>
 </div>
-<div class="output text_html">mês, Cunha Neto foi
-<b class="match term2">assassinado</b> com nove tiros...Na
-ocasião, o <b class="match term3">assassino</b> declarou à polícia</div></div>
+<div class="output text_html">major Rubens Vaz foi
+<b class="match term2">assassinado</b> por tiros que...descoberta de que os <b class="match term4">assassinos</b> eram pessoas</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FURTADO, Heitor Alencar
+</pre></div>
+</div>
+<div class="output text_html">Alencar Furtado foi <b class="match term2">assassinado</b> por um
+policial...norte do
+Paraná. Seu <b class="match term1">assassinato</b> representou</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VANNUCHI, Paulo
+</pre></div>
+</div>
+<div class="output text_html">uma lista geral dos
+<b class="match term0">assassinados</b> desde 1964...das torturas e <b class="match term1">assassinatos</b> praticados</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Ceci
+</pre></div>
+</div>
+<div class="output text_html">da Previdência.
+
+Foi <b class="match term2">assassinada</b> em Maceió no...a apurar
+o <b class="match term1">assassinato</b>, o próprio Talvane</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BARROS, Manuel Gomes de
+</pre></div>
+</div>
+<div class="output text_html">carros roubados e <b class="match term3">assassinavam</b> por
+encomenda...sido o
+mandante do <b class="match term1">assassinato</b> do bancário</div></div>
 </div>
 </section>
 

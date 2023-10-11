@@ -62,8 +62,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Capitulo_1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -468,14 +466,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># caminho = &quot;F:/dhbb-master/text/*.text&quot;</span>
-<span class="n">caminho</span> <span class="o">=</span> <span class="s2">&quot;dhbb/text/*.text&quot;</span>
+<span class="n">caminho</span> <span class="o">=</span> <span class="s2">&quot;../dhbb/text/*.text&quot;</span>
 <span class="n">arquivos</span>  <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">caminho</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">arquivos</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7838
 </pre></div>
 </div>
 </div>
@@ -488,12 +486,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">arquivos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="ne">IndexError</span>: list index out of range
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;../dhbb/text/4736.text&#39;
 </pre></div>
 </div>
 </div>
@@ -509,253 +502,72 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---
-title: BRÁS, Wenceslau
+title: RUBIM, Floriano
 natureza: biográfico
 sexo: m
-cargos:
- - dep. fed. MG 1903-1908
- - pres. MG 1909-1910
- - vice-pres. Rep. 1910-1914
- - pres. Rep. 1914-1918
-autor:
- - Helena Faria
+cargos: 
+ - militar
+ - dep. fed. ES 1955-1959
+ - dep. fed. ES 1963-1971
 ---
 
-«Wenceslau Brás Pereira Gomes» nasceu em São Caetano da Vargem Grande,
-hoje Brasópolis (MG), no dia 26 de fevereiro de 1868, filho do coronel
-Francisco Brás Pereira Gomes - deputado à Assembléia da província de
-Minas Gerais durante muitos anos - e de Isabel Pereira dos Santos.
+«Floriano Lopes Rubim» nasceu em Alegre (ES) no dia 18 de janeiro de
+1912, filho de Francisco Lopes Rubim, funcionário público, e de Maria
+Sílvia Lousada Rubim.
 
-Fez os primeiros estudos em sua cidade natal, cursou humanidades no
-Seminário Episcopal da capital paulista e ingressou em seguida na
-Faculdade de Direito de São Paulo, pela qual se formou em 1890.
-Retornando a Minas, foi nomeado promotor público em Jacuí e depois
-transferiu-se para Monte Santo, onde atuou também como advogado e
-exerceu as funções de intendente municipal, correspondentes às dos
-atuais prefeitos. Eleito deputado estadual em 1892, permaneceu na Câmara
-mineira até 1898, quando assumiu a Secretaria do Interior do governo
-chefiado por Silviano de Almeida Brandão, que se estendeu até 1902.
-Conquistou então um mandato de deputado federal para a legislatura
-iniciada em 1903, tornando-se líder da bancada mineira e, pouco depois,
-da maioria no Congresso. Reeleito, permaneceu na Câmara Federal até
-1908. Em abril do ano seguinte, assumiu o governo de seu estado em
-substituição a João Pinheiro da Silva, recém-falecido. Encontrava-se no
-exercício do cargo quando, em março de 1910, foi eleito vice-presidente
-da República na chapa encabeçada pelo marechal Hermes da Fonseca. Em
-setembro do mesmo ano deixou o governo mineiro.
+Bacharel em ciências jurídicas e sociais pela Faculdade de Direito da
+Universidade do Espírito Santo, formou-se também na Escola de Educação
+Física do Rio de Janeiro, então Distrito Federal, em 1941. Nesse mesmo
+ano ingressou na Força Policial do Espírito Santo, onde faria carreira.
+Participou da campanha militar brasileira na Itália durante a Segunda
+Guerra Mundial (1939-1945), retornando ao Brasil em 1945, ao término do
+conflito.
 
-Colocado o problema da sucessão de Hermes da Fonseca em 1913, o senador
-gaúcho José Pinheiro Machado iniciou articulações em torno da sua
-própria candidatura. Político dotado de grande prestígio e influência,
-amigo pessoal do presidente, Pinheiro Machado era considerado por boa
-parte dos governos estaduais e pela maioria do Congresso como o nome
-mais indicado para assumir a chefia do governo federal. Entretanto, os
-presidentes de Minas Gerais e de São Paulo, ciosos do poder de
-influência de seus estados, firmaram o Pacto de Ouro Fino, prevendo a
-consulta mútua para a escolha de um candidato comum à presidência. Ao
-mesmo tempo em que a oposição a Pinheiro Machado se fortalecia, a Bahia
-lançou o nome de Rui Barbosa. A tentativa de composição desses dois
-postulantes não deu certo, provocando um impasse que criou as condições
-para o lançamento de Wenceslau Brás pelos governos mineiro e paulista.
-Pinheiro Machado acabou apoiando o candidato mineiro, que derrotou Rui
-Barbosa nas eleições de março de 1914, tendo como companheiro de chapa
-Urbano Santos, presidente do Maranhão.
+Em 1946 assumiu a direção da Penitenciária do Estado do Espírito Santo,
+que ocupou até o ano seguinte. Em 1948 passou a ajudante-de-ordens na
+Casa Militar do governador do Espírito Santo, Carlos Lindenberg
+(1947-1951), função que exerceu até 1949. Em outubro de 1950 elegeu-se
+deputado estadual pelo Espírito Santo, na legenda do Partido Trabalhista
+Brasileiro (PTB). Para assumir o mandato, foi reformado na Força
+Policial do estado no posto de coronel, ocupando a sua cadeira no
+Legislativo em fevereiro de 1951. Nessa legislatura integrou as
+comissões de Educação e Cultura e de Justiça da Assembléia capixaba.
 
-## Na presidência da República
+Em outubro de 1954 elegeu-se deputado federal por seu estado, agora com
+o apoio da Coligação Democrática formada pelo PTB e pelos partidos
+Republicano (PR), de Representação Popular (PRP) e Social Progressista
+(PSP). Encerrou o mandato estadual em janeiro de 1955, assumindo no mês
+seguinte sua cadeira na Câmara Federal. Ocupou-a, no entanto, apenas de
+2 a 9 de fevereiro, quando se licenciou para assumir a Secretaria de
+Viação e Obras Públicas do Espírito Santo no governo de Francisco
+Lacerda de Aguiar (1955-1959). Em abril reassumiu o mandato parlamentar
+e, até o fim da legislatura, foi vice-presidente da Comissão de
+Segurança Nacional da Câmara. Em maio de 1957, tornou-se vice-líder do
+PTB. Em outubro de 1958 tentou a reeleição, na mesma legenda, mas obteve
+apenas uma suplência. Concluiu o mandato em janeiro de 1959.
 
-Wenceslau Brás assumiu o governo federal em 15 de novembro de 1914,
-pouco depois da eclosão da Primeira Guerra Mundial. Logo no início do
-seu mandato, se defrontou com um grave impasse político no estado do
-Rio, onde dois candidatos se consideravam eleitos pela Assembléia para a
-chefia do Executivo. Feliciano Sodré, correligionário de Pinheiro
-Machado, contava com o apoio expresso da maioria dos deputados, mas a
-minoria, que detinha o controle da mesa, obteve através de «habeas-
-corpus» o reconhecimento do Supremo Tribunal Federal (STF) para a posse
-de Nilo Peçanha. Inconformada com essa decisão, a maioria solicitou a
-intervenção federal, mas Wenceslau Brás optou pelo cumprimento da
-decisão judicial, contrariando assim a posição de Pinheiro Machado, que
-passou a fazer oposição ao governo federal até falecer em 1915. Com o
-desaparecimento do senador gaúcho, Wenceslau passou a exercer plenamente
-a liderança política do país, resolvendo em seguida a disputa pela
-chefia do governo de Mato Grosso. Em 1916, promoveu a solução da questão
-de limites entre Paraná e Santa Catarina na região do Contestado, onde,
-depois de sucessivas expedições militares, o Exército conseguiu esmagar
-uma revolta popular de cunho messiânico que se prolongava desde 1912.
+Em 1960, participou da campanha de Jânio Quadros para a presidência da
+República, filiando-se ao Partido Democrata Cristão (PDC). No entanto,
+no dia seguinte ao pleito realizado em outubro e vencido por Jânio,
+desligou-se do PDC, filiando-se ao Partido Trabalhista Nacional (PTN).
+Em outubro de 1962 voltou a se eleger deputado federal com o apoio da
+coligação formada pelo PTN e o Partido Social Democrático (PSD). Assumiu
+o mandato em fevereiro de 1963, tornando-se vice-líder do partido na
+Câmara em junho do ano seguinte.
 
-Apesar da neutralidade adotada pelo governo de Wenceslau Brás nos
-primeiros anos do conflito mundial, a economia brasileira sofreu os
-reflexos da crise financeira internacional e teve reduzida sua
-capacidade para importar, o que provocou um aumento da produção da
-indústria nacional para substituir importações. O governo adotou então
-uma série de medidas, como a emissão de letras do Tesouro, a redução das
-despesas públicas, o incentivo à implantação de siderurgias e à
-exploração de jazidas de carvão, e a construção de escolas profissionais
-para a formação de operários especializados. Visando combater a carestia
-causada pela especulação, criou também o Comissariado de Alimentação,
-encarregado de tabelar os preços dos gêneros de primeira necessidade,
-fiscalizar os depósitos de mercadorias, estabelecer postos de venda,
-fixar os preços dos fretes etc.
+Com a edição do Ato Institucional nº 2 (AI-2), em 27 de outubro de 1965,
+extinguindo os partidos políticos, e com a posterior implantação do
+bipartidarismo, filiou-se à Aliança Renovadora Nacional (Arena), partido
+de apoio ao regime militar instalado no país após a deposição do
+presidente João Goulart em 31 de março de 1964.
 
-O governo de Wenceslau Brás multiplicou ainda os tiros-de-guerra,
-destinados à formação de reservistas para o Exército, e dotou o Arsenal
-de Marinha, no Rio, de novas instalações. Incentivou a adoção de
-concursos públicos na administração civil e, em 1º de janeiro de 1917,
-promulgou o novo Código Civil. Em outubro seguinte obteve do Congresso
-aprovação para a declaração de guerra à Alemanha em virtude do
-torpedeamento de alguns navios brasileiros por submarinos desse país.
-Pouco depois, o Brasil enviou um corpo expedicionário à Europa comandado
-pelo almirante Pedro Max de Frontin a fim de ajudar no patrulhamento do
-Atlântico Norte.
+Em novembro de 1966 reelegeu-se deputado federal pelo Espírito Santo, já
+na legenda da Arena, exercendo o mandato de fevereiro de 1967 a janeiro
+de 1971.
 
-Em seu último ano de governo Wenceslau Brás promoveu o combate à
-epidemia de gripe espanhola. Apoiou a candidatura vitoriosa de Rodrigues
-Alves à presidência e, com a posse deste em 15 de novembro de 1918,
-retirou-se provisoriamente da vida pública, fixando-se em Itajubá (MG).
+Fundou a Imexferral Ltda., empresa de sua propriedade.
 
-Durante a revolta paulista de julho de 1924, o general Isidoro Dias
-Lopes, comandante dos contingentes rebeldes, propôs seu nome para compor
-uma junta provisória formada por “nomes nacionais de reconhecida
-probidade e da confiança dos revolucionários”, que substituiriam o
-presidente Artur Bernardes. Essa proposta não foi considerada pelo
-governo, que conseguiu expulsar os rebeldes da capital paulista depois
-de três semanas de combates, retomando o controle da situação.
-
-## O retorno à cena política
-
-Durante o encaminhamento da sucessão do presidente Washington Luís
-(1926-1930) ocorreu uma cisão na aliança de Minas Gerais com São Paulo,
-pois o presidente da República rompeu a alternância de candidatos destes
-dois estados, indicando o paulista Júlio Prestes para substituí-lo.
-Antônio Carlos Ribeiro de Andrada, chefe do governo mineiro e candidato
-natural à presidência, aproximou-se então dos líderes gaúchos, passando
-a apoiar a formação da Aliança Liberal, coligação oposicionista que, em
-meados de 1929, lançou a candidatura do presidente do Rio Grande do Sul,
-Getúlio Vargas. O debate dessa questão coincidiu com o equacionamento da
-sucessão do próprio Antônio Carlos, que dividiu o Partido Republicano
-Mineiro (PRM), dominante na política estadual. Membro da comissão
-executiva desse partido, Wenceslau Brás viajou para Belo Horizonte em
-outubro de 1929 a fim de participar das reuniões para a definição do
-quadro sucessório, que envolvia três correntes principais, lideradas por
-Antônio Carlos, Artur Bernardes e Fernando de Melo Viana. Depois de
-sucessivos encontros, a maioria dos líderes situacionistas de Minas
-Gerais concordou em apoiar o nome de Olegário Maciel, provocando uma
-cisão chefiada por Melo Viana, que manteve sua própria candidatura e, no
-plano nacional, passou a apoiar Júlio Prestes através do movimento
-denominado Concentração Conservadora.
-
-Após as eleições para a presidência da República e a Câmara Federal,
-realizadas em 1º de março de 1930, as dissidências se agravaram.
-Importantes setores aliancistas em diversos estados consideraram
-fraudulenta a vitória de Júlio Prestes sobre Getúlio Vargas, passando a
-articular junto com militares oriundos do movimento tenentista um
-levante armado contra o governo federal. Ao mesmo tempo, a Comissão de
-Verificação de Poderes, ligada ao Congresso Nacional e incumbida de dar
-parecer sobre os pleitos estaduais, não reconheceu a eleição em Minas de
-14 deputados federais ligados à Aliança Liberal, diplomando em seus
-lugares elementos vinculados à Concentração Conservadora.
-
-Em 27 de maio de 1930, com o objetivo de ratificar o apoio do PRM aos
-candidatos derrotados da Aliança Liberal, a comissão executiva do
-partido reuniu-se na casa de Antônio Carlos, em Juiz de Fora, com a
-presença de Wenceslau Brás, Artur Bernardes, Afonso Pena Júnior, José
-Bonifácio de Andrada e Silva, Mário Brant e Alaor Prata, entre outros.
-Todos os participantes desse encontro apoiaram os compromissos assumidos
-por Antônio Carlos em nome do PRM com a conspiração revolucionária em
-curso, posição que foi ratificada depois da posse de Olegário Maciel em
-setembro. A revolução foi deflagrada em 3 de outubro desse ano no Rio
-Grande do Sul, Minas e Paraíba, conduzindo à deposição de Washington
-Luís depois de 21 dias de luta e à formação, em 3 de novembro, do
-Governo Provisório chefiado por Getúlio Vargas. Olegário Maciel foi o
-único chefe de Executivo estadual a ser mantido no cargo.
-
-Em fevereiro de 1931, foi criada a Legião Mineira, organização que
-contava com o apoio oficial e se propunha a aprofundar as reformas
-introduzidas pela Revolução de 1930 utilizando um estilo de mobilização
-semelhante ao do fascismo europeu. Wenceslau Brás foi eleito para
-integrar o conselho supremo da nova entidade, junto com Francisco
-Campos. Gustavo Capanema, Amaro Lanari, Antônio Carlos, José Monteiro
-Ribeiro Junqueira, Teodomiro Santiago e José Bonifácio. Durante o
-congresso da Legião, realizado em julho, o ex-presidente da República
-pronunciou discurso afirmando que ela incorporara 80% dos diretórios do
-PRM, que se enfraquecia nitidamente.
-
-Os perremistas liderados por Artur Bernardes e que não haviam aderido à
-nova organização se reuniram em Belo Horizonte no dia 13 de agosto de
-1931 e tentaram depor Olegário Maciel, que estreitava cada vez mais suas
-relações com a Legião. Com o fracasso dessa tentativa, a situação
-política estadual e a relação entre os governos mineiro e federal se
-tornaram ainda mais tensas. A necessidade de promover a pacificação
-conduziu a negociações entre a Legião e o PRM com o objetivo de formar
-um só partido que serviria de base de apoio a Maciel e Vargas. Wenceslau
-Brás teve importante participação na articulação do chamado “Acordo
-mineiro”, assinado em fevereiro de 1932, que resultou na fundação do
-Partido Social Nacionalista (PSN), de cuja comissão diretora fez parte.
-
-A posição de Minas nesse período foi marcada pela indefinição entre a
-defesa do Governo Provisório e o apoio às reivindicações de
-reconstitucionalização do país, sustentadas principalmente pelas forças
-paulistas. O primeiro efeito dessas divergências foi a dissolução do PSN
-em maio de 1932. Com a eclosão da Revolução Constitucionalista de São
-Paulo no início de julho, Wenceslau Brás sugeriu a Olegário Maciel que a
-ação de Minas se limitasse à defesa do seu território. Apesar das
-pressões de alguns líderes a favor do engajamento na luta armada contra
-Vargas, o governo mineiro não aderiu à revolta, contribuindo assim para
-o isolamento dos paulistas, fator decisivo para a vitória legalista.
-
-Com a morte de Olegário Maciel em setembro de 1933 desencadeou-se em
-Minas uma crise sucessória, pois a possibilidade de acordo entre os dois
-pretendentes mais fortes à interventoria - Gustavo Capanema e Virgílio
-de Melo Franco - era pequena. Vargas pediu então que Antônio Carlos e
-outros líderes do estado elaborassem uma lista de nomes alternativos
-entre os membros do Partido Progressista, fundado em janeiro desse ano.
-Wenceslau Brás foi um dos quatros novos nomes sugeridos, mas o chefe do
-Governo Provisório pediu a inclusão do deputado Benedito Valadares, cuja
-atuação até então tivera pouco destaque. Dias depois, Valadares foi
-nomeado interventor federal no estado e, desvinculado de qualquer grupo
-local, conduziu a política mineira de acordo com as diretrizes de
-Vargas.
-
-Em julho de 1934, o nome de Wenceslau Brás foi ventilado como possível
-candidato à presidência da República, em oposição a Vargas, no âmbito da
-Assembléia Nacional Constituinte. O chefe do Governo Provisório recebeu
-dessa assembléia seu primeiro mandato constitucional que deveria durar
-até 1938. Em novembro de 1937, entretanto, um golpe de Estado liderado
-pelo próprio Vargas implantou o Estado Novo.
-
-Em 1943, Wenceslau Brás, alegando seu afastamento da vida pública,
-recusou-se a assinar o «Manifesto dos mineiros», uma das primeiras
-manifestações das elites políticas de oposição ao regime ditatorial,
-derrubado em outubro de 1945. Com a redemocratização do país, Wenceslau
-Brás foi novamente cogitado para se candidatar ao governo mineiro com o
-apoio do novo presidente da República, Eurico Dutra, numa tentativa de
-conciliar o Partido Republicano (PR) com as alas do Partido Social
-Democrático (PSD) lideradas por Melo Viana e José Francisco Bias Fortes.
-Entretanto, esse último foi vitorioso na convenção do PSD, fazendo com
-que Wenceslau Brás e Melo Viana passassem a apoiar a candidatura de
-Mílton Campos, da União Democrática Nacional (UDN), afinal vitorioso no
-pleito de janeiro de 1947. A partir de então, Wenceslau Brás retirou-se
-definitivamente da vida pública.
-
-Em suas atividades empresariais, foi fundador, em 1912, e presidente da
-Companhia Industrial Sul Mineira. Presidiu também a Companhia Industrial
-Força e Luz de Itajubá, a Fábrica de Tecidos Codorna e o Banco de
-Itajubá S.A., entre outras.
-
-Wenceslau Brás faleceu em Itajubá no dia 15 de maio de 1966. Era casado
-com Maria Carneiro Pereira Gomes, com quem teve sete filhos. Um deles,
-José Brás Pereira Gomes, foi eleito deputado à Assembléia Nacional
-Constituinte de 1934 na legenda do Partido Progressista Mineiro.
-
-Sobre o biografado foram publicados artigos, discursos e conferências,
-entre os quais «A presidência da República; quem é Wenceslau Brás?»
-(1913), «O perfil de um grande estadista da República, dr. Wenceslau
-Brás» (coletânea de artigos de Pedro Cavalcanti publicados entre janeiro
-e março de 1956 no «Jornal do Comércio») e «Wenceslau, um pescador na
-presidência» (1968), de Darci Bessone de Oliveira Andrade.
-
-O arquivo de Wenceslau Brás encontra-se depositado no Centro de Pesquisa
-e Documentação de História Contemporânea do Brasil (Cpdoc) da Fundação
-Getulio Vargas.
+Faleceu no dia 4 de maio de 1997.
 </pre></div>
 </div>
 </div>
@@ -790,16 +602,13 @@ Getulio Vargas.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>title: BRÁS, Wenceslau
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>title: RUBIM, Floriano
 natureza: biográfico
 sexo: m
-cargos:
- - dep. fed. MG 1903-1908
- - pres. MG 1909-1910
- - vice-pres. Rep. 1910-1914
- - pres. Rep. 1914-1918
-autor:
- - Helena Faria
+cargos: 
+ - militar
+ - dep. fed. ES 1955-1959
+ - dep. fed. ES 1963-1971
 </pre></div>
 </div>
 </div>
@@ -827,8 +636,8 @@ autor:
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&#39;,
- &#39;\ntitle: BRÁS, Wenceslau\nnatureza: biográfico\nsexo: m\ncargos:\n - dep. fed. MG 1903-1908\n - pres. MG 1909-1910\n - vice-pres. Rep. 1910-1914\n - pres. Rep. 1914-1918\nautor:\n - Helena Faria\n&#39;,
- &#39;\n\n«Wenceslau Brás Pereira Gomes» nasceu em São Caetano da Vargem Grande,\nhoje Brasópolis (MG), no dia 26 de fevereiro de 1868, filho do coronel\nFrancisco Brás Pereira Gomes - deputado à Assembléia da província de\nMinas Gerais durante muitos anos - e de Isabel Pereira dos Santos.\n\nFez os primeiros estudos em sua cidade natal, cursou humanidades no\nSeminário Episcopal da capital paulista e ingressou em seguida na\nFaculdade de Direito de São Paulo, pela qual se formou em 1890.\nRetornando a Minas, foi nomeado promotor público em Jacuí e depois\ntransferiu-se para Monte Santo, onde atuou também como advogado e\nexerceu as funções de intendente municipal, correspondentes às dos\natuais prefeitos. Eleito deputado estadual em 1892, permaneceu na Câmara\nmineira até 1898, quando assumiu a Secretaria do Interior do governo\nchefiado por Silviano de Almeida Brandão, que se estendeu até 1902.\nConquistou então um mandato de deputado federal para a legislatura\niniciada em 1903, tornando-se líder da bancada mineira e, pouco depois,\nda maioria no Congresso. Reeleito, permaneceu na Câmara Federal até\n1908. Em abril do ano seguinte, assumiu o governo de seu estado em\nsubstituição a João Pinheiro da Silva, recém-falecido. Encontrava-se no\nexercício do cargo quando, em março de 1910, foi eleito vice-presidente\nda República na chapa encabeçada pelo marechal Hermes da Fonseca. Em\nsetembro do mesmo ano deixou o governo mineiro.\n\nColocado o problema da sucessão de Hermes da Fonseca em 1913, o senador\ngaúcho José Pinheiro Machado iniciou articulações em torno da sua\nprópria candidatura. Político dotado de grande prestígio e influência,\namigo pessoal do presidente, Pinheiro Machado era considerado por boa\nparte dos governos estaduais e pela maioria do Congresso como o nome\nmais indicado para assumir a chefia do governo federal. Entretanto, os\npresidentes de Minas Gerais e de São Paulo, ciosos do poder de\ninfluência de seus estados, firmaram o Pacto de Ouro Fino, prevendo a\nconsulta mútua para a escolha de um candidato comum à presidência. Ao\nmesmo tempo em que a oposição a Pinheiro Machado se fortalecia, a Bahia\nlançou o nome de Rui Barbosa. A tentativa de composição desses dois\npostulantes não deu certo, provocando um impasse que criou as condições\npara o lançamento de Wenceslau Brás pelos governos mineiro e paulista.\nPinheiro Machado acabou apoiando o candidato mineiro, que derrotou Rui\nBarbosa nas eleições de março de 1914, tendo como companheiro de chapa\nUrbano Santos, presidente do Maranhão.\n\n## Na presidência da República\n\nWenceslau Brás assumiu o governo federal em 15 de novembro de 1914,\npouco depois da eclosão da Primeira Guerra Mundial. Logo no início do\nseu mandato, se defrontou com um grave impasse político no estado do\nRio, onde dois candidatos se consideravam eleitos pela Assembléia para a\nchefia do Executivo. Feliciano Sodré, correligionário de Pinheiro\nMachado, contava com o apoio expresso da maioria dos deputados, mas a\nminoria, que detinha o controle da mesa, obteve através de «habeas-\ncorpus» o reconhecimento do Supremo Tribunal Federal (STF) para a posse\nde Nilo Peçanha. Inconformada com essa decisão, a maioria solicitou a\nintervenção federal, mas Wenceslau Brás optou pelo cumprimento da\ndecisão judicial, contrariando assim a posição de Pinheiro Machado, que\npassou a fazer oposição ao governo federal até falecer em 1915. Com o\ndesaparecimento do senador gaúcho, Wenceslau passou a exercer plenamente\na liderança política do país, resolvendo em seguida a disputa pela\nchefia do governo de Mato Grosso. Em 1916, promoveu a solução da questão\nde limites entre Paraná e Santa Catarina na região do Contestado, onde,\ndepois de sucessivas expedições militares, o Exército conseguiu esmagar\numa revolta popular de cunho messiânico que se prolongava desde 1912.\n\nApesar da neutralidade adotada pelo governo de Wenceslau Brás nos\nprimeiros anos do conflito mundial, a economia brasileira sofreu os\nreflexos da crise financeira internacional e teve reduzida sua\ncapacidade para importar, o que provocou um aumento da produção da\nindústria nacional para substituir importações. O governo adotou então\numa série de medidas, como a emissão de letras do Tesouro, a redução das\ndespesas públicas, o incentivo à implantação de siderurgias e à\nexploração de jazidas de carvão, e a construção de escolas profissionais\npara a formação de operários especializados. Visando combater a carestia\ncausada pela especulação, criou também o Comissariado de Alimentação,\nencarregado de tabelar os preços dos gêneros de primeira necessidade,\nfiscalizar os depósitos de mercadorias, estabelecer postos de venda,\nfixar os preços dos fretes etc.\n\nO governo de Wenceslau Brás multiplicou ainda os tiros-de-guerra,\ndestinados à formação de reservistas para o Exército, e dotou o Arsenal\nde Marinha, no Rio, de novas instalações. Incentivou a adoção de\nconcursos públicos na administração civil e, em 1º de janeiro de 1917,\npromulgou o novo Código Civil. Em outubro seguinte obteve do Congresso\naprovação para a declaração de guerra à Alemanha em virtude do\ntorpedeamento de alguns navios brasileiros por submarinos desse país.\nPouco depois, o Brasil enviou um corpo expedicionário à Europa comandado\npelo almirante Pedro Max de Frontin a fim de ajudar no patrulhamento do\nAtlântico Norte.\n\nEm seu último ano de governo Wenceslau Brás promoveu o combate à\nepidemia de gripe espanhola. Apoiou a candidatura vitoriosa de Rodrigues\nAlves à presidência e, com a posse deste em 15 de novembro de 1918,\nretirou-se provisoriamente da vida pública, fixando-se em Itajubá (MG).\n\nDurante a revolta paulista de julho de 1924, o general Isidoro Dias\nLopes, comandante dos contingentes rebeldes, propôs seu nome para compor\numa junta provisória formada por “nomes nacionais de reconhecida\nprobidade e da confiança dos revolucionários”, que substituiriam o\npresidente Artur Bernardes. Essa proposta não foi considerada pelo\ngoverno, que conseguiu expulsar os rebeldes da capital paulista depois\nde três semanas de combates, retomando o controle da situação.\n\n## O retorno à cena política\n\nDurante o encaminhamento da sucessão do presidente Washington Luís\n(1926-1930) ocorreu uma cisão na aliança de Minas Gerais com São Paulo,\npois o presidente da República rompeu a alternância de candidatos destes\ndois estados, indicando o paulista Júlio Prestes para substituí-lo.\nAntônio Carlos Ribeiro de Andrada, chefe do governo mineiro e candidato\nnatural à presidência, aproximou-se então dos líderes gaúchos, passando\na apoiar a formação da Aliança Liberal, coligação oposicionista que, em\nmeados de 1929, lançou a candidatura do presidente do Rio Grande do Sul,\nGetúlio Vargas. O debate dessa questão coincidiu com o equacionamento da\nsucessão do próprio Antônio Carlos, que dividiu o Partido Republicano\nMineiro (PRM), dominante na política estadual. Membro da comissão\nexecutiva desse partido, Wenceslau Brás viajou para Belo Horizonte em\noutubro de 1929 a fim de participar das reuniões para a definição do\nquadro sucessório, que envolvia três correntes principais, lideradas por\nAntônio Carlos, Artur Bernardes e Fernando de Melo Viana. Depois de\nsucessivos encontros, a maioria dos líderes situacionistas de Minas\nGerais concordou em apoiar o nome de Olegário Maciel, provocando uma\ncisão chefiada por Melo Viana, que manteve sua própria candidatura e, no\nplano nacional, passou a apoiar Júlio Prestes através do movimento\ndenominado Concentração Conservadora.\n\nApós as eleições para a presidência da República e a Câmara Federal,\nrealizadas em 1º de março de 1930, as dissidências se agravaram.\nImportantes setores aliancistas em diversos estados consideraram\nfraudulenta a vitória de Júlio Prestes sobre Getúlio Vargas, passando a\narticular junto com militares oriundos do movimento tenentista um\nlevante armado contra o governo federal. Ao mesmo tempo, a Comissão de\nVerificação de Poderes, ligada ao Congresso Nacional e incumbida de dar\nparecer sobre os pleitos estaduais, não reconheceu a eleição em Minas de\n14 deputados federais ligados à Aliança Liberal, diplomando em seus\nlugares elementos vinculados à Concentração Conservadora.\n\nEm 27 de maio de 1930, com o objetivo de ratificar o apoio do PRM aos\ncandidatos derrotados da Aliança Liberal, a comissão executiva do\npartido reuniu-se na casa de Antônio Carlos, em Juiz de Fora, com a\npresença de Wenceslau Brás, Artur Bernardes, Afonso Pena Júnior, José\nBonifácio de Andrada e Silva, Mário Brant e Alaor Prata, entre outros.\nTodos os participantes desse encontro apoiaram os compromissos assumidos\npor Antônio Carlos em nome do PRM com a conspiração revolucionária em\ncurso, posição que foi ratificada depois da posse de Olegário Maciel em\nsetembro. A revolução foi deflagrada em 3 de outubro desse ano no Rio\nGrande do Sul, Minas e Paraíba, conduzindo à deposição de Washington\nLuís depois de 21 dias de luta e à formação, em 3 de novembro, do\nGoverno Provisório chefiado por Getúlio Vargas. Olegário Maciel foi o\núnico chefe de Executivo estadual a ser mantido no cargo.\n\nEm fevereiro de 1931, foi criada a Legião Mineira, organização que\ncontava com o apoio oficial e se propunha a aprofundar as reformas\nintroduzidas pela Revolução de 1930 utilizando um estilo de mobilização\nsemelhante ao do fascismo europeu. Wenceslau Brás foi eleito para\nintegrar o conselho supremo da nova entidade, junto com Francisco\nCampos. Gustavo Capanema, Amaro Lanari, Antônio Carlos, José Monteiro\nRibeiro Junqueira, Teodomiro Santiago e José Bonifácio. Durante o\ncongresso da Legião, realizado em julho, o ex-presidente da República\npronunciou discurso afirmando que ela incorporara 80% dos diretórios do\nPRM, que se enfraquecia nitidamente.\n\nOs perremistas liderados por Artur Bernardes e que não haviam aderido à\nnova organização se reuniram em Belo Horizonte no dia 13 de agosto de\n1931 e tentaram depor Olegário Maciel, que estreitava cada vez mais suas\nrelações com a Legião. Com o fracasso dessa tentativa, a situação\npolítica estadual e a relação entre os governos mineiro e federal se\ntornaram ainda mais tensas. A necessidade de promover a pacificação\nconduziu a negociações entre a Legião e o PRM com o objetivo de formar\num só partido que serviria de base de apoio a Maciel e Vargas. Wenceslau\nBrás teve importante participação na articulação do chamado “Acordo\nmineiro”, assinado em fevereiro de 1932, que resultou na fundação do\nPartido Social Nacionalista (PSN), de cuja comissão diretora fez parte.\n\nA posição de Minas nesse período foi marcada pela indefinição entre a\ndefesa do Governo Provisório e o apoio às reivindicações de\nreconstitucionalização do país, sustentadas principalmente pelas forças\npaulistas. O primeiro efeito dessas divergências foi a dissolução do PSN\nem maio de 1932. Com a eclosão da Revolução Constitucionalista de São\nPaulo no início de julho, Wenceslau Brás sugeriu a Olegário Maciel que a\nação de Minas se limitasse à defesa do seu território. Apesar das\npressões de alguns líderes a favor do engajamento na luta armada contra\nVargas, o governo mineiro não aderiu à revolta, contribuindo assim para\no isolamento dos paulistas, fator decisivo para a vitória legalista.\n\nCom a morte de Olegário Maciel em setembro de 1933 desencadeou-se em\nMinas uma crise sucessória, pois a possibilidade de acordo entre os dois\npretendentes mais fortes à interventoria - Gustavo Capanema e Virgílio\nde Melo Franco - era pequena. Vargas pediu então que Antônio Carlos e\noutros líderes do estado elaborassem uma lista de nomes alternativos\nentre os membros do Partido Progressista, fundado em janeiro desse ano.\nWenceslau Brás foi um dos quatros novos nomes sugeridos, mas o chefe do\nGoverno Provisório pediu a inclusão do deputado Benedito Valadares, cuja\natuação até então tivera pouco destaque. Dias depois, Valadares foi\nnomeado interventor federal no estado e, desvinculado de qualquer grupo\nlocal, conduziu a política mineira de acordo com as diretrizes de\nVargas.\n\nEm julho de 1934, o nome de Wenceslau Brás foi ventilado como possível\ncandidato à presidência da República, em oposição a Vargas, no âmbito da\nAssembléia Nacional Constituinte. O chefe do Governo Provisório recebeu\ndessa assembléia seu primeiro mandato constitucional que deveria durar\naté 1938. Em novembro de 1937, entretanto, um golpe de Estado liderado\npelo próprio Vargas implantou o Estado Novo.\n\nEm 1943, Wenceslau Brás, alegando seu afastamento da vida pública,\nrecusou-se a assinar o «Manifesto dos mineiros», uma das primeiras\nmanifestações das elites políticas de oposição ao regime ditatorial,\nderrubado em outubro de 1945. Com a redemocratização do país, Wenceslau\nBrás foi novamente cogitado para se candidatar ao governo mineiro com o\napoio do novo presidente da República, Eurico Dutra, numa tentativa de\nconciliar o Partido Republicano (PR) com as alas do Partido Social\nDemocrático (PSD) lideradas por Melo Viana e José Francisco Bias Fortes.\nEntretanto, esse último foi vitorioso na convenção do PSD, fazendo com\nque Wenceslau Brás e Melo Viana passassem a apoiar a candidatura de\nMílton Campos, da União Democrática Nacional (UDN), afinal vitorioso no\npleito de janeiro de 1947. A partir de então, Wenceslau Brás retirou-se\ndefinitivamente da vida pública.\n\nEm suas atividades empresariais, foi fundador, em 1912, e presidente da\nCompanhia Industrial Sul Mineira. Presidiu também a Companhia Industrial\nForça e Luz de Itajubá, a Fábrica de Tecidos Codorna e o Banco de\nItajubá S.A., entre outras.\n\nWenceslau Brás faleceu em Itajubá no dia 15 de maio de 1966. Era casado\ncom Maria Carneiro Pereira Gomes, com quem teve sete filhos. Um deles,\nJosé Brás Pereira Gomes, foi eleito deputado à Assembléia Nacional\nConstituinte de 1934 na legenda do Partido Progressista Mineiro.\n\nSobre o biografado foram publicados artigos, discursos e conferências,\nentre os quais «A presidência da República; quem é Wenceslau Brás?»\n(1913), «O perfil de um grande estadista da República, dr. Wenceslau\nBrás» (coletânea de artigos de Pedro Cavalcanti publicados entre janeiro\ne março de 1956 no «Jornal do Comércio») e «Wenceslau, um pescador na\npresidência» (1968), de Darci Bessone de Oliveira Andrade.\n\nO arquivo de Wenceslau Brás encontra-se depositado no Centro de Pesquisa\ne Documentação de História Contemporânea do Brasil (Cpdoc) da Fundação\nGetulio Vargas.\n\n\n&#39;]
+ &#39;\ntitle: RUBIM, Floriano\nnatureza: biográfico\nsexo: m\ncargos: \n - militar\n - dep. fed. ES 1955-1959\n - dep. fed. ES 1963-1971\n&#39;,
+ &#39;\n\n«Floriano Lopes Rubim» nasceu em Alegre (ES) no dia 18 de janeiro de\n1912, filho de Francisco Lopes Rubim, funcionário público, e de Maria\nSílvia Lousada Rubim.\n\nBacharel em ciências jurídicas e sociais pela Faculdade de Direito da\nUniversidade do Espírito Santo, formou-se também na Escola de Educação\nFísica do Rio de Janeiro, então Distrito Federal, em 1941. Nesse mesmo\nano ingressou na Força Policial do Espírito Santo, onde faria carreira.\nParticipou da campanha militar brasileira na Itália durante a Segunda\nGuerra Mundial (1939-1945), retornando ao Brasil em 1945, ao término do\nconflito.\n\nEm 1946 assumiu a direção da Penitenciária do Estado do Espírito Santo,\nque ocupou até o ano seguinte. Em 1948 passou a ajudante-de-ordens na\nCasa Militar do governador do Espírito Santo, Carlos Lindenberg\n(1947-1951), função que exerceu até 1949. Em outubro de 1950 elegeu-se\ndeputado estadual pelo Espírito Santo, na legenda do Partido Trabalhista\nBrasileiro (PTB). Para assumir o mandato, foi reformado na Força\nPolicial do estado no posto de coronel, ocupando a sua cadeira no\nLegislativo em fevereiro de 1951. Nessa legislatura integrou as\ncomissões de Educação e Cultura e de Justiça da Assembléia capixaba.\n\nEm outubro de 1954 elegeu-se deputado federal por seu estado, agora com\no apoio da Coligação Democrática formada pelo PTB e pelos partidos\nRepublicano (PR), de Representação Popular (PRP) e Social Progressista\n(PSP). Encerrou o mandato estadual em janeiro de 1955, assumindo no mês\nseguinte sua cadeira na Câmara Federal. Ocupou-a, no entanto, apenas de\n2 a 9 de fevereiro, quando se licenciou para assumir a Secretaria de\nViação e Obras Públicas do Espírito Santo no governo de Francisco\nLacerda de Aguiar (1955-1959). Em abril reassumiu o mandato parlamentar\ne, até o fim da legislatura, foi vice-presidente da Comissão de\nSegurança Nacional da Câmara. Em maio de 1957, tornou-se vice-líder do\nPTB. Em outubro de 1958 tentou a reeleição, na mesma legenda, mas obteve\napenas uma suplência. Concluiu o mandato em janeiro de 1959.\n\nEm 1960, participou da campanha de Jânio Quadros para a presidência da\nRepública, filiando-se ao Partido Democrata Cristão (PDC). No entanto,\nno dia seguinte ao pleito realizado em outubro e vencido por Jânio,\ndesligou-se do PDC, filiando-se ao Partido Trabalhista Nacional (PTN).\nEm outubro de 1962 voltou a se eleger deputado federal com o apoio da\ncoligação formada pelo PTN e o Partido Social Democrático (PSD). Assumiu\no mandato em fevereiro de 1963, tornando-se vice-líder do partido na\nCâmara em junho do ano seguinte.\n\nCom a edição do Ato Institucional nº 2 (AI-2), em 27 de outubro de 1965,\nextinguindo os partidos políticos, e com a posterior implantação do\nbipartidarismo, filiou-se à Aliança Renovadora Nacional (Arena), partido\nde apoio ao regime militar instalado no país após a deposição do\npresidente João Goulart em 31 de março de 1964.\n\nEm novembro de 1966 reelegeu-se deputado federal pelo Espírito Santo, já\nna legenda da Arena, exercendo o mandato de fevereiro de 1967 a janeiro\nde 1971.\n\nFundou a Imexferral Ltda., empresa de sua propriedade.\n\nFaleceu no dia 4 de maio de 1997.\n\n&#39;]
 </pre></div>
 </div>
 </div>
@@ -843,16 +652,13 @@ autor:
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&#39;,
- &#39;title: BRÁS, Wenceslau&#39;,
+ &#39;title: RUBIM, Floriano&#39;,
  &#39;natureza: biográfico&#39;,
  &#39;sexo: m&#39;,
- &#39;cargos:&#39;,
- &#39; - dep. fed. MG 1903-1908&#39;,
- &#39; - pres. MG 1909-1910&#39;,
- &#39; - vice-pres. Rep. 1910-1914&#39;,
- &#39; - pres. Rep. 1914-1918&#39;,
- &#39;autor:&#39;,
- &#39; - Helena Faria&#39;]
+ &#39;cargos: &#39;,
+ &#39; - militar&#39;,
+ &#39; - dep. fed. ES 1955-1959&#39;,
+ &#39; - dep. fed. ES 1963-1971&#39;]
 </pre></div>
 </div>
 </div>
@@ -865,241 +671,63 @@ autor:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>«Wenceslau Brás Pereira Gomes» nasceu em São Caetano da Vargem Grande,
-hoje Brasópolis (MG), no dia 26 de fevereiro de 1868, filho do coronel
-Francisco Brás Pereira Gomes - deputado à Assembléia da província de
-Minas Gerais durante muitos anos - e de Isabel Pereira dos Santos.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>«Floriano Lopes Rubim» nasceu em Alegre (ES) no dia 18 de janeiro de
+1912, filho de Francisco Lopes Rubim, funcionário público, e de Maria
+Sílvia Lousada Rubim.
 
-Fez os primeiros estudos em sua cidade natal, cursou humanidades no
-Seminário Episcopal da capital paulista e ingressou em seguida na
-Faculdade de Direito de São Paulo, pela qual se formou em 1890.
-Retornando a Minas, foi nomeado promotor público em Jacuí e depois
-transferiu-se para Monte Santo, onde atuou também como advogado e
-exerceu as funções de intendente municipal, correspondentes às dos
-atuais prefeitos. Eleito deputado estadual em 1892, permaneceu na Câmara
-mineira até 1898, quando assumiu a Secretaria do Interior do governo
-chefiado por Silviano de Almeida Brandão, que se estendeu até 1902.
-Conquistou então um mandato de deputado federal para a legislatura
-iniciada em 1903, tornando-se líder da bancada mineira e, pouco depois,
-da maioria no Congresso. Reeleito, permaneceu na Câmara Federal até
-1908. Em abril do ano seguinte, assumiu o governo de seu estado em
-substituição a João Pinheiro da Silva, recém-falecido. Encontrava-se no
-exercício do cargo quando, em março de 1910, foi eleito vice-presidente
-da República na chapa encabeçada pelo marechal Hermes da Fonseca. Em
-setembro do mesmo ano deixou o governo mineiro.
+Bacharel em ciências jurídicas e sociais pela Faculdade de Direito da
+Universidade do Espírito Santo, formou-se também na Escola de Educação
+Física do Rio de Janeiro, então Distrito Federal, em 1941. Nesse mesmo
+ano ingressou na Força Policial do Espírito Santo, onde faria carreira.
+Participou da campanha militar brasileira na Itália durante a Segunda
+Guerra Mundial (1939-1945), retornando ao Brasil em 1945, ao término do
+conflito.
 
-Colocado o problema da sucessão de Hermes da Fonseca em 1913, o senador
-gaúcho José Pinheiro Machado iniciou articulações em torno da sua
-própria candidatura. Político dotado de grande prestígio e influência,
-amigo pessoal do presidente, Pinheiro Machado era considerado por boa
-parte dos governos estaduais e pela maioria do Congresso como o nome
-mais indicado para assumir a chefia do governo federal. Entretanto, os
-presidentes de Minas Gerais e de São Paulo, ciosos do poder de
-influência de seus estados, firmaram o Pacto de Ouro Fino, prevendo a
-consulta mútua para a escolha de um candidato comum à presidência. Ao
-mesmo tempo em que a oposição a Pinheiro Machado se fortalecia, a Bahia
-lançou o nome de Rui Barbosa. A tentativa de composição desses dois
-postulantes não deu certo, provocando um impasse que criou as condições
-para o lançamento de Wenceslau Brás pelos governos mineiro e paulista.
-Pinheiro Machado acabou apoiando o candidato mineiro, que derrotou Rui
-Barbosa nas eleições de março de 1914, tendo como companheiro de chapa
-Urbano Santos, presidente do Maranhão.
+Em 1946 assumiu a direção da Penitenciária do Estado do Espírito Santo,
+que ocupou até o ano seguinte. Em 1948 passou a ajudante-de-ordens na
+Casa Militar do governador do Espírito Santo, Carlos Lindenberg
+(1947-1951), função que exerceu até 1949. Em outubro de 1950 elegeu-se
+deputado estadual pelo Espírito Santo, na legenda do Partido Trabalhista
+Brasileiro (PTB). Para assumir o mandato, foi reformado na Força
+Policial do estado no posto de coronel, ocupando a sua cadeira no
+Legislativo em fevereiro de 1951. Nessa legislatura integrou as
+comissões de Educação e Cultura e de Justiça da Assembléia capixaba.
 
-## Na presidência da República
+Em outubro de 1954 elegeu-se deputado federal por seu estado, agora com
+o apoio da Coligação Democrática formada pelo PTB e pelos partidos
+Republicano (PR), de Representação Popular (PRP) e Social Progressista
+(PSP). Encerrou o mandato estadual em janeiro de 1955, assumindo no mês
+seguinte sua cadeira na Câmara Federal. Ocupou-a, no entanto, apenas de
+2 a 9 de fevereiro, quando se licenciou para assumir a Secretaria de
+Viação e Obras Públicas do Espírito Santo no governo de Francisco
+Lacerda de Aguiar (1955-1959). Em abril reassumiu o mandato parlamentar
+e, até o fim da legislatura, foi vice-presidente da Comissão de
+Segurança Nacional da Câmara. Em maio de 1957, tornou-se vice-líder do
+PTB. Em outubro de 1958 tentou a reeleição, na mesma legenda, mas obteve
+apenas uma suplência. Concluiu o mandato em janeiro de 1959.
 
-Wenceslau Brás assumiu o governo federal em 15 de novembro de 1914,
-pouco depois da eclosão da Primeira Guerra Mundial. Logo no início do
-seu mandato, se defrontou com um grave impasse político no estado do
-Rio, onde dois candidatos se consideravam eleitos pela Assembléia para a
-chefia do Executivo. Feliciano Sodré, correligionário de Pinheiro
-Machado, contava com o apoio expresso da maioria dos deputados, mas a
-minoria, que detinha o controle da mesa, obteve através de «habeas-
-corpus» o reconhecimento do Supremo Tribunal Federal (STF) para a posse
-de Nilo Peçanha. Inconformada com essa decisão, a maioria solicitou a
-intervenção federal, mas Wenceslau Brás optou pelo cumprimento da
-decisão judicial, contrariando assim a posição de Pinheiro Machado, que
-passou a fazer oposição ao governo federal até falecer em 1915. Com o
-desaparecimento do senador gaúcho, Wenceslau passou a exercer plenamente
-a liderança política do país, resolvendo em seguida a disputa pela
-chefia do governo de Mato Grosso. Em 1916, promoveu a solução da questão
-de limites entre Paraná e Santa Catarina na região do Contestado, onde,
-depois de sucessivas expedições militares, o Exército conseguiu esmagar
-uma revolta popular de cunho messiânico que se prolongava desde 1912.
+Em 1960, participou da campanha de Jânio Quadros para a presidência da
+República, filiando-se ao Partido Democrata Cristão (PDC). No entanto,
+no dia seguinte ao pleito realizado em outubro e vencido por Jânio,
+desligou-se do PDC, filiando-se ao Partido Trabalhista Nacional (PTN).
+Em outubro de 1962 voltou a se eleger deputado federal com o apoio da
+coligação formada pelo PTN e o Partido Social Democrático (PSD). Assumiu
+o mandato em fevereiro de 1963, tornando-se vice-líder do partido na
+Câmara em junho do ano seguinte.
 
-Apesar da neutralidade adotada pelo governo de Wenceslau Brás nos
-primeiros anos do conflito mundial, a economia brasileira sofreu os
-reflexos da crise financeira internacional e teve reduzida sua
-capacidade para importar, o que provocou um aumento da produção da
-indústria nacional para substituir importações. O governo adotou então
-uma série de medidas, como a emissão de letras do Tesouro, a redução das
-despesas públicas, o incentivo à implantação de siderurgias e à
-exploração de jazidas de carvão, e a construção de escolas profissionais
-para a formação de operários especializados. Visando combater a carestia
-causada pela especulação, criou também o Comissariado de Alimentação,
-encarregado de tabelar os preços dos gêneros de primeira necessidade,
-fiscalizar os depósitos de mercadorias, estabelecer postos de venda,
-fixar os preços dos fretes etc.
+Com a edição do Ato Institucional nº 2 (AI-2), em 27 de outubro de 1965,
+extinguindo os partidos políticos, e com a posterior implantação do
+bipartidarismo, filiou-se à Aliança Renovadora Nacional (Arena), partido
+de apoio ao regime militar instalado no país após a deposição do
+presidente João Goulart em 31 de março de 1964.
 
-O governo de Wenceslau Brás multiplicou ainda os tiros-de-guerra,
-destinados à formação de reservistas para o Exército, e dotou o Arsenal
-de Marinha, no Rio, de novas instalações. Incentivou a adoção de
-concursos públicos na administração civil e, em 1º de janeiro de 1917,
-promulgou o novo Código Civil. Em outubro seguinte obteve do Congresso
-aprovação para a declaração de guerra à Alemanha em virtude do
-torpedeamento de alguns navios brasileiros por submarinos desse país.
-Pouco depois, o Brasil enviou um corpo expedicionário à Europa comandado
-pelo almirante Pedro Max de Frontin a fim de ajudar no patrulhamento do
-Atlântico Norte.
+Em novembro de 1966 reelegeu-se deputado federal pelo Espírito Santo, já
+na legenda da Arena, exercendo o mandato de fevereiro de 1967 a janeiro
+de 1971.
 
-Em seu último ano de governo Wenceslau Brás promoveu o combate à
-epidemia de gripe espanhola. Apoiou a candidatura vitoriosa de Rodrigues
-Alves à presidência e, com a posse deste em 15 de novembro de 1918,
-retirou-se provisoriamente da vida pública, fixando-se em Itajubá (MG).
+Fundou a Imexferral Ltda., empresa de sua propriedade.
 
-Durante a revolta paulista de julho de 1924, o general Isidoro Dias
-Lopes, comandante dos contingentes rebeldes, propôs seu nome para compor
-uma junta provisória formada por “nomes nacionais de reconhecida
-probidade e da confiança dos revolucionários”, que substituiriam o
-presidente Artur Bernardes. Essa proposta não foi considerada pelo
-governo, que conseguiu expulsar os rebeldes da capital paulista depois
-de três semanas de combates, retomando o controle da situação.
-
-## O retorno à cena política
-
-Durante o encaminhamento da sucessão do presidente Washington Luís
-(1926-1930) ocorreu uma cisão na aliança de Minas Gerais com São Paulo,
-pois o presidente da República rompeu a alternância de candidatos destes
-dois estados, indicando o paulista Júlio Prestes para substituí-lo.
-Antônio Carlos Ribeiro de Andrada, chefe do governo mineiro e candidato
-natural à presidência, aproximou-se então dos líderes gaúchos, passando
-a apoiar a formação da Aliança Liberal, coligação oposicionista que, em
-meados de 1929, lançou a candidatura do presidente do Rio Grande do Sul,
-Getúlio Vargas. O debate dessa questão coincidiu com o equacionamento da
-sucessão do próprio Antônio Carlos, que dividiu o Partido Republicano
-Mineiro (PRM), dominante na política estadual. Membro da comissão
-executiva desse partido, Wenceslau Brás viajou para Belo Horizonte em
-outubro de 1929 a fim de participar das reuniões para a definição do
-quadro sucessório, que envolvia três correntes principais, lideradas por
-Antônio Carlos, Artur Bernardes e Fernando de Melo Viana. Depois de
-sucessivos encontros, a maioria dos líderes situacionistas de Minas
-Gerais concordou em apoiar o nome de Olegário Maciel, provocando uma
-cisão chefiada por Melo Viana, que manteve sua própria candidatura e, no
-plano nacional, passou a apoiar Júlio Prestes através do movimento
-denominado Concentração Conservadora.
-
-Após as eleições para a presidência da República e a Câmara Federal,
-realizadas em 1º de março de 1930, as dissidências se agravaram.
-Importantes setores aliancistas em diversos estados consideraram
-fraudulenta a vitória de Júlio Prestes sobre Getúlio Vargas, passando a
-articular junto com militares oriundos do movimento tenentista um
-levante armado contra o governo federal. Ao mesmo tempo, a Comissão de
-Verificação de Poderes, ligada ao Congresso Nacional e incumbida de dar
-parecer sobre os pleitos estaduais, não reconheceu a eleição em Minas de
-14 deputados federais ligados à Aliança Liberal, diplomando em seus
-lugares elementos vinculados à Concentração Conservadora.
-
-Em 27 de maio de 1930, com o objetivo de ratificar o apoio do PRM aos
-candidatos derrotados da Aliança Liberal, a comissão executiva do
-partido reuniu-se na casa de Antônio Carlos, em Juiz de Fora, com a
-presença de Wenceslau Brás, Artur Bernardes, Afonso Pena Júnior, José
-Bonifácio de Andrada e Silva, Mário Brant e Alaor Prata, entre outros.
-Todos os participantes desse encontro apoiaram os compromissos assumidos
-por Antônio Carlos em nome do PRM com a conspiração revolucionária em
-curso, posição que foi ratificada depois da posse de Olegário Maciel em
-setembro. A revolução foi deflagrada em 3 de outubro desse ano no Rio
-Grande do Sul, Minas e Paraíba, conduzindo à deposição de Washington
-Luís depois de 21 dias de luta e à formação, em 3 de novembro, do
-Governo Provisório chefiado por Getúlio Vargas. Olegário Maciel foi o
-único chefe de Executivo estadual a ser mantido no cargo.
-
-Em fevereiro de 1931, foi criada a Legião Mineira, organização que
-contava com o apoio oficial e se propunha a aprofundar as reformas
-introduzidas pela Revolução de 1930 utilizando um estilo de mobilização
-semelhante ao do fascismo europeu. Wenceslau Brás foi eleito para
-integrar o conselho supremo da nova entidade, junto com Francisco
-Campos. Gustavo Capanema, Amaro Lanari, Antônio Carlos, José Monteiro
-Ribeiro Junqueira, Teodomiro Santiago e José Bonifácio. Durante o
-congresso da Legião, realizado em julho, o ex-presidente da República
-pronunciou discurso afirmando que ela incorporara 80% dos diretórios do
-PRM, que se enfraquecia nitidamente.
-
-Os perremistas liderados por Artur Bernardes e que não haviam aderido à
-nova organização se reuniram em Belo Horizonte no dia 13 de agosto de
-1931 e tentaram depor Olegário Maciel, que estreitava cada vez mais suas
-relações com a Legião. Com o fracasso dessa tentativa, a situação
-política estadual e a relação entre os governos mineiro e federal se
-tornaram ainda mais tensas. A necessidade de promover a pacificação
-conduziu a negociações entre a Legião e o PRM com o objetivo de formar
-um só partido que serviria de base de apoio a Maciel e Vargas. Wenceslau
-Brás teve importante participação na articulação do chamado “Acordo
-mineiro”, assinado em fevereiro de 1932, que resultou na fundação do
-Partido Social Nacionalista (PSN), de cuja comissão diretora fez parte.
-
-A posição de Minas nesse período foi marcada pela indefinição entre a
-defesa do Governo Provisório e o apoio às reivindicações de
-reconstitucionalização do país, sustentadas principalmente pelas forças
-paulistas. O primeiro efeito dessas divergências foi a dissolução do PSN
-em maio de 1932. Com a eclosão da Revolução Constitucionalista de São
-Paulo no início de julho, Wenceslau Brás sugeriu a Olegário Maciel que a
-ação de Minas se limitasse à defesa do seu território. Apesar das
-pressões de alguns líderes a favor do engajamento na luta armada contra
-Vargas, o governo mineiro não aderiu à revolta, contribuindo assim para
-o isolamento dos paulistas, fator decisivo para a vitória legalista.
-
-Com a morte de Olegário Maciel em setembro de 1933 desencadeou-se em
-Minas uma crise sucessória, pois a possibilidade de acordo entre os dois
-pretendentes mais fortes à interventoria - Gustavo Capanema e Virgílio
-de Melo Franco - era pequena. Vargas pediu então que Antônio Carlos e
-outros líderes do estado elaborassem uma lista de nomes alternativos
-entre os membros do Partido Progressista, fundado em janeiro desse ano.
-Wenceslau Brás foi um dos quatros novos nomes sugeridos, mas o chefe do
-Governo Provisório pediu a inclusão do deputado Benedito Valadares, cuja
-atuação até então tivera pouco destaque. Dias depois, Valadares foi
-nomeado interventor federal no estado e, desvinculado de qualquer grupo
-local, conduziu a política mineira de acordo com as diretrizes de
-Vargas.
-
-Em julho de 1934, o nome de Wenceslau Brás foi ventilado como possível
-candidato à presidência da República, em oposição a Vargas, no âmbito da
-Assembléia Nacional Constituinte. O chefe do Governo Provisório recebeu
-dessa assembléia seu primeiro mandato constitucional que deveria durar
-até 1938. Em novembro de 1937, entretanto, um golpe de Estado liderado
-pelo próprio Vargas implantou o Estado Novo.
-
-Em 1943, Wenceslau Brás, alegando seu afastamento da vida pública,
-recusou-se a assinar o «Manifesto dos mineiros», uma das primeiras
-manifestações das elites políticas de oposição ao regime ditatorial,
-derrubado em outubro de 1945. Com a redemocratização do país, Wenceslau
-Brás foi novamente cogitado para se candidatar ao governo mineiro com o
-apoio do novo presidente da República, Eurico Dutra, numa tentativa de
-conciliar o Partido Republicano (PR) com as alas do Partido Social
-Democrático (PSD) lideradas por Melo Viana e José Francisco Bias Fortes.
-Entretanto, esse último foi vitorioso na convenção do PSD, fazendo com
-que Wenceslau Brás e Melo Viana passassem a apoiar a candidatura de
-Mílton Campos, da União Democrática Nacional (UDN), afinal vitorioso no
-pleito de janeiro de 1947. A partir de então, Wenceslau Brás retirou-se
-definitivamente da vida pública.
-
-Em suas atividades empresariais, foi fundador, em 1912, e presidente da
-Companhia Industrial Sul Mineira. Presidiu também a Companhia Industrial
-Força e Luz de Itajubá, a Fábrica de Tecidos Codorna e o Banco de
-Itajubá S.A., entre outras.
-
-Wenceslau Brás faleceu em Itajubá no dia 15 de maio de 1966. Era casado
-com Maria Carneiro Pereira Gomes, com quem teve sete filhos. Um deles,
-José Brás Pereira Gomes, foi eleito deputado à Assembléia Nacional
-Constituinte de 1934 na legenda do Partido Progressista Mineiro.
-
-Sobre o biografado foram publicados artigos, discursos e conferências,
-entre os quais «A presidência da República; quem é Wenceslau Brás?»
-(1913), «O perfil de um grande estadista da República, dr. Wenceslau
-Brás» (coletânea de artigos de Pedro Cavalcanti publicados entre janeiro
-e março de 1956 no «Jornal do Comércio») e «Wenceslau, um pescador na
-presidência» (1968), de Darci Bessone de Oliveira Andrade.
-
-O arquivo de Wenceslau Brás encontra-se depositado no Centro de Pesquisa
-e Documentação de História Contemporânea do Brasil (Cpdoc) da Fundação
-Getulio Vargas.
+Faleceu no dia 4 de maio de 1997.
 </pre></div>
 </div>
 </div>
@@ -1126,11 +754,10 @@ Getulio Vargas.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;BRÁS, Wenceslau&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;RUBIM, Floriano&#39;,
  &#39;natureza&#39;: &#39;biográfico&#39;,
  &#39;sexo&#39;: &#39;m&#39;,
- &#39;cargos&#39;: &#39;&#39;,
- &#39;autor&#39;: &#39;&#39;}
+ &#39;cargos&#39;: &#39;&#39;}
 </pre></div>
 </div>
 </div>
@@ -1149,11 +776,10 @@ Getulio Vargas.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;BRÁS, Wenceslau&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;title&#39;: &#39;RUBIM, Floriano&#39;,
  &#39;natureza&#39;: &#39;biográfico&#39;,
  &#39;sexo&#39;: &#39;m&#39;,
- &#39;cargos&#39;: &#39;&#39;,
- &#39;autor&#39;: &#39;&#39;}
+ &#39;cargos&#39;: &#39;&#39;}
 </pre></div>
 </div>
 </div>
@@ -1198,14 +824,15 @@ Getulio Vargas.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;militar&#39;: &#39;NA&#39;, &#39;interv. PE&#39;: &#39;1946-1947&#39;}
-{&#39;gov. DF&#39;: &#39;1962-1964&#39;}
-{&#39;dep. fed. PI&#39;: &#39;1967-1971&#39;, &#39;sen. PI&#39;: &#39;1971-1979&#39;}
-{&#39;consult. ger. Rep.&#39;: &#39;1992&#39;, &#39;adv. geral União&#39;: &#39;1993&#39;, &#39;autor:&#39;: &#39;NA&#39;, &#39;Marcelo&#39;: &#39;Costa&#39;, &#39;Sergio&#39;: &#39;Lamarão&#39;}
-{&#39;dep. fed. ES&#39;: &#39;1983-1991&#39;, &#39;const.&#39;: &#39;1987-1988&#39;, &#39;autor:&#39;: &#39;NA&#39;, &#39;Márcia&#39;: &#39;Quarti&#39;}
-{&#39;dep. fed. SC&#39;: &#39;2011&#39;, &#39;autor:&#39;: &#39;NA&#39;, &#39;Rejane&#39;: &#39;Araújo&#39;}
-{&#39;militar&#39;: &#39;NA&#39;, &#39;comte. IV Ex.&#39;: &#39;1956-1957&#39;, &#39;ch. EMFA&#39;: &#39;1961-1963&#39;}
-3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;empresário&#39;: &#39;NA&#39;, &#39;autor:&#39;: &#39;NA&#39;, &#39;Maria Ester Lopes&#39;: &#39;Moreira&#39;}
+{&#39;dep. fed. TO&#39;: &#39;2007&#39;}
+{&#39;militar&#39;: &#39;NA&#39;, &#39;rev.&#39;: &#39;1930&#39;, &#39;dep. fed. MG&#39;: &#39;1959-1979&#39;}
+{&#39;magistrado&#39;: &#39;NA&#39;, &#39;min. STF&#39;: &#39;2003-2012&#39;, &#39;autor:&#39;: &#39;NA&#39;, &#39;Eduardo&#39;: &#39;Junqueira&#39;, &#39;Raimundo&#39;: &#39;Hélio&#39;}
+{&#39;magistrada&#39;: &#39;NA&#39;, &#39;min. STF&#39;: &#39;2006&#39;, &#39;pres. STF&#39;: &#39;2016&#39;, &#39;autor:&#39;: &#39;NA&#39;, &#39;Eduardo&#39;: &#39;Junqueira&#39;, &#39;Raimundo&#39;: &#39;Hélio&#39;, &#39;Regina Hippolito&#39;: &#39;(atualização)&#39;}
+{&#39;dep. fed. PR&#39;: &#39;1999&#39;}
+{&#39;magistrado&#39;: &#39;NA&#39;, &#39;min. STF&#39;: &#39;2006&#39;, &#39;autor:&#39;: &#39;NA&#39;, &#39;Eduardo&#39;: &#39;Junqueira&#39;}
+{&#39;dep. fed. SC&#39;: &#39;1971-1979&#39;}
+4
 </pre></div>
 </div>
 </div>
@@ -1302,13 +929,12 @@ Getulio Vargas.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>title: BETING, Joelmir
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>title: KRÜGER, Nivaldo
 natureza: biográfico
 sexo: m
 cargos: 
- - jornalista  
-autor: 
- - Alzira Alves de Abreu
+ - dep. fed. PR 1979-1983
+ - sen. PR 2002-2003
 </pre></div>
 </div>
 </div>
@@ -1328,35 +954,35 @@ autor:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete:  822
-title: BRÁS, Wenceslau
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete:  4736
+title: RUBIM, Floriano
 
-Verbete:  3098
-title: MACHADO, João
+Verbete:  1376
+title: COELHO, Inocêncio Mártires
 
-Verbete:  2337
-title: GÓIS, Aroldo
+Verbete:  732
+title: BOPP, Raul
 
-Verbete:  11699
-title: BETING, Joelmir
+Verbete:  2669
+title: KRÜGER, Nivaldo
 
-Verbete:  1774
-title: DUARTE, Ovídio
+Verbete:  6310
+title: POLÍTICA DE CLIENTELA
 
-Verbete:  351
-title: ARAÚJO, Rui
+Verbete:  3752
+title: NASCIMENTO, César
 
-Verbete:  3920
-title: OLIVEIRA, Eurico
+Verbete:  10928
+title: COLA, Camilo
 
-Verbete:  6047
-title: NEUTRALIDADE DO BRASIL NA SEGUNDA GUERRA MUNDIAL
+Verbete:  3756
+title: NASCIMENTO, Paulo
 
-Verbete:  4425
-title: RAMALHETE, Ubaldo
+Verbete:  41
+title: ADEODATO, Francisco
 
-Verbete:  5465
-title: VARGAS, Túlio
+Verbete:  11169
+title: LIMA, Eliene
 </pre></div>
 </div>
 </div>
@@ -1368,7 +994,7 @@ title: VARGAS, Túlio
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;dhbb/text/3098.text&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;../dhbb/text/1376.text&#39;
 </pre></div>
 </div>
 </div>
@@ -1380,7 +1006,7 @@ title: VARGAS, Túlio
 <p>O arquivo do DHBB disponível no Github oferece outros recursos textuais para nos auxiliar em nossa pesquisa, como por exemplos dicionários com identificadores de “Entidades” presentes nos verbetes, como pessoas, organizações, eventos, etc.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/pessoa-individuo.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../dhbb/dic/pessoa-individuo.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">pessoas</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">pessoas</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -1403,7 +1029,7 @@ title: VARGAS, Túlio
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/pessoa-papel.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../dhbb/dic/pessoa-papel.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">profissão</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">profissão</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -1426,7 +1052,7 @@ title: VARGAS, Túlio
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/evento.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../dhbb/dic/evento.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">evento</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">evento</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -1449,7 +1075,7 @@ title: VARGAS, Túlio
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/organizacao.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../dhbb/dic/organizacao.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">organização</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">organização</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -1472,7 +1098,7 @@ title: VARGAS, Túlio
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;dhbb/dic/formulacao-politica.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../dhbb/dic/formulacao-politica.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">politica</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
 <span class="n">politica</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
@@ -1501,13 +1127,8 @@ title: VARGAS, Túlio
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.latex.repr&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-<span class="o">%</span><span class="k">pylab</span> inline
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Populating the interactive namespace from numpy and matplotlib
+<span class="c1"># pd.set_option(&quot;display.latex.repr&quot;, True)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -1598,48 +1219,48 @@ tabula_verbete(n=None)
   <tbody>
     <tr>
       <th>0</th>
-      <td>822.text</td>
-      <td>BRÁS, Wenceslau</td>
+      <td>4736.text</td>
+      <td>RUBIM, Floriano</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. MG 1903-1908\n - pres. MG 1909-...</td>
-      <td>\n\n«Wenceslau Brás Pereira Gomes» nasceu em S...</td>
+      <td>\n - militar\n - dep. fed. ES 1955-1959\n - d...</td>
+      <td>\n\n«Floriano Lopes Rubim» nasceu em Alegre (E...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>3098.text</td>
-      <td>MACHADO, João</td>
+      <td>1376.text</td>
+      <td>COELHO, Inocêncio Mártires</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. DF 1955-1959 \n</td>
-      <td>\n\n«João dos Reis Ferreira Machado» nasceu no...</td>
+      <td>\n - proc. ger. Rep. 1981-1985\nautor: \n - L...</td>
+      <td>\n\n«Inocêncio Mártires Coelho» nasceu em Belé...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2337.text</td>
-      <td>GÓIS, Aroldo</td>
+      <td>732.text</td>
+      <td>BOPP, Raul</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - dep. fed. AP 1991-1995\n</td>
-      <td>\n\n«Aroldo da Graça Sousa Góis» nasceu em Alm...</td>
+      <td>\n - diplomata\n - emb. Bras. Peru 1962-1963\n</td>
+      <td>\n\n«Raul Bopp» nasceu em Santa Maria (RS) no ...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>11699.text</td>
-      <td>BETING, Joelmir</td>
+      <td>2669.text</td>
+      <td>KRÜGER, Nivaldo</td>
       <td>biográfico</td>
       <td>m</td>
-      <td>\n - jornalista  \nautor: \n - Alzira Alves d...</td>
-      <td>\n\n«Joelmir José Beting» nasceu em Tambaú (SP...</td>
+      <td>\n - dep. fed. PR 1979-1983\n - sen. PR 2002-...</td>
+      <td>\n\n«Nivaldo Passos Krüger» nasceu em Canoinha...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1774.text</td>
-      <td>DUARTE, Ovídio</td>
-      <td>biográfico</td>
-      <td>m</td>
-      <td>\n - dep. fed. PB 1954-1955\n - dep. fed. PB ...</td>
-      <td>\n\n«Ovídio Borba Duarte» nasceu em Serraria, ...</td>
+      <td>6310.text</td>
+      <td>POLÍTICA DE CLIENTELA</td>
+      <td>temático</td>
+      <td>NaN</td>
+      <td>NA</td>
+      <td>\n\nExpressão cunhada e conceito desenvolvido ...</td>
     </tr>
   </tbody>
 </table>
@@ -1700,8 +1321,8 @@ tabula_verbete(n=None)
     </tr>
     <tr>
       <th>top</th>
-      <td>822.text</td>
-      <td>SANTANA, Carlos</td>
+      <td>4736.text</td>
+      <td>LOURES, Rocha</td>
       <td>biográfico</td>
       <td>m</td>
       <td>NA</td>
@@ -1728,9 +1349,10 @@ tabula_verbete(n=None)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m    6615
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sexo
+m    6615
 f     250
-Name: sexo, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1742,7 +1364,7 @@ Name: sexo, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cb5c9815022e9d229f1a8e32ce7fb7fd9050f5f73a7f0597a59d1e9cfe2bc745.png" src="_images/cb5c9815022e9d229f1a8e32ce7fb7fd9050f5f73a7f0597a59d1e9cfe2bc745.png" />
+<img alt="_images/f0178e2b63f2bf7186f5f5949e169712acf973931b6b1bf91346e8df792e72b7.png" src="_images/f0178e2b63f2bf7186f5f5949e169712acf973931b6b1bf91346e8df792e72b7.png" />
 </div>
 </div>
 <p>Percebemos também que a natureza predominante dos verbetes é biográfica e que só existem duas naturezas, mas qua a outra?</p>
@@ -1753,9 +1375,10 @@ Name: sexo, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>biográfico    6865
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>natureza
+biográfico    6865
 temático       973
-Name: natureza, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1763,8 +1386,8 @@ Name: natureza, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tab2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resposta</span><span class="p">)</span>
-<span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span> <span class="o">=</span> <span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-<span class="n">tab2</span><span class="o">.</span><span class="n">fim</span> <span class="o">=</span> <span class="n">tab2</span><span class="o">.</span><span class="n">fim</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span> <span class="o">=</span> <span class="n">tab2</span><span class="o">.</span><span class="n">inicio</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+<span class="n">tab2</span><span class="o">.</span><span class="n">fim</span> <span class="o">=</span> <span class="n">tab2</span><span class="o">.</span><span class="n">fim</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
 <span class="n">tab2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1798,43 +1421,43 @@ Name: natureza, dtype: int64
   <tbody>
     <tr>
       <th>0</th>
-      <td>BRÁS, Wenceslau</td>
-      <td>dep. fed. MG</td>
+      <td>RUBIM, Floriano</td>
+      <td>militar</td>
       <td>m</td>
-      <td>1903.0</td>
-      <td>1908.0</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>BRÁS, Wenceslau</td>
-      <td>pres. MG</td>
+      <td>RUBIM, Floriano</td>
+      <td>dep. fed. ES</td>
       <td>m</td>
-      <td>1909.0</td>
-      <td>1910.0</td>
+      <td>1955</td>
+      <td>1959</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>BRÁS, Wenceslau</td>
-      <td>vice-pres. Rep.</td>
+      <td>RUBIM, Floriano</td>
+      <td>dep. fed. ES</td>
       <td>m</td>
-      <td>1910.0</td>
-      <td>1914.0</td>
+      <td>1963</td>
+      <td>1971</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>BRÁS, Wenceslau</td>
-      <td>pres. Rep.</td>
+      <td>COELHO, Inocêncio Mártires</td>
+      <td>proc. ger. Rep.</td>
       <td>m</td>
-      <td>1914.0</td>
-      <td>1918.0</td>
+      <td>1981</td>
+      <td>1985</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>MACHADO, João</td>
-      <td>dep. fed. DF</td>
+      <td>BOPP, Raul</td>
+      <td>diplomata</td>
       <td>m</td>
-      <td>1955.0</td>
-      <td>1959.0</td>
+      <td>&lt;NA&gt;</td>
+      <td>&lt;NA&gt;</td>
     </tr>
   </tbody>
 </table>
@@ -1891,44 +1514,44 @@ fim 15083
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>BRÁS, Wenceslau</td>
-      <td>dep. fed. MG</td>
-      <td>m</td>
-      <td>1903.0</td>
-      <td>1908.0</td>
-    </tr>
-    <tr>
       <th>1</th>
-      <td>BRÁS, Wenceslau</td>
-      <td>pres. MG</td>
+      <td>RUBIM, Floriano</td>
+      <td>dep. fed. ES</td>
       <td>m</td>
-      <td>1909.0</td>
-      <td>1910.0</td>
+      <td>1955</td>
+      <td>1959</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>BRÁS, Wenceslau</td>
-      <td>vice-pres. Rep.</td>
+      <td>RUBIM, Floriano</td>
+      <td>dep. fed. ES</td>
       <td>m</td>
-      <td>1910.0</td>
-      <td>1914.0</td>
+      <td>1963</td>
+      <td>1971</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>BRÁS, Wenceslau</td>
-      <td>pres. Rep.</td>
+      <td>COELHO, Inocêncio Mártires</td>
+      <td>proc. ger. Rep.</td>
       <td>m</td>
-      <td>1914.0</td>
-      <td>1918.0</td>
+      <td>1981</td>
+      <td>1985</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>MACHADO, João</td>
-      <td>dep. fed. DF</td>
+      <th>5</th>
+      <td>BOPP, Raul</td>
+      <td>emb. Bras. Peru</td>
       <td>m</td>
-      <td>1955.0</td>
-      <td>1959.0</td>
+      <td>1962</td>
+      <td>1963</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>KRÜGER, Nivaldo</td>
+      <td>dep. fed. PR</td>
+      <td>m</td>
+      <td>1979</td>
+      <td>1983</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1939,44 +1562,44 @@ fim 15083
       <td>...</td>
     </tr>
     <tr>
-      <th>15077</th>
-      <td>FRIAS, Edésio</td>
-      <td>dep. fed. RJ</td>
+      <th>15075</th>
+      <td>MACIEL, Antunes</td>
+      <td>dep. fed. RS</td>
       <td>m</td>
-      <td>1993.0</td>
-      <td>1994.0</td>
+      <td>1924</td>
+      <td>1927</td>
+    </tr>
+    <tr>
+      <th>15078</th>
+      <td>MACIEL, Antunes</td>
+      <td>min. Just.</td>
+      <td>m</td>
+      <td>1932</td>
+      <td>1934</td>
     </tr>
     <tr>
       <th>15079</th>
-      <td>COSTA, Ronaldo</td>
-      <td>emb. Bras. Chile</td>
+      <td>FOGAÇA, José</td>
+      <td>dep. fed. RS</td>
       <td>m</td>
-      <td>1987.0</td>
-      <td>1990.0</td>
+      <td>1983</td>
+      <td>1987</td>
     </tr>
     <tr>
       <th>15080</th>
-      <td>PESSOA, João</td>
-      <td>min. STM</td>
+      <td>FOGAÇA, José</td>
+      <td>const.</td>
       <td>m</td>
-      <td>1919.0</td>
-      <td>1928.0</td>
+      <td>1987</td>
+      <td>1988</td>
     </tr>
     <tr>
       <th>15081</th>
-      <td>PESSOA, João</td>
-      <td>pres. PB</td>
+      <td>FOGAÇA, José</td>
+      <td>sen. RS</td>
       <td>m</td>
-      <td>1928.0</td>
-      <td>1930.0</td>
-    </tr>
-    <tr>
-      <th>15082</th>
-      <td>NOVAIS, Sérgio</td>
-      <td>dep. fed. CE</td>
-      <td>m</td>
-      <td>1999.0</td>
-      <td>2003.0</td>
+      <td>1987</td>
+      <td>2003</td>
     </tr>
   </tbody>
 </table>
@@ -2017,44 +1640,44 @@ fim 15083
   </thead>
   <tbody>
     <tr>
-      <th>4</th>
-      <td>MACHADO, João</td>
-      <td>dep. fed. DF</td>
+      <th>1</th>
+      <td>RUBIM, Floriano</td>
+      <td>dep. fed. ES</td>
       <td>m</td>
-      <td>1955.0</td>
-      <td>1959.0</td>
+      <td>1955</td>
+      <td>1959</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>GÓIS, Aroldo</td>
-      <td>dep. fed. AP</td>
+      <th>2</th>
+      <td>RUBIM, Floriano</td>
+      <td>dep. fed. ES</td>
       <td>m</td>
-      <td>1991.0</td>
-      <td>1995.0</td>
+      <td>1963</td>
+      <td>1971</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>DUARTE, Ovídio</td>
-      <td>dep. fed. PB</td>
+      <th>6</th>
+      <td>KRÜGER, Nivaldo</td>
+      <td>dep. fed. PR</td>
       <td>m</td>
-      <td>1954.0</td>
-      <td>1955.0</td>
+      <td>1979</td>
+      <td>1983</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>DUARTE, Ovídio</td>
-      <td>dep. fed. PB</td>
+      <td>NASCIMENTO, César</td>
+      <td>dep. fed. SC</td>
       <td>m</td>
-      <td>1957.0</td>
-      <td>NaN</td>
+      <td>1973</td>
+      <td>1975</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>ARAÚJO, Rui</td>
-      <td>dep. fed. AM</td>
+      <td>NASCIMENTO, César</td>
+      <td>dep. fed. SC</td>
       <td>m</td>
-      <td>1951.0</td>
-      <td>1955.0</td>
+      <td>1977</td>
+      <td>1980</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2065,44 +1688,44 @@ fim 15083
       <td>...</td>
     </tr>
     <tr>
-      <th>15074</th>
-      <td>FRIAS, Edésio</td>
-      <td>dep. fed. RJ</td>
+      <th>15071</th>
+      <td>CORREIA, Hélio</td>
+      <td>dep. fed. BA</td>
       <td>m</td>
-      <td>1990.0</td>
-      <td>NaN</td>
+      <td>1983</td>
+      <td>1987</td>
+    </tr>
+    <tr>
+      <th>15073</th>
+      <td>MACIEL, Antunes</td>
+      <td>dep. fed. RS</td>
+      <td>m</td>
+      <td>1921</td>
+      <td>1923</td>
     </tr>
     <tr>
       <th>15075</th>
-      <td>FRIAS, Edésio</td>
-      <td>dep. fed. RJ</td>
+      <td>MACIEL, Antunes</td>
+      <td>dep. fed. RS</td>
       <td>m</td>
-      <td>1991.0</td>
-      <td>1992.0</td>
+      <td>1924</td>
+      <td>1927</td>
     </tr>
     <tr>
       <th>15076</th>
-      <td>FRIAS, Edésio</td>
-      <td>dep. fed. RJ</td>
+      <td>MACIEL, Antunes</td>
+      <td>dep. fed. RS</td>
       <td>m</td>
-      <td>1993.0</td>
-      <td>NaN</td>
+      <td>1930</td>
+      <td>&lt;NA&gt;</td>
     </tr>
     <tr>
-      <th>15077</th>
-      <td>FRIAS, Edésio</td>
-      <td>dep. fed. RJ</td>
+      <th>15079</th>
+      <td>FOGAÇA, José</td>
+      <td>dep. fed. RS</td>
       <td>m</td>
-      <td>1993.0</td>
-      <td>1994.0</td>
-    </tr>
-    <tr>
-      <th>15082</th>
-      <td>NOVAIS, Sérgio</td>
-      <td>dep. fed. CE</td>
-      <td>m</td>
-      <td>1999.0</td>
-      <td>2003.0</td>
+      <td>1983</td>
+      <td>1987</td>
     </tr>
   </tbody>
 </table>
@@ -2144,44 +1767,44 @@ fim 15083
   </thead>
   <tbody>
     <tr>
-      <th>227</th>
-      <td>KURIKI, Tadashi</td>
+      <th>91</th>
+      <td>MIGUEL, Sidnei de</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1991</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>ALMEIDA, Paulo de</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1991</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>520</th>
+      <td>BASTOS, Laerte</td>
+      <td>dep. fed. RJ</td>
+      <td>m</td>
+      <td>1991</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>745</th>
+      <td>MELO, Euclides de</td>
       <td>dep. fed. SP</td>
       <td>m</td>
-      <td>1991.0</td>
-      <td>1995.0</td>
+      <td>1991</td>
+      <td>1995</td>
     </tr>
     <tr>
-      <th>424</th>
-      <td>MACIEL, Lysânias</td>
-      <td>dep. fed. RJ</td>
-      <td>m</td>
-      <td>1991.0</td>
-      <td>1992.0</td>
-    </tr>
-    <tr>
-      <th>585</th>
-      <td>CURY, Sérgio</td>
-      <td>dep. fed. RJ</td>
-      <td>m</td>
-      <td>1991.0</td>
-      <td>1995.0</td>
-    </tr>
-    <tr>
-      <th>1059</th>
-      <td>PORTUGAL, Paulo</td>
-      <td>dep. fed. RJ</td>
-      <td>m</td>
-      <td>1991.0</td>
-      <td>1995.0</td>
-    </tr>
-    <tr>
-      <th>1160</th>
+      <th>923</th>
       <td>VIEIRA, Laprovita</td>
       <td>dep. fed. RJ</td>
       <td>m</td>
-      <td>1991.0</td>
-      <td>1999.0</td>
+      <td>1991</td>
+      <td>1999</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2192,44 +1815,44 @@ fim 15083
       <td>...</td>
     </tr>
     <tr>
-      <th>14053</th>
-      <td>NORY, Válter</td>
-      <td>dep. fed. SP</td>
+      <th>13587</th>
+      <td>MENDES, João (2)</td>
+      <td>dep. fed. RJ</td>
       <td>m</td>
-      <td>1991.0</td>
-      <td>1995.0</td>
+      <td>1991</td>
+      <td>1993</td>
     </tr>
     <tr>
-      <th>14161</th>
+      <th>14044</th>
+      <td>JORGE, Eduardo</td>
+      <td>dep. fed. SP</td>
+      <td>m</td>
+      <td>1991</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>14082</th>
       <td>CAMPOS, Cidinha</td>
       <td>dep. fed. RJ</td>
       <td>f</td>
-      <td>1991.0</td>
-      <td>1999.0</td>
+      <td>1991</td>
+      <td>1999</td>
     </tr>
     <tr>
-      <th>14395</th>
-      <td>BRIZOLA, José Vicente</td>
-      <td>dep. fed. RJ</td>
-      <td>m</td>
-      <td>1991.0</td>
-      <td>1995.0</td>
-    </tr>
-    <tr>
-      <th>14450</th>
-      <td>KARA, Ari</td>
+      <th>14674</th>
+      <td>MARIANO, Maurici</td>
       <td>dep. fed. SP</td>
       <td>m</td>
-      <td>1991.0</td>
-      <td>2003.0</td>
+      <td>1991</td>
+      <td>1995</td>
     </tr>
     <tr>
-      <th>15075</th>
-      <td>FRIAS, Edésio</td>
+      <th>14692</th>
+      <td>MASCARENHAS, Eduardo</td>
       <td>dep. fed. RJ</td>
       <td>m</td>
-      <td>1991.0</td>
-      <td>1992.0</td>
+      <td>1991</td>
+      <td>1993</td>
     </tr>
   </tbody>
 </table>
@@ -2274,7 +1897,7 @@ fim 15083
 <p>Para exportar para um banco relacional, precisamos de uma biblioteca adicional, o <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a>. Estabiblioteca nos permite interagir com a maioria dos banco relacionais. Aqui vamos usar o banco <a class="reference external" href="https://www.sqlite.org/index.html">SQLite</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
 <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///minha_tabela.sqlite&#39;</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2307,21 +1930,14 @@ fim 15083
 <p>Uma vez inserido no banco relacional, podemos fazer consultas aos dados usando a linguagem SQL. Abaixo obtemos o resultado da consulta em uma lista.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">engine</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select title from resultados where natureza=&#39;temático&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
+    <span class="n">rs</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;select * from resultados where natureza=&#39;temático&#39;&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()[:</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;NEUTRALIDADE DO BRASIL NA SEGUNDA GUERRA MUNDIAL&#39;,),
- (&#39;PARTIDO OPERÁRIO REVOLUCIONÁRIO (POR)&#39;,),
- (&#39;PARTIDO DA FRENTE LIBERAL (PFL)&#39;,),
- (&#39;PARTIDO DA LAVOURA DO ESPÍRITO SANTO&#39;,),
- (&#39;CHAPA ÚNICA POR SÃO PAULO UNIDO&#39;,),
- (&#39;INSTITUTO DE PESQUISAS E ESTUDOS SOCIAIS (IPÊS)&#39;,),
- (&#39;LIGA DE DEFESA DA CULTURA POPULAR&#39;,),
- (&#39;LEGIÃO CÍVICA NACIONAL&#39;,),
- (&#39;PARTIDO NACIONALISTA DE SÃO PAULO&#39;,),
- (&#39;LISTA HUGO NAPOLEÃO&#39;,)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(4, &#39;6310.text&#39;, &#39;POLÍTICA DE CLIENTELA&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n\nExpressão cunhada e conceito desenvolvido por Hélio Jaguaribe em seu\ntrabalho “Política ideológica e política de clientela”, publicado no\n«Jorn ... (2014 characters truncated) ... r derivação da expressão latina equivalente e das relações que, no\ninício da República Romana, existiam entre o pater famílias e seus\nclientes.\n\n&#39;), (21, &#39;5742.text&#39;, &#39;ASSEMBLÉIA NACIONAL CONSTITUINTE DE 1987-88&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n\nNo dia 1º de fevereiro de 1987, os membros da Câmara dos Deputados e do\nSenado Federal reuniram-se, unicameralmente, em Assembléia Nacional\nCon ... (57523 characters truncated) ... nal ficou composto por 315 artigos, dos quais 245\ndistribuídos por oito títulos das disposições permanentes e 70 nas\ndisposições transitórias. \n\n&#39;), (42, &#39;5793.text&#39;, &#39;I CONGRESSO ANTIFASCISTA&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n \nReunião realizada no Rio de Janeiro em agosto de 1934 sob a direção do\nPartido Comunista Brasileiro (PCB).\n\nSua finalidade era condenar a política fascista em ascensão. Contou,\nentre outras, com a presença de representantes operários.\n\n&#39;), (52, &#39;6346.text&#39;, &#39;REDE BANDEIRANTES&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n\nRede de televisão pertencente ao grupo paulista Bandeirantes, fundado\npor João Jorge Saad, e que teve origem a partir da criação da TV\nBandeira ... (18363 characters truncated) ... ireção na emissora: Hélio Vargas (Direção de\nProgramação), Raimundo Lima (Direção de Produção) e Fernando Mitre\n(Direção Nacional de Jornalismo).\n&#39;), (60, &#39;11892.text&#39;, &#39;AGÊNCIA NACIONAL DE ENERGIA ELÉTRICA (ANEEL)&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n\nAutarquia em regime especial, vinculada ao Ministério de Minas e Energia (MME), criada pela Lei nº 9.427, de 26 de dezembro de 1996, com a finali ... (39336 characters truncated) ... ão do aproveitamento hidrelétrico de Jirau, o segundo do Complexo do Rio Madeira, com capacidade estimada em 3.300 MW, foi realizado em maio de 2008.&#39;), (66, &#39;5703.text&#39;, &#39;AÇÃO CÍVICA NACIONAL&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n\nPartido político do Rio de Janeiro (então Distrito Federal) fundado em\nmarço de 1933. Sua comissão central executiva era integrada por Luís\nMez ... (439 characters truncated) ... ão e a nacionalização da economia, e a defesa da\nreorganização política do país em bases novas, independente de quaisquer\ncoligações políticas.\n\n&#39;), (67, &#39;6221.text&#39;, &#39;PARTIDO REPUBLICANO REGENERADOR DO DISTRITO FEDERAL&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n\nPartido político do Rio de Janeiro (então Distrito Federal) fundado em\n22 de setembro de 1934.\n\nSeu diretório central era constituído por Raul ... (872 characters truncated) ... rro Central do Brasil”.\n\nO partido pretendia eleger representantes à Câmara Municipal do Distrito\nFederal, mas não obteve êxito nesse sentido.\n\n&#39;), (80, &#39;5770.text&#39;, &#39;CÓDIGO DE MINAS&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n\nO regime das minas no Brasil obedecia ao sistema estabelecido pelas\nOrdenações do Reino, pelo qual as minas eram de propriedade da Coroa.\nCom a ... (6078 characters truncated) ... 967)\nprocurou atualizar a legislação mineira no país, refletindo a\nexperiência de aplicação dos novos princípios legais pelo prazo de 33\nanos.\n\n&#39;), (82, &#39;5846.text&#39;, &#39;ELETROBRAS (Centrais Elétricas Brasileiras S.A.)&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &quot;\n\nEmpresa estatal criada em 25 de abril de 1961 pela Lei nº 3.890-A e\ninstalada em 11 de junho de 1962.\n\n## Antecedentes\n\nO desenvolvimento da ... (103944 characters truncated) ... 2009, a União detinha 52% das ações ordinárias com direito a voto,\ncorrespondentes a 41,5% do seu capital social, estimado em R$26.156\nmilhões.\n\n&quot;), (83, &#39;7789.text&#39;, &#39;COMISSÃO MISTA BRASIL-ESTADOS UNIDOS&#39;, &#39;temático&#39;, None, &#39;NA&#39;, &#39;\n\nGrupo de trabalho oficialmente instalado na órbita e no próprio prédio\ndo Ministério da Fazenda em 19 de julho de 1951. Tendo completado seus\ne ... (10617 characters truncated) ... da Comissão Mista, em dezembro de 1953, coube ao BNDE\no encargo de levar avante as negociações para execução dos projetos por\nela recomendados.\n\n&#39;)]
 </pre></div>
 </div>
 </div>
@@ -2364,53 +1980,53 @@ fim 15083
   <tbody>
     <tr>
       <th>0</th>
-      <td>7</td>
-      <td>6047.text</td>
-      <td>NEUTRALIDADE DO BRASIL NA SEGUNDA GUERRA MUNDIAL</td>
+      <td>4</td>
+      <td>6310.text</td>
+      <td>POLÍTICA DE CLIENTELA</td>
       <td>temático</td>
       <td>None</td>
       <td>NA</td>
-      <td>\n \nDurou pouco mais de dois anos a neutralid...</td>
+      <td>\n\nExpressão cunhada e conceito desenvolvido ...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>14</td>
-      <td>6165.text</td>
-      <td>PARTIDO OPERÁRIO REVOLUCIONÁRIO (POR)</td>
+      <td>21</td>
+      <td>5742.text</td>
+      <td>ASSEMBLÉIA NACIONAL CONSTITUINTE DE 1987-88</td>
       <td>temático</td>
       <td>None</td>
       <td>NA</td>
-      <td>\n\nOrganização revolucionária brasileira cria...</td>
+      <td>\n\nNo dia 1º de fevereiro de 1987, os membros...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>20</td>
-      <td>6080.text</td>
-      <td>PARTIDO DA FRENTE LIBERAL (PFL)</td>
+      <td>42</td>
+      <td>5793.text</td>
+      <td>I CONGRESSO ANTIFASCISTA</td>
       <td>temático</td>
       <td>None</td>
       <td>NA</td>
-      <td>\n\nPartido político nacional criado em 24 de ...</td>
+      <td>\n \nReunião realizada no Rio de Janeiro em ag...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>22</td>
-      <td>6083.text</td>
-      <td>PARTIDO DA LAVOURA DO ESPÍRITO SANTO</td>
+      <td>52</td>
+      <td>6346.text</td>
+      <td>REDE BANDEIRANTES</td>
       <td>temático</td>
       <td>None</td>
       <td>NA</td>
-      <td>\n\nPartido político espírito-santense fundado...</td>
+      <td>\n\nRede de televisão pertencente ao grupo pau...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>36</td>
-      <td>5763.text</td>
-      <td>CHAPA ÚNICA POR SÃO PAULO UNIDO</td>
+      <td>60</td>
+      <td>11892.text</td>
+      <td>AGÊNCIA NACIONAL DE ENERGIA ELÉTRICA (ANEEL)</td>
       <td>temático</td>
       <td>None</td>
       <td>NA</td>
-      <td>\n \nLegenda organizada pelas forças políticas...</td>
+      <td>\n\nAutarquia em regime especial, vinculada ao...</td>
     </tr>
   </tbody>
 </table>

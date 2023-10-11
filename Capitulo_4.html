@@ -438,23 +438,10 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">spacy</span>
 <span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
 <span class="kn">from</span> <span class="nn">dhbbmining</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">dhbbmining</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;ipywidgets&#39;
 </pre></div>
 </div>
 </div>
@@ -500,7 +487,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">eng</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;select corpo from resultados limit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;select corpo from resultados limit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
                 <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_process</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="o">%</span><span class="k">10</span> == 0:
@@ -527,7 +514,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DC</span> <span class="o">=</span> <span class="n">DHBBCorpus</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">DC</span><span class="p">:</span>
-    <span class="k">pass</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="k">break</span>
     
@@ -535,7 +521,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«PARTIDO&#39;, &#39;POPULAR&#39;, &#39;DO&#39;, &#39;DISTRITO&#39;, &#39;FEDERAL»&#39;, &#39;Partido&#39;, &#39;político&#39;, &#39;do&#39;, &#39;Rio&#39;, &#39;de&#39;, &#39;Janeiro&#39;, &#39;então&#39;, &#39;Distrito&#39;, &#39;Federal&#39;, &#39;fundado&#39;, &#39;em&#39;, &#39;1933&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«Floriano&#39;, &#39;Lopes&#39;, &#39;Rubim»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;Alegre&#39;, &#39;ES&#39;, &#39;no&#39;, &#39;dia&#39;, &#39;18&#39;, &#39;de&#39;, &#39;janeiro&#39;, &#39;de&#39;, &#39;1912&#39;, &#39;filho&#39;, &#39;de&#39;, &#39;Francisco&#39;, &#39;Lopes&#39;, &#39;Rubim&#39;, &#39;funcionário&#39;, &#39;público&#39;, &#39;e&#39;, &#39;de&#39;, &#39;Maria&#39;, &#39;Sílvia&#39;, &#39;Lousada&#39;, &#39;Rubim&#39;]
 </pre></div>
 </div>
 </div>
@@ -551,6 +537,644 @@ document.write(`
     <span class="n">DC</span> <span class="o">=</span> <span class="n">DHBBCorpus</span><span class="p">()</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">sentences</span><span class="o">=</span><span class="n">DC</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;dhbb.w2v&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 10 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 20 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 30 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 40 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 50 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 60 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 70 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 80 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 90 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 100 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 110 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 120 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 130 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 140 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 150 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 160 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 170 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 180 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 190 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 200 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 210 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 220 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 230 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 240 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 250 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 260 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 270 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 280 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 290 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 300 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 310 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 320 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 330 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 340 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 350 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 360 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 370 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 380 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 390 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 400 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 410 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 420 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 430 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 440 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 450 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 460 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 470 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 480 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 490 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 500 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 510 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 520 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 530 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 540 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 550 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 560 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 570 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 580 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 590 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 600 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 610 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 620 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 630 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 640 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 650 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 660 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 670 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 680 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 690 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 700 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 710 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 720 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 730 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 740 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 750 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 760 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 770 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 780 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 790 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 800 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 810 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 820 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 830 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 840 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 850 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 860 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 870 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 880 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 890 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 900 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 910 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 920 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 930 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 940 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 950 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 960 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 970 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 980 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 990 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1000 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1010 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1020 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1030 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1040 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1050 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1060 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1070 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1080 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1090 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1100 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1110 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1120 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1130 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1140 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1150 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1160 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1170 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1180 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1190 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1200 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1210 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1220 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1230 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1240 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1250 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1260 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1270 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1280 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1290 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1300 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1310 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1320 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1330 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1340 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1350 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1360 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1370 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1380 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1390 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1400 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1410 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1420 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1430 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1440 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1450 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1460 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1470 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1480 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1490 de 46122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verbete 1500 de 46122
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">DC</span> <span class="o">=</span> <span class="n">DHBBCorpus</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">sentences</span><span class="o">=</span><span class="n">DC</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;dhbb.w2v&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/gensim/models/word2vec.py:429,</span> in <span class="ni">Word2Vec.__init__</span><span class="nt">(self, sentences, corpus_file, vector_size, alpha, window, min_count, max_vocab_size, sample, seed, workers, min_alpha, sg, hs, negative, ns_exponent, cbow_mean, hashfxn, epochs, null_word, trim_rule, sorted_vocab, batch_words, compute_loss, callbacks, comment, max_final_vocab, shrink_windows)</span>
+<span class="g g-Whitespace">    </span><span class="mi">427</span> <span class="k">if</span> <span class="n">corpus_iterable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">corpus_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_corpus_sanity</span><span class="p">(</span><span class="n">corpus_iterable</span><span class="o">=</span><span class="n">corpus_iterable</span><span class="p">,</span> <span class="n">corpus_file</span><span class="o">=</span><span class="n">corpus_file</span><span class="p">,</span> <span class="n">passes</span><span class="o">=</span><span class="p">(</span><span class="n">epochs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">429</span>     <span class="bp">self</span><span class="o">.</span><span class="n">build_vocab</span><span class="p">(</span><span class="n">corpus_iterable</span><span class="o">=</span><span class="n">corpus_iterable</span><span class="p">,</span> <span class="n">corpus_file</span><span class="o">=</span><span class="n">corpus_file</span><span class="p">,</span> <span class="n">trim_rule</span><span class="o">=</span><span class="n">trim_rule</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">430</span>     <span class="bp">self</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span>         <span class="n">corpus_iterable</span><span class="o">=</span><span class="n">corpus_iterable</span><span class="p">,</span> <span class="n">corpus_file</span><span class="o">=</span><span class="n">corpus_file</span><span class="p">,</span> <span class="n">total_examples</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">corpus_count</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span>         <span class="n">total_words</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">corpus_total_words</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">,</span> <span class="n">start_alpha</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">433</span>         <span class="n">end_alpha</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">min_alpha</span><span class="p">,</span> <span class="n">compute_loss</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">compute_loss</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">434</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/gensim/models/word2vec.py:491,</span> in <span class="ni">Word2Vec.build_vocab</span><span class="nt">(self, corpus_iterable, corpus_file, update, progress_per, keep_raw_vocab, trim_rule, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Build vocabulary from a sequence of sentences (can be a once-only generator stream).</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span><span class="sd"> Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_corpus_sanity</span><span class="p">(</span><span class="n">corpus_iterable</span><span class="o">=</span><span class="n">corpus_iterable</span><span class="p">,</span> <span class="n">corpus_file</span><span class="o">=</span><span class="n">corpus_file</span><span class="p">,</span> <span class="n">passes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">491</span> <span class="n">total_words</span><span class="p">,</span> <span class="n">corpus_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_vocab</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span>     <span class="n">corpus_iterable</span><span class="o">=</span><span class="n">corpus_iterable</span><span class="p">,</span> <span class="n">corpus_file</span><span class="o">=</span><span class="n">corpus_file</span><span class="p">,</span> <span class="n">progress_per</span><span class="o">=</span><span class="n">progress_per</span><span class="p">,</span> <span class="n">trim_rule</span><span class="o">=</span><span class="n">trim_rule</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="bp">self</span><span class="o">.</span><span class="n">corpus_count</span> <span class="o">=</span> <span class="n">corpus_count</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="bp">self</span><span class="o">.</span><span class="n">corpus_total_words</span> <span class="o">=</span> <span class="n">total_words</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/gensim/models/word2vec.py:586,</span> in <span class="ni">Word2Vec.scan_vocab</span><span class="nt">(self, corpus_iterable, corpus_file, progress_per, workers, trim_rule)</span>
+<span class="g g-Whitespace">    </span><span class="mi">583</span> <span class="k">if</span> <span class="n">corpus_file</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">corpus_iterable</span> <span class="o">=</span> <span class="n">LineSentence</span><span class="p">(</span><span class="n">corpus_file</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">586</span> <span class="n">total_words</span><span class="p">,</span> <span class="n">corpus_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scan_vocab</span><span class="p">(</span><span class="n">corpus_iterable</span><span class="p">,</span> <span class="n">progress_per</span><span class="p">,</span> <span class="n">trim_rule</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span>     <span class="s2">&quot;collected </span><span class="si">%i</span><span class="s2"> word types from a corpus of </span><span class="si">%i</span><span class="s2"> raw words and </span><span class="si">%i</span><span class="s2"> sentences&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>     <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_vocab</span><span class="p">),</span> <span class="n">total_words</span><span class="p">,</span> <span class="n">corpus_count</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span> <span class="k">return</span> <span class="n">total_words</span><span class="p">,</span> <span class="n">corpus_count</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/gensim/models/word2vec.py:555,</span> in <span class="ni">Word2Vec._scan_vocab</span><span class="nt">(self, sentences, progress_per, trim_rule)</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span> <span class="n">vocab</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="n">checked_string_types</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ne">--&gt; </span><span class="mi">555</span> <span class="k">for</span> <span class="n">sentence_no</span><span class="p">,</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sentences</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">556</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">checked_string_types</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+
+<span class="nn">Cell In[6], line 14,</span> in <span class="ni">DHBBCorpus.__iter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">res</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;select corpo from resultados limit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>     <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_process</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="o">%</span><span class="k">10</span> == 0:
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Verbete </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">counter</span><span class="si">}</span><span class="s2"> de </span><span class="si">{</span><span class="mi">6</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span><span class="si">}</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="nn">Cell In[6], line 21,</span> in <span class="ni">DHBBCorpus.pre_process</span><span class="nt">(self, doc)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="k">def</span> <span class="nf">pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">21</span>     <span class="n">n</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tagger&#39;</span><span class="p">,</span> <span class="s1">&#39;ner&#39;</span><span class="p">,</span><span class="s1">&#39;entity-linker&#39;</span><span class="p">,</span> <span class="s1">&#39;textcat&#39;</span><span class="p">,</span><span class="s1">&#39;entity-ruler&#39;</span><span class="p">,</span><span class="s1">&#39;merge-noun-chunks&#39;</span><span class="p">,</span><span class="s1">&#39;merge-entities&#39;</span><span class="p">,</span><span class="s1">&#39;merge-subtokens&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">sents</span><span class="p">:</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/language.py:1049,</span> in <span class="ni">Language.__call__</span><span class="nt">(self, text, disable, component_cfg)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1047</span>     <span class="n">error_handler</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">get_error_handler</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1049</span>     <span class="n">doc</span> <span class="o">=</span> <span class="n">proc</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="o">**</span><span class="n">component_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">{}))</span>  <span class="c1"># type: ignore[call-arg]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1051</span>     <span class="c1"># This typically happens if a component is not initialized</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">Errors</span><span class="o">.</span><span class="n">E109</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">))</span> <span class="kn">from</span> <span class="nn">e</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/pipeline/trainable_pipe.pyx:52,</span> in <span class="ni">spacy.pipeline.trainable_pipe.TrainablePipe.__call__</span><span class="nt">()</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/pipeline/tok2vec.py:126,</span> in <span class="ni">Tok2Vec.predict</span><span class="nt">(self, docs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>     <span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_dim</span><span class="p">(</span><span class="s2">&quot;nO&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">alloc</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="p">))</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">126</span> <span class="n">tokvecs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">return</span> <span class="n">tokvecs</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/model.py:334,</span> in <span class="ni">Model.predict</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span> <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">InT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OutT</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">331</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Call the model&#39;s `forward` function with `is_train=False`, and return</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span><span class="sd">     only the output, instead of the `(output, callback)` tuple.</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">334</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/chain.py:54,</span> in <span class="ni">forward</span><span class="nt">(model, X, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">54</span>     <span class="n">Y</span><span class="p">,</span> <span class="n">inc_layer_grad</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inc_layer_grad</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="n">X</span> <span class="o">=</span> <span class="n">Y</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/model.py:310,</span> in <span class="ni">Model.__call__</span><span class="nt">(self, X, is_train)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">InT</span><span class="p">,</span> <span class="n">is_train</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">OutT</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Call the model&#39;s `forward` function, returning the output and a</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="sd">     callback to compute the gradients via backpropagation.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">310</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/with_array.py:42,</span> in <span class="ni">forward</span><span class="nt">(model, Xseq, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">Xseq</span><span class="p">,</span> <span class="n">is_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">42</span>     <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">Tuple</span><span class="p">[</span><span class="n">SeqT</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span> <span class="n">_list_forward</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">Xseq</span><span class="p">,</span> <span class="n">is_train</span><span class="p">))</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/with_array.py:77,</span> in <span class="ni">_list_forward</span><span class="nt">(model, Xs, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span> <span class="n">lengths</span> <span class="o">=</span> <span class="n">NUMPY_OPS</span><span class="o">.</span><span class="n">asarray1i</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">Xs</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span> <span class="n">Xf</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">77</span> <span class="n">Yf</span><span class="p">,</span> <span class="n">get_dXf</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">Xf</span><span class="p">,</span> <span class="n">is_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">def</span> <span class="nf">backprop</span><span class="p">(</span><span class="n">dYs</span><span class="p">:</span> <span class="n">ListXd</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListXd</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="n">dYf</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">dYs</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="n">pad</span><span class="p">)</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/model.py:310,</span> in <span class="ni">Model.__call__</span><span class="nt">(self, X, is_train)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">InT</span><span class="p">,</span> <span class="n">is_train</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">OutT</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Call the model&#39;s `forward` function, returning the output and a</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="sd">     callback to compute the gradients via backpropagation.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">310</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/chain.py:54,</span> in <span class="ni">forward</span><span class="nt">(model, X, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">54</span>     <span class="n">Y</span><span class="p">,</span> <span class="n">inc_layer_grad</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inc_layer_grad</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="n">X</span> <span class="o">=</span> <span class="n">Y</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/model.py:310,</span> in <span class="ni">Model.__call__</span><span class="nt">(self, X, is_train)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">InT</span><span class="p">,</span> <span class="n">is_train</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">OutT</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Call the model&#39;s `forward` function, returning the output and a</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="sd">     callback to compute the gradients via backpropagation.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">310</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/residual.py:41,</span> in <span class="ni">forward</span><span class="nt">(model, X, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>         <span class="k">return</span> <span class="n">d_output</span> <span class="o">+</span> <span class="n">dX</span>
+<span class="ne">---&gt; </span><span class="mi">41</span> <span class="n">Y</span><span class="p">,</span> <span class="n">backprop_layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="k">return</span> <span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))],</span> <span class="n">backprop</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/model.py:310,</span> in <span class="ni">Model.__call__</span><span class="nt">(self, X, is_train)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">InT</span><span class="p">,</span> <span class="n">is_train</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">OutT</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Call the model&#39;s `forward` function, returning the output and a</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="sd">     callback to compute the gradients via backpropagation.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">310</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/chain.py:54,</span> in <span class="ni">forward</span><span class="nt">(model, X, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">54</span>     <span class="n">Y</span><span class="p">,</span> <span class="n">inc_layer_grad</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inc_layer_grad</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="n">X</span> <span class="o">=</span> <span class="n">Y</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/model.py:310,</span> in <span class="ni">Model.__call__</span><span class="nt">(self, X, is_train)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">InT</span><span class="p">,</span> <span class="n">is_train</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">OutT</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Call the model&#39;s `forward` function, returning the output and a</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="sd">     callback to compute the gradients via backpropagation.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">310</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/chain.py:54,</span> in <span class="ni">forward</span><span class="nt">(model, X, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">54</span>     <span class="n">Y</span><span class="p">,</span> <span class="n">inc_layer_grad</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inc_layer_grad</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="n">X</span> <span class="o">=</span> <span class="n">Y</span>
+
+    <span class="p">[</span><span class="o">...</span> <span class="n">skipping</span> <span class="n">similar</span> <span class="n">frames</span><span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="fm">__call__</span> <span class="n">at</span> <span class="n">line</span> <span class="mi">310</span> <span class="p">(</span><span class="mi">1</span> <span class="n">times</span><span class="p">)]</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/chain.py:54,</span> in <span class="ni">forward</span><span class="nt">(model, X, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">54</span>     <span class="n">Y</span><span class="p">,</span> <span class="n">inc_layer_grad</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inc_layer_grad</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>     <span class="n">X</span> <span class="o">=</span> <span class="n">Y</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/model.py:310,</span> in <span class="ni">Model.__call__</span><span class="nt">(self, X, is_train)</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">InT</span><span class="p">,</span> <span class="n">is_train</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">OutT</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Call the model&#39;s `forward` function, returning the output and a</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span><span class="sd">     callback to compute the gradients via backpropagation.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">310</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="n">is_train</span><span class="p">)</span>
+
+<span class="nn">File ~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/thinc/layers/maxout.py:55,</span> in <span class="ni">forward</span><span class="nt">(model, X, is_train)</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="n">Y</span> <span class="o">+=</span> <span class="n">model</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">reshape1f</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">nO</span> <span class="o">*</span> <span class="n">nP</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">reshape3f</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nO</span><span class="p">,</span> <span class="n">nP</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">55</span> <span class="n">best</span><span class="p">,</span> <span class="n">which</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">maxout</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="k">def</span> <span class="nf">backprop</span><span class="p">(</span><span class="n">d_best</span><span class="p">:</span> <span class="n">OutT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InT</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="n">dZ</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">backprop_maxout</span><span class="p">(</span><span class="n">d_best</span><span class="p">,</span> <span class="n">which</span><span class="p">,</span> <span class="n">nP</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
