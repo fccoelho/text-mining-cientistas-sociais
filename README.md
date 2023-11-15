@@ -1,4 +1,6 @@
 # Mineraçao de Textos para Cientistas Sociais
+[![DOI](https://zenodo.org/badge/205912084.svg)](https://zenodo.org/doi/10.5281/zenodo.10136714)
+
 [Jupyter Book](https://fccoelho.github.io/text-mining-cientistas-sociais/intro.html) desenvolvido sobre o material do curso homônimo ministrado no  CPDOC (FGV).
 O livro aplica técnicas de mineraçao de textos sobre o acervo do [Dicionário Histórico e Biográfico Brasileiro DHBB](https://github.com/cpdoc/dhbb). A partir da coleçao de verbetes, iremos tentar alcançar os seguintes objetivos de pesquisa:
 
