@@ -611,6 +611,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt_tab&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -628,83 +629,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">LookupError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">palavras</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">biograficos</span><span class="o">.</span><span class="n">corpo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">palavras</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
-
-<span class="nn">File ~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py:142,</span> in <span class="ni">word_tokenize</span><span class="nt">(text, language, preserve_line)</span>
-<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">def</span><span class="w"> </span><span class="nf">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">,</span> <span class="n">preserve_line</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">129</span><span class="sd">     Return a tokenized copy of *text*,</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span><span class="sd">     using NLTK&#39;s recommended word tokenizer</span>
-<span class="sd">   (...)    140     :type preserve_line: bool</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">142</span>     <span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">]</span> <span class="k">if</span> <span class="n">preserve_line</span> <span class="k">else</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">language</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">return</span> <span class="p">[</span>
-<span class="nn">    144         token for sent in sentences for token</span> in <span class="ni">_treebank_word_tokenizer.tokenize</span><span class="nt">(sent)</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="p">]</span>
-
-<span class="nn">File ~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py:119,</span> in <span class="ni">sent_tokenize</span><span class="nt">(text, language)</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">def</span><span class="w"> </span><span class="nf">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span><span class="sd">     Return a sentence-tokenized copy of *text*,</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span><span class="sd">     using NLTK&#39;s recommended sentence tokenizer</span>
-<span class="sd">   (...)    117     :param language: the model name in the Punkt corpus</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">119</span>     <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">_get_punkt_tokenizer</span><span class="p">(</span><span class="n">language</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="k">return</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-
-<span class="nn">File ~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py:105,</span> in <span class="ni">_get_punkt_tokenizer</span><span class="nt">(language)</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_punkt_tokenizer</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="sd">     A constructor for the PunktTokenizer that utilizes</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span><span class="sd">     a lru cache for performance.</span>
-<span class="sd">   (...)    103     :type language: str</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">105</span>     <span class="k">return</span> <span class="n">PunktTokenizer</span><span class="p">(</span><span class="n">language</span><span class="p">)</span>
-
-<span class="nn">File ~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py:1744,</span> in <span class="ni">PunktTokenizer.__init__</span><span class="nt">(self, lang)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1742</span> <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1743</span>     <span class="n">PunktSentenceTokenizer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1744</span>     <span class="bp">self</span><span class="o">.</span><span class="n">load_lang</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
-
-<span class="nn">File ~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py:1749,</span> in <span class="ni">PunktTokenizer.load_lang</span><span class="nt">(self, lang)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1746</span> <span class="k">def</span><span class="w"> </span><span class="nf">load_lang</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1747</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">nltk.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">find</span>
-<span class="ne">-&gt; </span><span class="mi">1749</span>     <span class="n">lang_dir</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;tokenizers/punkt_tab/</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1750</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_params</span> <span class="o">=</span> <span class="n">load_punkt_params</span><span class="p">(</span><span class="n">lang_dir</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1751</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_lang</span> <span class="o">=</span> <span class="n">lang</span>
-
-<span class="nn">File ~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/data.py:579,</span> in <span class="ni">find</span><span class="nt">(resource_name, paths)</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="mi">70</span>
-<span class="g g-Whitespace">    </span><span class="mi">578</span> <span class="n">resource_not_found</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">579</span> <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="n">resource_not_found</span><span class="p">)</span>
-
-<span class="ne">LookupError</span>: 
-<span class="o">**********************************************************************</span>
-  <span class="n">Resource</span> <span class="n">punkt_tab</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
-  <span class="n">Please</span> <span class="n">use</span> <span class="n">the</span> <span class="n">NLTK</span> <span class="n">Downloader</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">the</span> <span class="n">resource</span><span class="p">:</span>
-
-  <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
-  <span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt_tab&#39;</span><span class="p">)</span>
-  
-  <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nltk</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">html</span>
-
-  <span class="n">Attempted</span> <span class="n">to</span> <span class="n">load</span> <span class="n">tokenizers</span><span class="o">/</span><span class="n">punkt_tab</span><span class="o">/</span><span class="n">english</span><span class="o">/</span>
-
-  <span class="n">Searched</span> <span class="ow">in</span><span class="p">:</span>
-    <span class="o">-</span> <span class="s1">&#39;/home/fccoelho/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/share/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/usr/share/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/usr/local/share/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/usr/lib/nltk_data&#39;</span>
-    <span class="o">-</span> <span class="s1">&#39;/usr/local/lib/nltk_data&#39;</span>
-<span class="o">**********************************************************************</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;«&#39;, &#39;Floriano&#39;, &#39;Lopes&#39;, &#39;Rubim&#39;, &#39;»&#39;, &#39;nasceu&#39;, &#39;em&#39;, &#39;Alegre&#39;, &#39;(&#39;, &#39;ES&#39;]
 </pre></div>
 </div>
 </div>
@@ -742,7 +667,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef075bdade09ef19f55026e4642debf25aa4f32e68450a670de604d055de494c.png" src="_images/ef075bdade09ef19f55026e4642debf25aa4f32e68450a670de604d055de494c.png" />
+<img alt="_images/c330c4bdc02cc7aaa837cabff6a6d2df3263fdb453455fd7f23c653d180fb12b.png" src="_images/c330c4bdc02cc7aaa837cabff6a6d2df3263fdb453455fd7f23c653d180fb12b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -811,7 +736,7 @@ Tamanho do Vocabulário: 258
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9706417483327f7a7e467035723dbb8b2969050a98e5d7fe5de675590915a5dd.png" src="_images/9706417483327f7a7e467035723dbb8b2969050a98e5d7fe5de675590915a5dd.png" />
+<img alt="_images/db7cfc726fbce6cc7bb6c464278f811f71f6d401001078d7d540605ffb217e48.png" src="_images/db7cfc726fbce6cc7bb6c464278f811f71f6d401001078d7d540605ffb217e48.png" />
 </div>
 </div>
 </section>
@@ -819,7 +744,7 @@ Tamanho do Vocabulário: 258
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="analizando-colecoes-de-textos">
 <h1>Analizando coleções de textos<a class="headerlink" href="#analizando-colecoes-de-textos" title="Permalink to this heading">#</a></h1>
-<p>Acima analizamos o conteúdo de apenas um verbete, mas seria bem mais relevante podermos fazer a análise em uma coleção de verbetes. Para isso aprenderemos a criar um objeto <code class="docutils literal notranslate"><span class="pre">TextCollection</span></code> que como o nome diz, representa uma coleção de texto, mas que nos permite a realização de análises a nível de coleção.</p>
+<p>Acima analizamos o conteúdo de apenas um verbete, mas seria bem mais relevante podermos fazer a análise em uma coleção de verbetes. Para isso aprenderemos a criar um objeto <code class="docutils literal notranslate"><span class="pre">TextCollection</span></code> que como o nome diz, representa uma coleção de textos, mas que nos permite a realização de análises a nível de coleção.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tc</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">TextCollection</span><span class="p">([</span><span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">biograficos</span><span class="o">.</span><span class="n">corpo</span><span class="p">])</span>
@@ -979,7 +904,7 @@ Encontramos progenitores em 6572 linhas
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6cdc6568d5eb69d7a69b38edf0b03426dfba39d7ff592d775c3b4d9366e5b30e.png" src="_images/6cdc6568d5eb69d7a69b38edf0b03426dfba39d7ff592d775c3b4d9366e5b30e.png" />
+<img alt="_images/b89b6b7cc20ec3decc8d3363a638e8a630425091dcb411439d22bec09ec8de13.png" src="_images/b89b6b7cc20ec3decc8d3363a638e8a630425091dcb411439d22bec09ec8de13.png" />
 </div>
 </div>
 </section>
@@ -1031,7 +956,7 @@ Encontramos progenitores em 6572 linhas
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">whoosh</span><span class="w"> </span><span class="kn">import</span> <span class="n">index</span> 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">whoosh.fields</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display_html</span><span class="p">,</span> <span class="n">HTML</span>
 </pre></div>
 </div>
 </div>
@@ -1109,7 +1034,7 @@ Encontramos progenitores em 6572 linhas
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Resultados:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">resultados</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">resultados</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">display_html</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
    <span class="c1"># encontra_pais(nltk.Text(nltk.tokenize.wordpunct_tokenize(res[0][&#39;corpo&#39;])))</span>
 </pre></div>
 </div>
@@ -1119,52 +1044,50 @@ Encontramos progenitores em 6572 linhas
 PASCOAL, Hildebrando
 </pre></div>
 </div>
-<div class="output text_html">também foram <b class="match term0">assassinadas</b>, o que levou...foi
-indiciado por <b class="match term1">assassinato</b>, envolvimento...anos de prisão pelo <b class="match term1">assassinato</b> de Sebastião</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIPPOL, Valdemar
+<div class="output text_html">prática de tortura e <b class="match term0">assassinatos</b> e de conexão...também foram <b class="match term1">assassinadas</b>, o que levou...foi
+indiciado por <b class="match term2">assassinato</b>, envolvimento</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RIPPOL, Valdemar
 </pre></div>
 </div>
-<div class="output text_html">janeiro de 1934 foi <b class="match term2">assassinado</b> a machadadas...o acusado do <b class="match term1">assassinato</b>, Pedro Borges...Cunha; na segunda, o
-<b class="match term3">assassino</b> seria um oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Francisco Flores da
+<div class="output text_html">janeiro de 1934 foi <b class="match term3">assassinado</b> a machadadas...o acusado do <b class="match term2">assassinato</b>, Pedro Borges...Cunha; na segunda, o
+<b class="match term4">assassino</b> seria um oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Francisco Flores da
 </pre></div>
 </div>
 <div class="output text_html">de cumplicidade no
-<b class="match term1">assassinato</b> do jornalista...delas, Rippoll fora
-<b class="match term2">assassinado</b> pelo uruguaio...versão dizia que o <b class="match term3">assassino</b> seria um
+<b class="match term2">assassinato</b> do jornalista...delas, Rippoll fora
+<b class="match term3">assassinado</b> pelo uruguaio...versão dizia que o <b class="match term4">assassino</b> seria um
 oficial</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MENDES, Chico
 </pre></div>
 </div>
-<div class="output text_html">Wilson Pinheiro, <b class="match term2">assassinado</b> com um tiro...Chico Mendes foi <b class="match term2">assassinado</b> em sua residência...Chico Mendes.
-
-Seus <b class="match term4">assassinos</b> foram condenados</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA NETO, Augusto
+<div class="output text_html">Wilson Pinheiro, <b class="match term3">assassinado</b> com um tiro...Chico Mendes foi <b class="match term3">assassinado</b> em sua residência...Um mês depois do <b class="match term2">assassinato</b> foi realizado</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA NETO, Augusto
 </pre></div>
 </div>
 <div class="output text_html">mês, Cunha Neto foi
-<b class="match term2">assassinado</b> com nove tiros...Na
-ocasião, o <b class="match term3">assassino</b> declarou à polícia</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VAZ, Rubens
+<b class="match term3">assassinado</b> com nove tiros...Na
+ocasião, o <b class="match term4">assassino</b> declarou à polícia</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VAZ, Rubens
 </pre></div>
 </div>
 <div class="output text_html">major Rubens Vaz foi
-<b class="match term2">assassinado</b> por tiros que...descoberta de que os <b class="match term4">assassinos</b> eram pessoas</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FURTADO, Heitor Alencar
+<b class="match term3">assassinado</b> por tiros que...descoberta de que os <b class="match term0">assassinos</b> eram pessoas</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FURTADO, Heitor Alencar
 </pre></div>
 </div>
-<div class="output text_html">Alencar Furtado foi <b class="match term2">assassinado</b> por um
+<div class="output text_html">Alencar Furtado foi <b class="match term3">assassinado</b> por um
 policial...norte do
-Paraná. Seu <b class="match term1">assassinato</b> representou</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VANNUCHI, Paulo
+Paraná. Seu <b class="match term2">assassinato</b> representou</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>VANNUCHI, Paulo
 </pre></div>
 </div>
 <div class="output text_html">uma lista geral dos
-<b class="match term0">assassinados</b> desde 1964...das torturas e <b class="match term1">assassinatos</b> praticados</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Ceci
+<b class="match term1">assassinados</b> desde 1964...das torturas e <b class="match term0">assassinatos</b> praticados</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CUNHA, Ceci
 </pre></div>
 </div>
 <div class="output text_html">da Previdência.
 
 Foi <b class="match term2">assassinada</b> em Maceió no...a apurar
-o <b class="match term1">assassinato</b>, o próprio Talvane</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BARROS, Manuel Gomes de
+o <b class="match term2">assassinato</b>, o próprio Talvane</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BARROS, Manuel Gomes de
 </pre></div>
 </div>
 <div class="output text_html">carros roubados e <b class="match term3">assassinavam</b> por
 encomenda...sido o
-mandante do <b class="match term1">assassinato</b> do bancário</div></div>
+mandante do <b class="match term2">assassinato</b> do bancário</div></div>
 </div>
 </section>
 
