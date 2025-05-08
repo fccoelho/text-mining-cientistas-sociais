@@ -1,96 +1,104 @@
 Traceback (most recent call last):
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 168, in wrapped
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import nltk
-import spacy
-from collections import Counter
-import pandas as pd
-from sqlalchemy import create_engine
-%pylab inline
+palavras = nltk.word_tokenize(biograficos.corpo[0])
+palavras[:10]
 ------------------
 
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[2], line 6[0m
-[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      5[0m [38;5;28;01mfrom[39;00m [38;5;21;01msqlalchemy[39;00m [38;5;28;01mimport[39;00m create_engine
-[0;32m----> 6[0m [43mget_ipython[49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mrun_line_magic[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mpylab[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43minline[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[31m---------------------------------------------------------------------------[39m
+[31mLookupError[39m                               Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m palavras = [43mnltk[49m[43m.[49m[43mword_tokenize[49m[43m([49m[43mbiograficos[49m[43m.[49m[43mcorpo[49m[43m[[49m[32;43m0[39;49m[43m][49m[43m)[49m
+[32m      2[39m palavras[:[32m10[39m]
 
-File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/IPython/core/interactiveshell.py:2432[0m, in [0;36mInteractiveShell.run_line_magic[0;34m(self, magic_name, line, _stack_depth)[0m
-[1;32m   2430[0m     kwargs[[38;5;124m'[39m[38;5;124mlocal_ns[39m[38;5;124m'[39m] [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mget_local_scope(stack_depth)
-[1;32m   2431[0m [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39mbuiltin_trap:
-[0;32m-> 2432[0m     result [38;5;241m=[39m [43mfn[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m   2434[0m [38;5;66;03m# The code below prevents the output from being displayed[39;00m
-[1;32m   2435[0m [38;5;66;03m# when using magics with decorator @output_can_be_silenced[39;00m
-[1;32m   2436[0m [38;5;66;03m# when the last Python token in the expression is a ';'.[39;00m
-[1;32m   2437[0m [38;5;28;01mif[39;00m [38;5;28mgetattr[39m(fn, magic[38;5;241m.[39mMAGIC_OUTPUT_CAN_BE_SILENCED, [38;5;28;01mFalse[39;00m):
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py:142[39m, in [36mword_tokenize[39m[34m(text, language, preserve_line)[39m
+[32m    127[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mword_tokenize[39m(text, language=[33m"[39m[33menglish[39m[33m"[39m, preserve_line=[38;5;28;01mFalse[39;00m):
+[32m    128[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m    129[39m [33;03m    Return a tokenized copy of *text*,[39;00m
+[32m    130[39m [33;03m    using NLTK's recommended word tokenizer[39;00m
+[32m   (...)[39m[32m    140[39m [33;03m    :type preserve_line: bool[39;00m
+[32m    141[39m [33;03m    """[39;00m
+[32m--> [39m[32m142[39m     sentences = [text] [38;5;28;01mif[39;00m preserve_line [38;5;28;01melse[39;00m [43msent_tokenize[49m[43m([49m[43mtext[49m[43m,[49m[43m [49m[43mlanguage[49m[43m)[49m
+[32m    143[39m     [38;5;28;01mreturn[39;00m [
+[32m    144[39m         token [38;5;28;01mfor[39;00m sent [38;5;129;01min[39;00m sentences [38;5;28;01mfor[39;00m token [38;5;129;01min[39;00m _treebank_word_tokenizer.tokenize(sent)
+[32m    145[39m     ]
 
-File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/IPython/core/magics/pylab.py:155[0m, in [0;36mPylabMagics.pylab[0;34m(self, line)[0m
-[1;32m    151[0m [38;5;28;01melse[39;00m:
-[1;32m    152[0m     [38;5;66;03m# invert no-import flag[39;00m
-[1;32m    153[0m     import_all [38;5;241m=[39m [38;5;129;01mnot[39;00m args[38;5;241m.[39mno_import_all
-[0;32m--> 155[0m gui, backend, clobbered [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mshell[49m[38;5;241;43m.[39;49m[43menable_pylab[49m[43m([49m[43margs[49m[38;5;241;43m.[39;49m[43mgui[49m[43m,[49m[43m [49m[43mimport_all[49m[38;5;241;43m=[39;49m[43mimport_all[49m[43m)[49m
-[1;32m    156[0m [38;5;28mself[39m[38;5;241m.[39m_show_matplotlib_backend(args[38;5;241m.[39mgui, backend)
-[1;32m    157[0m [38;5;28mprint[39m(
-[1;32m    158[0m     [38;5;124m"[39m[38;5;124m%[39m[38;5;124mpylab is deprecated, use [39m[38;5;124m%[39m[38;5;124mmatplotlib inline and import the required libraries.[39m[38;5;124m"[39m
-[1;32m    159[0m )
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py:119[39m, in [36msent_tokenize[39m[34m(text, language)[39m
+[32m    109[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msent_tokenize[39m(text, language=[33m"[39m[33menglish[39m[33m"[39m):
+[32m    110[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m    111[39m [33;03m    Return a sentence-tokenized copy of *text*,[39;00m
+[32m    112[39m [33;03m    using NLTK's recommended sentence tokenizer[39;00m
+[32m   (...)[39m[32m    117[39m [33;03m    :param language: the model name in the Punkt corpus[39;00m
+[32m    118[39m [33;03m    """[39;00m
+[32m--> [39m[32m119[39m     tokenizer = [43m_get_punkt_tokenizer[49m[43m([49m[43mlanguage[49m[43m)[49m
+[32m    120[39m     [38;5;28;01mreturn[39;00m tokenizer.tokenize(text)
 
-File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/IPython/core/interactiveshell.py:3660[0m, in [0;36mInteractiveShell.enable_pylab[0;34m(self, gui, import_all, welcome_message)[0m
-[1;32m   3633[0m [38;5;250m[39m[38;5;124;03m"""Activate pylab support at runtime.[39;00m
-[1;32m   3634[0m 
-[1;32m   3635[0m [38;5;124;03mThis turns on support for matplotlib, preloads into the interactive[39;00m
-[0;32m   (...)[0m
-[1;32m   3656[0m [38;5;124;03m    This argument is ignored, no welcome message will be displayed.[39;00m
-[1;32m   3657[0m [38;5;124;03m"""[39;00m
-[1;32m   3658[0m [38;5;28;01mfrom[39;00m [38;5;21;01mIPython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpylabtools[39;00m [38;5;28;01mimport[39;00m import_pylab
-[0;32m-> 3660[0m gui, backend [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43menable_matplotlib[49m[43m([49m[43mgui[49m[43m)[49m
-[1;32m   3662[0m [38;5;66;03m# We want to prevent the loading of pylab to pollute the user's[39;00m
-[1;32m   3663[0m [38;5;66;03m# namespace as shown by the %who* magics, so we execute the activation[39;00m
-[1;32m   3664[0m [38;5;66;03m# code in an empty namespace, and we update *both* user_ns and[39;00m
-[1;32m   3665[0m [38;5;66;03m# user_ns_hidden with this information.[39;00m
-[1;32m   3666[0m ns [38;5;241m=[39m {}
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/__init__.py:105[39m, in [36m_get_punkt_tokenizer[39m[34m(language)[39m
+[32m     96[39m [38;5;129m@functools[39m.lru_cache
+[32m     97[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m_get_punkt_tokenizer[39m(language=[33m"[39m[33menglish[39m[33m"[39m):
+[32m     98[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m     99[39m [33;03m    A constructor for the PunktTokenizer that utilizes[39;00m
+[32m    100[39m [33;03m    a lru cache for performance.[39;00m
+[32m   (...)[39m[32m    103[39m [33;03m    :type language: str[39;00m
+[32m    104[39m [33;03m    """[39;00m
+[32m--> [39m[32m105[39m     [38;5;28;01mreturn[39;00m [43mPunktTokenizer[49m[43m([49m[43mlanguage[49m[43m)[49m
 
-File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/IPython/core/interactiveshell.py:3606[0m, in [0;36mInteractiveShell.enable_matplotlib[0;34m(self, gui)[0m
-[1;32m   3585[0m [38;5;28;01mdef[39;00m [38;5;21menable_matplotlib[39m([38;5;28mself[39m, gui[38;5;241m=[39m[38;5;28;01mNone[39;00m):
-[1;32m   3586[0m [38;5;250m    [39m[38;5;124;03m"""Enable interactive matplotlib and inline figure support.[39;00m
-[1;32m   3587[0m 
-[1;32m   3588[0m [38;5;124;03m    This takes the following steps:[39;00m
-[0;32m   (...)[0m
-[1;32m   3604[0m [38;5;124;03m        display figures inline.[39;00m
-[1;32m   3605[0m [38;5;124;03m    """[39;00m
-[0;32m-> 3606[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib_inline[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbackend_inline[39;00m [38;5;28;01mimport[39;00m configure_inline_support
-[1;32m   3608[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mIPython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m [38;5;28;01mimport[39;00m pylabtools [38;5;28;01mas[39;00m pt
-[1;32m   3609[0m     gui, backend [38;5;241m=[39m pt[38;5;241m.[39mfind_gui_and_backend(gui, [38;5;28mself[39m[38;5;241m.[39mpylab_gui_select)
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py:1744[39m, in [36mPunktTokenizer.__init__[39m[34m(self, lang)[39m
+[32m   1742[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m__init__[39m([38;5;28mself[39m, lang=[33m"[39m[33menglish[39m[33m"[39m):
+[32m   1743[39m     PunktSentenceTokenizer.[34m__init__[39m([38;5;28mself[39m)
+[32m-> [39m[32m1744[39m     [38;5;28;43mself[39;49m[43m.[49m[43mload_lang[49m[43m([49m[43mlang[49m[43m)[49m
 
-File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/matplotlib_inline/__init__.py:1[0m
-[0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m backend_inline, config  [38;5;66;03m# noqa[39;00m
-[1;32m      2[0m __version__ [38;5;241m=[39m [38;5;124m"[39m[38;5;124m0.1.6[39m[38;5;124m"[39m  [38;5;66;03m# noqa[39;00m
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/tokenize/punkt.py:1749[39m, in [36mPunktTokenizer.load_lang[39m[34m(self, lang)[39m
+[32m   1746[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mload_lang[39m([38;5;28mself[39m, lang=[33m"[39m[33menglish[39m[33m"[39m):
+[32m   1747[39m     [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnltk[39;00m[34;01m.[39;00m[34;01mdata[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m find
+[32m-> [39m[32m1749[39m     lang_dir = [43mfind[49m[43m([49m[33;43mf[39;49m[33;43m"[39;49m[33;43mtokenizers/punkt_tab/[39;49m[38;5;132;43;01m{[39;49;00m[43mlang[49m[38;5;132;43;01m}[39;49;00m[33;43m/[39;49m[33;43m"[39;49m[43m)[49m
+[32m   1750[39m     [38;5;28mself[39m._params = load_punkt_params(lang_dir)
+[32m   1751[39m     [38;5;28mself[39m._lang = lang
 
-File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/matplotlib_inline/backend_inline.py:6[0m
-[1;32m      1[0m [38;5;124;03m"""A matplotlib backend for publishing figures via display_data"""[39;00m
-[1;32m      3[0m [38;5;66;03m# Copyright (c) IPython Development Team.[39;00m
-[1;32m      4[0m [38;5;66;03m# Distributed under the terms of the BSD 3-Clause License.[39;00m
-[0;32m----> 6[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m
-[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mimport[39;00m colors
-[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbackends[39;00m [38;5;28;01mimport[39;00m backend_agg
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nltk/data.py:579[39m, in [36mfind[39m[34m(resource_name, paths)[39m
+[32m    577[39m sep = [33m"[39m[33m*[39m[33m"[39m * [32m70[39m
+[32m    578[39m resource_not_found = [33mf[39m[33m"[39m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00msep[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00mmsg[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00msep[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[33m"[39m
+[32m--> [39m[32m579[39m [38;5;28;01mraise[39;00m [38;5;167;01mLookupError[39;00m(resource_not_found)
 
-[0;31mModuleNotFoundError[0m: No module named 'matplotlib'
+[31mLookupError[39m: 
+**********************************************************************
+  Resource [93mpunkt_tab[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt_tab')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt_tab/english/[0m
+
+  Searched in:
+    - '/home/fccoelho/nltk_data'
+    - '/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/nltk_data'
+    - '/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/share/nltk_data'
+    - '/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
 

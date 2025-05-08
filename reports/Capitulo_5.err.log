@@ -1,84 +1,91 @@
 Traceback (most recent call last):
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 168, in wrapped
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-eng = create_engine("sqlite:///minha_tabela.sqlite")
-nlp = spacy.load("pt_core_news_sm")
-class DHBBCorpus:
-    def __init__(self, ndocs=10000, process=True):
-        self.process = process
-        self.ndocs = min(7838,ndocs)
-        self.counter = 1
-    def __iter__(self):
-        with eng.connect() as con:
-            res = con.execute(f'select corpo from resultados limit {self.ndocs};')
-            for doc in res:
-                if self.process:
-                    d = self.pre_process(doc[0])
-                else: 
-                    d = doc[0]
-                if self.counter%10 == 0:
-                    print (f"Verbete {self.counter} de {self.ndocs}\r", end='')
-                
-                yield d
-                self.counter += 1
-    def pre_process(self, doc):
-        n = nlp(doc, disable=['tagger', 'ner','entity-linker', 'textcat','entity-ruler','merge-noun-chunks','merge-entities','merge-subtokens'])
-        results = [token.text.strip().strip(punctuation) for token in n if not token.is_stop]
-        return results
+from sklearn.ensemble import RandomForestClassifier, VotingClassifier
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.pipeline import make_pipeline
+from sklearn.svm import SVC
+from sklearn.metrics import classification_report
+from sklearn.model_selection import StratifiedKFold, cross_val_score, cross_val_predict, train_test_split
+from sklearn.metrics import roc_curve, auc
+from sklearn.preprocessing import StandardScaler
+from gensim.models import Word2Vec, word2vec
+import spacy
+from spacy import displacy
+from string import punctuation
+from sqlalchemy import create_engine
+import pandas as pd
+import numpy as np
+import os
 ------------------
 
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mOSError[0m                                   Traceback (most recent call last)
-Cell [0;32mIn[3], line 2[0m
-[1;32m      1[0m eng [38;5;241m=[39m create_engine([38;5;124m"[39m[38;5;124msqlite:///minha_tabela.sqlite[39m[38;5;124m"[39m)
-[0;32m----> 2[0m nlp [38;5;241m=[39m [43mspacy[49m[38;5;241;43m.[39;49m[43mload[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mpt_core_news_sm[39;49m[38;5;124;43m"[39;49m[43m)[49m
-[1;32m      3[0m [38;5;28;01mclass[39;00m [38;5;21;01mDHBBCorpus[39;00m:
-[1;32m      4[0m     [38;5;28;01mdef[39;00m [38;5;21m__init__[39m([38;5;28mself[39m, ndocs[38;5;241m=[39m[38;5;241m10000[39m, process[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
+[31m---------------------------------------------------------------------------[39m
+[31mImportError[39m                               Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 9[39m
+[32m      7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mmetrics[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m roc_curve, auc
+[32m      8[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m StandardScaler
+[32m----> [39m[32m9[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mgensim[39;00m[34;01m.[39;00m[34;01mmodels[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Word2Vec, word2vec
+[32m     10[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mspacy[39;00m
+[32m     11[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mspacy[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m displacy
 
-File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/__init__.py:51[0m, in [0;36mload[0;34m(name, vocab, disable, enable, exclude, config)[0m
-[1;32m     27[0m [38;5;28;01mdef[39;00m [38;5;21mload[39m(
-[1;32m     28[0m     name: Union[[38;5;28mstr[39m, Path],
-[1;32m     29[0m     [38;5;241m*[39m,
-[0;32m   (...)[0m
-[1;32m     34[0m     config: Union[Dict[[38;5;28mstr[39m, Any], Config] [38;5;241m=[39m util[38;5;241m.[39mSimpleFrozenDict(),
-[1;32m     35[0m ) [38;5;241m-[39m[38;5;241m>[39m Language:
-[1;32m     36[0m [38;5;250m    [39m[38;5;124;03m"""Load a spaCy model from an installed package or a local path.[39;00m
-[1;32m     37[0m 
-[1;32m     38[0m [38;5;124;03m    name (str): Package name or model path.[39;00m
-[0;32m   (...)[0m
-[1;32m     49[0m [38;5;124;03m    RETURNS (Language): The loaded nlp object.[39;00m
-[1;32m     50[0m [38;5;124;03m    """[39;00m
-[0;32m---> 51[0m     [38;5;28;01mreturn[39;00m [43mutil[49m[38;5;241;43m.[39;49m[43mload_model[49m[43m([49m
-[1;32m     52[0m [43m        [49m[43mname[49m[43m,[49m
-[1;32m     53[0m [43m        [49m[43mvocab[49m[38;5;241;43m=[39;49m[43mvocab[49m[43m,[49m
-[1;32m     54[0m [43m        [49m[43mdisable[49m[38;5;241;43m=[39;49m[43mdisable[49m[43m,[49m
-[1;32m     55[0m [43m        [49m[43menable[49m[38;5;241;43m=[39;49m[43menable[49m[43m,[49m
-[1;32m     56[0m [43m        [49m[43mexclude[49m[38;5;241;43m=[39;49m[43mexclude[49m[43m,[49m
-[1;32m     57[0m [43m        [49m[43mconfig[49m[38;5;241;43m=[39;49m[43mconfig[49m[43m,[49m
-[1;32m     58[0m [43m    [49m[43m)[49m
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/gensim/__init__.py:11[39m
+[32m      7[39m __version__ = [33m'[39m[33m4.3.2[39m[33m'[39m
+[32m      9[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mlogging[39;00m
+[32m---> [39m[32m11[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mgensim[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m parsing, corpora, matutils, interfaces, models, similarities, utils  [38;5;66;03m# noqa:F401[39;00m
+[32m     14[39m logger = logging.getLogger([33m'[39m[33mgensim[39m[33m'[39m)
+[32m     15[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m logger.handlers:  [38;5;66;03m# To ensure reload() doesn't add another one[39;00m
 
-File [0;32m~/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/spacy/util.py:472[0m, in [0;36mload_model[0;34m(name, vocab, disable, enable, exclude, config)[0m
-[1;32m    470[0m [38;5;28;01mif[39;00m name [38;5;129;01min[39;00m OLD_MODEL_SHORTCUTS:
-[1;32m    471[0m     [38;5;28;01mraise[39;00m [38;5;167;01mIOError[39;00m(Errors[38;5;241m.[39mE941[38;5;241m.[39mformat(name[38;5;241m=[39mname, full[38;5;241m=[39mOLD_MODEL_SHORTCUTS[name]))  [38;5;66;03m# type: ignore[index][39;00m
-[0;32m--> 472[0m [38;5;28;01mraise[39;00m [38;5;167;01mIOError[39;00m(Errors[38;5;241m.[39mE050[38;5;241m.[39mformat(name[38;5;241m=[39mname))
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/gensim/corpora/__init__.py:6[39m
+[32m      1[39m [33;03m"""[39;00m
+[32m      2[39m [33;03mThis package contains implementations of various streaming corpus I/O format.[39;00m
+[32m      3[39m [33;03m"""[39;00m
+[32m      5[39m [38;5;66;03m# bring corpus classes directly into package namespace, to save some typing[39;00m
+[32m----> [39m[32m6[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mindexedcorpus[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m IndexedCorpus  [38;5;66;03m# noqa:F401 must appear before the other classes[39;00m
+[32m      8[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mmmcorpus[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m MmCorpus  [38;5;66;03m# noqa:F401[39;00m
+[32m      9[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mbleicorpus[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m BleiCorpus  [38;5;66;03m# noqa:F401[39;00m
 
-[0;31mOSError[0m: [E050] Can't find model 'pt_core_news_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/gensim/corpora/indexedcorpus.py:14[39m
+[32m     10[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mlogging[39;00m
+[32m     12[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m
+[32m---> [39m[32m14[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mgensim[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m interfaces, utils
+[32m     16[39m logger = logging.getLogger([34m__name__[39m)
+[32m     19[39m [38;5;28;01mclass[39;00m[38;5;250m [39m[34;01mIndexedCorpus[39;00m(interfaces.CorpusABC):
+
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/gensim/interfaces.py:19[39m
+[32m      7[39m [33;03m"""Basic interfaces used across the whole Gensim package.[39;00m
+[32m      8[39m 
+[32m      9[39m [33;03mThese interfaces are used for building corpora, model transformation and similarity queries.[39;00m
+[32m   (...)[39m[32m     14[39m 
+[32m     15[39m [33;03m"""[39;00m
+[32m     17[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mlogging[39;00m
+[32m---> [39m[32m19[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mgensim[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m utils, matutils
+[32m     22[39m logger = logging.getLogger([34m__name__[39m)
+[32m     25[39m [38;5;28;01mclass[39;00m[38;5;250m [39m[34;01mCorpusABC[39;00m(utils.SaveLoad):
+
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/gensim/matutils.py:20[39m
+[32m     18[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01msparse[39;00m
+[32m     19[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01mstats[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m entropy
+[32m---> [39m[32m20[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01mlinalg[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m get_blas_funcs, triu
+[32m     21[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01mlinalg[39;00m[34;01m.[39;00m[34;01mlapack[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m get_lapack_funcs
+[32m     22[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01mspecial[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m psi  [38;5;66;03m# gamma function utils[39;00m
+
+[31mImportError[39m: cannot import name 'triu' from 'scipy.linalg' (/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/scipy/linalg/__init__.py)
 

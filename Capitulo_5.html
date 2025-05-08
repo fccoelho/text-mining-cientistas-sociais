@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -76,28 +76,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,12 +114,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,9 +142,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -188,7 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -197,7 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -357,19 +364,21 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -419,7 +428,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="construindo-um-classificador-de-textos">
 <h1>Construindo um Classificador de Textos<a class="headerlink" href="#construindo-um-classificador-de-textos" title="Permalink to this heading">#</a></h1>
@@ -433,7 +442,7 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -442,22 +451,77 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">VotingClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">ExtraTreesClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">cross_val_predict</span><span class="p">,</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span><span class="p">,</span> <span class="n">word2vec</span>
-<span class="kn">import</span> <span class="nn">spacy</span>
-<span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span>
-<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">punctuation</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">VotingClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExtraTreesClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span><span class="p">,</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">cross_val_predict</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Word2Vec</span><span class="p">,</span> <span class="n">word2vec</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">displacy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">string</span><span class="w"> </span><span class="kn">import</span> <span class="n">punctuation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Word2Vec</span><span class="p">,</span> <span class="n">word2vec</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span><span class="w"> </span><span class="nn">spacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">displacy</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;4.3.2&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gensim</span><span class="w"> </span><span class="kn">import</span> <span class="n">parsing</span><span class="p">,</span> <span class="n">corpora</span><span class="p">,</span> <span class="n">matutils</span><span class="p">,</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">similarities</span><span class="p">,</span> <span class="n">utils</span>  <span class="c1"># noqa:F401</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;gensim&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>  <span class="c1"># To ensure reload() doesn&#39;t add another one</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This package contains implementations of various streaming corpus I/O format.</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># bring corpus classes directly into package namespace, to save some typing</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.indexedcorpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexedCorpus</span>  <span class="c1"># noqa:F401 must appear before the other classes</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.mmcorpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">MmCorpus</span>  <span class="c1"># noqa:F401</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.bleicorpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">BleiCorpus</span>  <span class="c1"># noqa:F401</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="n">indexedcorpus</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">14</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gensim</span><span class="w"> </span><span class="kn">import</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">utils</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="k">class</span><span class="w"> </span><span class="nc">IndexedCorpus</span><span class="p">(</span><span class="n">interfaces</span><span class="o">.</span><span class="n">CorpusABC</span><span class="p">):</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">interfaces</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Basic interfaces used across the whole Gensim package.</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="sd"> </span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd"> These interfaces are used for building corpora, model transformation and similarity queries.</span>
+<span class="sd">   (...)     14 </span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gensim</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">matutils</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">class</span><span class="w"> </span><span class="nc">CorpusABC</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">SaveLoad</span><span class="p">):</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">matutils</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">20</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy.sparse</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">entropy</span>
+<span class="ne">---&gt; </span><span class="mi">20</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_blas_funcs</span><span class="p">,</span> <span class="n">triu</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg.lapack</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_lapack_funcs</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">psi</span>  <span class="c1"># gamma function utils</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;triu&#39; from &#39;scipy.linalg&#39; (/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/scipy/linalg/__init__.py)
 </pre></div>
 </div>
 </div>
@@ -469,12 +533,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;sqlite:///minha_tabela.sqlite&quot;</span><span class="p">)</span>
 <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;pt_core_news_sm&quot;</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">DHBBCorpus</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndocs</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">process</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DHBBCorpus</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndocs</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">process</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">process</span> <span class="o">=</span> <span class="n">process</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">7838</span><span class="p">,</span><span class="n">ndocs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">eng</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;select corpo from resultados limit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
@@ -487,7 +551,7 @@ document.write(`
                 
                 <span class="k">yield</span> <span class="n">d</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">def</span> <span class="nf">pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tagger&#39;</span><span class="p">,</span> <span class="s1">&#39;ner&#39;</span><span class="p">,</span><span class="s1">&#39;entity-linker&#39;</span><span class="p">,</span> <span class="s1">&#39;textcat&#39;</span><span class="p">,</span><span class="s1">&#39;entity-ruler&#39;</span><span class="p">,</span><span class="s1">&#39;merge-noun-chunks&#39;</span><span class="p">,</span><span class="s1">&#39;merge-entities&#39;</span><span class="p">,</span><span class="s1">&#39;merge-subtokens&#39;</span><span class="p">])</span>
         <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">punctuation</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">n</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="o">.</span><span class="n">is_stop</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">results</span>
@@ -522,7 +586,7 @@ document.write(`
 <p>Na função abaixo, contruimos um vetor de documento que é a média dos vetores das palavras únicas que este contém.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_document_vector</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_document_vector</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Build a scaled vector for the document (mean of the words present in it)</span>
 <span class="sd">    :param text: document to be vectorized (tokenized)</span>
@@ -549,7 +613,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gera_docv</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gera_docv</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">corpus</span> <span class="o">=</span> <span class="n">DHBBCorpus</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">:</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">build_document_vector</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">doc</span><span class="p">))</span>
@@ -891,7 +955,7 @@ document.write(`
 <p>Nosso objetvo será diferenciar entre verbetes <em>temáticos</em> e <em>biográficos</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gera_alvo</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gera_alvo</span><span class="p">():</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;select natureza from resultados&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">eng</span><span class="p">)</span>
     <span class="n">alvo</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">natureza</span><span class="o">.</span><span class="n">values</span><span class="o">==</span><span class="s1">&#39;biográfico&#39;</span>
     <span class="k">return</span> <span class="n">alvo</span>
@@ -1260,9 +1324,9 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="k">def</span> <span class="nf">print_class_report</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">clf_name</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">print_class_report</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">clf</span><span class="p">,</span> <span class="n">clf_name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Imprime relatório de classificação</span>
 <span class="sd">    :param Xtest:</span>
@@ -1275,7 +1339,7 @@ Name: count, dtype: int64
     <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">Ytest</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Temático&#39;</span><span class="p">,</span> <span class="s1">&#39;Biográfico&#39;</span><span class="p">]))</span>
     
 
-<span class="k">def</span> <span class="nf">plot_roc</span><span class="p">(</span><span class="n">probas</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_roc</span><span class="p">(</span><span class="n">probas</span><span class="p">):</span>
     <span class="n">tprs</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">fprs</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -1329,8 +1393,8 @@ Name: count, dtype: int64
 <p>Os modelos serão treinados usando um esquema de validação cruzada de cinco rodadas com randomização.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">RocCurveDisplay</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">RocCurveDisplay</span>
 
 <span class="n">acc_hist</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">[])</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">values</span>
@@ -1367,81 +1431,60 @@ Name: count, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para ET:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+==&gt; Fitting:
+==&gt; Scoring:
+
+Relatório de classificação para ET:
 
               precision    recall  f1-score   support
 
-    Temático       0.94      0.78      0.86       245
-  Biográfico       0.81      0.95      0.87       239
+    Temático       0.97      0.76      0.85       241
+  Biográfico       0.80      0.98      0.88       243
 
     accuracy                           0.87       484
-   macro avg       0.88      0.87      0.86       484
-weighted avg       0.88      0.87      0.86       484
+   macro avg       0.89      0.87      0.87       484
+weighted avg       0.89      0.87      0.87       484
 
 
 Relatório de classificação para RF:
-
               precision    recall  f1-score   support
 
-    Temático       0.98      0.87      0.92       245
-  Biográfico       0.88      0.98      0.92       239
+    Temático       0.99      0.84      0.91       241
+  Biográfico       0.86      0.99      0.92       243
 
     accuracy                           0.92       484
    macro avg       0.93      0.92      0.92       484
 weighted avg       0.93      0.92      0.92       484
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para SVC:
+
+
+Relatório de classificação para SVC:
 
               precision    recall  f1-score   support
 
-    Temático       0.90      0.68      0.77       245
-  Biográfico       0.74      0.92      0.82       239
+    Temático       0.94      0.70      0.80       241
+  Biográfico       0.76      0.95      0.85       243
 
-    accuracy                           0.80       484
-   macro avg       0.82      0.80      0.80       484
-weighted avg       0.82      0.80      0.80       484
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para Voting:
+    accuracy                           0.83       484
+   macro avg       0.85      0.83      0.82       484
+weighted avg       0.85      0.83      0.82       484
+
+Relatório de classificação para Voting:
 
               precision    recall  f1-score   support
 
-    Temático       0.92      0.84      0.88       245
-  Biográfico       0.85      0.92      0.89       239
+    Temático       0.94      0.82      0.87       241
+  Biográfico       0.84      0.95      0.89       243
 
     accuracy                           0.88       484
-   macro avg       0.88      0.88      0.88       484
-weighted avg       0.88      0.88      0.88       484
+   macro avg       0.89      0.88      0.88       484
+weighted avg       0.89      0.88      0.88       484
 </pre></div>
 </div>
 </div>
@@ -1465,7 +1508,7 @@ weighted avg       0.88      0.88      0.88       484
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/84234cb769c280fad8c7e8b73a12a1769625b0b848e3f04053703d515757aa89.png" src="_images/84234cb769c280fad8c7e8b73a12a1769625b0b848e3f04053703d515757aa89.png" />
+<img alt="_images/31d0a5f31c993d02b0c51ca057fde27961ea225a43398a4811ec69858ef4ee4e.png" src="_images/31d0a5f31c993d02b0c51ca057fde27961ea225a43398a4811ec69858ef4ee4e.png" />
 </div>
 </div>
 </section>
@@ -1506,38 +1549,38 @@ weighted avg       0.88      0.88      0.88       484
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.876033</td>
-      <td>0.919421</td>
-      <td>0.820248</td>
-      <td>0.960744</td>
+      <td>0.867080</td>
+      <td>0.930441</td>
+      <td>0.800964</td>
+      <td>0.961433</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.876033</td>
-      <td>0.922865</td>
-      <td>0.820248</td>
-      <td>0.955234</td>
+      <td>0.853994</td>
+      <td>0.929752</td>
+      <td>0.800964</td>
+      <td>0.949036</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.876033</td>
-      <td>0.920110</td>
-      <td>0.820248</td>
-      <td>0.968320</td>
+      <td>0.860193</td>
+      <td>0.926309</td>
+      <td>0.800964</td>
+      <td>0.961433</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.873967</td>
-      <td>0.920799</td>
-      <td>0.820248</td>
-      <td>0.956612</td>
+      <td>0.864325</td>
+      <td>0.928375</td>
+      <td>0.800964</td>
+      <td>0.964187</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.876033</td>
-      <td>0.920799</td>
-      <td>0.820248</td>
-      <td>0.953857</td>
+      <td>0.869835</td>
+      <td>0.927686</td>
+      <td>0.800964</td>
+      <td>0.956612</td>
     </tr>
   </tbody>
 </table>
@@ -1549,7 +1592,7 @@ weighted avg       0.88      0.88      0.88       484
 <p>Outra métrica para comparação dos modelos são suas curvas de Precisão-revocação, que apresentam os trade-offs possíveis entre estas duas medidas como função do limiar de decisão para cada classe. Nesta análise o modelo cuja curva mais se aproxima do canto superior direito da figura é o melhor, neste caso novamente o modelo <em>Random Forest</em> se destaca.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">PrecisionRecallDisplay</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">PrecisionRecallDisplay</span>
 </pre></div>
 </div>
 </div>
@@ -1574,7 +1617,7 @@ weighted avg       0.88      0.88      0.88       484
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fc05fb441985827a172df4fb2faa08433e24fed420e39504f5779cc5eff8ae1f.png" src="_images/fc05fb441985827a172df4fb2faa08433e24fed420e39504f5779cc5eff8ae1f.png" />
+<img alt="_images/5e2cb50f07534c4d3b116110de5d59be62d3b6ea742b59e2b3c45adf3c0996be.png" src="_images/5e2cb50f07534c4d3b116110de5d59be62d3b6ea742b59e2b3c45adf3c0996be.png" />
 </div>
 </div>
 </section>
@@ -1608,8 +1651,8 @@ weighted avg       0.88      0.88      0.88       484
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="Capitulo_4.html"
@@ -1637,6 +1680,7 @@ weighted avg       0.88      0.88      0.88       484
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1678,6 +1722,7 @@ By Flávio Codeço Coelho
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -1704,8 +1749,8 @@ By Flávio Codeço Coelho
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

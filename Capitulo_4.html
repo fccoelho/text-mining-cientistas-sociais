@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -76,28 +76,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,12 +114,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,9 +142,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -188,7 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -197,7 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -357,19 +364,21 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -413,7 +422,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="aplicando-modelagem-de-assuntos-ao-dhbb">
 <h1>Aplicando modelagem de assuntos ao DHBB<a class="headerlink" href="#aplicando-modelagem-de-assuntos-ao-dhbb" title="Permalink to this heading">#</a></h1>
@@ -425,7 +434,7 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -434,14 +443,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">pickle</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">spacy</span>
-<span class="kn">from</span> <span class="nn">spacy</span> <span class="kn">import</span> <span class="n">displacy</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
-<span class="kn">from</span> <span class="nn">dhbbmining</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">glob</span><span class="o">,</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">displacy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">text</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dhbbmining</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 </pre></div>
 </div>
 </div>
@@ -461,14 +470,49 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;pt_core_news_sm&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/spacy/__init__.py:51,</span> in <span class="ni">load</span><span class="nt">(name, vocab, disable, enable, exclude, config)</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="n">name</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="o">*</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">34</span>     <span class="n">config</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">SimpleFrozenDict</span><span class="p">(),</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Language</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Load a spaCy model from an installed package or a local path.</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="sd">     name (str): Package name or model path.</span>
+<span class="sd">   (...)     49     RETURNS (Language): The loaded nlp object.</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>     <span class="k">return</span> <span class="n">util</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="n">name</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span>         <span class="n">vocab</span><span class="o">=</span><span class="n">vocab</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>         <span class="n">disable</span><span class="o">=</span><span class="n">disable</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span>         <span class="n">enable</span><span class="o">=</span><span class="n">enable</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="p">)</span>
+
+<span class="nn">File ~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/spacy/util.py:472,</span> in <span class="ni">load_model</span><span class="nt">(name, vocab, disable, enable, exclude, config)</span>
+<span class="g g-Whitespace">    </span><span class="mi">470</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">OLD_MODEL_SHORTCUTS</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">471</span>     <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="n">Errors</span><span class="o">.</span><span class="n">E941</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="n">OLD_MODEL_SHORTCUTS</span><span class="p">[</span><span class="n">name</span><span class="p">]))</span>  <span class="c1"># type: ignore[index]</span>
+<span class="ne">--&gt; </span><span class="mi">472</span> <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="n">Errors</span><span class="o">.</span><span class="n">E050</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">))</span>
+
+<span class="ne">OSError</span>: [E050] Can&#39;t find model &#39;pt_core_news_sm&#39;. It doesn&#39;t seem to be a Python package or a valid path to a data directory.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Agora faremos alguns imports novos, particularmente da biblioteca <a class="reference external" href="https://radimrehurek.com/gensim">Gensim</a>, que nos oferece as ferramentas que necessitamos para modelagem de assuntos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">punctuation</span>
-<span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">datapath</span>
-<span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">utils</span>
-<span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span><span class="p">,</span> <span class="n">word2vec</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">string</span><span class="w"> </span><span class="kn">import</span> <span class="n">punctuation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gensim.test.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">datapath</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gensim</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Word2Vec</span><span class="p">,</span> <span class="n">word2vec</span>
 </pre></div>
 </div>
 </div>
@@ -478,14 +522,14 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eng</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;sqlite:///minha_tabela.sqlite&quot;</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="nc">DHBBCorpus</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DHBBCorpus</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Iterador de documentos quebrados em frases</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndocs</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndocs</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">7687</span><span class="p">,</span><span class="n">ndocs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">eng</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span> <span class="k">as</span> <span class="n">con</span><span class="p">:</span>
             <span class="n">res</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;select corpo from resultados limit </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ndocs</span><span class="si">}</span><span class="s1">;&#39;</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
@@ -495,7 +539,7 @@ document.write(`
                 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
                     <span class="k">yield</span> <span class="n">s</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">def</span> <span class="nf">pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pre_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tagger&#39;</span><span class="p">,</span> <span class="s1">&#39;ner&#39;</span><span class="p">,</span><span class="s1">&#39;entity-linker&#39;</span><span class="p">,</span> <span class="s1">&#39;textcat&#39;</span><span class="p">,</span><span class="s1">&#39;entity-ruler&#39;</span><span class="p">,</span><span class="s1">&#39;merge-noun-chunks&#39;</span><span class="p">,</span><span class="s1">&#39;merge-entities&#39;</span><span class="p">,</span><span class="s1">&#39;merge-subtokens&#39;</span><span class="p">])</span>
         <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">n</span><span class="o">.</span><span class="n">sents</span><span class="p">:</span>
@@ -650,12 +694,12 @@ na
 <p>Como os palavras estão inseridas um espaço vetorial de dimensão 100, fica difícil visualizar o seu posicionamento relativo mas podemos nos utilizar de métodos de redução de dimensionalidade com o <a class="reference external" href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">TSNE</a>, para visualizarmos um pequeno numero (200) delas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">IncrementalPCA</span>    <span class="c1"># inital reduction</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>                   <span class="c1"># final reduction</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                  <span class="c1"># array handling</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">IncrementalPCA</span>    <span class="c1"># inital reduction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>                   <span class="c1"># final reduction</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>                                  <span class="c1"># array handling</span>
 
 
-<span class="k">def</span> <span class="nf">reduce_dimensions</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reduce_dimensions</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
     <span class="n">num_dimensions</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># final num dimensions (2D, 3D, etc)</span>
 
     <span class="n">vectors</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># positions in vector space</span>
@@ -684,9 +728,9 @@ na
 
 <span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">reduce_dimensions</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">plot_with_plotly</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">plot_in_notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">iplot</span><span class="p">,</span> <span class="n">plot</span>
-    <span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_with_plotly</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">plot_in_notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">plotly.offline</span><span class="w"> </span><span class="kn">import</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">iplot</span><span class="p">,</span> <span class="n">plot</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
     <span class="n">layout</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span>
         <span class="n">autosize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
@@ -730,9 +774,9 @@ na
         });
         }
         </script>
-        </div><div class="output text_html"><div>                            <div id="7bac7096-4902-4757-a79e-985b03ed96f3" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("7bac7096-4902-4757-a79e-985b03ed96f3")) {                    Plotly.newPlot(                        "7bac7096-4902-4757-a79e-985b03ed96f3",                        [{"mode":"text","opacity":0.8,"text":["de","a","do","e","da","o","em","que","no","na","para","com","foi","dos","ao","Em","\u00e0","por","os","uma","um","pelo","como","das","governo","ano","as","presidente","sua","se","pela","seu","Partido","Rio","n\u00e3o","outubro","No","C\u00e2mara","dia","A","Paulo","deputado","seguinte","novembro","Nacional","S\u00e3o","Comiss\u00e3o","mandato","entre","O","federal","mais","at\u00e9","Brasil","janeiro","Janeiro","estado","tamb\u00e9m","pol\u00edtica","fevereiro","cargo","legenda","mesmo","mar\u00e7o","sobre","partido","ent\u00e3o","Federal","Rep\u00fablica","ainda","abril","elei\u00e7\u00f5es","presid\u00eancia","pa\u00eds","Jos\u00e9","contra","quando","Jo\u00e3o","anos","Social","dezembro","ser","teve","Estado","ministro","aos","Vargas","maio","pleito","Brasileiro","nas","eleito","Foi","qual","era","assumiu","membro","Com","setembro","nacional","depois","mas","agosto","nos","seus","candidato","passou","Democr\u00e1tico","tornou-se","\u00e0s","movimento","julho","PMDB","sendo","Ainda","Deputados","Congresso","estadual","onde","Senado","filho","durante","apoio","votos","junho","general","Na","nasceu","Minas","novo","dois","governador","segundo","j\u00e1","militar","desse","Assembl\u00e9ia","ap\u00f3s","foram","m\u00eas","Carlos","Minist\u00e9rio","tendo","Justi\u00e7a","primeiro","projeto","suas","campanha","per\u00edodo","Grande","Sul","candidatura","in\u00edcio","comiss\u00e3o","vez","fim","regime","ou","Escola","participou","Universidade","nova","oposi\u00e7\u00e3o","1964","sido","partir","Lu\u00eds","nomeado","Constitui\u00e7\u00e3o","posse","pol\u00edticos","Militar","cria\u00e7\u00e3o","quem","legislatura","Fernando","favor","capital","processo","reforma","Silva","titular","n\u00ba","curso","tr\u00eas","cidade","Ex\u00e9rcito","Ant\u00f4nio","Durante","PSD","Faculdade","chefe","suplente","Distrito","PTB","jornal","direito","Conselho","deixou","elegeu-se","vice-presidente"],"x":[-0.9388281106948853,-1.6382620334625244,-3.6576712131500244,-0.4992700517177582,-2.380222797393799,-4.281491279602051,1.4293283224105835,0.6980834603309631,-4.350240230560303,-2.686955451965332,-0.5945330262184143,-1.519628643989563,-10.484705924987793,8.575089454650879,-4.886443614959717,2.7704062461853027,-4.200926303863525,-6.466333866119385,7.946146011352539,-1.6505945920944214,-4.587985992431641,-6.251397609710693,-11.296868324279785,-6.118083477020264,6.196450233459473,7.56718635559082,-6.361149311065674,0.29506853222846985,-1.0301437377929688,-8.732864379882812,-3.531989097595215,-3.749105930328369,-11.583327293395996,-1.9636858701705933,1.084067463874817,4.810806751251221,-4.839883804321289,4.825193405151367,7.246840000152588,-1.9201804399490356,-3.6085124015808105,5.9466753005981445,-5.680171012878418,4.256604194641113,-5.578423976898193,-2.955911636352539,3.339595079421997,9.744671821594238,-0.3768833577632904,-4.817476272583008,1.837084412574768,1.1041994094848633,2.5263607501983643,8.268503189086914,5.903718948364258,-3.365374803543091,8.463934898376465,-0.4719345271587372,1.742734432220459,6.170801162719727,9.76058292388916,2.593431234359741,-5.6336989402771,5.357739448547363,-2.5838541984558105,5.503264904022217,-1.0638394355773926,0.6331999897956848,-4.081012725830078,-0.2797571122646332,5.4517998695373535,12.157496452331543,0.07994285970926285,8.157537460327148,-3.7916595935821533,-2.216449022293091,1.3299891948699951,-4.57464075088501,2.476456642150879,-5.4864091873168945,4.938490390777588,-10.974804878234863,-8.191272735595703,9.391851425170898,8.993837356567383,8.734892845153809,-6.711580753326416,4.59858512878418,12.13145637512207,-5.529040336608887,-5.965207099914551,-9.191069602966309,-10.665385246276855,0.966606855392456,-9.623601913452148,-7.552295684814453,0.08426185697317123,-1.4638211727142334,4.491586685180664,-1.873803973197937,-0.10426633805036545,0.37807369232177734,5.277987003326416,8.975841522216797,7.571262359619141,6.735087871551514,-7.065324306488037,3.4644217491149902,-9.827247619628906,-5.665004730224609,6.020706653594971,5.034205436706543,5.258695125579834,-10.748905181884766,2.8415920734405518,3.3876566886901855,6.388216972351074,1.8255462646484375,1.0213226079940796,6.1787214279174805,-8.886666297912598,0.5539000034332275,4.553494930267334,4.345030784606934,4.617827892303467,-0.4387162923812866,-2.4755702018737793,-2.0411503314971924,0.1866084188222885,-1.8733407258987427,2.308663845062256,6.093300819396973,-2.6141865253448486,0.38835597038269043,-1.2460674047470093,-5.551693439483643,4.821107864379883,-0.1598750650882721,-8.059385299682617,7.506811141967773,-2.5093257427215576,8.971755027770996,-8.439135551452637,-3.6342201232910156,-2.621062755584717,5.188832759857178,-6.611318111419678,6.284336566925049,6.071563720703125,-3.352307081222534,0.3709772527217865,6.617151737213135,2.8512063026428223,2.7589497566223145,0.7882829904556274,2.632612466812134,6.455399036407471,-0.009458212181925774,5.371397972106934,-8.537596702575684,5.416593551635742,-1.4360511302947998,4.583040714263916,-0.7985923886299133,-11.470120429992676,1.902501106262207,-3.3048300743103027,-9.064685821533203,3.4853219985961914,1.0389593839645386,3.657959461212158,-0.0011998298577964306,2.7072489261627197,-1.1756913661956787,2.7636735439300537,-2.402061939239502,-2.206299304962158,2.3344838619232178,5.76106595993042,3.3196780681610107,-3.3383049964904785,1.4243861436843872,4.631651401519775,5.200361728668213,2.2285993099212646,2.167314291000366,-0.2992115318775177,-2.9253711700439453,0.6490933299064636,4.816654682159424,5.395519733428955,-0.44431212544441223,1.1914132833480835,7.57905912399292,4.736921787261963,4.869649410247803,4.1063127517700195,7.30891227722168,-7.321595191955566,-9.543251037597656,0.4442548453807831],"y":[0.45612308382987976,2.255239486694336,1.514074444770813,0.2105221152305603,2.2115073204040527,1.490261197090149,4.343844413757324,1.847637414932251,2.726806879043579,4.0361504554748535,1.6942051649093628,5.842266082763672,-1.631290316581726,2.9257919788360596,5.242559432983398,6.959277629852295,5.532261371612549,2.4660861492156982,2.7960219383239746,2.6129024028778076,0.7850370407104492,2.444608688354492,-3.778663158416748,8.632448196411133,-10.118231773376465,6.601555824279785,8.769014358520508,-10.18911075592041,2.9029297828674316,3.1852657794952393,3.846412420272827,0.7400281429290771,3.173860549926758,-6.3767523765563965,0.004618980921804905,13.034424781799316,3.5468504428863525,-7.913296222686768,7.803289890289307,3.2696311473846436,-5.311695098876953,-11.010894775390625,-1.003868818283081,12.639315605163574,-8.127418518066406,-7.732326030731201,-11.632083892822266,-4.949147701263428,7.763996601104736,1.612699270248413,-6.055457592010498,0.9008937478065491,5.078145503997803,-0.7561007738113403,12.39311408996582,-10.270452499389648,-1.9758148193359375,-0.730741024017334,-1.4680187702178955,11.784029006958008,-4.281100749969482,-4.022994518280029,-1.1223623752593994,12.098172187805176,7.274731636047363,-4.700795650482178,-0.8994447588920593,-4.938631057739258,-2.55654239654541,-0.6869896054267883,11.572763442993164,0.10822455585002899,-10.776779174804688,-0.8819499611854553,-4.128664016723633,9.086407661437988,3.4164657592773438,-4.094879627227783,10.585755348205566,-6.994410514831543,12.098648071289062,-0.48060205578804016,-2.136537551879883,-1.7849531173706055,-9.387980461120605,3.8933839797973633,4.425793647766113,11.80284309387207,0.11019191890954971,-7.831305027008057,8.43406867980957,-5.917855739593506,-1.8108912706375122,2.265772819519043,-1.6196107864379883,-4.231769561767578,-8.9927339553833,5.924147129058838,11.405815124511719,0.560364305973053,4.929851531982422,1.3161344528198242,11.065997123718262,2.846140146255493,2.579747438430786,-3.801776885986328,-4.1966633796691895,-4.439092636108398,-3.4516446590423584,7.609616756439209,-1.245855450630188,11.078883171081543,-5.05971097946167,-0.7758582830429077,7.290314674377441,-6.532832145690918,-6.990629196166992,-5.97470760345459,2.868279218673706,-6.241917133331299,6.303874969482422,6.496702194213867,-2.907036781311035,-5.794785976409912,11.10966682434082,-6.419316291809082,4.308348178863525,-4.7699737548828125,-2.12892746925354,-0.8038827776908875,0.557529866695404,-10.241005897521973,-0.5005605816841125,-0.17184734344482422,-2.1326100826263428,-0.2103201448917389,-7.865352153778076,5.14427375793457,-0.905430793762207,6.73744535446167,-3.2590410709381104,-9.323281288146973,1.0301371812820435,-1.3826543092727661,-0.5389760136604309,0.431002676486969,9.006185531616211,-2.837433338165283,1.385231614112854,-10.304743766784668,-3.4887266159057617,-3.3521955013275146,2.794616222381592,-11.803040504455566,-1.17159903049469,1.9008909463882446,-0.07665527611970901,0.7850316166877747,4.182003021240234,-3.079592227935791,4.669587135314941,1.1208066940307617,-2.77463436126709,-1.9031169414520264,-1.2073616981506348,4.790650844573975,-4.450724124908447,-6.0755414962768555,-9.512365341186523,-3.2021384239196777,0.5093189477920532,-5.172869682312012,-0.8208730220794678,-3.5702500343322754,-8.179299354553223,-1.9702116250991821,9.14014720916748,-2.735517740249634,0.5991585850715637,-0.8570407629013062,-2.932124614715576,-8.986001014709473,9.017524719238281,2.9758806228637695,0.5461168885231018,-2.9844696521759033,-5.915985584259033,-3.966383457183838,6.6124587059021,-4.8381829261779785,4.511687755584717,-8.041621208190918,-9.162254333496094,-5.97634220123291,-4.909433841705322,-1.3345420360565186,2.125370740890503,-8.066200256347656,-4.235518932342529,-5.401586532592773,-9.657474517822266],"type":"scatter"}],                        {"autosize":false,"height":600,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"width":800},                        {"responsive": true}                    ).then(function(){
+        </div><div class="output text_html"><div>                            <div id="e9424902-cd63-443b-812a-c72f2889171b" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("e9424902-cd63-443b-812a-c72f2889171b")) {                    Plotly.newPlot(                        "e9424902-cd63-443b-812a-c72f2889171b",                        [{"mode":"text","opacity":0.8,"text":["de","a","do","e","da","o","em","que","no","na","para","com","foi","dos","ao","Em","\u00e0","por","os","uma","um","pelo","como","das","governo","ano","as","presidente","sua","se","pela","seu","Partido","Rio","n\u00e3o","outubro","No","C\u00e2mara","dia","A","Paulo","deputado","seguinte","novembro","Nacional","S\u00e3o","Comiss\u00e3o","mandato","entre","O","federal","mais","at\u00e9","Brasil","janeiro","Janeiro","estado","tamb\u00e9m","pol\u00edtica","fevereiro","cargo","legenda","mesmo","mar\u00e7o","sobre","partido","ent\u00e3o","Federal","Rep\u00fablica","ainda","abril","elei\u00e7\u00f5es","presid\u00eancia","pa\u00eds","Jos\u00e9","contra","quando","Jo\u00e3o","anos","Social","dezembro","ser","teve","Estado","ministro","aos","Vargas","maio","pleito","Brasileiro","nas","eleito","Foi","qual","era","assumiu","membro","Com","setembro","nacional","depois","mas","agosto","nos","seus","candidato","passou","Democr\u00e1tico","tornou-se","\u00e0s","movimento","julho","PMDB","sendo","Ainda","Deputados","Congresso","estadual","onde","Senado","filho","durante","apoio","votos","junho","general","Na","nasceu","Minas","novo","dois","governador","segundo","j\u00e1","militar","desse","Assembl\u00e9ia","ap\u00f3s","foram","m\u00eas","Carlos","Minist\u00e9rio","tendo","Justi\u00e7a","primeiro","projeto","suas","campanha","per\u00edodo","Grande","Sul","candidatura","in\u00edcio","comiss\u00e3o","vez","fim","regime","ou","Escola","participou","Universidade","nova","oposi\u00e7\u00e3o","1964","sido","partir","Lu\u00eds","nomeado","Constitui\u00e7\u00e3o","posse","pol\u00edticos","Militar","cria\u00e7\u00e3o","quem","legislatura","Fernando","favor","capital","processo","reforma","Silva","titular","n\u00ba","curso","tr\u00eas","cidade","Ex\u00e9rcito","Ant\u00f4nio","Durante","PSD","Faculdade","chefe","suplente","Distrito","PTB","jornal","direito","Conselho","deixou","elegeu-se","vice-presidente"],"x":[-0.9388281106948853,-1.6382620334625244,-3.6576712131500244,-0.4992700517177582,-2.380222797393799,-4.281491279602051,1.4293283224105835,0.6980834603309631,-4.350240230560303,-2.686955451965332,-0.5945330262184143,-1.519628643989563,-10.484705924987793,8.575089454650879,-4.886443614959717,2.7704062461853027,-4.200926303863525,-6.466333866119385,7.946146011352539,-1.6505945920944214,-4.587985992431641,-6.251397609710693,-11.296868324279785,-6.118083477020264,6.196450233459473,7.56718635559082,-6.361149311065674,0.29506853222846985,-1.0301437377929688,-8.732864379882812,-3.531989097595215,-3.749105930328369,-11.583327293395996,-1.9636858701705933,1.084067463874817,4.810806751251221,-4.839883804321289,4.825193405151367,7.246840000152588,-1.9201804399490356,-3.6085124015808105,5.9466753005981445,-5.680171012878418,4.256604194641113,-5.578423976898193,-2.955911636352539,3.339595079421997,9.744671821594238,-0.3768833577632904,-4.817476272583008,1.837084412574768,1.1041994094848633,2.5263607501983643,8.268503189086914,5.903718948364258,-3.365374803543091,8.463934898376465,-0.4719345271587372,1.742734432220459,6.170801162719727,9.76058292388916,2.593431234359741,-5.6336989402771,5.357739448547363,-2.5838541984558105,5.503264904022217,-1.0638394355773926,0.6331999897956848,-4.081012725830078,-0.2797571122646332,5.4517998695373535,12.157496452331543,0.07994285970926285,8.157537460327148,-3.7916595935821533,-2.216449022293091,1.3299891948699951,-4.57464075088501,2.476456642150879,-5.4864091873168945,4.938490390777588,-10.974804878234863,-8.191272735595703,9.391851425170898,8.993837356567383,8.734892845153809,-6.711580753326416,4.59858512878418,12.13145637512207,-5.529040336608887,-5.965207099914551,-9.191069602966309,-10.665385246276855,0.966606855392456,-9.623601913452148,-7.552295684814453,0.08426185697317123,-1.4638211727142334,4.491586685180664,-1.873803973197937,-0.10426633805036545,0.37807369232177734,5.277987003326416,8.975841522216797,7.571262359619141,6.735087871551514,-7.065324306488037,3.4644217491149902,-9.827247619628906,-5.665004730224609,6.020706653594971,5.034205436706543,5.258695125579834,-10.748905181884766,2.8415920734405518,3.3876566886901855,6.388216972351074,1.8255462646484375,1.0213226079940796,6.1787214279174805,-8.886666297912598,0.5539000034332275,4.553494930267334,4.345030784606934,4.617827892303467,-0.4387162923812866,-2.4755702018737793,-2.0411503314971924,0.1866084188222885,-1.8733407258987427,2.308663845062256,6.093300819396973,-2.6141865253448486,0.38835597038269043,-1.2460674047470093,-5.551693439483643,4.821107864379883,-0.1598750650882721,-8.059385299682617,7.506811141967773,-2.5093257427215576,8.971755027770996,-8.439135551452637,-3.6342201232910156,-2.621062755584717,5.188832759857178,-6.611318111419678,6.284336566925049,6.071563720703125,-3.352307081222534,0.3709772527217865,6.617151737213135,2.8512063026428223,2.7589497566223145,0.7882829904556274,2.632612466812134,6.455399036407471,-0.009458212181925774,5.371397972106934,-8.537596702575684,5.416593551635742,-1.4360511302947998,4.583040714263916,-0.7985923886299133,-11.470120429992676,1.902501106262207,-3.3048300743103027,-9.064685821533203,3.4853219985961914,1.0389593839645386,3.657959461212158,-0.0011998298577964306,2.7072489261627197,-1.1756913661956787,2.7636735439300537,-2.402061939239502,-2.206299304962158,2.3344838619232178,5.76106595993042,3.3196780681610107,-3.3383049964904785,1.4243861436843872,4.631651401519775,5.200361728668213,2.2285993099212646,2.167314291000366,-0.2992115318775177,-2.9253711700439453,0.6490933299064636,4.816654682159424,5.395519733428955,-0.44431212544441223,1.1914132833480835,7.57905912399292,4.736921787261963,4.869649410247803,4.1063127517700195,7.30891227722168,-7.321595191955566,-9.543251037597656,0.4442548453807831],"y":[0.45612308382987976,2.255239486694336,1.514074444770813,0.2105221152305603,2.2115073204040527,1.490261197090149,4.343844413757324,1.847637414932251,2.726806879043579,4.0361504554748535,1.6942051649093628,5.842266082763672,-1.631290316581726,2.9257919788360596,5.242559432983398,6.959277629852295,5.532261371612549,2.4660861492156982,2.7960219383239746,2.6129024028778076,0.7850370407104492,2.444608688354492,-3.778663158416748,8.632448196411133,-10.118231773376465,6.601555824279785,8.769014358520508,-10.18911075592041,2.9029297828674316,3.1852657794952393,3.846412420272827,0.7400281429290771,3.173860549926758,-6.3767523765563965,0.004618980921804905,13.034424781799316,3.5468504428863525,-7.913296222686768,7.803289890289307,3.2696311473846436,-5.311695098876953,-11.010894775390625,-1.003868818283081,12.639315605163574,-8.127418518066406,-7.732326030731201,-11.632083892822266,-4.949147701263428,7.763996601104736,1.612699270248413,-6.055457592010498,0.9008937478065491,5.078145503997803,-0.7561007738113403,12.39311408996582,-10.270452499389648,-1.9758148193359375,-0.730741024017334,-1.4680187702178955,11.784029006958008,-4.281100749969482,-4.022994518280029,-1.1223623752593994,12.098172187805176,7.274731636047363,-4.700795650482178,-0.8994447588920593,-4.938631057739258,-2.55654239654541,-0.6869896054267883,11.572763442993164,0.10822455585002899,-10.776779174804688,-0.8819499611854553,-4.128664016723633,9.086407661437988,3.4164657592773438,-4.094879627227783,10.585755348205566,-6.994410514831543,12.098648071289062,-0.48060205578804016,-2.136537551879883,-1.7849531173706055,-9.387980461120605,3.8933839797973633,4.425793647766113,11.80284309387207,0.11019191890954971,-7.831305027008057,8.43406867980957,-5.917855739593506,-1.8108912706375122,2.265772819519043,-1.6196107864379883,-4.231769561767578,-8.9927339553833,5.924147129058838,11.405815124511719,0.560364305973053,4.929851531982422,1.3161344528198242,11.065997123718262,2.846140146255493,2.579747438430786,-3.801776885986328,-4.1966633796691895,-4.439092636108398,-3.4516446590423584,7.609616756439209,-1.245855450630188,11.078883171081543,-5.05971097946167,-0.7758582830429077,7.290314674377441,-6.532832145690918,-6.990629196166992,-5.97470760345459,2.868279218673706,-6.241917133331299,6.303874969482422,6.496702194213867,-2.907036781311035,-5.794785976409912,11.10966682434082,-6.419316291809082,4.308348178863525,-4.7699737548828125,-2.12892746925354,-0.8038827776908875,0.557529866695404,-10.241005897521973,-0.5005605816841125,-0.17184734344482422,-2.1326100826263428,-0.2103201448917389,-7.865352153778076,5.14427375793457,-0.905430793762207,6.73744535446167,-3.2590410709381104,-9.323281288146973,1.0301371812820435,-1.3826543092727661,-0.5389760136604309,0.431002676486969,9.006185531616211,-2.837433338165283,1.385231614112854,-10.304743766784668,-3.4887266159057617,-3.3521955013275146,2.794616222381592,-11.803040504455566,-1.17159903049469,1.9008909463882446,-0.07665527611970901,0.7850316166877747,4.182003021240234,-3.079592227935791,4.669587135314941,1.1208066940307617,-2.77463436126709,-1.9031169414520264,-1.2073616981506348,4.790650844573975,-4.450724124908447,-6.0755414962768555,-9.512365341186523,-3.2021384239196777,0.5093189477920532,-5.172869682312012,-0.8208730220794678,-3.5702500343322754,-8.179299354553223,-1.9702116250991821,9.14014720916748,-2.735517740249634,0.5991585850715637,-0.8570407629013062,-2.932124614715576,-8.986001014709473,9.017524719238281,2.9758806228637695,0.5461168885231018,-2.9844696521759033,-5.915985584259033,-3.966383457183838,6.6124587059021,-4.8381829261779785,4.511687755584717,-8.041621208190918,-9.162254333496094,-5.97634220123291,-4.909433841705322,-1.3345420360565186,2.125370740890503,-8.066200256347656,-4.235518932342529,-5.401586532592773,-9.657474517822266],"type":"scatter"}],                        {"autosize":false,"height":600,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"width":800},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('7bac7096-4902-4757-a79e-985b03ed96f3');
+var gd = document.getElementById('e9424902-cd63-443b-812a-c72f2889171b');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -939,9 +983,7 @@ options:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading Data...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detected Word2Vec model
+Detected Word2Vec model
 Building graph...
 </pre></div>
 </div>
@@ -978,8 +1020,8 @@ Building graph...
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="Capitulo_3.html"
@@ -1007,6 +1049,7 @@ Building graph...
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1042,6 +1085,7 @@ By Flávio Codeço Coelho
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -1068,8 +1112,8 @@ By Flávio Codeço Coelho
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

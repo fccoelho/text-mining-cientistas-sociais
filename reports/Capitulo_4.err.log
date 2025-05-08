@@ -1,47 +1,56 @@
 Traceback (most recent call last):
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 778, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 184, in ensure_async
-    result = await obj
-             ^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_client/channels.py", line 315, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 168, in wrapped
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 1001, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 802, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/fccoelho/MEGAsync/Cursos/text-mining-cientistas-sociais/.venv/lib/python3.11/site-packages/nbclient/client.py", line 852, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 180 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-if os.path.exists('dhbb.w2v'):
-    model = Word2Vec.load('dhbb.w2v')
-else:
-    DC = DHBBCorpus()
-    model = Word2Vec(sentences=DC, workers=32)
-    model.save('dhbb.w2v')
--------------------
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+nlp = spacy.load("pt_core_news_sm")
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mOSError[39m                                   Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m nlp = [43mspacy[49m[43m.[49m[43mload[49m[43m([49m[33;43m"[39;49m[33;43mpt_core_news_sm[39;49m[33;43m"[39;49m[43m)[49m
+
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/spacy/__init__.py:51[39m, in [36mload[39m[34m(name, vocab, disable, enable, exclude, config)[39m
+[32m     27[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mload[39m(
+[32m     28[39m     name: Union[[38;5;28mstr[39m, Path],
+[32m     29[39m     *,
+[32m   (...)[39m[32m     34[39m     config: Union[Dict[[38;5;28mstr[39m, Any], Config] = util.SimpleFrozenDict(),
+[32m     35[39m ) -> Language:
+[32m     36[39m [38;5;250m    [39m[33;03m"""Load a spaCy model from an installed package or a local path.[39;00m
+[32m     37[39m 
+[32m     38[39m [33;03m    name (str): Package name or model path.[39;00m
+[32m   (...)[39m[32m     49[39m [33;03m    RETURNS (Language): The loaded nlp object.[39;00m
+[32m     50[39m [33;03m    """[39;00m
+[32m---> [39m[32m51[39m     [38;5;28;01mreturn[39;00m [43mutil[49m[43m.[49m[43mload_model[49m[43m([49m
+[32m     52[39m [43m        [49m[43mname[49m[43m,[49m
+[32m     53[39m [43m        [49m[43mvocab[49m[43m=[49m[43mvocab[49m[43m,[49m
+[32m     54[39m [43m        [49m[43mdisable[49m[43m=[49m[43mdisable[49m[43m,[49m
+[32m     55[39m [43m        [49m[43menable[49m[43m=[49m[43menable[49m[43m,[49m
+[32m     56[39m [43m        [49m[43mexclude[49m[43m=[49m[43mexclude[49m[43m,[49m
+[32m     57[39m [43m        [49m[43mconfig[49m[43m=[49m[43mconfig[49m[43m,[49m
+[32m     58[39m [43m    [49m[43m)[49m
+
+[36mFile [39m[32m~/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/spacy/util.py:472[39m, in [36mload_model[39m[34m(name, vocab, disable, enable, exclude, config)[39m
+[32m    470[39m [38;5;28;01mif[39;00m name [38;5;129;01min[39;00m OLD_MODEL_SHORTCUTS:
+[32m    471[39m     [38;5;28;01mraise[39;00m [38;5;167;01mIOError[39;00m(Errors.E941.format(name=name, full=OLD_MODEL_SHORTCUTS[name]))  [38;5;66;03m# type: ignore[index][39;00m
+[32m--> [39m[32m472[39m [38;5;28;01mraise[39;00m [38;5;167;01mIOError[39;00m(Errors.E050.format(name=name))
+
+[31mOSError[39m: [E050] Can't find model 'pt_core_news_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
 
