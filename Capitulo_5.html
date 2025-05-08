@@ -470,61 +470,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gensim.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Word2Vec</span><span class="p">,</span> <span class="n">word2vec</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span><span class="w"> </span><span class="nn">spacy</span><span class="w"> </span><span class="kn">import</span> <span class="n">displacy</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;4.3.2&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gensim</span><span class="w"> </span><span class="kn">import</span> <span class="n">parsing</span><span class="p">,</span> <span class="n">corpora</span><span class="p">,</span> <span class="n">matutils</span><span class="p">,</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">similarities</span><span class="p">,</span> <span class="n">utils</span>  <span class="c1"># noqa:F401</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;gensim&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>  <span class="c1"># To ensure reload() doesn&#39;t add another one</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This package contains implementations of various streaming corpus I/O format.</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># bring corpus classes directly into package namespace, to save some typing</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.indexedcorpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexedCorpus</span>  <span class="c1"># noqa:F401 must appear before the other classes</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.mmcorpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">MmCorpus</span>  <span class="c1"># noqa:F401</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.bleicorpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">BleiCorpus</span>  <span class="c1"># noqa:F401</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="n">indexedcorpus</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gensim</span><span class="w"> </span><span class="kn">import</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">utils</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="k">class</span><span class="w"> </span><span class="nc">IndexedCorpus</span><span class="p">(</span><span class="n">interfaces</span><span class="o">.</span><span class="n">CorpusABC</span><span class="p">):</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">interfaces</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Basic interfaces used across the whole Gensim package.</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="sd"> </span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd"> These interfaces are used for building corpora, model transformation and similarity queries.</span>
-<span class="sd">   (...)     14 </span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gensim</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">matutils</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">class</span><span class="w"> </span><span class="nc">CorpusABC</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">SaveLoad</span><span class="p">):</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">Documentos</span><span class="o">/</span><span class="n">Projects_software</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">mining</span><span class="o">-</span><span class="n">cientistas</span><span class="o">-</span><span class="n">sociais</span><span class="o">/.</span><span class="n">venv</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">matutils</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">20</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy.sparse</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">entropy</span>
-<span class="ne">---&gt; </span><span class="mi">20</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_blas_funcs</span><span class="p">,</span> <span class="n">triu</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg.lapack</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_lapack_funcs</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">psi</span>  <span class="c1"># gamma function utils</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;triu&#39; from &#39;scipy.linalg&#39; (/home/fccoelho/Documentos/Projects_software/text-mining-cientistas-sociais/.venv/lib/python3.12/site-packages/scipy/linalg/__init__.py)
-</pre></div>
-</div>
-</div>
 </div>
 <section id="preparando-o-corpus">
 <h2>Preparando o corpus<a class="headerlink" href="#preparando-o-corpus" title="Permalink to this heading">#</a></h2>
@@ -1431,60 +1376,82 @@ Name: count, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-==&gt; Fitting:
-==&gt; Scoring:
-
-Relatório de classificação para ET:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Fitting:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==&gt; Scoring:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para ET:
 
               precision    recall  f1-score   support
 
-    Temático       0.97      0.76      0.85       241
-  Biográfico       0.80      0.98      0.88       243
+    Temático       0.95      0.76      0.85       248
+  Biográfico       0.79      0.96      0.87       236
 
-    accuracy                           0.87       484
-   macro avg       0.89      0.87      0.87       484
-weighted avg       0.89      0.87      0.87       484
+    accuracy                           0.86       484
+   macro avg       0.87      0.86      0.86       484
+weighted avg       0.88      0.86      0.86       484
 
 
 Relatório de classificação para RF:
-              precision    recall  f1-score   support
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-    Temático       0.99      0.84      0.91       241
-  Biográfico       0.86      0.99      0.92       243
+    Temático       1.00      0.82      0.90       248
+  Biográfico       0.84      1.00      0.91       236
 
-    accuracy                           0.92       484
-   macro avg       0.93      0.92      0.92       484
-weighted avg       0.93      0.92      0.92       484
+    accuracy                           0.91       484
+   macro avg       0.92      0.91      0.91       484
+weighted avg       0.92      0.91      0.91       484
 
 
 Relatório de classificação para SVC:
 
               precision    recall  f1-score   support
 
-    Temático       0.94      0.70      0.80       241
-  Biográfico       0.76      0.95      0.85       243
+    Temático       0.98      0.67      0.79       248
+  Biográfico       0.74      0.98      0.84       236
 
-    accuracy                           0.83       484
-   macro avg       0.85      0.83      0.82       484
-weighted avg       0.85      0.83      0.82       484
-
-Relatório de classificação para Voting:
+    accuracy                           0.82       484
+   macro avg       0.86      0.83      0.82       484
+weighted avg       0.86      0.82      0.82       484
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Relatório de classificação para Voting:
 
               precision    recall  f1-score   support
 
-    Temático       0.94      0.82      0.87       241
-  Biográfico       0.84      0.95      0.89       243
+    Temático       0.97      0.79      0.87       248
+  Biográfico       0.82      0.97      0.89       236
 
     accuracy                           0.88       484
    macro avg       0.89      0.88      0.88       484
-weighted avg       0.89      0.88      0.88       484
+weighted avg       0.90      0.88      0.88       484
 </pre></div>
 </div>
 </div>
@@ -1508,7 +1475,7 @@ weighted avg       0.89      0.88      0.88       484
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/31d0a5f31c993d02b0c51ca057fde27961ea225a43398a4811ec69858ef4ee4e.png" src="_images/31d0a5f31c993d02b0c51ca057fde27961ea225a43398a4811ec69858ef4ee4e.png" />
+<img alt="_images/c09a0cd7ba3f5bfc0bc81837b42fd08a13dc1a6fd0cc336ab34ec1b46b6a283e.png" src="_images/c09a0cd7ba3f5bfc0bc81837b42fd08a13dc1a6fd0cc336ab34ec1b46b6a283e.png" />
 </div>
 </div>
 </section>
@@ -1549,38 +1516,38 @@ weighted avg       0.89      0.88      0.88       484
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.867080</td>
-      <td>0.930441</td>
-      <td>0.800964</td>
-      <td>0.961433</td>
+      <td>0.881543</td>
+      <td>0.931818</td>
+      <td>0.826446</td>
+      <td>0.957300</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.853994</td>
-      <td>0.929752</td>
-      <td>0.800964</td>
-      <td>0.949036</td>
+      <td>0.887741</td>
+      <td>0.933196</td>
+      <td>0.826446</td>
+      <td>0.950413</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.860193</td>
-      <td>0.926309</td>
-      <td>0.800964</td>
-      <td>0.961433</td>
+      <td>0.887741</td>
+      <td>0.931129</td>
+      <td>0.826446</td>
+      <td>0.957300</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.864325</td>
-      <td>0.928375</td>
-      <td>0.800964</td>
-      <td>0.964187</td>
+      <td>0.888430</td>
+      <td>0.931818</td>
+      <td>0.826446</td>
+      <td>0.955234</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.869835</td>
-      <td>0.927686</td>
-      <td>0.800964</td>
-      <td>0.956612</td>
+      <td>0.889118</td>
+      <td>0.931818</td>
+      <td>0.826446</td>
+      <td>0.958678</td>
     </tr>
   </tbody>
 </table>
@@ -1617,7 +1584,7 @@ weighted avg       0.89      0.88      0.88       484
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5e2cb50f07534c4d3b116110de5d59be62d3b6ea742b59e2b3c45adf3c0996be.png" src="_images/5e2cb50f07534c4d3b116110de5d59be62d3b6ea742b59e2b3c45adf3c0996be.png" />
+<img alt="_images/aa706ce2232bcae60b76a5100333b8626a709c07282be6bc5ca069e4a08b48c9.png" src="_images/aa706ce2232bcae60b76a5100333b8626a709c07282be6bc5ca069e4a08b48c9.png" />
 </div>
 </div>
 </section>
